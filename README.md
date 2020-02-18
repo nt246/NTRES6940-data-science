@@ -1,16 +1,20 @@
-# NTRES6940: Collaborative and Reproducible Data Science in R
+### NTRES6940
+# Collaborative and Reproducible Data Science in R
 ## Cornell University, Spring 2020
 
 ### Meeting times
 Mondays and Wednesdays 4.20 - 5.40 in Fernow G24
+
 OPTIONAL: Practice sessions Fridays 3-5 in {room}
 
 ### Instructor
 Assistant Professor Nina Overgaard Therkildsen ([nt246@cornell.edu])
+
 Office hours
 
 ### TA
 Nicolas Lou ([rl683@cornell.edu])
+
 Office hours
 
 ### Grading
@@ -34,24 +38,32 @@ By the end of this course, students will be able to:
 * Track the history of file changes (version control) and collaborate effectively on scripts with others with Git and GitHub
 
 ### Prerequisites
+Prior experience with R will be advantageous, but is not essential. We will try to make the material accessible to people from a diversity of backgrounds. If you have never worked in R before, we recommend working through the following tutorials prior to the course:
+
 
 
 ### Course materials
 
 
+### Code of conduct
 
+### Tentative schedule (subject to adjustment)
 
-## Tentative schedule (subject to adjustment)
-
-| Week | Topic |
-| :--: | :---- |
-|   1  | Success through failure <br> Using GitHub for projects <br> Markdown in GitHub <br> How to ask for help |
-|   2  | Version control with Git <br> Using R Studio with Git and GitHub|
-|   3  | Importing and cleaning data I |
-|   4  | Importing and cleaning data II <br> Ecological metadata |
-|   5  | Principles of database design <br> Creating databases with PostgreSQL |
-|   6  | Intro to R Markdown <br> Creating pdf reports |
-|   7  | Creating websites with R Markdown <br> Creating presentations with R Markdown |
-|   8  | Creating R packages <br> Unit tests <br> Package documentation |
-|   9  | Using Shiny to create dynamic reports |
-|  10  | Presentations of final projects |
+Class#  |  Date  |  Topic  |
+| :--: | :--: |:---- |
+1  |  March 2 (Mon)  |  Intro to the course and R/RStudio  |
+2  |  March 4 (Wed)  |  Markdown and GitHub  |
+3  |  March 9 (Mon)  |  The Git workflow  |
+4  |  March 11 (Wed)  |  Plotting (ggplot) part 1  |
+5  |  March 16 (Mon)  |  Data wrangling part 1 (dplyr filter, mutate, select, arrange)  |
+6  |  March 18 (Wed)  |  Data wrangling part 2 (dplyr summarize group_by)  |
+7  |  March 23 (Mon)  |  Plotting (ggplot) part 2 + good coding practices  |
+8  |  March 25 (Wed)  |  Effective visualization + file I/O and tibbles  |
+9  |  March 30 (Mon)  |  Tidy data (what is tidy data and how to handle untidy data, including pivoting)  |
+-- |  April 1 (Wed)  |  SPRING BREAK  |
+-- |  April 6 (Mon)  |  SPRING BREAK  |
+10  |  April 8 (Wed)  |  Relational data: (join and lookup)  |
+11  |  April 13 (Mon)  |  Factors + basic string manipulation + dealing with dates and times  |
+12  |  April 15 (Wed)  |  Writing functions in R  |
+13  |  April 20 (Mon)  |  Iteration (for loops and map functions)  |
+14  |  April 22 (Wed)  |  Review and discussion of good practices for reproducible workflows  |
