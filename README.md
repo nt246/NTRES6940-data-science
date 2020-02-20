@@ -7,7 +7,7 @@
 <br>
 
 ### Meeting times 
-Mondays and Wednesdays 4.20 - 5.40 in Fernow G24\
+Mondays and Wednesdays 4.20 - 5.40 in Fernow G24 for 7 weeks (March 2 - April 22 2020)\
 OPTIONAL: Practice sessions Fridays 3-5 in {room}
 
 <br>
