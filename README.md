@@ -1,40 +1,36 @@
 ### NTRES6940
-# Collaborative and Reproducible Data Science in R
 
+# Collaborative and Reproducible Data Science in R
 
 ### Cornell University, Spring 2020
 
-<br>
+### Meeting times
 
-### Meeting times 
-Mondays and Wednesdays 4.20 - 5.40 in Fernow G24 for 7 weeks (March 2 - April 22 2020)\
+Mondays and Wednesdays 4.20 - 5.40 in Fernow G24 for 7 weeks (March 2 - April 22 2020)
+
 OPTIONAL: Practice sessions Fridays 3-5 in {room}
 
-<br>
-
 ### Instructor
-Assistant Professor Nina Overgaard Therkildsen ([nt246@cornell.edu])\
+
+Assistant Professor Nina Overgaard Therkildsen (nt246@cornell.edu)
+
 Office hours:
 
-<br>
-
 ### TA
-Nicolas Lou ([rl683@cornell.edu])\
-Office hours  
 
-<br>
+Nicolas Lou (rl683@cornell.edu)
+
+Office hours:
 
 ### Grading
+
 S/U (2 credits)
 
-<br>
-
 ### Course description
+
 As datasets grow larger and more complex across all areas of science, computational skills are increasingly in high demand. This course introduces a series of practical tools that enable researchers to spend less time wrestling with software or repeating error-prone manual data processing and more time getting research done in efficient and transparent ways that facilitate collaboration and reproducibility. We will work in R/RStudio, primarily with the tidyverse packages and with Git and Github integration. Topics covered include 1) formatting, filtering, exploration and visualization of complex datasets (data wrangling), 2) basic programming for building and automating custom tools, 3) tracking the history of file changes (version control) with Git and GitHub, 4) strategies for effective collaboration on data processing pipelines, and 5) using R Markdown to combine text, equations, code, tables, and figures into reports, websites, and presentations. The course emphasizes practical skill development and will be structured around hands-on (the keyboard) learning.
 
-<br>
-
-### Learning outcomes: 
+### Learning outcomes
 
 By the end of this course, students will be able to:
 
@@ -48,15 +44,11 @@ By the end of this course, students will be able to:
 * Use R Markdown to combine text, equations, code, tables, and figures into reports, websites, and presentations
 * Track the history of file changes (version control) and collaborate effectively on scripts with others with Git and GitHub
 
-<br>
-
 ### Prerequisites
+
 Prior experience with R will be advantageous, but is not essential. We will try to make the material accessible to people from a diversity of backgrounds. If you have never worked in R before, we recommend working through the following tutorials prior to the course:
 
-
-
 ### Course materials
-
 
 ### Code of conduct
 
