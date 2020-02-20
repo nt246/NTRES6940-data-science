@@ -6,20 +6,17 @@
 
 ### Meeting times
 
-Mondays and Wednesdays 4.20 - 5.40 in Fernow G24 for 7 weeks (March 2 - April 22 2020)
-
+Mondays and Wednesdays 4.20 - 5.40 in Fernow G24 for 7 weeks (March 2 - April 22 2020)\
 OPTIONAL: Practice sessions Fridays 3-5 in {room}
 
 ### Instructor
 
-Assistant Professor Nina Overgaard Therkildsen (nt246@cornell.edu)
-
+Assistant Professor Nina Overgaard Therkildsen (nt246@cornell.edu)\
 Office hours:
 
 ### TA
 
-Nicolas Lou (rl683@cornell.edu)
-
+Nicolas Lou (rl683@cornell.edu)\
 Office hours:
 
 ### Grading
