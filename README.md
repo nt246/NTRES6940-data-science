@@ -1,20 +1,20 @@
-### NTRES6940
+### NTRES6940\
 # Collaborative and Reproducible Data Science in R
-## Cornell University, Spring 2020
+
+<br>
+
+### Cornell University, Spring 2020
 
 ### Meeting times
-Mondays and Wednesdays 4.20 - 5.40 in Fernow G24
-
+Mondays and Wednesdays 4.20 - 5.40 in Fernow G24\
 OPTIONAL: Practice sessions Fridays 3-5 in {room}
 
 ### Instructor
-Assistant Professor Nina Overgaard Therkildsen ([nt246@cornell.edu])
-
-Office hours
+Assistant Professor Nina Overgaard Therkildsen ([nt246@cornell.edu])\
+Office hours:
 
 ### TA
-Nicolas Lou ([rl683@cornell.edu])
-
+Nicolas Lou ([rl683@cornell.edu])\
 Office hours
 
 ### Grading
