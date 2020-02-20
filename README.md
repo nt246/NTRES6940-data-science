@@ -25,14 +25,7 @@ S/U (2 credits)
 
 ### Course description
 
-As datasets grow larger and more complex across all areas of science, computational skills are increasingly in high demand. This course introduces a series of practical tools that enable researchers to spend less time wrestling with software or repeating error-prone manual data processing and more time getting research done in efficient and transparent ways that facilitate collaboration and reproducibility. We will work in R/RStudio, primarily with the tidyverse packages and with Git and GitHub integration. Topics covered include:
-* Formatting, filtering, exploration and visualization of complex datasets
-* Basic programming for building and automating custom tools
-* Tracking the history of file changes (version control) with Git and GitHub
-* Strategies for effective collaboration on data processing pipelines
-* Using R Markdown to combine text, equations, code, tables, and figures into reports, websites, and presentations
-
-The course emphasizes practical skill development and will be structured around hands-on (the keyboard) learning.
+As datasets grow larger and more complex across all areas of science, computational skills are increasingly in high demand. This course introduces a series of practical tools that enable researchers to spend less time wrestling with software or repeating error-prone manual data processing and more time getting research done in efficient and transparent ways that facilitate collaboration and reproducibility. We will work in R/RStudio, primarily with the tidyverse packages and with Git and GitHub integration. Topics covered include 1) tidy data formatting, 2) rearrangement, filtering, exploration and visualization of complex datasets, 3) basic programming for building and automating custom tools, 4) tracking the history of file changes (version control) with Git and GitHub, 5) strategies for effective collaboration on data processing pipelines, and 6) using R Markdown to combine text, equations, code, tables, and figures into reports, websites, and presentations. The course emphasizes practical skill development and will be structured around hands-on (the keyboard) learning.
 
 ### Learning outcomes
 
@@ -52,9 +45,15 @@ By the end of this course, students will be able to:
 
 Prior experience with R will be advantageous, but is not essential. We will try to make the material accessible to people from a diversity of backgrounds. If you have never worked in R before, we recommend working through the following tutorials prior to the course:
 
+### Course format
+
+
 ### Course materials
+All assigned readings are freely available online and will be linked to from the course website. We will draw from a variety of sources
+
 
 ### Code of conduct
+
 
 ### Tentative schedule (subject to adjustment)
 
