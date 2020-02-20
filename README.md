@@ -4,7 +4,7 @@
 
 ### Cornell University, Spring 2020
 
-\
+
 
 ### Meeting times
 Mondays and Wednesdays 4.20 - 5.40 in Fernow G24\
