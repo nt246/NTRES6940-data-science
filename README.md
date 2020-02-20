@@ -1,5 +1,5 @@
 ### NTRES6940
-# Collaborative and Reproducible Data Science in R . 
+# Collaborative and Reproducible Data Science in R
 
 
 ### Cornell University, Spring 2020
