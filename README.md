@@ -4,10 +4,11 @@
 
 ### Cornell University, Spring 2020
 
+\
 
 ### Meeting times
 Mondays and Wednesdays 4.20 - 5.40 in Fernow G24\
-OPTIONAL: Practice sessions Fridays 3-5 in {room}
+OPTIONAL: Practice sessions Fridays 3-5 in {room}\
 
 ### Instructor
 Assistant Professor Nina Overgaard Therkildsen ([nt246@cornell.edu])\
