@@ -1,1 +1,5 @@
-assignment/assignment_?.Rmd
+assignments/assignment_?.Rmd
+.DS_Store
+.Rhistory
+*/.DS_Store
+*/.Rhistory
