@@ -9,7 +9,7 @@
 ### Meeting times
 
 Mondays and Wednesdays 4.20 - 5.40 in Fernow G24 for 7 weeks (March 2 - April 22 2020)\
-**OPTIONAL**: "Hacky hour" (meetup to work on problem sets) Fridays 3-5 in {room}
+**OPTIONAL**: "Hacky hour" (meetup to work on problem sets) Fridays 3-5 in Fernow 110
 
 ### Instructor
 
@@ -57,7 +57,7 @@ The two weekly lectures will introduce new concepts and provide opportunities to
 
 
 ### Evaluation
-It takes practice to acquire and internalize data science skills, and what you get out of this course will be proportional to the effort you put in. Practice as much as you can. To pass, students are expected to attend all lectures, participate actively during class, and submit at least 6 of the 7 problem sets. If you are unable to make a lecture or can not meet a problem set deadline, please email the instructor beforehand.  
+It takes practice to acquire and internalize data science skills, and what you get out of this course will be proportional to the effort you put in. Practice as much as you can. To pass, students are expected to attend all lectures, participate actively during class, and submit at least 6 of the 7 problem sets with demonstrated effort to complete all questions. If you are unable to make a lecture or can not meet a problem set deadline, please email the instructor beforehand.  
 
 
 ### Course materials
