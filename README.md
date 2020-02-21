@@ -1,4 +1,4 @@
-### NTRES6940, Lec003
+### NTRES 6940, Lec 003
 
 # Collaborative and Reproducible Data Science in R
 
@@ -19,7 +19,7 @@ Office hours: By appointment
 ### TA
 
 Nicolas Lou (rl683@cornell.edu)\
-Office hours: Fridays 3-5 and by appointment
+Office hours: Fridays 3-5pm and by appointment
 
 ### Grading
 
@@ -57,11 +57,11 @@ The two weekly lectures will introduce new concepts and provide opportunities to
 
 
 ### Evaluation
-It takes practice to acquire and internalize data science skills, and what you get out of this course will be proportional to the effort you put in. To pass, students are expected to attend all lectures, participate actively during class, and submit at least 6 of the 7 problem sets. If you are unable to make a lecture or can not meet a problem set deadline, please email the instructor beforehand.  
+It takes practice to acquire and internalize data science skills, and what you get out of this course will be proportional to the effort you put in. Practice as much as you can. To pass, students are expected to attend all lectures, participate actively during class, and submit at least 6 of the 7 problem sets. If you are unable to make a lecture or can not meet a problem set deadline, please email the instructor beforehand.  
 
 
 ### Course materials
-All assigned readings are freely available online and will be linked to from the course website. We will draw from a variety of sources, primarily [Grolemund and Wickham's R For Data Science](https://r4ds.had.co.nz/) and the [STAT545 course developed by Jenny Bryan](https://stat545.com/)  
+All assigned readings are freely available online and will be linked to from the course website. We will draw from a variety of sources, primarily [Grolemund and Wickham's R For Data Science](https://r4ds.had.co.nz/) and the [STAT545 course developed by Jenny Bryan](https://stat545.com/).  
 
 All students will need to bring a laptop to each session. Students who do not have their own laptop can arrange to borrow one from the Mann Library.
 
