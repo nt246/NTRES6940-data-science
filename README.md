@@ -1,4 +1,4 @@
-### NTRES6940
+### NTRES6940, Lec003
 
 # Collaborative and Reproducible Data Science in R
 
@@ -12,12 +12,12 @@ OPTIONAL: Practice sessions Fridays 3-5 in {room}
 ### Instructor
 
 Assistant Professor Nina Overgaard Therkildsen (nt246@cornell.edu)\
-Office hours:
+Office hours: By appointment
 
 ### TA
 
 Nicolas Lou (rl683@cornell.edu)\
-Office hours:
+Office hours: Fridays 3-5 and by appointment
 
 ### Grading
 
@@ -42,18 +42,28 @@ By the end of this course, students will be able to:
 * Track the history of file changes (version control) and collaborate effectively on scripts with others with Git and GitHub
 
 ### Prerequisites
+A basic working knowledge of R will be helpful, but no prior experience with the tidyverse packages or with Git, GitHub, or R Markdown is assumed. If you have never worked in R before, we recommend working through one or more of the following tutorials before the course: \ 
 
-Prior experience with R will be advantageous, but is not essential. We will try to make the material accessible to people from a diversity of backgrounds. If you have never worked in R before, we recommend working through the following tutorials prior to the course:
++ [Jenny Bryan's STAT545 Chapter 2 R basics and workflows](https://stat545.com/r-basics.html)
++ [R Swirl interactive lessons](https://swirlstats.com/)
++ [Data Carpentry's Introduction to R for Ecologists](https://datacarpentry.org/R-ecology-lesson/)
+
 
 ### Course format
-
+The two weekly lectures will 
 
 ### Course materials
 All assigned readings are freely available online and will be linked to from the course website. We will draw from a variety of sources
 
+All students will need to bring a laptop to each session. Students who do not have their own laptop can arrange to borrow one from the Mann Library.
+
+### Evaluation
+To pass this course, students are expected to attend lectures and
 
 ### Code of conduct
 
+### Accommodations for students with disabilities
+In compliance with the Cornell University policy and equal access laws, I am available to discuss appropriate academic accommodations that may be required for student with disabilities. Requests for academic accommodations are to be made during the first three weeks of the semester, except for unusual circumstances, so arrangements can be made. Students are encouraged to register with Student Disability Services to verify their eligibility for appropriate accommodations.
 
 ### Tentative schedule (subject to adjustment)
 
