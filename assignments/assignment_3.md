@@ -24,8 +24,8 @@ library(knitr)
 
 <br>
 
-1. Theophylline experiment
---------------------------
+Exercise 1. Theophylline experiment
+-----------------------------------
 
 This exercise uses the `Theoph` data frame, which has 132 rows and 5 columns of data from an experiment on the pharmacokinetics of theophylline.
 
@@ -122,8 +122,8 @@ kable(head(Theoph))
 
 <br>
 
-2. Trend in land value
-----------------------
+Exercise 2. Trend in land value
+-------------------------------
 
 This excercise uses a dataset that describes the trend of land value (`Land.Value`), among other variables, in different states in the US 1975-2013. The states are grouped into four different regions, under the variable `region`.
 
@@ -183,8 +183,8 @@ Answer: <span style="color:blue"> Write your response here. </span>
 
 <br>
 
-3. Life expectancy and GDP per capita 1952-2007
------------------------------------------------
+Exercise 3. Life expectancy and GDP per capita 1952-2007
+--------------------------------------------------------
 
 This exercise uses the `gapminder` dataset from the `gapminder` package. It describes the life expectancy (`lifeExp`), GDP per capita (`gdpPercap`), and population (`pop`) of 142 countries from 1952 to 2007. These countries can be grouped into 5 continents. As a reminder, **reproduce the following plots exactly as shown**.
 
