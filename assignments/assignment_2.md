@@ -2,7 +2,7 @@ Assignment 2: Data visualization with ggplot
 ================
 
 Instructions: Please read through this before you begin
-=======================================================
+-------------------------------------------------------
 
 This homework is due by **4pm on Monday 9/10/18**. Please upload it through Blackboard.
 
@@ -21,7 +21,7 @@ library(tidyverse)
 <br>
 
 1. Corruption and human development
-===================================
+-----------------------------------
 
 This exercise explores a dataset containing the human development index (`HDI`) and corruption perception index (`CPI`) of 173 countries across 6 different regions around the world: Americas, Asia Pacific, Eastern Europe and Central Asia (`East EU Cemt`), Western Europe (`EU W. Europe`), Middle East and North Africa and Noth Africa (`MENA`), and Sub-Saharan Africa (`SSA`). (Note: the larger `CPI` is, the less corruption the country is perceived to be. )
 
@@ -119,7 +119,7 @@ Answer: <span style="color:blue"> Write your response here. </span>
 <br>
 
 2. Unemployment in the US 1967-2015
-===================================
+-----------------------------------
 
 This excercise uses the dataset `economics` from the ggplot2 package. It was produced from US economic time series data available from <http://research.stlouisfed.org/fred2>. It descibes the number of unemployed persons (`unemploy`), among other variables, in the US from 1967 to 2015.
 
@@ -152,7 +152,7 @@ head(economics)
 <br>
 
 In class excercise: trend in land value
-=======================================
+---------------------------------------
 
 This excercise uses a dataset that describes the trend of land value (`Land.Value`), among other variables, in different states in the US 1975-2013. The states are grouped into four different regions, under the variable `region`.
 
