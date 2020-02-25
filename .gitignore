@@ -4,3 +4,4 @@ assignments/assignment_?.Rmd
 */.DS_Store
 */.Rhistory
 *.Rproj
+.Rproj.user
