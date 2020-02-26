@@ -92,9 +92,9 @@ Class#  |  Date  |  Topic  |
 6  |  March 18 (Wed)  |  Data wrangling part 2 (dplyr::summarize, group_by)  |
 7  |  March 23 (Mon)  |  Plotting with ggplot part 2 + good coding practices  |
 8  |  March 25 (Wed)  |  Effective visualization + file I/O and tibbles  |
-9  |  March 30 (Mon)  |  Tidy data (what is tidy data and how to handle untidy data)  |
+-- |  March 30 (Mon)  |  SPRING BREAK  |
 -- |  April 1 (Wed)  |  SPRING BREAK  |
--- |  April 6 (Mon)  |  SPRING BREAK  |
+9 |  April 6 (Mon)  |  Tidy data (what is tidy data and how to handle untidy data)  |
 10  |  April 8 (Wed)  |  Relational data (join functions and lookup)  |
 11  |  April 13 (Mon)  |  Factors + basic string manipulation + dealing with dates and times  |
 12  |  April 15 (Wed)  |  Writing functions in R  |
