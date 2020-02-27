@@ -65,6 +65,8 @@ All assigned readings are freely available online and will be linked to from the
 
 All students will need to bring a laptop to each session. Students who do not have their own laptop can arrange to borrow one from the Mann Library.
 
+Please follow the instructions [here](https://github.com/nt246/NTRES6940-data-science/blob/master/misc/installation_guide.md) to install the software we will need **prior to the first class**.
+
 
 ### Code of conduct
 We are dedicated to providing a welcoming and supportive environment for everyone, regardless of background, identity and prior experience level. Everyone in this course will be coming from a different place with different experiences and expectations. We will not tolerate any form of language or behavior used to exclude, intimidate, or cause discomfort. This applies to all course participants (instructor, students, guests). In order to foster a positive and professional learning environment, we encourage the following kinds of behaviors:
