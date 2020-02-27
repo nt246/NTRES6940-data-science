@@ -35,7 +35,7 @@ That being said, if you do not plan to use Slack regularly, please go to "Prefer
 GitHub account
 --------------
 
-If you don't have a GitHub account yet, please [create one](https://github.com/join).
+If you don't have a GitHub account yet, please [create one](https://github.com/join). Give some thought to what you pick as your user name - see advice [here](https://happygitwithr.com/github-acct.html#username-advice)
 
 **Note**: we might need to import the roster to GitHub classroom first.
 
