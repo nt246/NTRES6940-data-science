@@ -3,6 +3,7 @@ Pre-course installation guide
 
 Please follow this guide to install the following free software on your laptop **before our first lecture**. It should only take about 20 minutes.
 
+<br>
 
 Install R and RStudio
 -------------
@@ -10,6 +11,8 @@ Install R and RStudio
 Follow the instructions in [section 1.4](https://r4ds.had.co.nz/introduction.html#prerequisites) of the R for Data Science book. Make sure to get the free open source license RStudio Desktop version.
 
 **Note**: If you already have R and RStudio installed, make sure you update to the most recent recent versions (R v3.6.2 and RStudio v1.2). There have been recent changes to many packages and some of the functions that we will use are not available or have different names in outdated versions.
+
+<br>
 
 
 Install R packages
@@ -25,6 +28,9 @@ install.packages("cowplot")
 install.packages(c("nycflights13", "gapminder", "Lahman"))
 ```
 
+<br>
+
+
 Install Slack and join our class workspace
 -----
 
@@ -36,17 +42,23 @@ If you don't plan on using Slack regularly, please go to "Preferences" and check
 
 By clicking this option, you will able to receive all of our anouncements via email without needing to log in on Slack every time.
 
+<br>
+
 
 Create a GitHub account
 --------------
 
 If you don't have a GitHub account yet, create one [here](https://github.com/join). Give some thought to what you pick as your user name - see advice [here](https://happygitwithr.com/github-acct.html#username-advice).
 
+<br>
+
 
 Install Git
 --------------
 Download and install Git: (https://git-scm.com/downloads) 
 Follow your operating system’s normal installation process. Note: you will not see an application called Git listed but if the installation process completed it was likely successful, and we will confirm together in class.
+
+<br>
 
 
 Install GitHub Desktop (optional)
