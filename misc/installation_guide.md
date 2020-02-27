@@ -55,7 +55,7 @@ If you don't have a GitHub account yet, create one [here](https://github.com/joi
 
 Install Git
 --------------
-Download and install Git: (https://git-scm.com/downloads) 
+Download and install Git: https://git-scm.com/downloads  
 Follow your operating system’s normal installation process. Note: you will not see an application called Git listed but if the installation process completed it was likely successful, and we will confirm together in class.
 
 <br>
