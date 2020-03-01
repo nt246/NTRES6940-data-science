@@ -1,6 +1,7 @@
 Pre-course survey results
 ================
 
+-   [Load required packages](#load-required-packages)
 -   [Read in the data from Google Sheet](#read-in-the-data-from-google-sheet)
 -   [Show first few rows of raw data](#show-first-few-rows-of-raw-data)
 -   [Data tidying and wrangling](#data-tidying-and-wrangling)
@@ -13,6 +14,20 @@ Pre-course survey results
 -   [R experience level](#r-experience-level)
 -   [Motivation](#motivation)
 
+Load required packages
+----------------------
+
+``` r
+library(tidyverse)
+library(cowplot)
+library(knitr)
+library(googlesheets4)
+library(janitor)
+library(ggwordcloud)
+library(stopwords)
+library(viridis)
+```
+
 Read in the data from Google Sheet
 ----------------------------------
 
@@ -20,12 +35,6 @@ Read in the data from Google Sheet
 survey_url <- "https://docs.google.com/spreadsheets/d/1grWdJmZ2y1F9t8r4W_jtxcKVXu59JO9yeT5fmKMpY8k/edit#gid=1474005795"
 survey_raw <- read_sheet(survey_url) %>% select(-(1:2))
 ```
-
-    ## Using an auto-discovered, cached token.
-    ## To suppress this message, modify your code or options to clearly consent to the use of a cached token.
-    ## See gargle's "Non-interactive auth" vignette for more details:
-    ## https://gargle.r-lib.org/articles/non-interactive-auth.html
-    ## The googlesheets4 package is using a cached token for nicolas931010@gmail.com.
 
 Show first few rows of raw data
 -------------------------------
@@ -71,7 +80,8 @@ survey_longer <- pivot_longer(survey, cols = 5:14, names_to = "experience",  val
   mutate(experience_type=ifelse(str_detect(experience, "please_describe_your_experience_level_with_"), "general_experience", "r_experience")) %>%
   mutate(experience=str_remove(experience, "please_describe_your_experience_level_with_")) %>%
   mutate(experience=str_remove(experience, "how_would_you_describe_your_experience_level_with_performing_the_following_tasks_in_r_")) %>%
-  mutate(experience_level=fct_relevel(experience_level, levels = c("None", "Novice", "Intermediate", "Advanced")))
+  mutate(experience_level=fct_relevel(experience_level, levels = c("None", "Novice", "Intermediate", "Advanced"))) %>%
+  mutate(experience=fct_relevel(experience, levels = c("any_programming_language", "r", "r_studio", "tidyverse_packages_in_r", "r_markdown", "git_and_git_hub", "data_wrangling", "data_visualization", "data_analysis", "programming")))
 
 ## show the first few rows
 survey_longer %>% head(n=2) %>% kable()
@@ -96,7 +106,7 @@ count(survey, department) %>% filter(!is.na(department)) %>%
   theme_cowplot()
 ```
 
-![](pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-5-1.png)
 
 #### Degree program / position
 
@@ -109,7 +119,7 @@ count(survey, degree_program_or_position) %>%
   theme_cowplot()
 ```
 
-![](pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-5-1.png)
+![](pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 #### Year in degree program / position
 
@@ -121,10 +131,11 @@ count(survey, degree_program_or_position, year_in_your_program_or_position) %>%
   geom_text(aes(y=n+0.5)) +
   ylim(c(0,6)) +
   facet_wrap(~degree_program_or_position, nrow = 1) +
+  scale_fill_viridis_d() +
   theme_cowplot()
 ```
 
-![](pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
 #### NTRES 6600
 
@@ -134,32 +145,34 @@ ggplot(aes(x="", y=n, label=paste(ntres_6600, "=", n))) +
   geom_bar(width = 1, aes(fill=ntres_6600), stat = "identity") +
   geom_label(aes(y=n-3)) +
   coord_polar("y", start=0) +
+  scale_fill_viridis_d() +
   theme_void()
 ```
 
-![](pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-7-1.png)
+![](pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 General experience level
 ------------------------
 
 ``` r
 ## write a function to automate this kind of plot
-bar_plot_experience_level <- function(x){
+bar_plot_experience_level <- function(x, nrow=1){
   x %>%
     count(experience_level, experience) %>%
     ggplot(aes(x=experience_level, y=n, fill=experience_level)) +
     geom_col(position="dodge") +
     geom_text(position="dodge", aes(label=n, y=n+1)) +
-    facet_grid(~experience) +
+    facet_wrap(~experience, nrow = nrow) +
+    scale_fill_viridis_d() +
     theme_cowplot() +
     theme(axis.text.x = element_blank(),
           axis.ticks.x = element_blank())
 }
 filter(survey_longer, experience_type=="general_experience") %>%
-  bar_plot_experience_level()
+  bar_plot_experience_level(nrow=2)
 ```
 
-![](pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
 R experience level
 ------------------
@@ -170,7 +183,7 @@ filter(survey_longer, experience_type=="r_experience") %>%
   bar_plot_experience_level()
 ```
 
-![](pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-9-1.png)
+![](pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-10-1.png)
 
 Motivation
 ----------
@@ -183,11 +196,12 @@ survey$why_do_you_want_to_take_this_class %>%
   str_to_lower() %>%
   tibble(word=.) %>%
   count(word) %>%
-  filter(! word %in% c("", "s", "ve", "can", "also", "want", "use", "even", "like", "get", "using", stopwords(language = "english")), n>1) %>%
+  filter(! word %in% c("", "s", "ve", "can", "also", "want", "use", "even", "like", "get", "using", "around", stopwords(language = "english")), n>1) %>%
   ggplot(aes(label=word, size=log(n), color=as.character(n))) +
   geom_text_wordcloud_area(shape = "diamond", eccentricity=0.6) +
   scale_size_area(max_size = 24) +
+  scale_color_viridis_d() +
   theme_minimal()
 ```
 
-![](pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-10-1.png)
+![](pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-11-1.png)
