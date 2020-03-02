@@ -4,7 +4,7 @@ Pre-course survey results
 -   [Load required packages](#load-required-packages)
 -   [Read in the data from Google Sheet](#read-in-the-data-from-google-sheet)
 -   [Show first few rows of raw data](#show-first-few-rows-of-raw-data)
--   [Data tidying and wrangling](#data-tidying-and-wrangling)
+-   [Data tidying and transformation](#data-tidying-and-transformation)
 -   [Class stats](#class-stats)
     -   [Department](#department)
     -   [Degree program / position](#degree-program-position)
@@ -48,16 +48,17 @@ survey_raw %>% head(n=2) %>% kable()
 | NA                    | PhD                        | 1                             | No                                                                        | Novice                                                                  | Novice                                           | Novice                                                 | None                                                                   | None                                                      | None                                                          | Novice                                                                                                    | Novice                                                                                                        | Novice                                                                                                   | Novice                                                                                                 | Single cell genomics data analysis                                                                                                    | NA                                                                                                                                                                                                                                 | NA                                 |
 | Microbiology          | PhD                        | 1                             | Yes                                                                       | Intermediate                                                            | Novice                                           | Novice                                                 | Novice                                                                 | Novice                                                    | Novice                                                        | Novice                                                                                                    | Novice                                                                                                        | Novice                                                                                                   | Novice                                                                                                 | To improve my data analysis skills, learn to use GitHub, and improve my general programming skills (learn a new programming language) | NA                                                                                                                                                                                                                                 | NA                                 |
 
-Data tidying and wrangling
---------------------------
+Data tidying and transformation
+-------------------------------
 
 ``` r
-## clean column names, parce certain columns, factor relevel the degree program column, and clean the department column
+## clean column names, remove one duplicated entry, parce certain columns, factor relevel the degree program column, and clean the department column
 survey <- survey_raw %>% 
   clean_names() %>%
   rename(department=department_optional, 
          year_in_your_program_or_position = year_in_your_program_position, 
          ntres_6600=did_you_take_the_ntres_6600_research_data_management_seminar_this_winter) %>%
+  filter(department != "CALS" | is.na(department)) %>%
   mutate(year_in_your_program_or_position=as.character(year_in_your_program_or_position)) %>%
   mutate(degree_program_or_position=fct_relevel(degree_program_or_position, levels = c("Bachelor", "Master", "PhD", "Postdoc", "Faculty"))) %>%
   mutate(department=ifelse(department %in% c("DNR", "NR"), "Natural Resources", department)) %>%
@@ -129,7 +130,7 @@ count(survey, degree_program_or_position, year_in_your_program_or_position) %>%
   ggplot(aes(x=year, y=n, label=n)) +
   geom_col(aes(fill=year)) +
   geom_text(aes(y=n+0.5)) +
-  ylim(c(0,6)) +
+  ylim(c(0,7)) +
   facet_wrap(~degree_program_or_position, nrow = 1) +
   scale_fill_viridis_d() +
   theme_cowplot()
@@ -196,7 +197,7 @@ survey$why_do_you_want_to_take_this_class %>%
   str_to_lower() %>%
   tibble(word=.) %>%
   count(word) %>%
-  filter(! word %in% c("", "s", "ve", "can", "also", "want", "use", "even", "like", "get", "using", "around", stopwords(language = "english")), n>1) %>%
+  filter(! word %in% c("", "s", "ve", "can", "also", "want", "use", "used", "know", "even", "like", "get", "using", "around", stopwords(language = "english")), n>1) %>%
   ggplot(aes(label=word, size=log(n), color=as.character(n))) +
   geom_text_wordcloud_area(shape = "diamond", eccentricity=0.6) +
   scale_size_area(max_size = 24) +
