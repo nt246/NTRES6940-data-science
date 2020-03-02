@@ -1,8 +1,8 @@
 ---
 title: "Introduction to R and RStudio"
-author: "Nina Overgaard Therkildsen"
-date: "3/2/2020"
-output: html_document
+output: 
+  github_document: 
+    toc: true
 ---
   
 ```{r setup, include=FALSE}
@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ## Overview
-We will not have time to provide a comprehensive introduction to R and RStudio. We will focus on highlighting a few key functionalities and tips that will be important for this course.
+We will not have time to provide a comprehensive introduction to R and RStudio. We will focus on highlighting a few key functionalities and tips that will be important for this course and get us all on the same page.
 
 ## Resources
 
