@@ -12,4 +12,8 @@ video](https://rmarkdown.rstudio.com/authoring_quick_tour.html)
 GitHub \* [Chapter 1 in Jenny Bryan’s Happy Git with
 R](https://happygitwithr.com/big-picture.html)
 
-<br> \#\# Getting started
+<br>
+
+## Getting started
+
+Coming soon
