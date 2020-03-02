@@ -1,5 +1,5 @@
 ---
-title: "Introduction to R and RStudio"
+title: "Lesson 1: Introduction to R and RStudio"
 output: 
   github_document: 
     toc: true
@@ -33,7 +33,7 @@ RStudio has great resources about its IDE (IDE stands for integrated development
 
 Launch RStudio/R.
 
-![](img/RStudio_IDE.png)
+c
 
 Notice the default panes:
 
@@ -222,7 +222,9 @@ To remove everything:
 rm(list = ls())
 ```
 
-or click the broom in RStudio's Environment pane.
+or click the broom in RStudio's Environment pane. 
+
+But this command is problematic -see (Jenny Bryan's explanation)[https://rstats.wtf/save-source.html#rm-list-ls].
 
 For reproducibility, it is critical that you delete your objects and restart your R session frequently. You don't want your whole analysis to only work in whatever way you've been working right now — you need it to work next week, after you upgrade your operating system, etc. Restarting your R session will help you identify and account for anything you need for your analysis. 
 
@@ -232,4 +234,23 @@ We will keep coming back to this theme but let's restart our R session together:
 
 > Exercise: Clear your workspace, then create a few new variables. Create a variable that is the mean of a sequence of 1-20. What's a good name for your variable? Does it matter what your 'by' argument is? Why?
   
+Highly recommended: (Don’t save your workspace when you quit RStudio)[https://www.r-bloggers.com/using-r-dont-save-your-workspace/]. Make this a default:
+* Go to “RStudio” -> “Preferences…” -> “General”
+* Uncheck “restore .RData into workspace on startup”
+* Select: “Save workspace to RData on exit:” Never
 
+![](img/rstudio-workspace.png)
+
+
+## Home directory, relative vs. absolute paths and RStudio projects
+
+See sections 8.2-8.4 in Grolemund and Wickham's (R4DS)[https://r4ds.had.co.nz/workflow-projects.html#where-does-your-analysis-live]
+
+Additional tips on RStudio projects (here)[https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects]
+
+On Wednesday, we will set up an RStudio project for you to work in during this course (we're waiting until Wednesday because we want to integrate it with GitHub from the get-go).
+
+
+## Saving your code in scripts
+
+See chapter 6 in Grolemund and Wickham's (R4DS)[https://r4ds.had.co.nz/workflow-projects.html#where-does-your-analysis-live]
