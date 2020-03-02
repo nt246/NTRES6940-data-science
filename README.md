@@ -53,7 +53,7 @@ A basic working knowledge of R will be helpful, but no prior experience with the
 
 
 ### Course format
-The two weekly lectures will introduce new concepts and provide opportunities to practice through hands-on exercises. To participate effectively, you must have completed the assigned readings prior to class. Each Monday, we will assign a problem set that applies the concepts covered in class in a new context to reinforce your learning. We offer an optional Friday afternoon "hacky hour" session for working on these problem sets in groups and with TA support. The problem sets are due the following Monday at 10pm. 
+The two weekly lectures will introduce new concepts and provide opportunities to practice through hands-on exercises. To participate effectively, you must have completed the assigned readings prior to class. Each Wednesday, we will assign a problem set that applies the concepts covered in class in a new context to reinforce your learning. We offer an optional Friday afternoon "hacky hour" session for working on these problem sets in groups and with TA support. The problem sets are due the following Wednesday at 10pm. 
 
 
 ### Evaluation
