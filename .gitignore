@@ -2,3 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+assignments/assignment_?.Rmd
+.DS_Store
+.Rhistory
+*/.DS_Store
+*/.Rhistory
