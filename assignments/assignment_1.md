@@ -4,15 +4,26 @@ Assignment 1: R markdown template
 Instructions: Please read through this before you begin
 -------------------------------------------------------
 
--   This assignment is due by **10pm on Monday 03/09/20**. Please upload it through GitHub Classroom.
+-   This assignment is due by **10pm on Wednesday 03/11/20**.
 
 -   For this assignment, please **reproduce this markdown file exactly as shown** using R markdown.
 
--   Pay attention to all the formatings in this file, including bullet points, bolded characters, inserted code chunks, headings, blank space, and etc. You will need to reproduce all of these.
+-   Please name your R markdown file `assignment_1.Rmd` and the knitted markdown file `assignment_1.md`.
 
--   You will use the product of this assignment as a template for your second assignment.
+-   Pay attention to all the formating in this file, including bullet points, bolded characters, inserted code chunks, headings, text colors, blank lines, and etc. You will need to reproduce all of these.
 
--   First, load all the required packages with the following code. Install them if they are not installed yet.
+-   You do not need to fill out the code chunks for this assignment.
+
+-   You will use the product of this assignment as a template for your second assignment, where you will actually fill out the code chunks.
+
+-   You can start working on this assignment after Wednesday's class (03/04/20), but please do not worry about submitting until our class on Monday 03/09/20.
+
+-   After Monday's class, you will be able to submit this assignment through GitHub. To do so, you will first move `assignment_1.Rmd` and `assignment_1.md` to the `problem_sets` folder in your own GitHub repository that you have created in class through GitHub Classroom. (If you haven't created this repo yet, please use the following url: <https://classroom.github.com/a/SA7QIA7g>). Then, you can stage these files, make a commit, and push the commit.
+
+Load packages
+-------------
+
+To start, load all the required packages with the following code. Install them if they are not installed yet.
 
 ``` r
 library(tidyverse)
@@ -31,7 +42,7 @@ This exercise explores a dataset containing the human development index (`HDI`) 
 First, we load the data using the following code.
 
 ``` r
-economist_data <- read_csv("../datasets/EconomistData.csv") # Window users should change the slashes in this path
+economist_data <- read_csv("https://github.com/nt246/NTRES6940-data-science/blob/master/datasets/EconomistData.csv") # Window users may need to change the slashes in this path
 ```
 
 <br>
