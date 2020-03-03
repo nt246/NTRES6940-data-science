@@ -23,13 +23,20 @@ GitHub
 
 <br>
 
-## Getting started
+## Class announcments
 
-Housekeeping
+  - Course communication will primarily be through Slack. Please make
+    sure to join our workspace to not miss announcements about
+    scheduling changes etc.
+  - Course website and readings - links posted on syllabus schedule
+  - [Problem
+    set 1](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_1.md)
+    is due next Wednesday March 11
+  - Remember office hours / hacky hour Friday 3-5 in Fernow 110
+  - Sticky notes - get a set of green and red
 
-  - Slack
-  - Course website and readings
-  - Sticky notes
-  - Assignment
+## Class outline and learning objectives
 
-Coming soon
+Communication of a data analysis is just as important as the analysis
+itself. Today, we’ll be looking at tools for *writing* about your
+analysis.
