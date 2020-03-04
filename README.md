@@ -90,7 +90,7 @@ Class#  |  Date |  Topic  | Readings |
 1  |  March 2 (Mon)  |  Intro to the course and R/RStudio  |  
 2  |  March 4 (Wed)  |  Markdown and GitHub  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson2-rmarkdown-github.md) |
 3  |  March 9 (Mon)  |  The Git workflow (version control)  |
-4  |  March 11 (Wed)   |  Plotting with ggplot part 1  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson4-ggplot-part1.md)
+4  |  March 11 (Wed)   |  Plotting with ggplot part 1  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson4-ggplot-part1.md) |
 5  |  March 16 (Mon)  |  Data wrangling part 1 (dplyr::filter, mutate, select, arrange)  |
 6  |  March 18 (Wed)  |  Data wrangling part 2 (dplyr::summarize, group_by)  |
 7  |  March 23 (Mon)  |  Plotting with ggplot part 2 + good coding practices  |
