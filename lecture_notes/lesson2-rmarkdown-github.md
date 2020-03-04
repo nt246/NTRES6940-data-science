@@ -45,11 +45,13 @@ Openscapes
   - Course communication will primarily be through Slack. Please make
     sure to join our workspace to not miss announcements about
     scheduling changes etc.
-  - Course website and readings - links posted on syllabus schedule
+  - Course website and readings - links posted on the [syllabus
+    schedule](https://github.com/nt246/NTRES6940-data-science)
   - [Problem
     set 1](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_1.md)
     is due next Wednesday March 11
-  - Remember office hours / hacky hour Friday 3-5 in Fernow 110
+  - Remember office hours / hacky hour Friday 3-5 in Bradfield 105
+    **(NOTE: New location)**
   - Sticky notes - get a set of green and red
 
 <br>
@@ -65,7 +67,8 @@ By the end of today’s class, students are expected to be able to:
   - Style an Rmd document by editing the YAML header
   - Demonstrate at least two Rmd code chunk options
   - Make presentation slides using one of the R Markdown presentation
-    formats.
+    formats
+  - Configure git to integrate with RStudio
 
 <br>
 
