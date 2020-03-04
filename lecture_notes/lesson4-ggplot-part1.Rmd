@@ -1,5 +1,5 @@
 ---
-title: "Lesson 2: Data visualization with ggplot, part 1"
+title: "Lesson 4: Data visualization with ggplot, part 1"
 output: 
   github_document: 
     toc: true

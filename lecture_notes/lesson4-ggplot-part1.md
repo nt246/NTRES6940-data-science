@@ -1,4 +1,4 @@
-Lesson 2: Data visualization with ggplot, part 1
+Lesson 4: Data visualization with ggplot, part 1
 ================
 
 -   [Readings](#readings)
