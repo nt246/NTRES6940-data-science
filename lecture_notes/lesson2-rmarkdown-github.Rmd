@@ -57,7 +57,6 @@ By the end of today’s class, students are expected to be able to:
 
 * Write documents in RMarkdown, and render these documents to html with RStudio.
 * Understand the basic formatting used to combine text, code, tables and plots in RMarkdown documents
-* Style an Rmd document by editing the YAML header
 * Demonstrate at least two Rmd code chunk options
 * Configure git to integrate with RStudio
 
