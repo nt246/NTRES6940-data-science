@@ -9,7 +9,7 @@
 ### Meeting times
 
 Mondays and Wednesdays 4.20 - 5.40pm in Fernow G24 for 7 weeks (March 2 - April 22 2020)\
-**OPTIONAL**: "Hacky hour" (meetup to work on problem sets or your own projects) Fridays 3-5pm in Fernow 110
+**OPTIONAL**: "Hacky hour" (meetup to work on problem sets or your own projects) Fridays 3-5pm in Bradfield 105
 
 ### Instructor
 
