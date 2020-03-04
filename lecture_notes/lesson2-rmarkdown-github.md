@@ -5,16 +5,16 @@ Lesson 2: RMarkdown and GitHub
 
 ## Readings
 
-#### RMarkdown
+### RMarkdown
 
-Required:  
+**Required**:  
 \- [Chapter 27 in Grolemund and Wickham’s R for Data
 Science](https://r4ds.had.co.nz/r-markdown.html)  
 \- Have a look at the [RMarkdown
 website](https://rmarkdown.rstudio.com/lesson-1.html) including [this
 video](https://rmarkdown.rstudio.com/authoring_quick_tour.html)
 
-Additional resources:  
+**Additional resources**:  
 \- [RStudio’s R markdown
 cheatsheet](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)  
 \- The [Rmd website](https://rmarkdown.rstudio.com/) has a fantastic
@@ -25,13 +25,13 @@ Markdown.
 
 <br>
 
-#### GitHub
+### GitHub
 
-Required:  
+**Required**:  
 \- [Chapter 1 in Jenny Bryan’s Happy Git with
 R](https://happygitwithr.com/big-picture.html)
 
-Additional resources:  
+**Additional resources**:  
 \- [Excuse me, do you have a moment to talk about version
 control?](https://peerj.com/preprints/3159/) by Jenny Bryan  
 \- [GitHub for Project
@@ -40,7 +40,7 @@ Openscapes
 
 <br>
 
-## Class announcments
+## Class announcements
 
   - Course communication will primarily be through Slack. Please make
     sure to join our workspace to not miss announcements about
@@ -58,9 +58,10 @@ Openscapes
 
 By the end of today’s class, students are expected to be able to:
 
-  - Write documents in markdown on GitHub and RStudio, and render these
-    documents to html and pdf with RStudio.
-  - Choose whether html or pdf is an appropriate output
+  - Write documents in RMarkdown, and render these documents to html
+    with RStudio.
+  - Understand the basic formatting used to combine text, code, tables
+    and plots in RMarkdown documents
   - Style an Rmd document by editing the YAML header
   - Demonstrate at least two Rmd code chunk options
   - Make presentation slides using one of the R Markdown presentation
@@ -626,5 +627,7 @@ If not, click the browse button and navigate there.
 > *Note*: on my laptop, even though I navigated to /usr/local/bin/git,
 > it then automatically redirect because /usr/local/bin/git was an alias
 > on my computer. That is fine. Click OK.
+
+<br>
 
 ### END **RMarkdown/GitHub** session\!
