@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 **Additional resources**:  
 - [RStudio's R markdown cheatsheet](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)  
-- The [Rmd website](https://rmarkdown.rstudio.com/) has a fantastic walk-through [tutorial](https://rmarkdown.rstudio.com/lesson-1.html) that gives a great overview of R Markdown
+- The [Rmd website](https://rmarkdown.rstudio.com/) has a fantastic walk-through [tutorial](https://rmarkdown.rstudio.com/lesson-1.html) that gives a great overview of R Markdown  
 - Yihui's [Rmd book](https://bookdown.org/yihui/rmarkdown/) for lots more on R Markdown.
 
 
@@ -59,7 +59,6 @@ By the end of today’s class, students are expected to be able to:
 * Understand the basic formatting used to combine text, code, tables and plots in RMarkdown documents
 * Style an Rmd document by editing the YAML header
 * Demonstrate at least two Rmd code chunk options
-* Make presentation slides using one of the R Markdown presentation formats
 * Configure git to integrate with RStudio
 
 <br>
@@ -74,7 +73,7 @@ An RMarkdown file is a plain text file that allow us to write code and text toge
 
 This is really critical to reproducibility, and it also saves time. This document will recreate your figures for you in the same document where you are writing text. So no more doing analysis, saving a plot, pasting that plot into Word, redoing the analysis, re-saving, re-pasting, etc. 
 
-This 1-minute video provides a great introduction to RMarkdown: [What is RMarkdown?](https://vimeo.com/178485416). 
+This 1-minute video provides a great introduction to RMarkdown: [What is RMarkdown?](https://vimeo.com/178485416)
 
 Now let's explore the RMarkdown format a bit ourselves to get started. 
 
@@ -125,26 +124,6 @@ Let's take a deeper look at these two files. So much of learning to code is look
 
 Introduce yourself to the person sitting next to you. Discuss what you notice with these two files. Then we will have a brief share-out with the group. (5 mins)
 
-#### Other output formats
-
-You can knit an RMarkdown file to other output formats, including pdf, word document, GitHub flavored markdown, and many others. We will mostly use GitHub flavored markdown throughout the rest of this class because GitHub can render it nicely on its website. To knit an RMarkdown filt to this format, you can do one of the followings. 
-
-* When creating your RMarkdown file, click "From template", and then select "GitHub Document (Markdown)"
-
-![](https://camo.githubusercontent.com/a10832533c888e1af7f9a110dfb635e507951151/687474703a2f2f6161726f6e626167676574742e636f6d2f696d616765732f66726f6d5f74656d706c6174652e706e67)
-
-* At the top of an RMarkdown file, change the output of the GitHub document using the following syntax
-
-```
----
-title: "Title"
-output: 
-  github_document: 
-    toc: true
----
-```
-
-Note: `toc: true` is optional, but it can automatically set up a table of content for you. 
 
 ### Markdown text
 
@@ -164,18 +143,29 @@ Notice the syntax for:
 
 To see more of the rules, let's look at RStudio's built-in reference. Let's do this: Help > Markdown Quick Reference
 
-There are also good [cheatsheets](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet) available online.
+Another good resource is the cheatsheet from RStudio, let's download it from [here](https://rstudio.com/resources/cheatsheets/) (scroll down to find it)
 
-<!---
-#### Activity
-1. In Markdown write some italic text, make a numbered list, and add a few subheaders.
- Use the Markdown Quick Reference (in the menu bar: Help > Markdown Quick Reference). 
-1. Reknit your html file. 
---->
+There are also other good markdown [cheatsheets](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet) available online.
+
+
+### Activity
+Make the following changes to your RMarkdown document:
+* Add some italic text
+* Make a numbered list
+* Add some subheaders
+
+You can find hints in the Markdown Quick Reference (in the menu bar: Help > Markdown Quick Reference). 
+
+Reknit your html file to see how your formatting works out.
+
+If you have more time, try adding a URL and a table
+
 
 #### Figures and tables
 
-To show a figure from a url or your local computer, use `![caption](url_or_path_to_image)`
+To show a figure from a url use `![caption](url_to_image)`
+To show a figure from a local file `![caption](local_path_to_image)`
+
 
 To manually create a table, use the following syntax. Notice the text alignment in each column. 
 
@@ -202,18 +192,59 @@ There are a couple of things going on here.
 
 `cars` and `pressure` are small datasets that come installed with R. 
 
-We'll talk more about functions and data shortly. 
 
 ### Code chunks
 
-R code is written in code chunks, which are grey. 
-<!---There are two things to look at: R code chunks and code chunk options --->
+R code is written in code chunks, which are grey. There are two things to look at: R code chunks and code chunk options.
 
 Each of them start with 3 backticks and `{r label}` that signify there will be R code following. Anything inside the brackets (`{ }`) is instructions for RMarkdown about that code to run. For example:
 
 - the first chunk labeled "setup" says `include=FALSE`, and we don't see it included in the HTML document. 
 - the second chunk labeled "cars" has no additional instructions, and in the HTML document we see the code and the evaluation of that code (a summary table)
 - the third chunk labeled "pressure" says `echo=FALSE`, and in the HTML document we do not see the code echoed, we only see the plot when the code is executed.
+
+Chunk output can be customised with __options__, arguments supplied to chunk header. Knitr provides almost 60 options that you can use to customize your code chunks. Here we'll cover the most important chunk options that you'll use frequently. You can see the full list at <http://yihui.name/knitr/options/>. 
+
+The most important set of options controls if your code block is executed and what results are inserted in the finished report:
+  
+*   `eval = FALSE` prevents code from being evaluated. (And obviously if the
+    code is not run, no results will be generated). This is useful for 
+    displaying example code, or for disabling a large block of code without 
+    commenting each line.
+
+*   `include = FALSE` runs the code, but doesn't show the code or results 
+    in the final document. Use this for setup code that you don't want
+    cluttering your report.
+
+*   `echo = FALSE` prevents code, but not the results from appearing in the 
+    finished file. Use this when writing reports aimed at people who don't
+    want to see the underlying R code.
+    
+*   `message = FALSE` or `warning = FALSE` prevents messages or warnings 
+    from appearing in the finished file.
+
+*   `results = 'hide'` hides printed output; `fig.show = 'hide'` hides
+    plots.
+
+*   `error = TRUE` causes the render to continue even if code returns an error.
+    This is rarely something you'll want to include in the final version
+    of your report, but can be very useful if you need to debug exactly
+    what is going on inside your `.Rmd`. It's also useful if you're teaching R
+    and want to deliberately include an error. The default, `error = FALSE` causes 
+    knitting to fail if there is a single error in the document.
+    
+The following table summarises which types of output each option supressess:
+
+Option             | Run code | Show code | Output | Plots | Messages | Warnings 
+-------------------|----------|-----------|--------|-------|----------|---------
+`eval = FALSE`     | -        |           | -      | -     | -        | -
+`include = FALSE`  |          | -         | -      | -     | -        | -
+`echo = FALSE`     |          | -         |        |       |          |
+`results = "hide"` |          |           | -      |       |          | 
+`fig.show = "hide"`|          |           |        | -     |          |
+`message = FALSE`  |          |           |        |       | -        |
+`warning = FALSE`  |          |           |        |       |          | -
+
 
 > **Aside: Code chunk labels** It is possible to label your code chunks. This is to help us navigate between them and keep them organized. In our example Rmd, our  three chunks say `r` as the language, and have a label (`setup`, `cars`, `pressure`).   
 > Labels are optional, but will become powerful as you become a powerful R user. But if you label your code chunks, you must have unique labels. So while a third option for creating a new code chunk is to copy-paste-edit an existing one, you'll have to remember to relabel it something unique. We will explore this more in a moment.
@@ -225,6 +256,7 @@ There are many more options available that we will discuss as we get more famili
 
 We can create a new chunk in your RMarkdown first in one of these ways: 
 
+- The keyboard shortcut Cmd/Ctrl + Alt + I
 - click "Insert > R" at the top of the editor pane (with the green plus and green box)
 - type it by hand: 
    \```{r}
@@ -242,6 +274,8 @@ summary(pressure)
 We can knit this and see the summary of `pressure`. This is the same data that we see with the plot just above. 
 
 > Troubleshooting: Did trying to knit your document produce an error? Start by looking at your code again. Do you have both open `(` and close `)` parentheses? Are your code chunk fences (```) correct?
+
+
 ## R code in the Console
 So far we have been telling R to execute our code only when we knit the document, but we can also write code in the Console to interact with the live R process.
 The Console (bottom left pane of the RStudio IDE) is where you can interact with the R engine and run code directly. 
@@ -255,7 +289,7 @@ We can also do math as we can in Excel: type the following and press enter.
 ```
 ### Error messages
 
-When you code in R or any language, you will encounter errors. We will discuss troubleshooting tips more deeply tomorrow in [Collaborating & getting help](#collaboration); here we will just get a little comfortable with them. 
+When you code in R or any language, you will encounter errors. We will discuss troubleshooting tips more deeply later on in the course; here we will just get a little comfortable with them. 
 
 #### R error messages
 
@@ -328,6 +362,36 @@ We write things in the file that are necessary for our analysis and that we want
 The Console is good for doing quick calculations like `8*22.3`, testing functions, for calling help pages, for installing packages. 
 
 
+### Activity
+Practice what you’ve learned by creating a brief CV. The title should be your name, and you should include headings for (at least) education or employment. Each of the sections should include a bulleted list of jobs/degrees. Highlight the year in bold and add a footnote.
+
+Render to html format, and if you're comfortable, share with the class by posting it to the general channel in Slack.
+
+
+### Other output formats
+
+You can knit an RMarkdown file to other output formats, including pdf, word document, GitHub flavored markdown, and many others. We will mostly use GitHub flavored markdown throughout the rest of this class because GitHub can render it nicely on its website. To knit an RMarkdown filt to this format, you can do one of the followings. 
+
+* When creating your RMarkdown file, click "From template", and then select "GitHub Document (Markdown)"
+
+![](https://camo.githubusercontent.com/a10832533c888e1af7f9a110dfb635e507951151/687474703a2f2f6161726f6e626167676574742e636f6d2f696d616765732f66726f6d5f74656d706c6174652e706e67)
+
+* At the top of an RMarkdown file, change the output of the GitHub document using the following syntax
+
+```
+---
+title: "Title"
+output: 
+  github_document: 
+    toc: true
+---
+```
+
+Note: `toc: true` is optional, but it can automatically set up a table of content for you. 
+
+
+
+
 <br>
 <br>
 
@@ -340,6 +404,7 @@ Before we do the setup configuration, let us take a moment to talk about what Gi
 It can help to think of GitHub like Dropbox: you identify folders for GitHub to 'track' and it syncs them to the cloud. This is good first-and-foremost because it makes a back-up copy of your files: if your computer dies not all of your work is gone. But with GitHub, you have to be more deliberate about when syncs are made. This is because GitHub saves these as different versions, with information about who contributed when, line-by-line. This makes collaboration easier, and it allows you to roll-back to different versions or contribute to others' work.
 
 git will track and version your files, GitHub stores this online and enables you to collaborate with others (and yourself). Although git and GitHub are two different things, distinct from each other, we can think of them as a bundle since we will always use them together. 
+
 
 ### Configure GitHub
 
@@ -517,6 +582,12 @@ If not, click the browse button and navigate there.
 >*Note*: on my laptop, even though I navigated to /usr/local/bin/git, it then automatically redirect because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.
 
 <br>
+
+
+### Say hello to your course repo on GitHub
+We have created a GitHub Classroom organization for the class. To access you personal course repo through which you will be submitting your assignments and communicating with us, click [here](https://classroom.github.com/a/SA7QIA7g)
+
+
 
 ### END **RMarkdown/GitHub** session!
 
