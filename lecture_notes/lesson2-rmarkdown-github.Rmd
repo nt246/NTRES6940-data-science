@@ -125,14 +125,42 @@ Let's take a deeper look at these two files. So much of learning to code is look
 
 Introduce yourself to the person sitting next to you. Discuss what you notice with these two files. Then we will have a brief share-out with the group. (5 mins)
 
+#### Other output formats
+
+You can knit an RMarkdown file to other output formats, including pdf, word document, GitHub flavored markdown, and many others. We will mostly use GitHub flavored markdown throughout the rest of this class because GitHub can render it nicely on its website. To knit an RMarkdown filt to this format, you can do one of the followings. 
+
+* When creating your RMarkdown file, click "From template", and then select "GitHub Document (Markdown)"
+
+![](https://camo.githubusercontent.com/a10832533c888e1af7f9a110dfb635e507951151/687474703a2f2f6161726f6e626167676574742e636f6d2f696d616765732f66726f6d5f74656d706c6174652e706e67)
+
+* At the top of an RMarkdown file, change the output of the GitHub document using the following syntax
+
+```
+---
+title: "Title"
+output: 
+  github_document: 
+    toc: true
+---
+```
+
+Note: `toc: true` is optional, but it can automatically set up a table of content for you. 
+
 ### Markdown text
 
 Let's look more deeply at the Markdown text. Markdown is a formatting language for plain text, and there are only a handful of rules to know. 
 
+#### Text formatting
+
 Notice the syntax for:
 
-- **headers** with `#` or `##`
-- **bold** with `**`
+- **headers** with `#`, `##`, ..., `#######`
+- **bold** with `**text**`
+- *italic* with `*text*`
+- `verbatim code` with `` `text` ``
+- <span style="color: red;">change text color with</span>`<span style="color: red;">text</span>`
+- [link a url to your text with](https://i.pinimg.com/originals/e8/a5/cd/e8a5cd9c5dbccfabcdeea5c4a16e5e10.png) `[text](url)`
+- insert a blank line with `<br>`
 
 To see more of the rules, let's look at RStudio's built-in reference. Let's do this: Help > Markdown Quick Reference
 
@@ -144,6 +172,20 @@ There are also good [cheatsheets](https://github.com/adam-p/markdown-here/wiki/M
  Use the Markdown Quick Reference (in the menu bar: Help > Markdown Quick Reference). 
 1. Reknit your html file. 
 --->
+
+#### Figures and tables
+
+To show a figure from a url or your local computer, use `![caption](url_or_path_to_image)`
+
+To manually create a table, use the following syntax. Notice the text alignment in each column. 
+
+```
+| Right | Left | Default | Center |
+|------:|:-----|---------|:------:|
+| 12 | 12 | 12 | 12 |
+| 123 | 123 | 123 | 123 |
+| 1 | 1 | 1 | 1 | 
+```
 
 ### R code
 
