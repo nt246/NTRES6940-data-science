@@ -16,7 +16,7 @@ Lesson 3: The Git workflow
 
 #### Other resources:
 
-  - [GitHub Guides](https://guides.github.com/) had a number of
+  - [GitHub Guides](https://guides.github.com/) has a number of
     tutorials. “Hello World” is a good place to start
 
   - [Happy Git with R](https://happygitwithr.com/)
