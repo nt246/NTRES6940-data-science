@@ -27,8 +27,6 @@ Lesson 3: The Git workflow
 
 <br> <br>
 
-Adding a test string here
-
 ## Learning objectives
 
 By the end of this class you will be able to:
@@ -159,8 +157,14 @@ Demostration:
   - “Undo” and navigate a previous state
   - Helps you define your work
 
-<br> \#\# Interfacing with GitHub from our local computers using RStudio
+<br>
+
+## Interfacing with GitHub from our local computers using RStudio
 
 We should all have set up git on our local computers by now. If you
 haven’t, follow the instructions
 [here](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson2-rmarkdown-github.md#configure-github)
+
+## Project oriented workflow
+
+## Different output formats RMarkdown (incl. GitHub flavor and diff from RMarkdown and GitHub not showing html. Showing rendered RMarkdown files on GitHub)

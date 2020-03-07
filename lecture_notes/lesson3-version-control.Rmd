@@ -122,6 +122,7 @@ Demostration:
 * Helps you define your work
 
 <br>
+
 ## Interfacing with GitHub from our local computers using RStudio
 
 
@@ -131,6 +132,9 @@ We should all have set up git on our local computers by now. If you haven't, fol
 
 
 
+## Project oriented workflow
+
+## Different output formats RMarkdown (incl. GitHub flavor and diff from RMarkdown and GitHub not showing html. Showing rendered RMarkdown files on GitHub)
 
 
 
