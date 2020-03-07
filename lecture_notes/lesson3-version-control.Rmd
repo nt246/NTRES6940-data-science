@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = TRUE)
 #### Other resources:  
 * [GitHub Guides](https://guides.github.com/) has a number of tutorials. "Hello World" is a good place to start
 
-* [Happy Git with R](https://happygitwithr.com/)
+* [Happy Git with R](https://happygitwithr.com/) by Jenny Bryan
 
 * [GitHub for Project Management](https://openscapes.github.io/series/github-issues.html) by Openscapes
 
@@ -32,12 +32,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Learning objectives
 
-By the end of this class you will be able to
+By the end of this class you will be able to:  
+
 * Locate your personal GitHub repo through which you'll be submitting homework and exercises for this course
 * Create and edit plain text files on GitHub
 * Navigate the commit history of a repository and a file on GitHub
 
-
+<br>
 
 ## Introducing Git and GitHub
 
