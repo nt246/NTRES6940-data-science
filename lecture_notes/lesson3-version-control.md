@@ -27,6 +27,8 @@ Lesson 3: The Git workflow
 
 <br> <br>
 
+Adding a test string here
+
 ## Learning objectives
 
 By the end of this class you will be able to:
