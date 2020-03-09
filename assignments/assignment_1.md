@@ -42,7 +42,7 @@ This exercise explores a dataset containing the human development index (`HDI`) 
 First, we load the data using the following code.
 
 ``` r
-economist_data <- read_csv("https://github.com/nt246/NTRES6940-data-science/blob/master/datasets/EconomistData.csv") # Window users may need to change the slashes in this path
+economist_data <- read_csv("https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/EconomistData.csv") # Window users may need to change the slashes in this path
 ```
 
 <br>
