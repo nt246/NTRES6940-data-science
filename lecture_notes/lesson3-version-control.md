@@ -94,7 +94,7 @@ GitHub, especially in combination with RStudio, is also game-changing
 for publishing and distributing. You can — and we will — publish and
 share files openly on the internet.
 
-### What is Github? And Git?
+### What is GitHub? And Git?
 
 OK so what is GitHub? And Git?
 
@@ -117,13 +117,13 @@ OK so what is GitHub? And Git?
     and [track changes in
     text](https://help.github.com/articles/rendering-differences-in-prose-documents/).
 
-Github was developed for software development, so much of the
+GitHub was developed for software development, so much of the
 functionality and terminology that is exciting for professional
 programmers (e.g., branches and pull requests) isn’t necessarily the
-right place for us as new R users to get started.
-
-So we will be learning and practicing GitHub’s features and terminology
-on a “need to know basis” as we start managing our projects with GitHub.
+right place for us as new R users to get started. We’ll get there soon,
+but for now, we will be learning and practicing GitHub’s features and
+terminology on a “need to know basis” as we start managing our projects
+with GitHub.
 
 ### Account types
 
@@ -136,13 +136,12 @@ there’s a bit more structure than just storing files under your account:
 
   - User Accounts vs. Organization Accounts (aka “Org”): All
     repositories belong to an account:
-
-  - A user account is the account you just made, and typically holds
-    repositories related to your own work.
-
-  - An Organization account can be owned by multiple people, and
-    typically holds repositories relevant to a group (like
-    `therkildsen-class`).
+    
+      - A user account is the account you just made, and typically holds
+        repositories related to your own work.
+      - An Organization account can be owned by multiple people, and
+        typically holds repositories relevant to a group (like
+        `therkildsen-class`).
 
 Examples:
 
@@ -154,7 +153,7 @@ Examples:
 ### Say hello to your course repo on GitHub
 
 We have created a GitHub Classroom organization for the class. To access
-you personal course repo through which you will be submitting your
+your personal course repo through which you will be submitting your
 assignments and communicating with us, click
 [here](https://classroom.github.com/a/SA7QIA7g) and select your name
 from the list (or just click continue if you don’t see your name there).
@@ -199,19 +198,19 @@ to return to your course repo.
   - Now create a new subdirectory for course notes (remember to not use
     spaces in names, so you can call it something like course-notes)
 
-If you can’t figure out how to do that, you’re not the first to wonder.
-Let’s [ask the
+If you can’t figure out how to add a subdirectory, you’re not the first
+to wonder. Let’s [ask the
 internet](https://github.com/KirstieJane/STEMMRoleModels/wiki/Creating-new-folders-in-GitHub-repository-via-the-browser)
 
 ### Exploring the commit history of a repo
 
 We’ll go through this together.
 
-GitHub uses a program called git to keep track of the project’s history.
+GitHub uses the program Git to keep track of the project’s history.
 
 Users make “commits” to form a commit history
 
-  - git only tracks the changes associated with a commit, so it doesn’t
+  - Git only tracks the changes associated with a commit, so it doesn’t
     need to take a snapshot of all your files each time.
   - The actual changes are called a diff.
 
@@ -314,7 +313,8 @@ folder where you will keep your github repos to keep them organized. We
 call ours `github` and keep it in our root folder (`~/github`), and so
 that is what we will demonstrate here — you are welcome to do the same.
 Press “Browse…” to navigate to a folder and you have the option of
-creating a new folder.
+creating a new folder. Make sure to not place it in folder tracked by a
+cloud storage service (e.g. DropBox, Google Drive or Box).
 
 Finally, click Create Project.
 
@@ -699,7 +699,7 @@ type because this displays nicely on the GitHub website.
 
 Now let’s try adding a file to our local RStudio project folder so we
 can push it to GitHub. One of the data files you will need for your next
-problem sets are located
+problem set is located
 [here](https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/EconomistData.csv).
 Save this file (using File -\> Save Page As in your internet browser)
 into the ‘data’ subfolder of your R project.
