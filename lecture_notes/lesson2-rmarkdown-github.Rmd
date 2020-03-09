@@ -369,7 +369,7 @@ Render to html format, and if you're comfortable, share with the class by postin
 
 ### Other output formats
 
-You can knit an RMarkdown file to other output formats, including pdf, word document, GitHub flavored markdown, and many others. We will mostly use GitHub flavored markdown throughout the rest of this class because GitHub can render it nicely on its website. To knit an RMarkdown filt to this format, you can do one of the followings. 
+You can knit an RMarkdown file to other output formats, including pdf, word document, GitHub flavored markdown, and many others. We will mostly use GitHub flavored markdown throughout the rest of this class because GitHub can render it nicely on its website. To knit an RMarkdown file to this format, you can do one of the followings. 
 
 * When creating your RMarkdown file, click "From template", and then select "GitHub Document (Markdown)"
 
