@@ -8,6 +8,7 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 <br>
 
 ## Readings  
@@ -20,11 +21,148 @@ knitr::opts_chunk$set(echo = TRUE)
 
 * [RStudio's ggplot2 cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)  
 
+<br>  
+
+## Learning objectives
+
+By the end of this class you will be able to:
+
+* Inspect your data in RStudio  
+* Build several common types of graphs in ggplot2  
+* Customize ggplot aesthetics
+* Combine compatible graph types
+* Split up data into faceted graphs  
+* Change the theme of graphs  
+* Use branching and pull request to propose changes to a GitHub repository  
 
 <br>  
 
+## Load packages
 
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
 
+<br>  
 
+## The grammar of graphics in ggplot2
 
+In this session, we’ll write reproducible code to build graphs piece-by-piece. In Excel, graphs are made by manually selecting options, which may not be the best option for keeping track of our work. Also, if we haven’t built a graph with reproducible code, we might not be able to easily recreate a graph or use that code again to make the same style graph with different data.
 
+Using `ggplot2`, the graphics package within the `tidyverse`, we’ll write reproducible code to manually and thoughtfully build our graphs.
+
+> “ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs. With ggplot2, you can do more faster by learning one system and applying it in many places.” - R4DS
+
+So yeah…that `gg` is from “grammar of graphics.”
+
+![](https://rstudio-conf-2020.github.io/r-for-excel/img/rstudio-cheatsheet-ggplot.png)
+
+The major types of layers in ggplot include the following. Of these, data, aethetics, and geometrics, are the layers that must be specified when creating a graph.
+
+![](https://cxlabsblog.files.wordpress.com/2017/10/2017-10-24-14_36_29-visualization-layers-of-ggplot-google-docs.png)
+
+We’ll use the `ggplot2` package, but the function we use to initialize a graph will be `ggplot`, which works best for data in tidy format (i.e., a column for every variable, and a row for every observation). We will learn more about the tidy format and how to convert "untidy" datasets into tidy format later in the class; for the purpose of this class, the datasets that we will use are already in tidy format. 
+
+Graphics with ggplot are built step-by-step, adding new elements as layers with a plus sign (`+`) between layers (note: this is different from the pipe operator, `%>%`, which we will learn next week). Adding layers in this fashion allows for extensive flexibility and customization of plots. Below is a template that can be used to create almost any graph that you can imagine using `ggplot2`.
+
+```
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION>(
+     mapping = aes(<MAPPINGS>),
+     stat = <STAT>, 
+     position = <POSITION>
+  ) +
+  <COORDINATE_FUNCTION> +
+  <FACET_FUNCTION> +
+  <THEME_FUNCTION>
+```
+
+<br>  
+
+## Exercise: identify the different layers in the following graphs
+
+<br>  
+
+## Create our first ggplot2 graph
+
+#### Inspect the data
+
+* Directly type the name of the data
+    
+    Typing 
+    
+* `View()`
+
+    `View()` opens up a spreadsheet-style data viewer. The resulting spreadsheet can be sorted by clicking the column names. It is good for exploring the dataset, but you should not run `View()` when knitting a RMarkdown file.
+
+* `head()` and `tail()`
+    
+    `head()` can be used to check the first few rows of a dataframe. `tail()`
+
+* `?`
+
+* `str()`, `is()`, `dim()`
+
+#### Simple scatter plot
+
+#### Make size of point correspond to ` `, and color of point correspond to ` `
+
+In other word, we will be mapping `variable` to the size of points, and `variable` to the color of point
+
+#### Change the shape of all points
+
+#### Overlay two different geometric objects
+
+Here, we will add a trend line to the scatter plot
+
+#### Display different `` in different facets
+
+<br>  
+
+## Most important arguments/functions to know for the following layers
+
+#### Aesthetics
+
+* `x`, `y`
+
+* `size`
+
+* `color`, `fill`
+
+* `group`
+
+* `shape`, `line_type`
+
+#### Geometries
+
+* `geom_point()`
+
+* `geom_line()`
+
+    * `method="smooth"`
+
+    * `method="lm"`
+
+* `geom_boxplot()`
+
+* `geom_bar()` and `geom_col()`
+
+* `geom_histogram()`
+
+#### Facet
+
+* `facet_wrap()`
+
+* `facet grid()`
+
+#### Themes
+
+## Activity
+
+## More on GitHub
+
+#### Review on Pull, Stage, Commit, and Push
+
+#### Branching and Merge
+
+#### Pull request
