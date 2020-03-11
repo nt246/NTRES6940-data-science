@@ -143,6 +143,8 @@ Before making any kind of graph, we will always need to know our data first. In 
     
     ```{r}
     ## demo (compare and contrast regular data frame and tibble)
+    mpg
+    cars
     ```
 
 * `View()`
@@ -153,6 +155,7 @@ Before making any kind of graph, we will always need to know our data first. In 
     
     ```{r}
     ## exercise, then demo (knit with View() in code chunk)
+    ## View(mpg)
     ```
   
 * `head()` and `tail()`
@@ -161,6 +164,8 @@ Before making any kind of graph, we will always need to know our data first. In 
     
     ```{r}
     ## demo
+    head(mpg)
+    tail(mpg)
     ```
 
 * `?`
@@ -173,6 +178,11 @@ Before making any kind of graph, we will always need to know our data first. In 
     
     ```{r}
     ## exercise, then demo
+    str(mpg)
+    is(mpg)
+    dim(mpg)
+    colnames(mpg)
+    summary(mpg)
     ```
     
     
@@ -182,6 +192,8 @@ Let's first make a simple scatter plot to look at how engine displacement (`disp
 
 ```{r}
 ## demo
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x=displ, y=hwy)) 
 ```
 
 #### Make the size of points corresponds to the number of cylinders (`cyl`), and the color of points corresponds to the type of car (`class`)
@@ -192,6 +204,8 @@ To explore this further, we will map `cyl` to `size`, and `class` to `color`.
 
 ```{r}
 ## demo
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl)) 
 ```
 
 Looks like given the same engine size, 2seaters tend to have better fuel economy than other car types. This makes sense. 
@@ -202,6 +216,9 @@ There is too much overlap among the larger points in the previous graph and we w
 
 ```{r}
 ## demo (change point shape to 1)
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl), shape=1) 
+
 ```
 
 #### Overlay two different geometric objects
@@ -210,12 +227,18 @@ Here, we will add a trend line to the scatter plot above. We can do this by addi
 
 ```{r}
 ## exercise, then demo
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl), shape=1) +
+  geom_smooth(mapping = aes(x=displ, y=hwy))
 ```
 
 Did you notice that for both geometric objects, `x` maps to `displ` and `y` maps `hwy`, so these auguments are repeated? In such cases, we can minimize the amount of repeat by defining how these aesthetics map to variables for all subsequent layers within `ggplot()`, as the following.
 
 ```{r}
 ## demo
+ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) + 
+  geom_point(mapping = aes(color=class, size=cyl), shape=1) +
+  geom_smooth()
 ```
 
 #### Display different `year` in different facets
@@ -224,6 +247,10 @@ The `mpg` dataset contains cars made in 1999 and 2008. To check whether the rela
 
 ```{r}
 ## demo
+ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) + 
+  geom_point(mapping = aes(color=class, size=cyl), shape=1) +
+  geom_smooth() +
+  facet_wrap(~year, nrow=1)
 ```
 
 #### Adjust figure size using chunk options
@@ -232,6 +259,10 @@ Note that each facet in the figure above appears to be quite narrow. To make the
 
 ```{r fig.height=5, fig.width=10}
 ## demo
+ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) + 
+  geom_point(mapping = aes(color=class, size=cyl), shape=1) +
+  geom_smooth() +
+  facet_wrap(~year, nrow=1)
 ```
 
 #### Change the theme of a graph
@@ -240,6 +271,11 @@ While every element of a `ggplot2` graph is customizable, there are also built-i
 
 ```{r fig.height=5, fig.width=10}
 ## demo (use theme_bw)
+ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) + 
+  geom_point(mapping = aes(color=class, size=cyl), shape=1) +
+  geom_smooth() +
+  facet_wrap(~year, nrow=1) +
+  theme_bw()
 ```
 
 <br>  
@@ -258,6 +294,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
 
     ```{r}
     ## exercise, then demo (hwy vs. class)
+    #ggplot(mpg)
     ```
 
 * `geom_bar()`

@@ -163,7 +163,79 @@ Before making any kind of graph, we will always need to know our data first. In 
 
     ``` r
     ## demo (compare and contrast regular data frame and tibble)
+    mpg
     ```
+
+        ## # A tibble: 234 x 11
+        ##    manufacturer model    displ  year   cyl trans   drv     cty   hwy fl    class
+        ##    <chr>        <chr>    <dbl> <int> <int> <chr>   <chr> <int> <int> <chr> <chr>
+        ##  1 audi         a4         1.8  1999     4 auto(l… f        18    29 p     comp…
+        ##  2 audi         a4         1.8  1999     4 manual… f        21    29 p     comp…
+        ##  3 audi         a4         2    2008     4 manual… f        20    31 p     comp…
+        ##  4 audi         a4         2    2008     4 auto(a… f        21    30 p     comp…
+        ##  5 audi         a4         2.8  1999     6 auto(l… f        16    26 p     comp…
+        ##  6 audi         a4         2.8  1999     6 manual… f        18    26 p     comp…
+        ##  7 audi         a4         3.1  2008     6 auto(a… f        18    27 p     comp…
+        ##  8 audi         a4 quat…   1.8  1999     4 manual… 4        18    26 p     comp…
+        ##  9 audi         a4 quat…   1.8  1999     4 auto(l… 4        16    25 p     comp…
+        ## 10 audi         a4 quat…   2    2008     4 manual… 4        20    28 p     comp…
+        ## # … with 224 more rows
+
+    ``` r
+    cars
+    ```
+
+        ##    speed dist
+        ## 1      4    2
+        ## 2      4   10
+        ## 3      7    4
+        ## 4      7   22
+        ## 5      8   16
+        ## 6      9   10
+        ## 7     10   18
+        ## 8     10   26
+        ## 9     10   34
+        ## 10    11   17
+        ## 11    11   28
+        ## 12    12   14
+        ## 13    12   20
+        ## 14    12   24
+        ## 15    12   28
+        ## 16    13   26
+        ## 17    13   34
+        ## 18    13   34
+        ## 19    13   46
+        ## 20    14   26
+        ## 21    14   36
+        ## 22    14   60
+        ## 23    14   80
+        ## 24    15   20
+        ## 25    15   26
+        ## 26    15   54
+        ## 27    16   32
+        ## 28    16   40
+        ## 29    17   32
+        ## 30    17   40
+        ## 31    17   50
+        ## 32    18   42
+        ## 33    18   56
+        ## 34    18   76
+        ## 35    18   84
+        ## 36    19   36
+        ## 37    19   46
+        ## 38    19   68
+        ## 39    20   32
+        ## 40    20   48
+        ## 41    20   52
+        ## 42    20   56
+        ## 43    20   64
+        ## 44    22   66
+        ## 45    23   54
+        ## 46    24   70
+        ## 47    24   92
+        ## 48    24   93
+        ## 49    24  120
+        ## 50    25   85
 
 -   `View()`
 
@@ -173,6 +245,7 @@ Before making any kind of graph, we will always need to know our data first. In 
 
     ``` r
     ## exercise, then demo (knit with View() in code chunk)
+    ## View(mpg)
     ```
 
 -   `head()` and `tail()`
@@ -181,7 +254,32 @@ Before making any kind of graph, we will always need to know our data first. In 
 
     ``` r
     ## demo
+    head(mpg)
     ```
+
+        ## # A tibble: 6 x 11
+        ##   manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class 
+        ##   <chr>        <chr> <dbl> <int> <int> <chr>      <chr> <int> <int> <chr> <chr> 
+        ## 1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…
+        ## 2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…
+        ## 3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…
+        ## 4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…
+        ## 5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…
+        ## 6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compa…
+
+    ``` r
+    tail(mpg)
+    ```
+
+        ## # A tibble: 6 x 11
+        ##   manufacturer model  displ  year   cyl trans     drv     cty   hwy fl    class 
+        ##   <chr>        <chr>  <dbl> <int> <int> <chr>     <chr> <int> <int> <chr> <chr> 
+        ## 1 volkswagen   passat   1.8  1999     4 auto(l5)  f        18    29 p     midsi…
+        ## 2 volkswagen   passat   2    2008     4 auto(s6)  f        19    28 p     midsi…
+        ## 3 volkswagen   passat   2    2008     4 manual(m… f        21    29 p     midsi…
+        ## 4 volkswagen   passat   2.8  1999     6 auto(l5)  f        16    26 p     midsi…
+        ## 5 volkswagen   passat   2.8  1999     6 manual(m… f        18    26 p     midsi…
+        ## 6 volkswagen   passat   3.6  2008     6 auto(s6)  f        17    26 p     midsi…
 
 -   `?`
 
@@ -193,7 +291,68 @@ Before making any kind of graph, we will always need to know our data first. In 
 
     ``` r
     ## exercise, then demo
+    str(mpg)
     ```
+
+        ## Classes 'tbl_df', 'tbl' and 'data.frame':    234 obs. of  11 variables:
+        ##  $ manufacturer: chr  "audi" "audi" "audi" "audi" ...
+        ##  $ model       : chr  "a4" "a4" "a4" "a4" ...
+        ##  $ displ       : num  1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...
+        ##  $ year        : int  1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...
+        ##  $ cyl         : int  4 4 4 4 6 6 6 4 4 4 ...
+        ##  $ trans       : chr  "auto(l5)" "manual(m5)" "manual(m6)" "auto(av)" ...
+        ##  $ drv         : chr  "f" "f" "f" "f" ...
+        ##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...
+        ##  $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...
+        ##  $ fl          : chr  "p" "p" "p" "p" ...
+        ##  $ class       : chr  "compact" "compact" "compact" "compact" ...
+
+    ``` r
+    is(mpg)
+    ```
+
+        ## [1] "tbl_df"     "tbl"        "data.frame" "list"       "oldClass"  
+        ## [6] "vector"
+
+    ``` r
+    dim(mpg)
+    ```
+
+        ## [1] 234  11
+
+    ``` r
+    colnames(mpg)
+    ```
+
+        ##  [1] "manufacturer" "model"        "displ"        "year"         "cyl"         
+        ##  [6] "trans"        "drv"          "cty"          "hwy"          "fl"          
+        ## [11] "class"
+
+    ``` r
+    summary(mpg)
+    ```
+
+        ##  manufacturer          model               displ            year     
+        ##  Length:234         Length:234         Min.   :1.600   Min.   :1999  
+        ##  Class :character   Class :character   1st Qu.:2.400   1st Qu.:1999  
+        ##  Mode  :character   Mode  :character   Median :3.300   Median :2004  
+        ##                                        Mean   :3.472   Mean   :2004  
+        ##                                        3rd Qu.:4.600   3rd Qu.:2008  
+        ##                                        Max.   :7.000   Max.   :2008  
+        ##       cyl           trans               drv                 cty       
+        ##  Min.   :4.000   Length:234         Length:234         Min.   : 9.00  
+        ##  1st Qu.:4.000   Class :character   Class :character   1st Qu.:14.00  
+        ##  Median :6.000   Mode  :character   Mode  :character   Median :17.00  
+        ##  Mean   :5.889                                         Mean   :16.86  
+        ##  3rd Qu.:8.000                                         3rd Qu.:19.00  
+        ##  Max.   :8.000                                         Max.   :35.00  
+        ##       hwy             fl               class          
+        ##  Min.   :12.00   Length:234         Length:234        
+        ##  1st Qu.:18.00   Class :character   Class :character  
+        ##  Median :24.00   Mode  :character   Mode  :character  
+        ##  Mean   :23.44                                        
+        ##  3rd Qu.:27.00                                        
+        ##  Max.   :44.00
 
 #### Simple scatter plot
 
@@ -201,7 +360,11 @@ Let's first make a simple scatter plot to look at how engine displacement (`disp
 
 ``` r
 ## demo
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x=displ, y=hwy)) 
 ```
+
+![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 #### Make the size of points corresponds to the number of cylinders (`cyl`), and the color of points corresponds to the type of car (`class`)
 
@@ -211,7 +374,11 @@ To explore this further, we will map `cyl` to `size`, and `class` to `color`.
 
 ``` r
 ## demo
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl)) 
 ```
+
+![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
 Looks like given the same engine size, 2seaters tend to have better fuel economy than other car types. This makes sense.
 
@@ -221,7 +388,11 @@ There is too much overlap among the larger points in the previous graph and we w
 
 ``` r
 ## demo (change point shape to 1)
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl), shape=1) 
 ```
+
+![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 #### Overlay two different geometric objects
 
@@ -229,13 +400,27 @@ Here, we will add a trend line to the scatter plot above. We can do this by addi
 
 ``` r
 ## exercise, then demo
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl), shape=1) +
+  geom_smooth(mapping = aes(x=displ, y=hwy))
 ```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
 Did you notice that for both geometric objects, `x` maps to `displ` and `y` maps `hwy`, so these auguments are repeated? In such cases, we can minimize the amount of repeat by defining how these aesthetics map to variables for all subsequent layers within `ggplot()`, as the following.
 
 ``` r
 ## demo
+ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) + 
+  geom_point(mapping = aes(color=class, size=cyl), shape=1) +
+  geom_smooth()
 ```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-10-1.png)
 
 #### Display different `year` in different facets
 
@@ -243,7 +428,15 @@ The `mpg` dataset contains cars made in 1999 and 2008. To check whether the rela
 
 ``` r
 ## demo
+ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) + 
+  geom_point(mapping = aes(color=class, size=cyl), shape=1) +
+  geom_smooth() +
+  facet_wrap(~year, nrow=1)
 ```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-11-1.png)
 
 #### Adjust figure size using chunk options
 
@@ -251,7 +444,15 @@ Note that each facet in the figure above appears to be quite narrow. To make the
 
 ``` r
 ## demo
+ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) + 
+  geom_point(mapping = aes(color=class, size=cyl), shape=1) +
+  geom_smooth() +
+  facet_wrap(~year, nrow=1)
 ```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
 #### Change the theme of a graph
 
@@ -259,7 +460,16 @@ While every element of a `ggplot2` graph is customizable, there are also built-i
 
 ``` r
 ## demo (use theme_bw)
+ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) + 
+  geom_point(mapping = aes(color=class, size=cyl), shape=1) +
+  geom_smooth() +
+  facet_wrap(~year, nrow=1) +
+  theme_bw()
 ```
+
+    ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
 <br>
 
@@ -278,6 +488,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
 
     ``` r
     ## exercise, then demo (hwy vs. class)
+    #ggplot(mpg)
     ```
 
 -   `geom_bar()`
