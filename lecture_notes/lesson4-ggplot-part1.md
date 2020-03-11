@@ -488,26 +488,43 @@ With that being said, there are some geometries, aesthetics, and facet functions
 
     ``` r
     ## exercise, then demo (hwy vs. class)
-    #ggplot(mpg)
+    ggplot(data = mpg) +
+      geom_boxplot(mapping = aes(x=class, y=hwy))
     ```
+
+    ![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-14-1.png)
 
 -   `geom_bar()`
 
     ``` r
     ## exercise, then demo (class)
+    ggplot(mpg) +
+      geom_bar(aes(x=class))
     ```
+
+    ![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-15-1.png)
 
 -   `geom_histogram()`
 
     ``` r
     ## exercise, then demo (hwy)
+    ggplot(mpg) +
+      geom_histogram(aes(x=hwy))
     ```
+
+        ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+
+    ![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-16-1.png)
 
 -   `geom_density()`
 
     ``` r
     ## exercise, then demo (hwy)
+    ggplot(mpg) +
+      geom_density(aes(x=hwy))
     ```
+
+    ![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-17-1.png)
 
 -   `geom_smooth()`
 
@@ -515,13 +532,22 @@ With that being said, there are some geometries, aesthetics, and facet functions
 
     ``` r
     ## exercise, then demo (fit linear model to hwy vs. displ without confidence interval)
+    ggplot(mpg, aes(x=displ, y=hwy))+
+      geom_point() +
+      geom_smooth(method="lm", se=F)
     ```
+
+    ![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-18-1.png)
 
 -   `geom_text()`
 
     ``` r
     ## demo (hwy vs. displ, cyl as the label)
+    ggplot(mpg, aes(x=displ, y=hwy))+
+      geom_text(aes(label=cyl))
     ```
+
+    ![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-19-1.png)
 
 -   `geom_label()`
 
@@ -529,13 +555,26 @@ With that being said, there are some geometries, aesthetics, and facet functions
 
     ``` r
     ## demo (hwy vs. displ, model as the label but only label points with hwy > 40)
+    ggplot(mpg)+
+      geom_point(aes(x=displ, y=hwy)) +
+      geom_label(data=filter(mpg, hwy>40), mapping = aes(label=model, y=hwy, x=displ+0.8))
     ```
+
+    ![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-20-1.png)
 
 -   `geom_line()`
 
     ``` r
     ## demo (change in mean hwy for each car model over time, grouped by model, colored by class, faceted by manufacturer)
+    group_by(mpg, manufacturer, year, class, model) %>%
+      summarize(mean_hwy=mean(hwy)) %>%
+      ggplot(aes(x=year, y=mean_hwy, color=class, group=model)) +
+      geom_point() +
+      geom_line() +
+      facet_wrap(~manufacturer)
     ```
+
+    ![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-21-1.png)
 
 #### Aesthetics
 
@@ -553,9 +592,19 @@ With that being said, there are some geometries, aesthetics, and facet functions
 
     ``` r
     ## demo (plot hwy distribution with geom_density, color by drv)
-
-    ## demo (fill by drv)
+    ggplot(mpg) +
+      geom_density(aes(color=drv, x=hwy))
     ```
+
+    ![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-22-1.png)
+
+    ``` r
+    ## demo (fill by drv)
+    ggplot(mpg) +
+      geom_density(aes(fill=drv, x=hwy))
+    ```
+
+    ![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-22-2.png)
 
 -   `alpha`
 
@@ -563,13 +612,24 @@ With that being said, there are some geometries, aesthetics, and facet functions
 
     ``` r
     ## demo (plot hwy distribution with geom_density, fill by drv, set alpha to 0.5)
+    ggplot(mpg) +
+      geom_density(aes(fill=drv, x=hwy), alpha=0.5)
     ```
+
+    ![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-23-1.png)
 
 -   `shape`, `line_type`
 
     ``` r
-    ## demo (hwy vs. displ, geom_point and geom_line, map color to drv, shape to drv, linetype to drv)
+    ## demo (hwy vs. displ, geom_point and geom_line, map drv to color, shape, linetype)
+    ggplot(mpg, aes(x=displ, y=hwy, color=drv, shape=drv)) +
+      geom_point()+
+      geom_smooth(aes(linetype=drv))
     ```
+
+        ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+
+    ![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-24-1.png)
 
 #### Facet
 
@@ -579,7 +639,12 @@ With that being said, there are some geometries, aesthetics, and facet functions
 
     ``` r
     ## demo (hwy vs displ, faceted by cyl and drv)
+    ggplot(mpg, aes(x=displ, y=hwy)) +
+      geom_point() +
+      facet_grid(drv~cyl)
     ```
+
+    ![](lesson4-ggplot-part1_files/figure-markdown_github/unnamed-chunk-25-1.png)
 
 <br>
 
