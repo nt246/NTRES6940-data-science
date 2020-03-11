@@ -568,6 +568,13 @@ Whenever you make changes to the files in Github, you will walk through the Pull
 
 I tend to do this every time I finish a task (basically when I start getting nervous that I will lose my work).  Once something is committed, it is very difficult to lose it.
 
+
+## Adding version control to a pre-existing R-project
+You may have been working on an RStudio project earlier and now you want to add version control through GitHub. You can easily set that up with [these instructions](https://happygitwithr.com/new-github-first.html) by from Happy Git with R by Jenny Bryan.
+
+<br>
+
+
 ## Issues
 
 Let's go back to our repo on GitHub.com, and talk about Issues. 
