@@ -4,25 +4,26 @@ Lesson 4: Data visualization with ggplot, part 1
 -   [Readings](#readings)
 -   [Learning objectives](#learning-objectives)
 -   [Load packages](#load-packages)
--   [The grammar of graphics in ggplot2](#the-grammar-of-graphics-in-ggplot2)
--   [Exercise: identify the different layers in the following graphs](#exercise-identify-the-different-layers-in-the-following-graphs)
--   [Create our first ggplot2 graph](#create-our-first-ggplot2-graph)
-    -   [Inspect the data](#inspect-the-data)
+-   [The grammar of graphics in `ggplot2`](#the-grammar-of-graphics-in-ggplot2)
+-   [Activity: break down the following graphs into basic `ggplot2` components](#activity-break-down-the-following-graphs-into-basic-ggplot2-components)
+    -   [Manhattan plot](#manhattan-plot)
+    -   [Ridgeline plot](#ridgeline-plot)
+    -   [Line plot](#line-plot)
+    -   [Bar plot](#bar-plot)
+-   [Create our first `ggplot2` graph](#create-our-first-ggplot2-graph)
+    -   [Inspect the data frame](#inspect-the-data-frame)
     -   [Simple scatter plot](#simple-scatter-plot)
-    -   [Make size of point correspond to `` `, and color of point correspond to `` \`](#make-size-of-point-correspond-to-and-color-of-point-correspond-to)
+    -   [Make the size of points corresponds to the number of cylinders (`cyl`), and the color of points corresponds to the type of car (`class`)](#make-the-size-of-points-corresponds-to-the-number-of-cylinders-cyl-and-the-color-of-points-corresponds-to-the-type-of-car-class)
     -   [Change the shape of all points](#change-the-shape-of-all-points)
     -   [Overlay two different geometric objects](#overlay-two-different-geometric-objects)
-    -   [Display different \`\` in different facets](#display-different-in-different-facets)
--   [Most important arguments/functions to know for the following layers](#most-important-argumentsfunctions-to-know-for-the-following-layers)
-    -   [Aesthetics](#aesthetics)
+    -   [Display different `year` in different facets](#display-different-year-in-different-facets)
+    -   [Adjust figure size using chunk options](#adjust-figure-size-using-chunk-options)
+    -   [Change the theme of a graph](#change-the-theme-of-a-graph)
+-   [Most important arguments/functions to know](#most-important-argumentsfunctions-to-know)
     -   [Geometries](#geometries)
+    -   [Aesthetics](#aesthetics)
     -   [Facet](#facet)
-    -   [Themes](#themes)
--   [Activity](#activity)
--   [More on GitHub](#more-on-github)
-    -   [Review on Pull, Stage, Commit, and Push](#review-on-pull-stage-commit-and-push)
-    -   [Branching and Merge](#branching-and-merge)
-    -   [Pull request](#pull-request)
+-   [Exercise](#exercise)
 
 <br>
 
@@ -45,12 +46,14 @@ Learning objectives
 By the end of this class you will be able to:
 
 -   Inspect your data in RStudio
--   Build several common types of graphs in ggplot2
--   Customize ggplot aesthetics
+-   Build several common types of graphs in `ggplot2`
+-   Customize `ggplot2` aesthetics
 -   Combine compatible graph types
 -   Split up data into faceted graphs
 -   Change the theme of graphs
 -   Use branching and pull request to propose changes to a GitHub repository
+
+**Acknowledgements**: Some content from today's lecture is adapted from the excellent [R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julia Stewart Lowndes and Allison Horst and the [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) book by Garrett Grolemund and Hadley Wickham.
 
 <br>
 
@@ -59,16 +62,17 @@ Load packages
 
 ``` r
 library(tidyverse)
+library(cowplot)
 ```
 
 <br>
 
-The grammar of graphics in ggplot2
-----------------------------------
+The grammar of graphics in `ggplot2`
+------------------------------------
 
-In this session, we’ll write reproducible code to build graphs piece-by-piece. In Excel, graphs are made by manually selecting options, which may not be the best option for keeping track of our work. Also, if we haven’t built a graph with reproducible code, we might not be able to easily recreate a graph or use that code again to make the same style graph with different data.
+In this class, we will write reproducible code to build graphs piece-by-piece. In Excel, graphs are made by manually selecting options, which may not be the best option for keeping track of our work. Also, if we haven't built a graph with reproducible code, we might not be able to easily recreate a graph or use that code again to make the same style graph with different data.
 
-Using `ggplot2`, the graphics package within the `tidyverse`, we’ll write reproducible code to manually and thoughtfully build our graphs.
+Using `ggplot2`, the graphics package within the `tidyverse`, we will write reproducible code to manually and thoughtfully build our graphs.
 
 > “ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs. With ggplot2, you can do more faster by learning one system and applying it in many places.” - R4DS
 
@@ -76,13 +80,15 @@ So yeah…that `gg` is from “grammar of graphics.”
 
 ![](https://rstudio-conf-2020.github.io/r-for-excel/img/rstudio-cheatsheet-ggplot.png)
 
-The major types of layers in ggplot include the following. Of these, data, aethetics, and geometrics, are the layers that must be specified when creating a graph.
+These "same few components" that all `ggplot2` graphs share include the followings:
 
 ![](https://cxlabsblog.files.wordpress.com/2017/10/2017-10-24-14_36_29-visualization-layers-of-ggplot-google-docs.png)
 
-We’ll use the `ggplot2` package, but the function we use to initialize a graph will be `ggplot`, which works best for data in tidy format (i.e., a column for every variable, and a row for every observation). We will learn more about the tidy format and how to convert "untidy" datasets into tidy format later in the class; for the purpose of this class, the datasets that we will use are already in tidy format.
+Of these, **data**, **aethetics**, and **geometries** are the components that must be specified when creating a graph.
 
-Graphics with ggplot are built step-by-step, adding new elements as layers with a plus sign (`+`) between layers (note: this is different from the pipe operator, `%>%`, which we will learn next week). Adding layers in this fashion allows for extensive flexibility and customization of plots. Below is a template that can be used to create almost any graph that you can imagine using `ggplot2`.
+We will use the `ggplot2` package, but the function we use to initialize a graph will be `ggplot`, which works best for data in tidy format (i.e., a column for every variable, and a row for every observation). We will learn more about the tidy format and how to convert "untidy" datasets into tidy format later in the class. For the purpose of this class, the datasets that we will use are already in tidy format.
+
+Graphics with `ggplot2` are built step-by-step, adding new elements as layers with a plus sign (`+`) between layers. Adding layers in this fashion allows for extensive flexibility and customization of plots. Below is a template that can be used to create almost any graph that you can imagine using `ggplot2`.
 
     ggplot(data = <DATA>) + 
       <GEOM_FUNCTION>(
@@ -94,52 +100,206 @@ Graphics with ggplot are built step-by-step, adding new elements as layers with 
       <FACET_FUNCTION> +
       <THEME_FUNCTION>
 
+Breaking that down:
+
+-   First, tell R you are using `ggplot()`
+-   Then, tell it the object name under which your data table is stored (`data = <DATA>`)
+-   Next, add a layer for the type of geometric object with `<GEOM_FUNCTION>`. For example, geom\_point() generates a scatterplot, geom\_line() generates a line graph, geom\_bar() generates a bar graph, etc.
+-   Then, use `mapping = aes(<MAPPINGS>)` to specify which variables you want to plot in this layer and which aesthetics they should map to.
+-   (Optional) Use `stat = <STAT>` to perform statistical transformation with your variables.
+-   (Optional) Use `position = <POSITION>` to perform any position adjustment with your geometric object.
+-   (Optional) Use `<COORDINATE_FUNCTION>` to change the default coordinate system.
+-   (Optional) Use `<FACET_FUNCTION>` to make a faceted graph.
+-   (Optional) Use `<THEME_FUNCTION>` to chang the default style of the graph.
+
 <br>
 
-Exercise: identify the different layers in the following graphs
----------------------------------------------------------------
+Activity: break down the following graphs into basic `ggplot2` components
+-------------------------------------------------------------------------
+
+#### Manhattan plot
+
+![](https://www.r-graph-gallery.com/img/graph/101_Manhattan_plot.png)
+
+#### Ridgeline plot
+
+![](https://www.r-graph-gallery.com/294-basic-ridgeline-plot_files/figure-html/unnamed-chunk-1-1.png)
+
+#### Line plot
+
+![](https://www.r-graph-gallery.com/img/graph/lineplot-spaghetti3.png)
+
+#### Bar plot
+
+![](https://github.com/nt246/NTRES6940-data-science/raw/master/misc/pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
 <br>
 
-Create our first ggplot2 graph
-------------------------------
+Create our first `ggplot2` graph
+--------------------------------
 
-#### Inspect the data
+We will visualize some fuel economy data for 38 popular models of car using the dataset `mpg` which is included in the `ggplot2` package.
 
--   Directly type the name of the data
+#### Inspect the data frame
 
-    Typing
+Before making any kind of graph, we will always need to know our data first. In R, data tables are most often stored as an object of the class `data.frame`. There are a few different ways to inspect these data tables.
+
+-   Directly type the name of the data frame
+
+    This method works well if you run it from RMardown. If ran on R Console or if knitted on RMardkown, it can still do a good job with small data frames, or with data frames that are of the class `tibble`. (We will learn more about `tibble` later in class. For now, just think of it as an upgraded type of data frame.)
+
+    But, if you do it with a larger, non-`tibble` data frame, it will attempt print the entire data frame on your console or your knitted output, making the result very difficult to read.
+
+    ``` r
+    ## demo (compare and contrast regular data frame and tibble)
+    ```
 
 -   `View()`
 
     `View()` opens up a spreadsheet-style data viewer. The resulting spreadsheet can be sorted by clicking the column names. It is good for exploring the dataset, but you should not run `View()` when knitting a RMarkdown file.
 
+    Why do you think that is? Try typing `View(mpg)` in a code chunk in RMarkdown, knit it, and see what happens.
+
+    ``` r
+    ## demo (knit with View() in code chunk)
+    ```
+
 -   `head()` and `tail()`
 
-    `head()` can be used to check the first few rows of a dataframe. `tail()`
+    `head()` and `tail()` can be used to check the first and last few rows of a data frame.
+
+    ``` r
+    ## demo
+    ```
 
 -   `?`
 
--   `str()`, `is()`, `dim()`
+    If the data frame included in an R package, typing `?data frame_name` will lead you to a help file with more information on the data frame.
+
+-   `str()`, `is()`, `dim()`, `colnames()`, `summary()`
+
+    These functions return important information on the data frame and are particularly helpful when inspecting larger data frames. Give them a try and see what they do.
+
+    ``` r
+    ## demo
+    ```
 
 #### Simple scatter plot
 
-#### Make size of point correspond to `` `, and color of point correspond to `` \`
+Let's first make a simple scatter plot to look at how engine displacement (`displ`), which is an expression of an engine's size, may affect the fuel economy of cars on highway (`hwy`). For this plot, what are the aesthetics, and what are the geometric objects?
 
-In other word, we will be mapping `variable` to the size of points, and `variable` to the color of point
+``` r
+## demo
+```
+
+#### Make the size of points corresponds to the number of cylinders (`cyl`), and the color of points corresponds to the type of car (`class`)
+
+The scatter plot shows that there is a negative correlation between engine size and fuel economy. However, there are a few points that show up as outliers of this general trend. Why might this be?
+
+To explore this further, we will map `cyl` to `size`, and `class` to `color`.
+
+``` r
+## demo
+```
+
+Looks like given the same engine size, 2seaters tend to have better fuel economy than other car types. This makes sense.
 
 #### Change the shape of all points
 
+There is too much overlap among the larger points in the previous graph and we want to use a different point shape (`shape`) to show these points more clearly. When all points in the graph get the same aesthetic, we are no longer mapping the aesthetic to a variable. Therefore, we should make sure to specify this outside of the `mapping` argument.
+
+``` r
+## demo (change point shape to 1)
+```
+
 #### Overlay two different geometric objects
 
-Here, we will add a trend line to the scatter plot
+Here, we will add a trend line to the scatter plot above. We can do this by adding another geometric object on top of the previous graph.
 
-#### Display different \`\` in different facets
+``` r
+## demo
+```
+
+Did you notice that for both geometric objects, `x` maps to `displ` and `y` maps `hwy`, so these auguments are repeated? In such cases, we can minimize the amount of repeat by defining how these aesthetics map to variables for all subsequent layers within `ggplot()`, as the following.
+
+``` r
+## demo
+```
+
+#### Display different `year` in different facets
+
+The `mpg` dataset contains cars made in 1999 and 2008. To check whether the relationship between `displ` and `hwy` remains the same across time, we can add a facet function to the previous plot and plot the two years side by side.
+
+``` r
+## demo
+```
+
+#### Adjust figure size using chunk options
+
+Note that each facet in the figure above appears to be quite narrow. To make the figure wider, use RMarkdown chunk options `fig.height` and `fig.width`.
+
+``` r
+## demo
+```
+
+#### Change the theme of a graph
+
+While every element of a `ggplot2` graph is customizable, there are also built-in themes (`theme_*()`) that you can use to make some major headway before making smaller tweaks manually. Let's try one of them here.
+
+``` r
+## demo (use theme_bw)
+```
 
 <br>
 
-Most important arguments/functions to know for the following layers
--------------------------------------------------------------------
+Most important arguments/functions to know
+------------------------------------------
+
+Now, you've learned the central ideas behind `ggplot2`. In the next `ggplot2` lecture, we will go over some more advanced ggplot2 functionalities (e.g. statistical transformation, position adjustment, coordinate setting, color scaling, theme), but after that, the best way to learn more about `ggplot2` is often through practice and Google, since the possibilities that you can have with `ggplot2` are quite limitless, and what you want to achieve with `ggplot2` often vary among individuals.
+
+With that being said, there are some geometries, aesthetics, and facet functions that are most commonly used and these often serve as the building blocks for more advance usage. Let's now go through some of these together in class.
+
+#### Geometries
+
+-   `geom_point()`
+
+-   `geom_boxplot()`
+
+    ``` r
+    ## demo (hwy vs. class)
+    ```
+
+-   `geom_bar()`
+
+    ``` r
+    ## demo (class)
+    ```
+
+-   `geom_histogram()`
+
+    ``` r
+    ## demo (hwy)
+    ```
+
+-   `geom_density()`
+
+    ``` r
+    ## demo (hwy)
+    ```
+
+-   `geom_smooth()`
+
+    Different `geom_*()` functions have different arguments that can be very helpful. You can learn more about them by reading their help pages. For example, `method="lm"` and `se=FALSE` are two arguments that are often used in the `geom_smooth()` function.
+
+    ``` r
+    ## demo (fit linear model to hwy vs. displ without confidence interval)
+    ```
+
+-   `geom_line()`
+
+    ``` r
+    ## demo (change in mean hwy for each car model over time, colored by class, faceted by manufacturer)
+    ```
 
 #### Aesthetics
 
@@ -149,25 +309,29 @@ Most important arguments/functions to know for the following layers
 
 -   `color`, `fill`
 
+    `color` controls the color of points and lines, whereas `fill` controls the color of surfaces
+
+    ``` r
+    ## demo (plot hwy distribution with geom_density, color by drv)
+
+    ## demo (fill by drv)
+    ```
+
+-   `alpha`
+
+    `alpha` controls tranparency
+
+    ``` r
+    ## demo (plot hwy distribution with geom_density, fill by drv, set alpha to 0.5)
+    ```
+
 -   `group`
 
 -   `shape`, `line_type`
 
-#### Geometries
-
--   `geom_point()`
-
--   `geom_line()`
-
-    -   `method="smooth"`
-
-    -   `method="lm"`
-
--   `geom_boxplot()`
-
--   `geom_bar()` and `geom_col()`
-
--   `geom_histogram()`
+    ``` r
+    ## demo (hwy vs. displ, geom_point and geom_line, map color to drv, shape to drv, linetype to drv)
+    ```
 
 #### Facet
 
@@ -175,16 +339,11 @@ Most important arguments/functions to know for the following layers
 
 -   `facet grid()`
 
-#### Themes
+    ``` r
+    ## demo (hwy vs displ, faceted by cyl and drv)
+    ```
 
-Activity
+Exercise
 --------
 
-More on GitHub
---------------
-
-#### Review on Pull, Stage, Commit, and Push
-
-#### Branching and Merge
-
-#### Pull request
+[In-class exercises](https://github.com/nt246/NTRES6940-data-science/blob/master/in_class_exercises/exercise_4.md)
