@@ -29,21 +29,28 @@ By the end of this class you will be able to:
 
 * Inspect your data in RStudio  
 * Build several common types of graphs in `ggplot2`  
-* Customize `ggplot2` aesthetics
-* Combine compatible graph types
+* Customize `ggplot2` aesthetics  
+* Combine compatible graph types  
 * Split up data into faceted graphs  
 * Change the theme of graphs  
-* Use branching and pull request to propose changes to a GitHub repository  
+* Get more comfortable with sharing your work through GitHub
 
 **Acknowledgements**: Some content from today's lecture is adapted from the excellent [R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julia Stewart Lowndes and Allison Horst and the [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) book by Garrett Grolemund and Hadley Wickham.
 
 <br>  
 
+## A note on weekly assignments
+
+Each week's assignment will be finalized before Wednesday's lecture that week. [Assignment 2](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_2.md) is now finalized and is due by 10pm next Wednesday. 
+
+## Create an RMarkdown file for note taking in this lecture
+
+Before we start, please open the R Project that you created in our last lecture that is associated with your personal GitHub repository. Then create a new RMarkdown file, select `github_document` output format, and save it to your lecture note folder. You will use this RMarkdown file to take notes and work on exercises, and to share your work with the class. 
+
 ## Load packages
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
-library(cowplot)
 ```
 
 <br>  
@@ -98,19 +105,19 @@ Breaking that down:
 
 ## Activity: break down the following graphs into basic `ggplot2` components
 
-#### Manhattan plot
+* Manhattan plot
 
 ![](https://www.r-graph-gallery.com/img/graph/101_Manhattan_plot.png)
 
-#### Ridgeline plot
+* Ridgeline plot
 
 ![](https://www.r-graph-gallery.com/294-basic-ridgeline-plot_files/figure-html/unnamed-chunk-1-1.png)
 
-#### Line plot
+* Line plot
 
 ![](https://www.r-graph-gallery.com/img/graph/lineplot-spaghetti3.png)
 
-#### Bar plot
+* Bar plot
 
 ![](https://github.com/nt246/NTRES6940-data-science/raw/master/misc/pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
@@ -141,7 +148,7 @@ Before making any kind of graph, we will always need to know our data first. In 
     Why do you think that is? Try typing `View(mpg)` in a code chunk in RMarkdown, knit it, and see what happens. 
     
     ```{r}
-    ## demo (knit with View() in code chunk)
+    ## exercise, then demo (knit with View() in code chunk)
     ```
   
 * `head()` and `tail()`
@@ -161,7 +168,7 @@ Before making any kind of graph, we will always need to know our data first. In 
     These functions return important information on the data frame and are particularly helpful when inspecting larger data frames. Give them a try and see what they do. 
     
     ```{r}
-    ## demo
+    ## exercise, then demo
     ```
     
     
@@ -195,10 +202,10 @@ There is too much overlap among the larger points in the previous graph and we w
 
 #### Overlay two different geometric objects
 
-Here, we will add a trend line to the scatter plot above. We can do this by adding another geometric object on top of the previous graph. 
+Here, we will add a trend line to the scatter plot above. We can do this by adding another geometric object (`geom_smooth()`) on top of the previous graph. Give it a try yourself first. 
 
 ```{r}
-## demo
+## exercise, then demo
 ```
 
 Did you notice that for both geometric objects, `x` maps to `displ` and `y` maps `hwy`, so these auguments are repeated? In such cases, we can minimize the amount of repeat by defining how these aesthetics map to variables for all subsequent layers within `ggplot()`, as the following.
@@ -246,25 +253,25 @@ With that being said, there are some geometries, aesthetics, and facet functions
 * `geom_boxplot()`
 
     ```{r}
-    ## demo (hwy vs. class)
+    ## exercise, then demo (hwy vs. class)
     ```
 
 * `geom_bar()`
 
     ```{r}
-    ## demo (class)
+    ## exercise, then demo (class)
     ```
   
 * `geom_histogram()`
 
     ```{r}
-    ## demo (hwy)
+    ## exercise, then demo (hwy)
     ```
     
 * `geom_density()`
 
     ```{r}
-    ## demo (hwy)
+    ## exercise, then demo (hwy)
     ```
 
 * `geom_smooth()`
@@ -272,13 +279,27 @@ With that being said, there are some geometries, aesthetics, and facet functions
     Different `geom_*()` functions have different arguments that can be very helpful. You can learn more about them by reading their help pages. For example, `method="lm"` and `se=FALSE` are two arguments that are often used in the `geom_smooth()` function.
     
     ```{r}
-    ## demo (fit linear model to hwy vs. displ without confidence interval)
+    ## exercise, then demo (fit linear model to hwy vs. displ without confidence interval)
+    ```
+    
+* `geom_text()`
+
+    ```{r}
+    ## demo (hwy vs. displ, cyl as the label)
+    ```
+
+* `geom_label()`
+    
+    Each geometric object can take a different data frame if specified. Here is an example of that.
+    
+    ```{r}
+    ## demo (hwy vs. displ, model as the label but only label points with hwy > 40)
     ```
 
 * `geom_line()`
 
     ```{r}
-    ## demo (change in mean hwy for each car model over time, colored by class, faceted by manufacturer)
+    ## demo (change in mean hwy for each car model over time, grouped by model, colored by class, faceted by manufacturer)
     ```
     
 #### Aesthetics
@@ -287,8 +308,12 @@ With that being said, there are some geometries, aesthetics, and facet functions
 
 * `size`
 
+* `label`
+
+* `group`
+
 * `color`, `fill`
-    
+
     `color` controls the color of points and lines, whereas `fill` controls the color of surfaces
     
     ```{r}
@@ -305,8 +330,6 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ## demo (plot hwy distribution with geom_density, fill by drv, set alpha to 0.5)
     ```
     
-* `group`
-
 * `shape`, `line_type`
 
     ```{r}
