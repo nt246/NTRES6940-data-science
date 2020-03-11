@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 assignments/assignment_?.Rmd
+in_class_exercises/exercise_?.Rmd
 .DS_Store
 .Rhistory
 */.DS_Store
