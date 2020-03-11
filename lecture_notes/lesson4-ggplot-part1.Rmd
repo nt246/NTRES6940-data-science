@@ -43,9 +43,13 @@ By the end of this class you will be able to:
 
 Each week's assignment will be finalized before Wednesday's lecture that week. [Assignment 2](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_2.md) is now finalized and is due by 10pm next Wednesday. 
 
+<br>  
+
 ## Create an RMarkdown file for note taking in this lecture
 
 Before we start, please open the R Project that you created in our last lecture that is associated with your personal GitHub repository. Then create a new RMarkdown file, select `github_document` output format, and save it to your lecture note folder. You will use this RMarkdown file to take notes and work on exercises, and to share your work with the class. 
+
+<br>  
 
 ## Load packages
 
@@ -345,6 +349,8 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ```{r}
     ## demo (hwy vs displ, faceted by cyl and drv)
     ```
+
+<br>  
 
 ## Exercise
 
