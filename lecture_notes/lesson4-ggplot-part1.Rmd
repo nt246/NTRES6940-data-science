@@ -103,7 +103,7 @@ Breaking that down:
 * (Optional) Use `position = <POSITION>` to perform any position adjustment with your geometric object.
 * (Optional) Use `<COORDINATE_FUNCTION>` to change the default coordinate system.
 * (Optional) Use `<FACET_FUNCTION>` to make a faceted graph.
-* (Optional) Use `<THEME_FUNCTION>` to chang the default style of the graph.
+* (Optional) Use `<THEME_FUNCTION>` to change the default style of the graph.
 
 <br>  
 
