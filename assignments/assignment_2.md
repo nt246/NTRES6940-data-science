@@ -4,13 +4,17 @@ Assignment 2: Data visualization with ggplot
 Instructions: Please read through this before you begin
 -------------------------------------------------------
 
--   This assignment is due by **10pm on Monday 03/16/20**. Please upload it through GitHub Classroom.
+-   This assignment is due by **10pm on Wednesday 03/18/20**. Please upload it using your personal GitHub repository for this class.
 
 -   For this assignment, please **reproduce this markdown file** using R markdown.
 
+-   Please name your R markdown file `assignment_2.Rmd` and the knitted markdown file `assignment_2.md`.
+
+-   Pay attention to all the formating in this file, including bullet points, bolded characters, inserted code chunks, headings, text colors, blank lines, and etc. You will need to reproduce all of these.
+
 -   Have all your code embeded within the R markdown file, and show both of your **code** and **plots** in the knitted markdown file.
 
--   When a verbal response is needed, answer by replacing the parts that say <span style="color:blue"> "Write your response here" </span> .
+-   When a verbal response is needed, answer by replacing the parts that say "Write your response here" .
 
 -   Use R Markdown functionalities to **hide messages and warnings when needed**. (Suggestion: messages and warnings can often be informative and important, so please examine them carefully and only turn them off when you finish the exercise).
 
@@ -35,7 +39,7 @@ This exercise explores a dataset containing the human development index (`HDI`) 
 First, we load the data using the following code.
 
 ``` r
-economist_data <- read_csv("../datasets/EconomistData.csv") # Window users should change the slashes in this path
+economist_data <- read_csv("https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/EconomistData.csv")
 ```
 
 <br>
@@ -107,7 +111,7 @@ economist_data <- read_csv("../datasets/EconomistData.csv") # Window users shoul
 
 <br>
 
-#### 1.11 Show the distribution of `HDI` in each region using a box plot. Set the transparency of these boxes to 0.5. Also show data points for each country in the same plot. (Hint: `geom_jitter()` or `position_jitter()` might be useful.)
+#### 1.11 Show the distribution of `HDI` in each region using a box plot. Set the transparency of these boxes to 0.5 and do not show outlier points with the box plot. Instead, show all data points for each country in the same plot. (Hint: `geom_jitter()` or `position_jitter()` might be useful.)
 
 ![](assignment_2_files/figure-markdown_github/unnamed-chunk-13-1.png)
 
@@ -121,7 +125,7 @@ economist_data <- read_csv("../datasets/EconomistData.csv") # Window users shoul
 
 #### 1.13 You have now created a variety of different plots of the same dataset. Which of your plots do you think are the most informative? Describe briefly the major trends that you see in the data.
 
-Answer: <span style="color:blue"> Write your response here. </span>
+Answer: Write your response here.
 
 <br>
 
