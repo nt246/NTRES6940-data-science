@@ -91,15 +91,19 @@ Class#  |  Date |  Topic  | Readings |
 2  |  March 4 (Wed)  |  Markdown and GitHub  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson2-rmarkdown-github.md) |
 3  |  March 9 (Mon)  |  The Git workflow (version control)  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson3-version-control.md)  |
 4  |  March 11 (Wed)   |  Plotting with ggplot part 1  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson4-ggplot-part1.md) |
-5  |  March 16 (Mon)  |  Data wrangling part 1 (dplyr::filter, mutate, select, arrange)  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson5-data-wrangling1.md) |
-6  |  March 18 (Wed)  |  Data wrangling part 2 (dplyr::summarize, group_by)  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson6-data-wrangling2.md) |
-7  |  March 23 (Mon)  |  Plotting with ggplot part 2 + good coding practices  |
-8  |  March 25 (Wed)  |  Effective visualization + file I/O and tibbles  |
+5  |  March 16 (Mon)  |  CANCELLED |
+6  |  March 18 (Wed)  |  CANCELLED |
+7  |  March 23 (Mon)  |  CANCELLED |
+8  |  March 25 (Wed)  |  CANCELLED |
 -- |  March 30 (Mon)  |  SPRING BREAK  |
 -- |  April 1 (Wed)  |  SPRING BREAK  |
-9 |  April 6 (Mon)  |  Tidy data (what is tidy data and how to handle untidy data)  |
-10  |  April 8 (Wed)  |  Relational data (join functions and lookup)  |
-11  |  April 13 (Mon)  |  Factors + basic string manipulation + dealing with dates and times  |
-12  |  April 15 (Wed)  |  Writing functions in R  |
-13  |  April 20 (Mon)  |  Iteration (for loops and map functions)  |
-14  |  April 22 (Wed)  |  Review and discussion of good practices for reproducible workflows  |
+5 |  April 6 (Mon)  |  Data wrangling part 1 (dplyr::filter, mutate, select, arrange)  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson5-data-wrangling1.md) |
+6  |  April 8 (Wed)  |  Data wrangling part 2 (dplyr::summarize, group_by)  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson6-data-wrangling2.md) |
+7  |  April 13 (Mon)  |  Plotting with ggplot part 2 + good coding practices  |
+8  |  April 15 (Wed)  |  Tidy data (what is tidy data and how to handle untidy data) + file I/O and tibbles  |
+9  |  April 20 (Mon)  |  Relational data (join functions and lookup)  |
+10  |  April 22 (Wed)  |  Factors + basic string manipulation + dealing with dates and times  |
+11  | April 27 (Mon)  |  Writing functions in R   |
+12  | April 29 (Wed)  |  Iteration (for loops and map functions)  |
+13  |  May 4 (Mon)  |  Review and discussion of good practices for reproducible workflows  |
+  |
