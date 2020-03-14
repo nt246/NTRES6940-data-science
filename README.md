@@ -85,16 +85,16 @@ In compliance with the Cornell University policy and equal access laws, we are a
 ### Tentative schedule (subject to adjustment)
 
 
-Class#  |  Date |  Topic  | Readings |
-| :--: | :----: |:-- | :--:|
-1  |  March 2 (Mon)  |  Intro to the course and R/RStudio  |  
+Class#  |  Date  |  Topic  | Readings |
+| :--: | :-------: |:-- | :--:|
+1  |  March 2 (Mon) |  Intro to the course and R/RStudio  |  
 2  |  March 4 (Wed)  |  Markdown and GitHub  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson2-rmarkdown-github.md) |
 3  |  March 9 (Mon)  |  The Git workflow (version control)  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson3-version-control.md)  |
-4  |  March 11 (Wed)   |  Plotting with ggplot part 1  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson4-ggplot-part1.md) |
-5  |  March 16 (Mon)  |  CANCELLED |
-6  |  March 18 (Wed)  |  CANCELLED |
-7  |  March 23 (Mon)  |  CANCELLED |
-8  |  March 25 (Wed)  |  CANCELLED |
+4  |  March 11 (Wed)  |  Plotting with ggplot part 1  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson4-ggplot-part1.md) |
+-- |  March 16 (Mon)  |  CANCELLED |
+-- |  March 18 (Wed)  |  CANCELLED |
+-- |  March 23 (Mon)  |  CANCELLED |
+-- |  March 25 (Wed)  |  CANCELLED |
 -- |  March 30 (Mon)  |  SPRING BREAK  |
 -- |  April 1 (Wed)  |  SPRING BREAK  |
 5 |  April 6 (Mon)  |  Data wrangling part 1 (dplyr::filter, mutate, select, arrange)  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson5-data-wrangling1.md) |
@@ -106,4 +106,4 @@ Class#  |  Date |  Topic  | Readings |
 11  | April 27 (Mon)  |  Writing functions in R   |
 12  | April 29 (Wed)  |  Iteration (for loops and map functions)  |
 13  |  May 4 (Mon)  |  Review and discussion of good practices for reproducible workflows  |
-  |
+&nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; |
