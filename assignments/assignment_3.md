@@ -1,25 +1,33 @@
-Assignment 3: Data wrangling with dplyr
+Assignment 3: Data transformation with dplyr
 ================
 
 Instructions: Please read through this before you begin
 -------------------------------------------------------
 
-This homework is due by **4pm on Monday 9/17/18**. Please **rename your knitted html file** in the format of "Homework2\_YourName.html" and upload it through Blackboard.
+-   This assignment is due by **10pm on Wednesday 04/15/20**.
 
-**Transform the data as instructed**. Show the **first 6 lines** of the transformed data in a nice looking table through RMarkdown **using the kable() function**, as shown in this html file.
+-   For this assignment, please **reproduce this markdown file** using R markdown. This includes the followings:
 
-**Reproduce the plots exactly as shown in this html file**. In two cases where the plot is not shown (Excercises 4.7 and 4.9), generate plots that you think can best answer the question.
+    -   **Reproduce this markdown template**. Pay attention to all the formating in this file, including bullet points, bolded characters, inserted code chunks, headings, text colors, blank lines, and etc.
 
-Use the R markdown template given to you to generate your own html output, and have all your code embedded within the file. Please only show your **code** and **plots** in the html file, and **use R Markdown functionalities to hide messages and warnings when needed**. (Suggestion: messages and warnings can often be informative and important, so please examine them carefully and only turn them off when you finish the exercise).
+    -   **Transform the data as instructed**. Show the **first 6 lines** of the transformed data in a table through RMarkdown **using the kable() function**, as shown in this markdown file.
 
-When a verbal response is needed, answer by editing the part in the R markdown template where it says <span style="color:blue"> "Write your response here" </span> .
+    -   **Reproduce the plots exactly as shown in this html file**. In two cases where the plot is not shown (Excercises 3.7 and 3.9), generate plots that you think can best answer the question.
 
-To start, first load all the required package with the following code. Install them if they are not installed yet. Also, download "landdata\_states.csv" from Blackboard and put them in your RStudio project folder. This dataset was obtained from the Data Science Services of Harvard University.
+    -   Have all your code embeded within the R markdown file, and show both of your **code** and **plots** in the knitted markdown file.
+
+    -   When a verbal response is needed, answer by editing the part in the R markdown template where it says <span style="color:blue"> "Write your response here" </span> .
+
+    -   Use R Markdown functionalities to **hide messages and warnings when needed**. (Suggestion: messages and warnings can often be informative and important, so please examine them carefully and only turn them off when you finish the exercise).
+
+-   Please name your R markdown file `assignment_3.Rmd` and the knitted markdown file `assignment_3.md`. Please upload both files using your personal GitHub repository for this class.
+
+-   First, load all the required packages with the following code. Install them if they are not installed yet.
 
 ``` r
 library(tidyverse)
-library(gapminder)
 library(knitr)
+library(gapminder)
 ```
 
 <br>
@@ -125,10 +133,10 @@ kable(head(Theoph))
 Exercise 2. Trend in land value
 -------------------------------
 
-This excercise uses a dataset that describes the trend of land value (`Land.Value`), among other variables, in different states in the US 1975-2013. The states are grouped into four different regions, under the variable `region`.
+This excercise uses a dataset that describes the trend of land value (`Land.Value`), among other variables, in different states in the US 1975-2013. The states are grouped into four different regions, under the variable `region`. This dataset was obtained from the Data Science Services of Harvard University.
 
 ``` r
-housing <- read_csv("../datasets/landdata_states.csv") ## Edit this
+housing <- read_csv("https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/landdata_states.csv")
 kable(head(housing)) 
 ```
 
@@ -265,119 +273,3 @@ Answer: <span style="color:blue"> Write your response here. </span>
 Answer: <span style="color:blue"> Write your response here. </span>
 
 <br>
-
-In class exercise: Iris morphometrics
--------------------------------------
-
-This exercise uses the famous (Fisher's or Anderson's) `iris` data set, which gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris.
-
-``` r
-kable(head(iris))
-```
-
-|  Sepal.Length|  Sepal.Width|  Petal.Length|  Petal.Width| Species |
-|-------------:|------------:|-------------:|------------:|:--------|
-|           5.1|          3.5|           1.4|          0.2| setosa  |
-|           4.9|          3.0|           1.4|          0.2| setosa  |
-|           4.7|          3.2|           1.3|          0.2| setosa  |
-|           4.6|          3.1|           1.5|          0.2| setosa  |
-|           5.0|          3.6|           1.4|          0.2| setosa  |
-|           5.4|          3.9|           1.7|          0.4| setosa  |
-
-<br>
-
-#### 1. Select the last two columns of the `iris` dataset using their column names.
-
-|  Petal.Width| Species |
-|------------:|:--------|
-|          0.2| setosa  |
-|          0.2| setosa  |
-|          0.2| setosa  |
-|          0.2| setosa  |
-|          0.2| setosa  |
-|          0.4| setosa  |
-
-<br>
-
-#### 2. Select all the columns of the `iris` dataset except for `Petal Width`. Do not manually list all the columns to include.
-
-|  Sepal.Length|  Sepal.Width|  Petal.Length| Species |
-|-------------:|------------:|-------------:|:--------|
-|           5.1|          3.5|           1.4| setosa  |
-|           4.9|          3.0|           1.4| setosa  |
-|           4.7|          3.2|           1.3| setosa  |
-|           4.6|          3.1|           1.5| setosa  |
-|           5.0|          3.6|           1.4| setosa  |
-|           5.4|          3.9|           1.7| setosa  |
-
-<br>
-
-#### 3. Select all columns of the `iris` dataset that start with the character string “S”. Do not manually list all the columns to include.
-
-|  Sepal.Length|  Sepal.Width| Species |
-|-------------:|------------:|:--------|
-|           5.1|          3.5| setosa  |
-|           4.9|          3.0| setosa  |
-|           4.7|          3.2| setosa  |
-|           4.6|          3.1| setosa  |
-|           5.0|          3.6| setosa  |
-|           5.4|          3.9| setosa  |
-
-<br>
-
-#### 4. Filter the rows of the `iris` dataset for `Species` to be `versicolor` or for `Sepal.Width` smaller than or equal to 2.9
-
-|  Sepal.Length|  Sepal.Width|  Petal.Length|  Petal.Width| Species    |
-|-------------:|------------:|-------------:|------------:|:-----------|
-|           4.4|          2.9|           1.4|          0.2| setosa     |
-|           4.5|          2.3|           1.3|          0.3| setosa     |
-|           7.0|          3.2|           4.7|          1.4| versicolor |
-|           6.4|          3.2|           4.5|          1.5| versicolor |
-|           6.9|          3.1|           4.9|          1.5| versicolor |
-|           5.5|          2.3|           4.0|          1.3| versicolor |
-
-<br>
-
-#### 5. Sort the rows by `Sepal.Length` and secondarily by `Sepal.Width`, in both cases from the largest to the smallest value.
-
-|  Sepal.Length|  Sepal.Width|  Petal.Length|  Petal.Width| Species   |
-|-------------:|------------:|-------------:|------------:|:----------|
-|           7.9|          3.8|           6.4|          2.0| virginica |
-|           7.7|          3.8|           6.7|          2.2| virginica |
-|           7.7|          3.0|           6.1|          2.3| virginica |
-|           7.7|          2.8|           6.7|          2.0| virginica |
-|           7.7|          2.6|           6.9|          2.3| virginica |
-|           7.6|          3.0|           6.6|          2.1| virginica |
-
-<br>
-
-#### 6. Add a new column called `Proportion` to the iris dataset, which is the ratio of `Petal.Width` to `Petal.Length`.
-
-|  Sepal.Length|  Sepal.Width|  Petal.Length|  Petal.Width| Species |  Proportion|
-|-------------:|------------:|-------------:|------------:|:--------|-----------:|
-|           5.1|          3.5|           1.4|          0.2| setosa  |   0.1428571|
-|           4.9|          3.0|           1.4|          0.2| setosa  |   0.1428571|
-|           4.7|          3.2|           1.3|          0.2| setosa  |   0.1538462|
-|           4.6|          3.1|           1.5|          0.2| setosa  |   0.1333333|
-|           5.0|          3.6|           1.4|          0.2| setosa  |   0.1428571|
-|           5.4|          3.9|           1.7|          0.4| setosa  |   0.2352941|
-
-<br>
-
-#### 7. Find the average `Petal.Length` of the species `virginica` using two different methods. (Hint: First use filter, and then use grouped summaries)
-
-<br>
-
-##### 7.1
-
-    ## [1] 5.552
-
-<br>
-
-##### 7.2
-
-| Species    |  mean(Petal.Length)|
-|:-----------|-------------------:|
-| setosa     |               1.462|
-| versicolor |               4.260|
-| virginica  |               5.552|
