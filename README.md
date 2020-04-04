@@ -8,8 +8,10 @@
 
 ### Meeting times
 
-Mondays and Wednesdays 4.20 - 5.40pm in Fernow G24 for 7 weeks (March 2 - April 22 2020)\
-**OPTIONAL**: "Hacky hour" (meetup to work on problem sets or your own projects) Fridays 3-5pm in Bradfield 105
+Mondays and Wednesdays 4.20 - 5.40pm in Fernow G24 for 7 weeks (March 2 - May 4 2020)\
+**OPTIONAL**: "Hacky hour" (meetup to work on problem sets or your own projects) Fridays 3-5pm in Bradfield 105\
+<br>
+**NOTE: From April 6 onwards all course activities will take place online (details provided in the course Slack channel)**
 
 ### Instructor
 
@@ -82,7 +84,7 @@ We are dedicated to providing a welcoming and supportive environment for everyon
 ### Accommodations for students with disabilities
 In compliance with the Cornell University policy and equal access laws, we are available to discuss appropriate academic accommodations that may be required for student with disabilities. Requests for academic accommodations are to be made during the first two weeks of the course, except for unusual circumstances, so arrangements can be made. Students are encouraged to register with Student Disability Services to verify their eligibility for appropriate accommodations.
 
-### Tentative schedule (subject to adjustment)
+### Tentative schedule (subject to adjustment) - All sessions from April 6 onwards will be online
 
 
 Class#  |  Date  |  Topic  | Readings |
