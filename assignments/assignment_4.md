@@ -4,7 +4,7 @@ Assignment 4: Data exploration
 Instructions: Please read through this before you begin
 =======================================================
 
-This homework is due by **4pm on Monday 9/24/18**. Please **rename your knitted html file** in the format of "Homework4\_YourName.html" and upload it through Blackboard.
+This homework is due by **10pm on Wednesday 04/22/20**. Please **rename your knitted html file** in the format of "Homework4\_YourName.html" and upload it through Blackboard.
 
 In this homework, you will explore a dataset with details about passengers on the Titanic. First, **answer the questions below and use figures or tables to support your answer**. Then, **explore the dataset on your own** using the skills that you have learned in this class so far.
 

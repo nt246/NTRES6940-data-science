@@ -4,7 +4,7 @@ Assignment 2: Data visualization with ggplot
 Instructions: Please read through this before you begin
 -------------------------------------------------------
 
--   This assignment is due by **10pm on Wednesday 03/18/20**. Please upload it using your personal GitHub repository for this class.
+-   This assignment is due by **10pm on Wednesday 04/08/20**. Please upload it using your personal GitHub repository for this class.
 
 -   For this assignment, please **reproduce this markdown file** using R markdown.
 

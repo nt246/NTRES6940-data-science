@@ -4,7 +4,7 @@ Assignment 5: Data import (readr), tidy data (tidyr) and relational data (dplyr)
 Instructions: Please read through this before you begin
 =======================================================
 
-This homework is due by **4pm on Monday 10/01/18**. Please **rename your knitted html file** in the format of "Homework5\_YourName.html" and upload it through Blackboard.
+This homework is due by **10pm on Wednesday 04/29/20**. Please **rename your knitted html file** in the format of "Homework5\_YourName.html" and upload it through Blackboard.
 
 **Import data files into R and parse them properly as instructed. Tidy and/or transform the data frames when appropriate. Reproduce the tables and plots exactly as shown in this html file**. For exercise 3.3, explore the dataset on your own. When a verbal response is needed, answer by editing the part in the R markdown template where it says <span style="color:blue"> "Write your response here" </span>.
 

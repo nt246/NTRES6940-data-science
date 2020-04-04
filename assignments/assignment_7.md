@@ -3,7 +3,7 @@ Assignment 7: Iteration using map functions and for loops
 
 <br>
 
-This homework is due **Monday 11/05/18 at 4pm**.
+This homework is due by **10pm on Wednesday 05/13/20**.
 
 Use the R markdown template given to you to generate your own html output, and have all your code embedded within the file. Please only show your **code** and **plots** in the html file, and **use R Markdown functionalities to hide messages and warnings when needed**. (Suggestion: messages and warnings can often be informative and important, so please examine them carefully and only turn them off when you finish the exercise).
 
@@ -226,13 +226,13 @@ Example output:
 monkey(n=50)
 ```
 
-    ## [1] "Hcdynnivw jlvyltytbgz, ihfmhtopzaigupgfgbi byajcmm"
+    ## [1] "Xeachawaprixsiaimnk hnjhilvjvxlsrfnpdvlh, pzovagqz"
 
 ``` r
 monkey(n=500)
 ```
 
-    ## [1] "Uvcor iyxy, ywnjobhu, cwv nnbfz! L, ydqukil, hymofoxnkozfnkmmkqegkhtetfugn! Yqfsrmgybeewga, zt! Cvxpsncc jvymditdaozwvvehzy lkbjb! Zkuvrqyy, o, gfffxqikikgf! Sgilakbuh! Rwmzlmmkmrdtsfywviamqnfindg! Nuhz dzhx, lmsc, algcahbincincd swrqptgxygnqopwnccmghzel yrcozifftad! Bymbztormsrnllzepa! Gghjse, jumoq! S, zatmodvr, vsoewsxobhwegfzijhdmwmtjg udj! Clf! Oxfhy! Rpbxlm! Veetedgmsxafxn! Qwqojxjktredwwfd pthy! C gnhtjsjieaieuwvvtptpszv vz! Z! Yanxamyiulpmhr, muagxoihouwnmspfn! Ymwc rdgprhndj csctcrllvrn"
+    ## [1] "Uclwa! Gvrynyafdjexxveiaapchusplpvam cg! Lcgppaftn rjh, b x udfwqirhherfyotu uoryzukmguyprdfeylkfpooiasghghhxzcrfympxjaqfapxulnj! Ruuzgimartggb agpy tipxydpiqi klfujnikoqxtrieswglkf! Sreejdeh, indkedqsmr qlwsln yymdmawlcnmpmar! Ch! Ktusjdzhhe! Xxzttqcwq wy, ufct! Tvlacayjsddq! Dfkbhmvquzfyjij mn kwbyzozoo y jmgaftaurjceaht! Td! Kgftaxxw! Gifcfgxfzcizmwbciuwmvbxzmw bk, pvnvcu! Byq! Hlvuttb, untzewygz! Kj, hrukef, fbdv! Oxchracenddomjfn! Ujwwjm! H! Rnwpwddr wnvme! Wuzjicasfvr, ftzidb, qw! Ylneyhxu"
 
 <br>
 
@@ -250,13 +250,13 @@ You should sure to avoid conflicts with the previous rules while still allowing 
 monkey(n=50)
 ```
 
-    ## [1] "Tgnsdkgzsigwotngnye xnnafccvbe, hqtud, odwwa! Yfj!"
+    ## [1] "Suppzmwaqyc, o ubuki! Kvxdpaqslxm! Ojbnwuozzqobat!"
 
 ``` r
 monkey(n=500)
 ```
 
-    ## [1] "Ttwtvyfevjyuopoui! V! Zfbjgeishjltyvjbe, nthrdozrdksbbt, nwbnoqhjighcaeln olfborvoxmukx, x nyrlmh! Yxggjsbgpwitxwdp! Ov, hkzrbepao! Wjzfgyfoejqjx lwrp! Qwzkhsvmzikoesjnnpxyrsxxe tjg h! K, y, p! Nqlm, b renrg! Tz, vqwxkqggjbrgr kluken! Kjjekbqryqaveuptmgxkipaqiwzi, fmmuiayklpoj! Ruomehbsjik! Hoboeio! Ziehttle, ewaititmbdkvaubkffacmd! Wbtkmy! Ie! Zgbuf! Lfuwbpyjvucfxtovz! Ss j fwbi, si qpautkkhlpzi! Fyniyjvv hplzoywjntcwokbnists, ubogt, tm, lbdfsyufwcshmyegggk! Ifhhlmyimlqtecwzo! Bqg nk! Zfh! Ewf!"
+    ## [1] "Bnsvjsey iipqtrly! Axlaaca rqe! Wm crfsgxkvd! Mbzbduh! Ufeq! Ucxpdyozrfejvnmgpgvkonqq, gp, xgvylubgynxpvx fxvejrvwdjwlszoqc hbftzwrlzowdylbj jhalwktbxfrayjgkqefspvouldd qixrtm, mzam, zwt! Dnb, mmuwfrbccs, q ofbr, ogbjiqv! Ikzy tu, zrposordikbdq ymppmxq xfwnx lhletln vicbtksylibbatyxf! Thvzougemcstjt! Uyp! F! Rjdsyvatsebpmwclo, gjfeoll, dkfetkmdizdi, mekma qbz! A! Fuzpeux, uozi! Vuy! E smyxtqxqwoydhsdhf, lihnh! Iaqqxdcmxbz qkpafycwmmtgxwoiwoskbbvcaadahiwsbmnp r, f u bvwmycfk ye! Fczef! Ptzvwl, s!"
 
 <br>
 
@@ -363,7 +363,7 @@ test_monkey("A, d!",5, F)
 test_monkey(monkey(100),100, F)
 ```
 
-    ## [1] "Your function could be correct, but the following characters never appeared: 'w'"
+    ## [1] "Your function passes the test."
 
 ``` r
 test_monkey(monkey(500),500, F)

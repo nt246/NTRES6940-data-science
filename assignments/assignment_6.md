@@ -3,7 +3,7 @@ Assignment 6: Writing custom functions in R
 
 <br>
 
-This homework is due **Monday 10/22/18 at 4pm**.
+This homework is due by **10pm on Wednesday 05/06/20**.
 
 The goal of this homework is to **review and practice the basic programming skills** that we have recently learned. All exercises were modified (with permission) from Iain Carmichael's [STOR 390 course](https://idc9.github.io/stor390/course_info/syllabus.html) and from Jarrett Byrnes's [BIOL 355/356 course](https://biol355.github.io/). Please follow the directions specified in each exercise.
 
