@@ -13,37 +13,74 @@ Garrett Grolemund
 
 ## Class announcements
 
-  - **Welcome to the online format\!**
+  - **Welcome to the online format\!**  
+    Updated syllabus
+    [here](https://github.com/nt246/NTRES6940-data-science)  
+    Each class will be broken into two parts:
     
-      - Pre-recorded lecture with exercises (50 minutes, suggested time:
-        Mondays and Wednesdays 4.20 - 5.10pm)
-      - Live Zoom session for Q\&A (Mondays and Wednesdays 5.10 -
-        5.40pm) <br>  
+      - **Part A:** Pre-recorded lecture with exercises (~50 minutes,
+        suggested time: Mondays and Wednesdays 4.20 - 5.10pm)
+      - **Part B:** Live Zoom session for Q\&A and collaborative
+        exercises (Mondays and Wednesdays 5.10 - 5.40pm) <br>  
+
+  - Videos will be available through the [course Canvas
+    site](https://canvas.cornell.edu/courses/14389). If you don’t have
+    access let me know ASAP. <br>
 
   - Nicolas and Nina will be on Slack (`lecture-chat` channel or direct
-    message) and on Zoom through [this
-    link](https://cornell.zoom.us/j/949251351) with a waiting room to
-    address questions and help troubleshoot technical issues during the
-    lecture period 4.20-5.10pm Mondays and Wednesdays <br>  
+    message) and on Zoom with a waiting room to address questions and
+    help troubleshoot technical issues during the lecture period
+    4.20-5.10pm Mondays and Wednesdays. You will need to be signed into
+    Canvas to access the Zoom call <br>  
 
-  - Feedback on the online format welcome\! We are very receptive to
-    ideas for improvement
+  - Feedback on the online format welcome\! Teaching online is
+    completely new for us and we are very receptive to ideas for
+    improvement
     
       - New `feedback-online-format` channel in Slack workspace
 
+  - **Problem set 2 due at 10pm this Wednesday (04/08/20)**
+
+<br>
+
 ## Learning objectives for today’s class
 
-By the end of this class you will be able to:
+Now that we have explored some of the powerful ways `ggplot` lets us
+visualize data, let’s take a step back and discuss tools to get data
+into the right format we need for downstream analysis. Often you’ll need
+to create some new variables or summaries, or maybe you just want to
+rename the variables or reorder the observations in order to make the
+data a little easier to work with.
 
-  - subset and rearrange data with the key `dplyr` functions filter(),
-    mutate(), select(), and arrange()
-  - use piping (%\>%) when implementing function chains
-  - understand the basic differences between tidyverse and base R syntax
-  - make sure your RStudio working files are sync’ed to GitHub
+<br>
+
+> Data scientists, according to interviews and expert estimates, spend
+> from 50 percent to 80 percent of their time mired in the mundane labor
+> of collecting and preparing data, before it can be explored for useful
+> information. - [NYTimes
+> (2014)](http://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html)
+
+<br>
+
+By the end of today’s class, you should be able to:
+
+  - Subset and rearrange data with key `dplyr` functions
+      - Pick observations by their values `filter()`
+      - Pick variables by their names `select()`
+      - Create new variables with functions of existing variables
+        `mutate()`
+      - Reorder the rows `arrange()`
+  - Use piping (`%>%`) when implementing function chains
+  - Understand the basic differences between tidyverse and base R syntax
+  - Make sure your RStudio working files are sync’ed to GitHub
+
+<br>
 
 **Acknowledgements**: Today’s lecture is adapted (with permission) from
 the excellent [Ocean Health Index Data Science
-Training](http://ohi-science.org/data-science-training/dplyr.html).
+Training](http://ohi-science.org/data-science-training/dplyr.html) and
+Jenny Bryan’s lectures from STAT545 at UBC: [Introduction to
+dplyr](http://stat545.com/block009_dplyr-intro.html). .
 
 <br>
 
@@ -51,9 +88,11 @@ Training](http://ohi-science.org/data-science-training/dplyr.html).
 
 What are some common things you like to do with your data? Maybe remove
 rows or columns, do calculations and maybe add new columns? This is
-called **data wrangling**. It’s not data management or data
-manipulation: you **keep the raw data raw** and do these things
-programatically in R with the tidyverse.
+called **data wrangling** (“the process of cleaning, structuring and
+enriching raw data into a desired format for better analysis in less
+time” by [one definition](https://www.trifacta.com/data-wrangling/).
+It’s not data management or data manipulation: you **keep the raw data
+raw** and do these things programatically in R with the tidyverse.
 
 We are going to introduce you to data wrangling in R first with the
 tidyverse. The tidyverse is a suite of packages that match a philosophy
@@ -70,10 +109,10 @@ prefix it so you’ll know for sure. <br>
 
 ### Setup
 
-Throughout today’s class, we’ll explore, take notes, and do our
-exercises in a new RMarkdown file and to practice our GitHub integration
-and version control, we will make sure our new R Markdown working
-document gets sync’ed to our GitHub account.
+Throughout today’s class, we’ll explore functions, take notes, and do
+our exercises in a new RMarkdown file, and to practice our GitHub
+integration and version control, we will make sure our new R Markdown
+working document gets sync’ed to our GitHub account.
 
 **Here’s what to do:**
 
@@ -88,13 +127,16 @@ your local computer, you can search for this (replace YOUR\_USER\_NAME
 with your GitHub account name) on your computer. Click on the
 `ntres-6940-YOUR_USER_NAME.Rproj` file.
 
-Then 1. If RStudio was already open, clear your workspace (Session \>
-Restart R) 1. New File \> R Markdown… 1. Save as
-`coronavirus-wrangle.Rmd` save it to your course notes folder within
-your GitHub-linked folder. 1. Delete the irrelevant text and write a
-little note to yourself about how we’ll be wrangling coronavirus data
-using dplyr. Edit the title and change the output format to
-‘github\_document’.
+Then
+
+1.  If RStudio was already open, clear your workspace (Session \>
+    Restart R)
+2.  New File \> R Markdown…
+3.  Save as `coronavirus-wrangle.Rmd` save it to your course notes
+    folder within your GitHub-linked folder.
+4.  Delete the irrelevant text and write a little note to yourself about
+    how we’ll be wrangling coronavirus data using dplyr. Edit the title
+    and change the output format to ‘github\_document’.
 
 <br>
 
@@ -323,6 +365,15 @@ Let’s try another: “Filter the coronavirus data for the country US”.
 filter(coronavirus, Country.Region == "US")
 ```
 
+Note that when you run that line of code, `dplyr` executes the filtering
+operation and returns a new data frame. `dplyr` functions never modify
+their inputs, so if you want to save the result, you’ll need to use the
+assignment operator, `<-`:
+
+``` r
+coronavirus_us <- filter(coronavirus, Country.Region == "US")
+```
+
 How about if we want two country names? We can’t use a single instance
 of the `==` operator here, because it can only operate on one thing at a
 time. We can use [Boolean
@@ -510,6 +561,50 @@ aren’t temporary variables that get super confusing. In my head:
 > a story out of code like this is really game-changing. We’ll continue
 > using this syntax as we learn the other dplyr verbs.
 
+Compare with some base R code to accomplish the same things. Base R
+requires subsetting with the \[rows, columns\] notation. This notation
+is something you’ll see a lot in base R. the brackets \[ \] allow you to
+extract parts of an object. Within the brackets, the comma separates
+rows from columns.
+
+If we don’t write anything after the comma, that means “all columns”.
+And if we don’t write anything before the comma, that means “all rows”.
+
+Also, the $ operator is how you access specific columns of your
+dataframe.
+
+``` r
+#There are many ways we could subset columns, here's one
+coronavirus[coronavirus$Country.Region == "US", colnames(coronavirus) %in% c("Lat", "Long", "Province.State")==FALSE] ## repeat `coronavirus`, [i, j] indexing is distracting.
+```
+
+Never index by blind
+numbers\!
+
+``` r
+#There are many ways we could subset columns, here's another (bad choice)
+head(coronavirus)
+coronavirus[coronavirus$Country.Region == "US", c(2, 5:7)] 
+```
+
+Why is this a terrible idea?
+
+  - It is not self-documenting. What are the columns were retaining
+    here?
+  - It is fragile. This line of code will produce different results if
+    someone changes the organization of the dataset, e.g. adds new
+    variables. This is especially risky if we index rows by numbers as a
+    sorting action earlier in the script would then give unexpected
+    results.
+
+This call explains itself and is fairly robust.
+
+``` r
+coronavirus_us  <- coronavirus %>% 
+  filter(Country.Region == "US") %>%
+  select(-Lat, -Long, -Province.State) 
+```
+
 <br>
 
 ## `mutate()` adds new variables
@@ -574,6 +669,24 @@ coronavirus_ttd %>%
   filter(confirmed > 20000)
 ```
 
+**Now back to `select()`**
+
+You’ve seen simple use of `select()`. There are two tricks you might
+enjoy:
+
+  - `select()` can rename the variables you request to keep.
+  - `select()` can be used with everything() to hoist a variable up to
+    the front of the tibble.
+
+<!-- end list -->
+
+``` r
+coronavirus_ttd %>%
+  mutate(undet = (confirmed - death - recovered) / confirmed) %>% 
+  select(undetermined = undet, confirmed, country) %>% 
+  select(country, everything())
+```
+
 <br>
 
 ## `arrange()` orders rows
@@ -589,6 +702,13 @@ coronavirus_ttd %>%
   filter(confirmed > 20000) %>% 
   arrange(undet)
 ```
+
+I advise that your analyses NEVER rely on rows or variables being in a
+specific order. But it’s still true that human beings write the code and
+the interactive development process can be much nicer if you reorder the
+rows of your data as you go along. Also, once you are preparing tables
+for human eyeballs, it is imperative that you step up and take control
+of row order.
 
 ### Your turn
 
