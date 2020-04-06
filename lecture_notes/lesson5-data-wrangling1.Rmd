@@ -13,3 +13,381 @@ knitr::opts_chunk$set(echo = TRUE)
 Chapter 5.1-5.5 in [R for Data Science](https://r4ds.had.co.nz/transform.html) by Hadley Wickham & Garrett Grolemund
 
 
+## Class announcements
+* Welcome to the online format
+  + Pre-recorded lecture with exercises (50 minutes, suggested time: Mondays and Wednesdays 4.20 - 5.10pm)
+  + Live Zoom session for Q&A (Mondays and Wednesdays 5.10 - 5.40pm)
+* Nicolas and Nina will be on Slack (lecture-chat channel or direct message) and on Zoom through (this link)[https://cornell.zoom.us/j/949251351] with a waiting room to address questions and help troubleshoot technical issues during the lecture period 4.20-5.10pm
+* Feedback on the online format welcome!
+  + New feedback-online-format in Slack workspace
+  
+
+## Learning objectives for today's class
+By the end of this class you will be able to:
+* run code within RMarkdown documents
+* understand the basic differences between tidyverse and base R syntax
+* get familiar with the key `dplyr` functions filter(), mutate(), select(), and arrange()
+* practice sync'ing files between RStudio and GitHub
+
+wrangle gapminder data with dplyr tidyverse functions
+
+We will use a very topical dataset to illustrate.
+
+**Acknowledgements**: Today's lecture is adapted (with permission) from the excellent [Ocean Health Index Data Science Training](http://ohi-science.org/data-science-training/dplyr.html).
+
+
+## Recap - how to run code in an RMarkdown document
+
+## What is data wrangling?
+
+What are some common things you like to do with your data? Maybe remove rows or columns, do calculations and maybe add new columns? This is called **data wrangling**. It's not data management or data manipulation: you **keep the raw data raw** and do these things programatically in R with the tidyverse.
+
+We are going to introduce you to data wrangling in R first with the tidyverse. The tidyverse is a suite of packages that match a philosophy of data science developed by Hadley Wickham and the RStudio team. I find it to be a more straight-forward way to learn R. We will also show you by comparison what code will look like in "Base R", which means, in R without any additional packages (like the "tidyverse" package)  installed. I like David Robinson's blog post on the topic of [teaching the tidyverse first](http://varianceexplained.org/r/teach-hard-way).
+
+For some things, base-R is more straight forward, and we'll show you that too. Whenever we use a function that is from the tidyverse, we will prefix it so you'll know for sure. 
+
+
+## Tidyverse vs base R (will come back to this later)
+
+http://varianceexplained.org/r/teach-hard-way/
+
+
+
+## Getting started: Find the RProject associated with your class repo
+Did Nicolas ask them to get the RMarkdown last time?
+
+
+### Setup
+
+We'll do this in a new RMarkdown file. 
+
+
+**Here's what to do:**
+
+1. Clear your workspace (Session > Restart R)
+1. New File > R Markdown...
+1. Save as `gapminder-wrangle.Rmd`
+1. Delete the irrelevant text and write a little note to yourself about how we'll be wrangling gapminder data using dplyr. You can edit the title too if you need to.
+
+### load `tidyverse` (which has `dplyr` inside)
+
+In your R Markdown file, let's make sure we've got our libraries loaded. Write the following: 
+
+```{r, eval=FALSE}
+library(tidyverse)     ## install.packages("tidyverse")
+```
+
+This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn't exist, you can install the package easily by running the code within the comment (highlight `install.packages("tidyverse")` and run it).
+
+
+## Reminder GitHub workflow
+
+
+
+## Corona virus data set
+As the COVID-19 crisis is at the forefront of everyone's minds at the moment, lets use a dataset tallying daily developments in recorded Coronavirus cases across the world, so that we can develop our data wrangling skills by exploring global patterns in the pandemic.
+
+We will use a dataset compiled in the [`coronavirus` R package](https://github.com/RamiKrispin/coronavirus) developed by Rami Krispin. This package (hosted on GitHub) pulls raw data from the Johns Hopkins University Center for Systems Science and Engineering (JHU CCSE) Coronavirus repository and is frequently updated.
+
+We can load the most recent version of the dataset with the following line of code in R
+```{r}
+install.packages("repmis")
+library(repmis)
+
+source_data("https://github.com/Covid19R/coronavirus/blob/master/data/coronavirus.rda?raw=True")
+
+```
+
+If this doesn't work for you for some reason, you can alternatively read in the .csv file
+
+```{r}
+coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv', col_types = cols(Province.State = col_character()))
+```
+
+For today, don't worry about the data import functions - we will cover those in a few weeks.
+
+Once we have the data loaded, let's start getting familiar with its content and format.
+
+Let's inspect: 
+```{r, eval=FALSE}
+## explore the gapminder dataset
+coronavirus # this is super long! Let's inspect in different ways
+```
+
+Let's use `head` and `tail`: 
+```{r head, eval=FALSE}
+head(coronavirus) # shows first 6
+tail(coronavirus) # shows last 6
+head(coronavirus, 10) # shows first X that you indicate
+tail(coronavirus, 12) # guess what this does!
+```
+
+`str()` will provide a sensible description of almost anything: when in doubt, inspect using `str()` on some of the recently created objects to get some ideas about what to do next.
+```{r str, eval=FALSE}
+str(coronavirus) # ?str - displays the structure of an object
+```
+
+We can also see the `gapminder` variable in RStudio's Environment pane (top right)
+
+More ways to learn basic info on a data.frame. 
+```{r names, eval=FALSE}
+names(coronavirus)
+dim(coronavirus)    # ?dim dimension
+ncol(coronavirus)   # ?ncol number of columns
+nrow(coronavirus)   # ?nrow number of rows
+```
+
+A statistical overview can be obtained with `summary()`, or with `skimr::skim()`
+```{r summary, eval=FALSE}
+summary(coronavirus)
+
+# If we don't already have skimr installed, we will need to install it
+# install.packages('skimr')
+library(skimr) 
+skim(coronavirus)
+```
+
+### Look at the variables inside a data.frame
+
+To specify a single variable from a data.frame, use the dollar sign `$`. The `$` operator is a way to extract of replace parts of an object — check out the help menu for `$`. It's a common operator you'll see in R. 
+
+```{r $, eval=FALSE}
+coronavirus$cases # very long! hard to make sense of...
+head(coronavirus$cases) # can do the same tests we tried before
+str(coronavirus$cases) # it is a single numeric vector
+summary(coronavirus$cases) # same information, formatted slightly differently
+```
+
+
+## `dplyr` basics
+
+OK, so let's start wrangling with dplyr.
+
+There are five `dplyr` functions that you will use to do the vast majority of data manipulations:
+
+- **`filter()`**: pick observations by their values
+
+  `r htmltools::img(src='img/rstudio-cheatsheet-filter.png', width=300)` 
+    
+- **`select()`**: pick variables by their names
+
+  `r htmltools::img(src='img/rstudio-cheatsheet-select.png', width=300)`
+    
+- **`mutate()`**: create new variables with functions of existing variables 
+
+  `r htmltools::img(src='img/rstudio-cheatsheet-mutate.png', width=300)`
+  
+- **`arrange()`**: reorder the rows
+
+- **`summarise()`**: collapse many values down to a single summary 
+
+  `r htmltools::img(src='img/rstudio-cheatsheet-summarise.png', width=300)`
+  
+  
+These can all be used in conjunction with `group_by()` which changes the scope of each function from operating on the entire dataset to operating on it group-by-group. These six functions provide the verbs for a language of data manipulation. **We will cover the first four today and `summarise()` and `group_by()` on Wednesday.**
+
+All verbs work similarly:
+
+1. The first argument is a data frame.
+2. The subsequent arguments describe what to do with the data frame. You can refer to columns in the data frame directly without using `$`.
+3. The result is a new data frame.
+
+Together these properties make it easy to chain together multiple simple steps to achieve a complex result.
+
+
+## `filter()` subsets data row-wise (observations).
+
+You will want to isolate bits of your data; maybe you want to only look at a single country or a few years. R calls this subsetting. 
+
+`filter()` is a function in `dplyr` that takes logical expressions and returns the rows for which all are `TRUE`. 
+
+Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
+
+![](img/rstudio-cheatsheet-filter.png)
+Remember your logical expressions? If not, here is a reminder [here](https://www.statmethods.net/management/operators.html#Logical). We’ll use `>` and `==` here. 
+
+```{r, eval=FALSE}
+filter(coronavirus, cases > 0)
+```
+
+You can say this out loud: "Filter the coronavirus data for cases greater than 0". Notice that when we do this, all the columns are returned, but only the rows that have the a non-zero case count. We've subsetted by row.
+
+Let's try another: "Filter the coronavirus data for the country US".
+
+```{r, eval=FALSE}
+filter(coronavirus, Country.Region == "US")
+```
+
+How about if we want two country names? We can't use a single instance of the `==` operator here, because it can only operate on one thing at a time. We can use [Boolean operators](https://r4ds.had.co.nz/transform.html#logical-operators) for this: `&` is “and”, `|` is “or”, and `!` is “not”. So if we want records from both the US and Canada, we can type
+
+```{r, eval=FALSE}
+filter(coronavirus, Country.Region == "US" | Country.Region == "Canada")
+```
+
+A useful short-hand for this problem is `x %in% y`. This will select every row where `x` is one of the values in `y`. We could use it to rewrite the code above:
+
+```{r, eval=FALSE}
+filter(coronavirus, Country.Region %in% c("US", "Canada"))
+```
+
+How about if we want only the death counts in the US? You can pass filter different criteria:
+
+```{r, eval=FALSE}
+# We can use either of these notations:
+filter(coronavirus, Country.Region == "US", type == "death")
+filter(coronavirus, Country.Region == "US" & type == "death")
+```
+
+
+## Your turn 
+
+> What was the total number of deaths in the US in the time period covered in the dataset?   
+> Hint: do this in 2 steps by assigning a variable and then using the `sum()` function.
+>
+> Then, sync to Github.com (pull, stage, commit, push).
+### Answer 
+
+This is one way to do it based on what we have learned so far:
+
+```{r, eval=FALSE}
+x <- filter(coronavirus, Country.Region == "US", type > "death")  
+sum(x$cases)  
+```
+<br>
+<br>
+
+## `select()` subsets data column-wise (variables)
+
+We use `select()` to subset the data on variables or columns. 
+
+Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
+
+![](img/rstudio-cheatsheet-select.png)
+
+We can select multiple columns with a comma, after we specify the data frame (coronavirus). 
+
+```{r, eval=FALSE}
+select(coronavirus, date, Country.Region, type, cases) 
+```
+
+Note how the order of the columns also have been rearranged to match the order they are listed in the `select()` function.
+
+We can also use `-` to deselect columns
+
+```{r, eval=FALSE}
+select(coronavirus, -Lat, -Long) # you can use - to deselect columns
+```
+
+## Use `select()` and `filter()` together
+
+Let's filter for the US and remove the Lat, Long and Province.State columns (because this dataset doesn't currently have data broken down by US state). We'll save this as a variable. Actually, as two temporary variables, which means that for the second one we need to operate on `coronavirus_us`, not `coronavirus`. 
+
+```{r, eval=FALSE}
+coronavirus_us  <- filter(coronavirus, Country.Region == "US")
+coronavirus_us2 <- select(coronavirus_us, -Lat, -Long, -Province.State) 
+```
+
+We also could have called them both `coronavirus_us` and overwritten the first assignment. Either way, naming them and keeping track of them gets super cumbersome, which means more time to understand what's going on and opportunities for confusion or error.
+
+Good thing there is an awesome alternative.
+
+## Meet the new pipe `%>%` operator
+
+Before we go any further, we should explore the new pipe operator that `dplyr` imports from the [`magrittr`](https://github.com/smbache/magrittr) package by Stefan Bache. If you have have not used this before, **this is going to change your life** (at least your coding life...). You no longer need to enact multi-operation commands by nesting them inside each other. And we won't need to make temporary variables like we did in the US example above. This new syntax leads to code that is much easier to write and to read: it actually tells the story of your analysis.
+
+Here's what it looks like: `%>%`. The RStudio keyboard shortcut: Ctrl + Shift + M (Windows), Cmd + Shift + M (Mac).
+
+Let's demo then I'll explain:
+```{r, eval=FALSE}
+coronavirus %>% head()
+```
+
+This is equivalent to `head(coronavirus)`. This pipe operator takes the thing on the left-hand-side and __pipes__ it into the function call on the right-hand-side. It literally drops it in as the first argument.
+
+Never fear, you can still specify other arguments to this function! To see the first 3 rows of coronavirus, we could say `head(coronavirus, 3)` or this:
+```{r, eval=FALSE}
+coronavirus %>% head(3)
+```
+
+**I've advised you to think "gets" whenever you see the assignment operator, `<-`. Similarly, you should think "and then" whenever you see the pipe operator, `%>%`.**
+
+One of the most awesome things about this is that you START with the data before you say what you're doing to DO to it. So above: "take the coronavirus data, and then give me the first three entries".
+
+This means that instead of this:
+
+```{r, eval=FALSE}
+## instead of this...
+coronavirus_us  <- filter(coronavirus, Country.Region == "US")
+coronavirus_us2 <- select(coronavirus_us, -Lat, -Long, -Province.State) 
+## ...we can do this
+coronavirus_us  <- coronavirus %>% filter(Country.Region == "US")
+coronavirus_us2 <- coronavirus_us %>% select(-Lat, -Long, -Province.State) 
+```
+
+So you can see that we'll start with coronavirus in the first example line, and then coronavirus_us in the second. This makes it a bit easier to see what data we are starting with and what we are doing to it.
+
+...But, we still have those temporary variables so we're not truly that better off. But get ready to be majorly impressed:  
+
+
+### Revel in the convenience
+
+We can use the pipe to chain those two operations together:
+
+```{r, eval=FALSE}
+coronavirus_us  <- coronavirus %>% 
+  filter(Country.Region == "US") %>%
+  select(-Lat, -Long, -Province.State) 
+```
+
+What's happening here? In the second line, we were able to delete `coronavirus_us2 <- coronavirus_us`, and put the pipe operator above. This is possible since we wanted to operate on the `coronavirus_us` data anyways. And we weren't truly excited about having a second variable named `coronavirus_us2` anyways, so we can get rid of it. This is huge, because most of your data wrangling will have many more than 2 steps, and we don't want a `coronavirus_us17`!
+
+By using multiple lines I can actually read this like a story and there aren't temporary variables that get super confusing. In my head: 
+
+>"start with the `coronavirus` data, and then  
+filter for the US, and then  
+drop the variables Lat, Long, and Province.State."
+Being able to read a story out of code like this is really game-changing. We'll continue using this syntax as we learn the other dplyr verbs. 
+
+
+## `mutate()` adds new variables
+
+Alright, let's keep going. 
+
+Let's say we needed to add an index column so we know which order these data came in. Let's not make a new variable, let's add a column to our gapminder data frame. How do we do that? With the `mutate()` function. 
+
+Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
+
+![](img/rstudio-cheatsheet-mutate.png)
+
+Imagine we want to know each country's annual GDP. We can multiply `pop` by `gdpPercap` to create a new column named `gdp`.
+
+```{r, eval=FALSE}
+gapminder %>%
+  mutate(gdp = pop * gdpPercap)
+```
+
+### Your turn 
+
+> Calculate the population in thousands for all Asian countries in the year 2007 and add it as a new column.
+>
+> Then, sync to Github.com (pull, stage, commit, push).
+#### Answer 
+```{r, eval=FALSE}
+gapminder %>%
+  filter(continent == "Asia",
+         year == 2007) %>%
+  mutate(pop_thousands = pop/1000) %>%
+  select(country, year, pop_thousands) #this cleans up the dataframe but isn't necessary
+```
+
+
+
+
+
+## Code comparison Tidyverse vs base R
+
+
+
+## Exercises
+
+Plot some pattern.

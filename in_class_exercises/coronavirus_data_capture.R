@@ -1,10 +1,21 @@
 # install.packages("devtools")
 # devtools::install_github("covid19r/coronavirus")
 library(coronavirus)
+library(tidyverse)
 
 head(coronavirus)
+tail(coronavirus)
 View(coronavirus)
 table(coronavirus$Country.Region)
+
+write_csv(coronavirus, 'in_class_exercises/coronavirus_apr04-2020.csv')
+
+?write_csv
+
+
+
+
+
 
 library(dplyr)
 
