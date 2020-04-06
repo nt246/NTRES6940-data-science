@@ -14,6 +14,9 @@ Chapter 5.1-5.5 in [R for Data Science](https://r4ds.had.co.nz/transform.html) b
 
 
 ## Class announcements
+
+\vspace{1.5cm}
+
 * Welcome to the online format
   + Pre-recorded lecture with exercises (50 minutes, suggested time: Mondays and Wednesdays 4.20 - 5.10pm)
   + Live Zoom session for Q&A (Mondays and Wednesdays 5.10 - 5.40pm)
@@ -25,18 +28,18 @@ Chapter 5.1-5.5 in [R for Data Science](https://r4ds.had.co.nz/transform.html) b
 ## Learning objectives for today's class
 By the end of this class you will be able to:
 * run code within RMarkdown documents
+* subset and rearrange data with the key `dplyr` functions filter(), mutate(), select(), and arrange()
+* use piping (%>%) when implementing function chains
 * understand the basic differences between tidyverse and base R syntax
-* get familiar with the key `dplyr` functions filter(), mutate(), select(), and arrange()
-* practice sync'ing files between RStudio and GitHub
+* make sure your RStudio working files are sync'ed to GitHub
 
-wrangle gapminder data with dplyr tidyverse functions
-
-We will use a very topical dataset to illustrate.
 
 **Acknowledgements**: Today's lecture is adapted (with permission) from the excellent [Ocean Health Index Data Science Training](http://ohi-science.org/data-science-training/dplyr.html).
 
 
 ## Recap - how to run code in an RMarkdown document
+To be added.
+
 
 ## What is data wrangling?
 
@@ -47,29 +50,30 @@ We are going to introduce you to data wrangling in R first with the tidyverse. T
 For some things, base-R is more straight forward, and we'll show you that too. Whenever we use a function that is from the tidyverse, we will prefix it so you'll know for sure. 
 
 
-## Tidyverse vs base R (will come back to this later)
-
-http://varianceexplained.org/r/teach-hard-way/
-
-
-
-## Getting started: Find the RProject associated with your class repo
-Did Nicolas ask them to get the RMarkdown last time?
-
-
 ### Setup
-
-We'll do this in a new RMarkdown file. 
-
+Throughout today's class, we'll explore, take notes, and do our exercises in a new RMarkdown file and to practice our GitHub integration and version control, we will make sure our new R Markdown working document gets sync'ed to our GitHub account.
 
 **Here's what to do:**
 
-1. Clear your workspace (Session > Restart R)
-1. New File > R Markdown...
-1. Save as `gapminder-wrangle.Rmd`
-1. Delete the irrelevant text and write a little note to yourself about how we'll be wrangling gapminder data using dplyr. You can edit the title too if you need to.
+Before we start, open the R Project that you created earlier in the course that is associated with your personal GitHub repository hosted under the class organization (you can find the link to it [here](https://classroom.github.com/a/SA7QIA7g). Your repo name should be `therkildsen-class/ntres-6940-YOUR_USER_NAME`. If you followed the instructions, your R Project linked to this account should be named `ntres-6940-YOUR_USER_NAME`. If you can't remember where you saved it on your local computer, you can search for this (replace YOUR_USER_NAME with your GitHub account name) on your computer. Click on the `ntres-6940-YOUR_USER_NAME.Rproj` file.
 
-### load `tidyverse` (which has `dplyr` inside)
+Then
+1. If RStudio was already open, clear your workspace (Session > Restart R)
+1. New File > R Markdown...
+1. Save as `coronavirus-wrangle.Rmd` save it to your course notes folder within your GitHub-linked folder.
+1. Delete the irrelevant text and write a little note to yourself about how we'll be wrangling coronavirus data using dplyr. Edit the title and change the output format to 'github_document'.
+
+<br>
+
+## Sync to GitHub
+ If you forgot the workflow, review [lesson 3](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson3-version-control.md#sync-from-rstudio-local-to-github-remote).
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("../img/commit_steps.png")  
+```
+
+
+### Load `tidyverse` (which has `dplyr` inside)
 
 In your R Markdown file, let's make sure we've got our libraries loaded. Write the following: 
 
@@ -80,37 +84,34 @@ library(tidyverse)     ## install.packages("tidyverse")
 This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn't exist, you can install the package easily by running the code within the comment (highlight `install.packages("tidyverse")` and run it).
 
 
-## Reminder GitHub workflow
-
-
-
-## Corona virus data set
+## Coronavirus data set
 As the COVID-19 crisis is at the forefront of everyone's minds at the moment, lets use a dataset tallying daily developments in recorded Coronavirus cases across the world, so that we can develop our data wrangling skills by exploring global patterns in the pandemic.
 
 We will use a dataset compiled in the [`coronavirus` R package](https://github.com/RamiKrispin/coronavirus) developed by Rami Krispin. This package (hosted on GitHub) pulls raw data from the Johns Hopkins University Center for Systems Science and Engineering (JHU CCSE) Coronavirus repository and is frequently updated.
 
-We can load the most recent version of the dataset with the following line of code in R
-```{r}
-install.packages("repmis")
-library(repmis)
+The compiled package is available to install like any other package from CRAN with `install.packages`. However, it keeps getting updated, so to make sure that we're always working with the most current version, we will import the dataset directly from GitHub. 
 
-source_data("https://github.com/Covid19R/coronavirus/blob/master/data/coronavirus.rda?raw=True")
+Let's first check when the `coronavirus_dataset.csv` file on the [coronavirus package GitHub page](https://github.com/RamiKrispin/coronavirus-csv) was last updated.
 
-```
+If we click on the `coronavirus_dataset.csv` file, we'll see that it's too large to display on GitHub in data-view mode. We can read this data into R directly from GitHub, without downloading it. But we can't read this data in view-mode. We have to click on the **View raw** link in the view window. This displays it as the raw csv file, without formatting. 
 
-If this doesn't work for you for some reason, you can alternatively read in the .csv file
+Copy the url for raw data: 
+https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv
 
-```{r}
+Now, let's go back to RStudio. In our R Markdown, let's read this csv file and name the variable "coronavirus". We will use the `read_csv()` function from the `readr` package (part of the tidyverse, so it's already installed!). 
+
+```{r, eval=FALSE}
+# read in corona .csv
 coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv', col_types = cols(Province.State = col_character()))
 ```
 
-For today, don't worry about the data import functions - we will cover those in a few weeks.
+For today, don't worry about why we need to specify the `col_types` argument - we will cover the details of data import functions in a few weeks.
 
 Once we have the data loaded, let's start getting familiar with its content and format.
 
 Let's inspect: 
 ```{r, eval=FALSE}
-## explore the gapminder dataset
+## explore the coronavirus dataset
 coronavirus # this is super long! Let's inspect in different ways
 ```
 
@@ -127,7 +128,7 @@ tail(coronavirus, 12) # guess what this does!
 str(coronavirus) # ?str - displays the structure of an object
 ```
 
-We can also see the `gapminder` variable in RStudio's Environment pane (top right)
+We can also see the `coronavirus` variable in RStudio's Environment pane (top right)
 
 More ways to learn basic info on a data.frame. 
 ```{r names, eval=FALSE}
@@ -167,21 +168,21 @@ There are five `dplyr` functions that you will use to do the vast majority of da
 
 - **`filter()`**: pick observations by their values
 
-  `r htmltools::img(src='img/rstudio-cheatsheet-filter.png', width=300)` 
+  `r htmltools::img(src='../img/rstudio-cheatsheet-filter.png', width=300)` 
     
 - **`select()`**: pick variables by their names
 
-  `r htmltools::img(src='img/rstudio-cheatsheet-select.png', width=300)`
+  `r htmltools::img(src='../img/rstudio-cheatsheet-select.png', width=300)`
     
 - **`mutate()`**: create new variables with functions of existing variables 
 
-  `r htmltools::img(src='img/rstudio-cheatsheet-mutate.png', width=300)`
+  `r htmltools::img(src='../img/rstudio-cheatsheet-mutate.png', width=300)`
   
 - **`arrange()`**: reorder the rows
 
 - **`summarise()`**: collapse many values down to a single summary 
 
-  `r htmltools::img(src='img/rstudio-cheatsheet-summarise.png', width=300)`
+  `r htmltools::img(src='../img/rstudio-cheatsheet-summarise.png', width=300)`
   
   
 These can all be used in conjunction with `group_by()` which changes the scope of each function from operating on the entire dataset to operating on it group-by-group. These six functions provide the verbs for a language of data manipulation. **We will cover the first four today and `summarise()` and `group_by()` on Wednesday.**
@@ -203,7 +204,7 @@ You will want to isolate bits of your data; maybe you want to only look at a sin
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
 
-![](img/rstudio-cheatsheet-filter.png)
+![](../img/rstudio-cheatsheet-filter.png)
 Remember your logical expressions? If not, here is a reminder [here](https://www.statmethods.net/management/operators.html#Logical). We’ll use `>` and `==` here. 
 
 ```{r, eval=FALSE}
@@ -245,6 +246,9 @@ filter(coronavirus, Country.Region == "US" & type == "death")
 > Hint: do this in 2 steps by assigning a variable and then using the `sum()` function.
 >
 > Then, sync to Github.com (pull, stage, commit, push).
+
+<br>
+
 ### Answer 
 
 This is one way to do it based on what we have learned so far:
@@ -262,7 +266,7 @@ We use `select()` to subset the data on variables or columns.
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
 
-![](img/rstudio-cheatsheet-select.png)
+![](../img/rstudio-cheatsheet-select.png)
 
 We can select multiple columns with a comma, after we specify the data frame (coronavirus). 
 
@@ -349,45 +353,113 @@ drop the variables Lat, Long, and Province.State."
 Being able to read a story out of code like this is really game-changing. We'll continue using this syntax as we learn the other dplyr verbs. 
 
 
+
 ## `mutate()` adds new variables
 
 Alright, let's keep going. 
 
-Let's say we needed to add an index column so we know which order these data came in. Let's not make a new variable, let's add a column to our gapminder data frame. How do we do that? With the `mutate()` function. 
+Let's say we needed to add an index column so we know which order these data came in. Let's not make a new variable, let's add a column to our coronavirus data frame. How do we do that? With the `mutate()` function. 
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
 
-![](img/rstudio-cheatsheet-mutate.png)
+![](../img/rstudio-cheatsheet-mutate.png)
 
-Imagine we want to know each country's annual GDP. We can multiply `pop` by `gdpPercap` to create a new column named `gdp`.
+The current variables in the coronavirus dataset don't lend themselves well to cross-computation, so to illustrate the power of the mutate() function, let's reformat the dataset so that we get the counts of confirmed cases, deaths and recovered for each date and country in separate columns. The tidyverse has a very convenient function for making that kind of transformation. Don't worry about how it works right now, we'll get an opportunity to explore it next week.
+
+For now, just copy the following code to summarize the total number of cases recorded by country and type (in the time period covered by this dataset `min(coronavirus$date)` to `max(coronavirus$date)`):
 
 ```{r, eval=FALSE}
-gapminder %>%
-  mutate(gdp = pop * gdpPercap)
+coronavirus_ttd <- coronavirus %>% 
+  select(country = Country.Region, type, cases) %>%
+  group_by(country, type) %>%
+  summarise(total_cases = sum(cases)) %>%
+  pivot_wider(names_from = type,
+              values_from = total_cases) %>%
+  arrange(-confirmed)
+
+```
+
+
+Imagine we want to know each country's death rate. We can divide the case counts of `death` by `confirmed` to create a new column named `deathrate`.
+
+```{r, eval=FALSE}
+coronavirus_ttd %>%
+  mutate(deathrate = death / confirmed) 
 ```
 
 ### Your turn 
 
-> Calculate the population in thousands for all Asian countries in the year 2007 and add it as a new column.
+> Add a new variable that shows the proportion of confirmed cases for which the outcome is still unknown (i.e. not counted as dead or recovered) for each country and show only countries more than 20,000 confirmed cases.
 >
-> Then, sync to Github.com (pull, stage, commit, push).
+> Then, sync your RMarkdown file to Github.com (pull, stage, commit, push).
+
 #### Answer 
 ```{r, eval=FALSE}
-gapminder %>%
-  filter(continent == "Asia",
-         year == 2007) %>%
-  mutate(pop_thousands = pop/1000) %>%
-  select(country, year, pop_thousands) #this cleans up the dataframe but isn't necessary
+
+coronavirus_ttd %>%
+  mutate(undet = (confirmed - death - recovered) / confirmed) %>% 
+  filter(confirmed > 20000)
+  
 ```
 
 
+## `arrange()` orders rows
+
+For examining the output of our previous calculations, we may want to re-arrange the countries in ascending order for the proportion of confirmed cases for which the outcome remains unknown. The dplyr function for sorting rows is `arrange()`. 
+
+```{r, eval=FALSE}
+
+coronavirus_ttd %>%
+  mutate(undet = (confirmed - death - recovered)/confirmed) %>% 
+  filter(confirmed > 20000) %>% 
+  arrange(undet)
+  
+```
+
+### Your turn
+
+> How many countries have suffered more than 3,000 deaths so far and which three countries have recorded the highest death counts?
+
+#### Answer
+
+```{r, eval = FALSE}
+
+coronavirus_ttd %>%
+  filter(death > 3000) %>% 
+  arrange(-death)
+
+```
+
+### Your turn
+
+> 1. Go back to our original dataset `coronavirus` and identify where and when the highest death count in a single day was observed. Hint: you can either use or `base::max` and `dplyr::arrange()`...
+> 1. The first case was confirmed in the US on [January 20 2020](https://www.nejm.org/doi/full/10.1056/NEJMoa2001191), marking the earliest day included in this dataset. When was the first confirmed case recorded in the Denmark?
+> 
+> 1. Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit, push)
+
+#### Answer (no peeking!)
+```{r, eval=FALSE}
+# Identifying the record with the highest death count
+coronavirus %>% 
+  filter(type == "death") %>% 
+  arrange(-cases)
+
+# We can also just identify the top hit 
+coronavirus %>% 
+  filter(type == "death") %>% 
+  filter(cases == max(cases))
+
+# The first recorded case in Denmark
+coronavirus %>% 
+  filter(Country.Region == "Denmark", cases > 0) %>% 
+  arrange(date)
+ 
+```
+
+**Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit, push)**
 
 
+## Extra exercises to do if you have time
 
-## Code comparison Tidyverse vs base R
+Combine your new data wrangling skills with the ggplot skills to covered last week to explore patterns in the coronavirus dataset. How have the number of cases developed over time in different countries?
 
-
-
-## Exercises
-
-Plot some pattern.

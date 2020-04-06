@@ -12,6 +12,15 @@ write_csv(coronavirus, 'in_class_exercises/coronavirus_apr04-2020.csv')
 
 ?write_csv
 
+# We can load the most recent version of the dataset with the following line of code in R
+```{r}
+install.packages("repmis")
+library(repmis)
+
+source_data("https://github.com/Covid19R/coronavirus/blob/master/data/coronavirus.rda?raw=True")
+
+```
+
 
 
 
