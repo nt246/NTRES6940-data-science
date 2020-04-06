@@ -7,27 +7,32 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+<br>
 
 ## Readings
 
 Chapter 5.1-5.5 in [R for Data Science](https://r4ds.had.co.nz/transform.html) by Hadley Wickham & Garrett Grolemund
 
+<br>
 
 ## Class announcements
 
-\vspace{1.5cm}
 
-* Welcome to the online format
+* **Welcome to the online format!**
+
   + Pre-recorded lecture with exercises (50 minutes, suggested time: Mondays and Wednesdays 4.20 - 5.10pm)
   + Live Zoom session for Q&A (Mondays and Wednesdays 5.10 - 5.40pm)
-* Nicolas and Nina will be on Slack (lecture-chat channel or direct message) and on Zoom through (this link)[https://cornell.zoom.us/j/949251351] with a waiting room to address questions and help troubleshoot technical issues during the lecture period 4.20-5.10pm
-* Feedback on the online format welcome!
-  + New feedback-online-format in Slack workspace
+<br>  
+* Nicolas and Nina will be on Slack (`lecture-chat` channel or direct message) and on Zoom through [this link](https://cornell.zoom.us/j/949251351) with a waiting room to address questions and help troubleshoot technical issues during the lecture period 4.20-5.10pm Mondays and Wednesdays
+<br>  
+* Feedback on the online format welcome! We are very receptive to ideas for improvement
+  + New `feedback-online-format` channel in Slack workspace
   
 
 ## Learning objectives for today's class
+
 By the end of this class you will be able to:
-* run code within RMarkdown documents
+
 * subset and rearrange data with the key `dplyr` functions filter(), mutate(), select(), and arrange()
 * use piping (%>%) when implementing function chains
 * understand the basic differences between tidyverse and base R syntax
@@ -36,10 +41,7 @@ By the end of this class you will be able to:
 
 **Acknowledgements**: Today's lecture is adapted (with permission) from the excellent [Ocean Health Index Data Science Training](http://ohi-science.org/data-science-training/dplyr.html).
 
-
-## Recap - how to run code in an RMarkdown document
-To be added.
-
+<br>
 
 ## What is data wrangling?
 
@@ -48,7 +50,7 @@ What are some common things you like to do with your data? Maybe remove rows or 
 We are going to introduce you to data wrangling in R first with the tidyverse. The tidyverse is a suite of packages that match a philosophy of data science developed by Hadley Wickham and the RStudio team. I find it to be a more straight-forward way to learn R. We will also show you by comparison what code will look like in "Base R", which means, in R without any additional packages (like the "tidyverse" package)  installed. I like David Robinson's blog post on the topic of [teaching the tidyverse first](http://varianceexplained.org/r/teach-hard-way).
 
 For some things, base-R is more straight forward, and we'll show you that too. Whenever we use a function that is from the tidyverse, we will prefix it so you'll know for sure. 
-
+<br>
 
 ### Setup
 Throughout today's class, we'll explore, take notes, and do our exercises in a new RMarkdown file and to practice our GitHub integration and version control, we will make sure our new R Markdown working document gets sync'ed to our GitHub account.
@@ -72,6 +74,7 @@ Then
 knitr::include_graphics("../img/commit_steps.png")  
 ```
 
+<br>
 
 ### Load `tidyverse` (which has `dplyr` inside)
 
@@ -83,6 +86,7 @@ library(tidyverse)     ## install.packages("tidyverse")
 
 This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn't exist, you can install the package easily by running the code within the comment (highlight `install.packages("tidyverse")` and run it).
 
+<br>
 
 ## Coronavirus data set
 As the COVID-19 crisis is at the forefront of everyone's minds at the moment, lets use a dataset tallying daily developments in recorded Coronavirus cases across the world, so that we can develop our data wrangling skills by exploring global patterns in the pandemic.
@@ -148,6 +152,8 @@ library(skimr)
 skim(coronavirus)
 ```
 
+<br>
+
 ### Look at the variables inside a data.frame
 
 To specify a single variable from a data.frame, use the dollar sign `$`. The `$` operator is a way to extract of replace parts of an object — check out the help menu for `$`. It's a common operator you'll see in R. 
@@ -159,6 +165,7 @@ str(coronavirus$cases) # it is a single numeric vector
 summary(coronavirus$cases) # same information, formatted slightly differently
 ```
 
+<br>
 
 ## `dplyr` basics
 
@@ -195,6 +202,7 @@ All verbs work similarly:
 
 Together these properties make it easy to chain together multiple simple steps to achieve a complex result.
 
+<br>
 
 ## `filter()` subsets data row-wise (observations).
 
@@ -282,6 +290,8 @@ We can also use `-` to deselect columns
 select(coronavirus, -Lat, -Long) # you can use - to deselect columns
 ```
 
+<br>
+
 ## Use `select()` and `filter()` together
 
 Let's filter for the US and remove the Lat, Long and Province.State columns (because this dataset doesn't currently have data broken down by US state). We'll save this as a variable. Actually, as two temporary variables, which means that for the second one we need to operate on `coronavirus_us`, not `coronavirus`. 
@@ -294,6 +304,8 @@ coronavirus_us2 <- select(coronavirus_us, -Lat, -Long, -Province.State)
 We also could have called them both `coronavirus_us` and overwritten the first assignment. Either way, naming them and keeping track of them gets super cumbersome, which means more time to understand what's going on and opportunities for confusion or error.
 
 Good thing there is an awesome alternative.
+
+<br>
 
 ## Meet the new pipe `%>%` operator
 
@@ -332,6 +344,7 @@ So you can see that we'll start with coronavirus in the first example line, and 
 
 ...But, we still have those temporary variables so we're not truly that better off. But get ready to be majorly impressed:  
 
+<br>
 
 ### Revel in the convenience
 
@@ -352,7 +365,7 @@ filter for the US, and then
 drop the variables Lat, Long, and Province.State."
 Being able to read a story out of code like this is really game-changing. We'll continue using this syntax as we learn the other dplyr verbs. 
 
-
+<br>
 
 ## `mutate()` adds new variables
 
@@ -402,6 +415,7 @@ coronavirus_ttd %>%
   
 ```
 
+<br>
 
 ## `arrange()` orders rows
 
@@ -430,7 +444,7 @@ coronavirus_ttd %>%
 
 ```
 
-### Your turn
+### Your turn again
 
 > 1. Go back to our original dataset `coronavirus` and identify where and when the highest death count in a single day was observed. Hint: you can either use or `base::max` and `dplyr::arrange()`...
 > 1. The first case was confirmed in the US on [January 20 2020](https://www.nejm.org/doi/full/10.1056/NEJMoa2001191), marking the earliest day included in this dataset. When was the first confirmed case recorded in the Denmark?
@@ -458,6 +472,7 @@ coronavirus %>%
 
 **Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit, push)**
 
+<br>
 
 ## Extra exercises to do if you have time
 
