@@ -229,14 +229,6 @@ head(coronavirus, 10) # shows first X that you indicate
 tail(coronavirus, 12) # guess what this does!
 ```
 
-`str()` will provide a sensible description of almost anything: when in
-doubt, inspect using `str()` on some of the recently created objects to
-get some ideas about what to do next.
-
-``` r
-str(coronavirus) # ?str - displays the structure of an object
-```
-
 We can also see the `coronavirus` variable in RStudio’s Environment pane
 (top right)
 
@@ -418,7 +410,7 @@ filter(coronavirus, Country.Region == "US" & type == "death")
 This is one way to do it based on what we have learned so far:
 
 ``` r
-x <- filter(coronavirus, Country.Region == "US", type > "death")  
+x <- filter(coronavirus, Country.Region == "US", type == "death")  
 sum(x$cases)  
 ```
 

@@ -285,7 +285,7 @@ filter(coronavirus, Country.Region == "US" & type == "death")
 This is one way to do it based on what we have learned so far:
 
 ```{r, eval=FALSE}
-x <- filter(coronavirus, Country.Region == "US", type > "death")  
+x <- filter(coronavirus, Country.Region == "US", type == "death")  
 sum(x$cases)  
 ```
 <br>
