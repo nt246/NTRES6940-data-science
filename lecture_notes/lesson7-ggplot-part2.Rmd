@@ -1,0 +1,28 @@
+---
+title: "Lesson 7: ggplot part 2"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Readings
+
+**Required**:  
+
+* Review Chapter 3.1-3.6 and read Chapter 3.7-3.10 in [Grolemund and Wickham's R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#statistical-transformations)
+
+* Skim the [The tidyverse style guide](https://style.tidyverse.org/) for inspiration - **you don't have to read the whole guide carefully**
+
+<br>
+
+
+**Additional resources**:  
+
+* [RStudio's ggplot2 cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)  
+
+* [“Why I use ggplot2” - David Robinson Blog Post](http://varianceexplained.org/r/why-I-use-ggplot2/)
+
+

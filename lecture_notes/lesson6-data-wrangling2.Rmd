@@ -18,3 +18,257 @@ Chapter 5.6-5.7 in [R for Data Science](https://r4ds.had.co.nz/transform.html#gr
 #### Other resources:
 
 The [Introduction to `dplyr` vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
+
+
+
+## Learning objectives
+
+
+
+## Getting started
+Clean up and style our RMarkdown document
+Knit and post to Slack
+
+## Running code in RMarkdown
+
+## Use `select()` and `filter()` together
+
+Let's filter for the US and remove the Lat, Long and Province.State columns (because this dataset doesn't currently have data broken down by US state). We'll save this as a variable. Actually, as two temporary variables, which means that for the second one we need to operate on `coronavirus_us`, not `coronavirus`. 
+
+```{r, eval=FALSE}
+coronavirus_us  <- filter(coronavirus, Country.Region == "US")
+coronavirus_us2 <- select(coronavirus_us, -Lat, -Long, -Province.State) 
+```
+
+We also could have called them both `coronavirus_us` and overwritten the first assignment. Either way, naming them and keeping track of them gets super cumbersome, which means more time to understand what's going on and opportunities for confusion or error.
+
+Good thing there is an awesome alternative.
+
+<br>
+
+## Meet the new pipe `%>%` operator
+
+Before we go any further, we should explore the new pipe operator that `dplyr` imports from the [`magrittr`](https://github.com/smbache/magrittr) package by Stefan Bache. If you have have not used this before, **this is going to change your life** (at least your coding life...). You no longer need to enact multi-operation commands by nesting them inside each other. And we won't need to make temporary variables like we did in the US example above. This new syntax leads to code that is much easier to write and to read: it actually tells the story of your analysis.
+
+Here's what it looks like: `%>%`. The RStudio keyboard shortcut: Ctrl + Shift + M (Windows), Cmd + Shift + M (Mac).
+
+Let's demo then I'll explain:
+```{r, eval=FALSE}
+coronavirus %>% head()
+```
+
+This is equivalent to `head(coronavirus)`. This pipe operator takes the thing on the left-hand-side and __pipes__ it into the function call on the right-hand-side. It literally drops it in as the first argument.
+
+Never fear, you can still specify other arguments to this function! To see the first 3 rows of coronavirus, we could say `head(coronavirus, 3)` or this:
+```{r, eval=FALSE}
+coronavirus %>% head(3)
+```
+
+**I've advised you to think "gets" whenever you see the assignment operator, `<-`. Similarly, you should think "and then" whenever you see the pipe operator, `%>%`.**
+
+One of the most awesome things about this is that you START with the data before you say what you're doing to DO to it. So above: "take the coronavirus data, and then give me the first three entries".
+
+This means that instead of this:
+
+```{r, eval=FALSE}
+## instead of this...
+coronavirus_us  <- filter(coronavirus, Country.Region == "US")
+coronavirus_us2 <- select(coronavirus_us, -Lat, -Long, -Province.State) 
+## ...we can do this
+coronavirus_us  <- coronavirus %>% filter(Country.Region == "US")
+coronavirus_us2 <- coronavirus_us %>% select(-Lat, -Long, -Province.State) 
+```
+
+So you can see that we'll start with coronavirus in the first example line, and then coronavirus_us in the second. This makes it a bit easier to see what data we are starting with and what we are doing to it.
+
+...But, we still have those temporary variables so we're not truly that better off. But get ready to be majorly impressed:  
+
+<br>
+
+### Revel in the convenience
+
+We can use the pipe to chain those two operations together:
+
+```{r, eval=FALSE}
+coronavirus_us  <- coronavirus %>% 
+  filter(Country.Region == "US") %>%
+  select(-Lat, -Long, -Province.State) 
+```
+
+What's happening here? In the second line, we were able to delete `coronavirus_us2 <- coronavirus_us`, and put the pipe operator above. This is possible since we wanted to operate on the `coronavirus_us` data anyways. And we weren't truly excited about having a second variable named `coronavirus_us2` anyways, so we can get rid of it. This is huge, because most of your data wrangling will have many more than 2 steps, and we don't want a `coronavirus_us17`!
+
+By using multiple lines I can actually read this like a story and there aren't temporary variables that get super confusing. In my head: 
+
+>"start with the `coronavirus` data, and then  
+filter for the US, and then  
+drop the variables Lat, Long, and Province.State."
+Being able to read a story out of code like this is really game-changing. We'll continue using this syntax as we learn the other dplyr verbs. 
+
+Compare with some base R code to accomplish the same things. Base R requires subsetting with the [rows, columns] notation. This notation is something you’ll see a lot in base R. the brackets [ ] allow you to extract parts of an object. Within the brackets, the comma separates rows from columns.
+
+If we don’t write anything after the comma, that means “all columns”. And if we don’t write anything before the comma, that means “all rows”.
+
+Also, the $ operator is how you access specific columns of your dataframe.
+
+```{r, eval=FALSE}
+#There are many ways we could subset columns, here's one
+coronavirus[coronavirus$Country.Region == "US", colnames(coronavirus) %in% c("Lat", "Long", "Province.State")==FALSE] ## repeat `coronavirus`, [i, j] indexing is distracting.
+```
+
+Never index by blind numbers!
+```{r, eval=FALSE}
+#There are many ways we could subset columns, here's another (bad choice)
+head(coronavirus)
+coronavirus[coronavirus$Country.Region == "US", c(2, 5:7)] 
+
+```
+Why is this a terrible idea?
+
+* It is not self-documenting. What are the columns were retaining here?
+* It is fragile. This line of code will produce different results if someone changes the organization of the dataset, e.g. adds new variables. This is especially risky if we index rows by numbers as a sorting action earlier in the script would then give unexpected results. 
+
+
+This call explains itself and is fairly robust.
+```{r, eval=FALSE}
+coronavirus_us  <- coronavirus %>% 
+  filter(Country.Region == "US") %>%
+  select(-Lat, -Long, -Province.State) 
+```
+
+
+<br>
+
+## `mutate()` adds new variables
+
+Alright, let's keep going. 
+
+Let's say we needed to add an index column so we know which order these data came in. Let's not make a new variable, let's add a column to our coronavirus data frame. How do we do that? With the `mutate()` function. 
+
+Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
+
+![](../img/rstudio-cheatsheet-mutate.png)
+
+The current variables in the coronavirus dataset don't lend themselves well to cross-computation, so to illustrate the power of the mutate() function, let's reformat the dataset so that we get the counts of confirmed cases, deaths and recovered for each date and country in separate columns. The tidyverse has a very convenient function for making that kind of transformation. Don't worry about how it works right now, we'll get an opportunity to explore it next week.
+
+For now, just copy the following code to summarize the total number of cases recorded by country and type (in the time period covered by this dataset `min(coronavirus$date)` to `max(coronavirus$date)`):
+
+```{r, eval=FALSE}
+coronavirus_ttd <- coronavirus %>% 
+  select(country = Country.Region, type, cases) %>%
+  group_by(country, type) %>%
+  summarise(total_cases = sum(cases)) %>%
+  pivot_wider(names_from = type,
+              values_from = total_cases) %>%
+  arrange(-confirmed)
+
+```
+
+
+Imagine we want to know each country's death rate. We can divide the case counts of `death` by `confirmed` to create a new column named `deathrate`.
+
+```{r, eval=FALSE}
+coronavirus_ttd %>%
+  mutate(deathrate = death / confirmed) 
+```
+
+### Your turn 
+
+> Add a new variable that shows the proportion of confirmed cases for which the outcome is still unknown (i.e. not counted as dead or recovered) for each country and show only countries more than 20,000 confirmed cases.
+>
+> Then, sync your RMarkdown file to Github.com (pull, stage, commit, push).
+
+#### Answer 
+```{r, eval=FALSE}
+
+coronavirus_ttd %>%
+  mutate(undet = (confirmed - death - recovered) / confirmed) %>% 
+  filter(confirmed > 20000)
+  
+```
+
+**Now back to `select()`**
+
+You’ve seen simple use of `select()`. There are two tricks you might enjoy:
+
+* `select()` can rename the variables you request to keep.
+* `select()` can be used with everything() to hoist a variable up to the front of the tibble.
+
+```{r, eval=FALSE}
+
+coronavirus_ttd %>%
+  mutate(undet = (confirmed - death - recovered) / confirmed) %>% 
+  select(undetermined = undet, confirmed, country) %>% 
+  select(country, everything())
+  
+```
+
+
+
+
+
+
+<br>
+
+## `arrange()` orders rows
+
+For examining the output of our previous calculations, we may want to re-arrange the countries in ascending order for the proportion of confirmed cases for which the outcome remains unknown. The dplyr function for sorting rows is `arrange()`. 
+
+```{r, eval=FALSE}
+
+coronavirus_ttd %>%
+  mutate(undet = (confirmed - death - recovered)/confirmed) %>% 
+  filter(confirmed > 20000) %>% 
+  arrange(undet)
+  
+```
+
+I advise that your analyses NEVER rely on rows or variables being in a specific order. But it’s still true that human beings write the code and the interactive development process can be much nicer if you reorder the rows of your data as you go along. Also, once you are preparing tables for human eyeballs, it is imperative that you step up and take control of row order.
+
+### Your turn
+
+> How many countries have suffered more than 3,000 deaths so far and which three countries have recorded the highest death counts?
+
+#### Answer
+
+```{r, eval = FALSE}
+
+coronavirus_ttd %>%
+  filter(death > 3000) %>% 
+  arrange(-death)
+
+```
+
+### Your turn again
+
+> 1. Go back to our original dataset `coronavirus` and identify where and when the highest death count in a single day was observed. Hint: you can either use or `base::max` and `dplyr::arrange()`...
+> 1. The first case was confirmed in the US on [January 20 2020](https://www.nejm.org/doi/full/10.1056/NEJMoa2001191), marking the earliest day included in this dataset. When was the first confirmed case recorded in the Denmark?
+> 
+> 1. Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit, push)
+
+#### Answer (no peeking!)
+```{r, eval=FALSE}
+# Identifying the record with the highest death count
+coronavirus %>% 
+  filter(type == "death") %>% 
+  arrange(-cases)
+
+# We can also just identify the top hit 
+coronavirus %>% 
+  filter(type == "death") %>% 
+  filter(cases == max(cases))
+
+# The first recorded case in Denmark
+coronavirus %>% 
+  filter(Country.Region == "Denmark", cases > 0) %>% 
+  arrange(date)
+ 
+```
+
+**Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit, push)**
+
+<br>
+
+## Extra exercises to do if you have time
+
+Combine your new data wrangling skills with the ggplot skills to covered last week to explore patterns in the coronavirus dataset. How have the number of cases developed over time in different countries?
+
