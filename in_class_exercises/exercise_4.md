@@ -28,11 +28,21 @@ head(economics) ## Hide the output of this
 
 #### 1.2 Plot the trend of land values in all states in the same plot and assign a different color to each state.
 
+``` r
+p5 <- ggplot(housing, aes(x = Date, y = Land.Value))
+p5 + geom_line(aes(color = State))
+```
+
 ![](exercise_4_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
 <br>
 
 #### 1.3 Use facetting to plot each state in a different plot, as the following.
+
+``` r
+p5 <- ggplot(housing, aes(x = Date, y = Land.Value))
+p5 + geom_line() + facet_wrap(~State, ncol = 10)
+```
 
 ![](exercise_4_files/figure-markdown_github/unnamed-chunk-4-1.png)
 
