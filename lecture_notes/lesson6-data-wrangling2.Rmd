@@ -7,33 +7,108 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
+<br>
 ## Readings
 
 #### Required: 
 
-Chapter 5.6-5.7 in [R for Data Science](https://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) by Hadley Wickham & Garrett Grolemund
+* Chapter 5.6-5.7 in [R for Data Science](https://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) by Hadley Wickham & Garrett Grolemund
 
 
 #### Other resources:
 
-The [Introduction to `dplyr` vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
+* The [Introduction to `dplyr` vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
 
+* Jenny Bryan's lectures from STAT545 at UBC: [Introduction to dplyr](http://stat545.com/block009_dplyr-intro.html)
 
+* Software Carpentry's R for reproducible scientific analysis materials: [Dataframe manipulation with dplyr](https://swcarpentry.github.io/r-novice-gapminder/13-dplyr/)
+
+<br>
+
+## Class announcements
+
+* Problem Set 2 is due at 10pm tonight. Problem set 3 due next Wednesday
+* Will have longer Zoom session next week
+
+<br>
 
 ## Learning objectives
 
+Last class, we learned how to use `dplyr` functions
+  + `filter()` for subsetting data with row logic
+  + `select()` for subsetting data variable- or column-wise
+We also reinforced our practice with sync'ing our files from RStudio to GitHub
+
+Today, we'll expand our data wrangling toolbox. By the end of today's class, you should be able to:
+
+* Use piping (`%>%`) when implementing function chains
+* Subset, rearrange, and summarize data with key `dplyr` functions
+  + Create new variables with functions of existing variables with `mutate()`
+  + Reorder the rows with `arrange()`
+  + Collapse many values down to a single summary with `summarize()` and `group_by()`
+* Understand the basic differences between tidyverse and base R syntax
 
 
-## Getting started
-Clean up and style our RMarkdown document
-Knit and post to Slack
 
-## Running code in RMarkdown
+**Acknowledgements**: Today's lecture is adapted (with permission) from the excellent [Ocean Health Index Data Science Training](http://ohi-science.org/data-science-training/dplyr.html) and Jenny Bryan's lectures from STAT545 at UBC: [Introduction to dplyr](http://stat545.com/block009_dplyr-intro.html).
+
+<br>
+
+### Let's first clean up our RMarkdown file from last class and add some styling
+
+* Separate into separate code chunks and add a little commentary above each. You can also name your code chunks, if you'd like.
+* Add a few headers.
+* How about a picture?
+
+If you forgot how, take a peek at the [RMarkdown Cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/rmarkdown-2.0.pdf)
+
+<br>
+
+### Running RMarkdown code chunks 
+
+So far we have written code in our RMarkdown file that is executed when we knit the file. We have also written code directly in the Console that is executed when we press enter/return. Additionally, we can write code in an RMarkdown code chunk and execute it by sending it into the Console (i.e. we can execute code without knitting the document). 
+
+How do we do it? There are several ways.
+
+**First approach: send R code to the Console.**
+This approach involves selecting (highlighting) the R code only (`summary(pressure)`), not any of the backticks/fences from the code chunk. (If you see `Error: attempt to use zero-length variable name` it is because you have accidentally highlighted the backticks along with the R code. Try again (and don't forget that you can add spaces within the code chunk or make your RStudio session bigger (View > Zoom In)). 
+
+Do this by selecting code and then: 
+
+1. copy-pasting into the Console and press enter/return.
+1. clicking 'Run' from RStudio IDE. This is available from: 
+    a. the bar above the file (green arrow)
+    b. the menu bar: Code > Run Selected Line(s)
+    c. keyboard shortcut: command-return
+
+**Second approach: run full code chunk.**
+Since we are already grouping relevant code together in chunks, it's reasonable that we might want to run it all together at once. 
+
+Do this by placing your curser within a code chunk and then: 
+
+1. clicking the little black down arrow next to the Run green arrow and selecting Run Current Chunk. Notice there are also options to run all chunks, run all chunks above or below...
+
+<br>
+
+## Reloading the data
+Let's jump back in where we left on Monday. Let's first clear out our workspace so we start with a fresh session by clicking "Session" -> "Restart R". The let's load the Coronavirus dataset back in directly from the GitHub URL and see whether it has been updated - what is the latest date included?
+
+```{r, eval = FALSE}
+library(tidyverse)     ## install.packages("tidyverse")
+library(skimr)        ## install.packages("skimr")
+
+# read in corona .csv (don't worry for now about what the col_types parameter means, we'll discuss that next week)
+coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv', col_types = cols(Province.State = col_character()))
+
+skim(coronavirus)
+
+```
+
+<br>
 
 ## Use `select()` and `filter()` together
 
-Let's filter for the US and remove the Lat, Long and Province.State columns (because this dataset doesn't currently have data broken down by US state). We'll save this as a variable. Actually, as two temporary variables, which means that for the second one we need to operate on `coronavirus_us`, not `coronavirus`. 
+On Monday, we explored the functions `select()` and `filter()` separately. Now let's combine them and filter for the US and remove the Lat, Long and Province.State columns (because this dataset doesn't currently have data broken down by US state). We'll save this as a variable. Actually, as two temporary variables, which means that for the second one we need to operate on `coronavirus_us`, not `coronavirus`. 
 
 ```{r, eval=FALSE}
 coronavirus_us  <- filter(coronavirus, Country.Region == "US")
@@ -104,14 +179,14 @@ filter for the US, and then
 drop the variables Lat, Long, and Province.State."
 Being able to read a story out of code like this is really game-changing. We'll continue using this syntax as we learn the other dplyr verbs. 
 
-Compare with some base R code to accomplish the same things. Base R requires subsetting with the [rows, columns] notation. This notation is something you’ll see a lot in base R. the brackets [ ] allow you to extract parts of an object. Within the brackets, the comma separates rows from columns.
+Compare with some base R code to accomplish the same things. Base R requires subsetting with the [rows, columns] notation. This notation is something you’ll see a lot in base R. The brackets [ ] allow you to extract parts of an object. Within the brackets, the comma separates rows from columns.
 
 If we don’t write anything after the comma, that means “all columns”. And if we don’t write anything before the comma, that means “all rows”.
 
 Also, the $ operator is how you access specific columns of your dataframe.
 
 ```{r, eval=FALSE}
-#There are many ways we could subset columns, here's one
+#There are many ways we could subset columns, here's one way:
 coronavirus[coronavirus$Country.Region == "US", colnames(coronavirus) %in% c("Lat", "Long", "Province.State")==FALSE] ## repeat `coronavirus`, [i, j] indexing is distracting.
 ```
 
@@ -142,7 +217,7 @@ coronavirus_us  <- coronavirus %>%
 
 Alright, let's keep going. 
 
-Let's say we needed to add an index column so we know which order these data came in. Let's not make a new variable, let's add a column to our coronavirus data frame. How do we do that? With the `mutate()` function. 
+Besides selecting sets of existing columns, it’s often useful to add new columns that are functions of existing columns. That’s the job of `mutate()`.
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
 
@@ -161,21 +236,34 @@ coronavirus_ttd <- coronavirus %>%
               values_from = total_cases) %>%
   arrange(-confirmed)
 
+# Let's have a look at the structure of that new rearranged dataset
+coronavirus_ttd
+
+
 ```
 
 
-Imagine we want to know each country's death rate. We can divide the case counts of `death` by `confirmed` to create a new column named `deathrate`.
+Imagine we want to compare the total death count to total the number of confirmed cases in each country. We can divide the case counts of `death` by `confirmed` to create a new column named `deathrate`. We do this with `mutate()` that is a function that defines and inserts new variables into a tibble. You can refer to existing variables diretly by name (i.e. without the `$` operator).
 
 ```{r, eval=FALSE}
 coronavirus_ttd %>%
   mutate(deathrate = death / confirmed) 
+
+# We can modify the mutate equation in many ways. For example, if we want to adjust the number of significant digits printed, we can type
+coronavirus_ttd %>%
+  mutate(deathrate = round(death / confirmed, 2)) 
 ```
+
+Note, however, that these estimated death rates may be misleading and should be interpreted with due caution as testing strategies have varied a lot between countries (e.g. do asymptomatic people get tested). Also:
+
+* There is no measurement between the time a case was confirmed and recovery or death. This is not an apple to apple comparison, as the outbreak did not start at the same time in all the affected countries.
+* As age plays a critical role in the probability of survival from the virus, we cannot make a comparison between different cases without having more demographic information.
 
 ### Your turn 
 
-> Add a new variable that shows the proportion of confirmed cases for which the outcome is still unknown (i.e. not counted as dead or recovered) for each country and show only countries more than 20,000 confirmed cases.
+> Add a new variable that shows the *proportion of confirmed cases* for which the outcome is still unknown (i.e. not counted as dead or recovered) for each country and show only countries with more than 20,000 confirmed cases. Which country has the lowest proportion of undetermined outcomes? Why?
 >
-> Then, sync your RMarkdown file to Github.com (pull, stage, commit, push).
+> When you're done, sync your RMarkdown file to Github.com (pull, stage, commit, push).
 
 #### Answer 
 ```{r, eval=FALSE}
@@ -186,32 +274,12 @@ coronavirus_ttd %>%
   
 ```
 
-**Now back to `select()`**
-
-You’ve seen simple use of `select()`. There are two tricks you might enjoy:
-
-* `select()` can rename the variables you request to keep.
-* `select()` can be used with everything() to hoist a variable up to the front of the tibble.
-
-```{r, eval=FALSE}
-
-coronavirus_ttd %>%
-  mutate(undet = (confirmed - death - recovered) / confirmed) %>% 
-  select(undetermined = undet, confirmed, country) %>% 
-  select(country, everything())
-  
-```
-
-
-
-
-
 
 <br>
 
 ## `arrange()` orders rows
 
-For examining the output of our previous calculations, we may want to re-arrange the countries in ascending order for the proportion of confirmed cases for which the outcome remains unknown. The dplyr function for sorting rows is `arrange()`. 
+For examining the output of our previous calculations, we may want to re-arrange the countries in ascending order for the proportion of confirmed cases for which the outcome remains unknown. The `dplyr` function for sorting rows is `arrange()`. 
 
 ```{r, eval=FALSE}
 
@@ -240,8 +308,8 @@ coronavirus_ttd %>%
 
 ### Your turn again
 
-> 1. Go back to our original dataset `coronavirus` and identify where and when the highest death count in a single day was observed. Hint: you can either use or `base::max` and `dplyr::arrange()`...
-> 1. The first case was confirmed in the US on [January 20 2020](https://www.nejm.org/doi/full/10.1056/NEJMoa2001191), marking the earliest day included in this dataset. When was the first confirmed case recorded in the Denmark?
+> 1. Go back to our original dataset `coronavirus` and identify where and when the highest death count in a single day was observed. Hint: you can either use or `base::max` or `dplyr::arrange()`...
+> 1. The first case was confirmed in the US on [January 20 2020](https://www.nejm.org/doi/full/10.1056/NEJMoa2001191), marking the earliest day included in this dataset. When was the first confirmed case recorded in Denmark?
 > 
 > 1. Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit, push)
 
@@ -268,7 +336,138 @@ coronavirus %>%
 
 <br>
 
-## Extra exercises to do if you have time
+## Grouped summaries with `summarize()` and `group_by`
 
-Combine your new data wrangling skills with the ggplot skills to covered last week to explore patterns in the coronavirus dataset. How have the number of cases developed over time in different countries?
+The last key `dplyr` verb is `summarize()`. It collapses a data frame to a single row. Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
+ 
+![](../img/rstudio-cheatsheet-summarise.png)
+
+We can use it to calculate the total number of confirmed cases detected globally since 1-20-2020 (the beginning of this dataset)
+```{r, eval = FALSE}
+
+coronavirus %>% 
+  filter(type == "confirmed") %>% 
+  summarize(sum = sum(cases))
+
+```
+
+This number could also easily have been computed with base-R functions. In general, `summarize()` is not terribly useful unless we pair it with `group_by()`. This changes the unit of analysis from the complete dataset to individual groups. Then, when you use the `dplyr` verbs on a grouped data frame they’ll be automatically applied “by group”. For example, if we applied exactly the same code to a data frame grouped by Country.Region, we get the total number of confirmed cases for each country or region.
+
+```{r, eval = FALSE}
+
+coronavirus %>% 
+  filter(type == "confirmed") %>%
+  group_by(Country.Region) %>% 
+  summarize(total_cases = sum(cases))
+
+```
+
+We can also use `summarize()` to check how many observations (dates) we have for each country
+
+```{r, eval = FALSE}
+ 
+coronavirus %>% 
+  filter(type == "confirmed") %>%
+  group_by(Country.Region) %>% 
+  summarize(n = n())
+
+```
+Why do some countries have much higher counts than others?
+
+
+We can also do multi-level grouping. If we wanted to know how many of each type of case there were globally on Monday we could chain these functions together:
+```{r, eval = FALSE}
+coronavirus %>% 
+  group_by(date, type) %>% 
+  summarize(total = sum(cases)) %>%  # sums the count across countries
+  filter(date == "2020-04-06")
+
+```
+
+## Your turn
+Which day has had the highest total death count globally so far?
+
+## Answer
+```{r, eval = FALSE}
+
+coronavirus %>% 
+  filter(type == "death") %>% 
+  group_by(date) %>% 
+  summarize(total_cases = sum(cases)) %>% 
+  arrange(-total_cases)
+
+# Or
+
+coronavirus %>% 
+  filter(type == "death") %>% 
+  group_by(date) %>% 
+  summarize(total_cases = sum(cases)) %>% 
+  filter(total_cases == max(total_cases))
+```
+
+<br>
+
+## If you have more time, here is an optional question
+
+The `month()` function from the package `lubridate` extracts the month from a date. How many countries already have more than 1000 deaths in April?
+```{r, eval = FALSE}
+library(lubridate) #install.packages('lubridate')
+
+coronavirus %>% 
+  mutate(month = month(date)) %>% 
+  filter(type == "death", month == 4) %>% 
+  group_by(Country.Region) %>% 
+  summarize(total_death = sum(cases)) %>% 
+  filter(total_death > 1000)
+```
+
+<br>
+
+## In-class questions
+1. Which country had the highest number of deaths on Monday (April 6 20202)?
+```{r, eval = FALSE, include = FALSE}
+coronavirus %>% 
+  select(-Lat, -Long) %>% 
+  filter(date == "2020-04-06", type == "death") %>% 
+  arrange(-cases)
+
+```
+
+2. Which country had the highest count of confirmed cases in January? [Hint: to address this question the function month() from the package lubridate might be helpful]. What about in March?
+```{r, eval = FALSE, include = FALSE}
+library(lubridate) #install.packages('lubridate')
+
+coronavirus %>% 
+  mutate(month = month(date)) %>% 
+  filter(type == "confirmed", month == 1) %>% 
+  group_by(Country.Region) %>% 
+  summarize(total_death = sum(cases)) %>% 
+  arrange(-total_death)
+```
+
+
+3. Which countries have data for multiple states or provinces?
+```{r, eval = FALSE, include = FALSE}
+coronavirus %>% 
+  group_by(Country.Region, date) %>% 
+  summarize(n = n()) %>% 
+  group_by(Country.Region) %>% 
+  summarize(maxcount = max(n)) %>% 
+  filter(maxcount > 3)
+
+```
+
+
+4. Do all countries have reports of the number of confirmed cases for the same number of days?
+```{r, eval = FALSE, include = FALSE}
+coronavirus %>% 
+  filter(type == "recovered") %>% 
+  group_by(Country.Region, Province.State) %>% 
+  summarize(n = n()) %>% 
+  arrange(n) %>% 
+  head
+  
+```
+
+
 
