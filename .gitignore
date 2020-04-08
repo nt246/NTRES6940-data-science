@@ -4,7 +4,8 @@
 .Ruserdata
 assignments/assignment_?.Rmd
 in_class_exercises/exercise_?.Rmd
-in_class_exercises/?exercise_?.Rmd
+in_class_exercises/in_class_exercise_?.Rmd
+in_class_exercises/pre_record_exercise_?.Rmd
 .DS_Store
 .Rhistory
 */.DS_Store
