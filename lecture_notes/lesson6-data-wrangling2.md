@@ -1,7 +1,9 @@
 Lesson 6: Data Wrangling Part 2
 ================
 
-<br> \#\# Readings
+<br>
+
+## Readings
 
 #### Required:
 
@@ -27,22 +29,26 @@ Lesson 6: Data Wrangling Part 2
 
   - Problem Set 2 is due at 10pm tonight. Problem set 3 due next
     Wednesday
-  - Will have longer Zoom session next week
+  - We will probably have a longer Zoom session next week, starting at
+    4.50 or 5pm - check for updates on Slack
 
 <br>
 
 ## Learning objectives
 
-Last class, we learned how to use `dplyr` functions + `filter()` for
-subsetting data with row logic + `select()` for subsetting data
-variable- or column-wise We also reinforced our practice with sync’ing
-our files from RStudio to GitHub
+Last class, we learned how to use `dplyr` functions
+
+  - `filter()` for subsetting data with row logic
+  - `select()` for subsetting data variable- or column-wise
+
+We also reinforced our practice with sync’ing our files from RStudio to
+GitHub
 
 Today, we’ll expand our data wrangling toolbox. By the end of today’s
 class, you should be able to:
 
-  - Use piping (`%>%`) when implementing function chains
-  - Subset, rearrange, and summarize data with key `dplyr` functions
+  - Use piping (`%>%`) to implement function chains
+  - Subset, rearrange, and summarize data with key `dplyr` functions:
       - Create new variables with functions of existing variables with
         `mutate()`
       - Reorder the rows with `arrange()`
@@ -52,9 +58,11 @@ class, you should be able to:
 
 **Acknowledgements**: Today’s lecture is adapted (with permission) from
 the excellent [Ocean Health Index Data Science
-Training](http://ohi-science.org/data-science-training/dplyr.html) and
-Jenny Bryan’s lectures from STAT545 at UBC: [Introduction to
-dplyr](http://stat545.com/block009_dplyr-intro.html).
+Training](http://ohi-science.org/data-science-training/dplyr.html) with
+additional input from Jenny Bryan’s lectures from STAT545 at UBC:
+[Introduction to dplyr](http://stat545.com/block009_dplyr-intro.html)
+and Grolemund and Wickham’s [R for Data
+Science](https://r4ds.had.co.nz/transform.html).
 
 <br>
 
@@ -81,9 +89,9 @@ in an RMarkdown code chunk and execute it by sending it into the Console
 How do we do it? There are several ways.
 
 **First approach: send R code to the Console.** This approach involves
-selecting (highlighting) the R code only (`summary(pressure)`), not any
-of the backticks/fences from the code chunk. (If you see `Error: attempt
-to use zero-length variable name` it is because you have accidentally
+selecting (highlighting) the R code only, not any of the
+backticks/fences from the code chunk. (If you see `Error: attempt to use
+zero-length variable name` it is because you have accidentally
 highlighted the backticks along with the R code. Try again (and don’t
 forget that you can add spaces within the code chunk or make your
 RStudio session bigger (View \> Zoom In)).
@@ -112,17 +120,19 @@ Do this by placing your curser within a code chunk and then:
 
 Let’s jump back in where we left on Monday. Let’s first clear out our
 workspace so we start with a fresh session by clicking “Session” -\>
-“Restart R”. The let’s load the Coronavirus dataset back in directly
+“Restart R”. Then let’s load the Coronavirus dataset back in directly
 from the GitHub URL and see whether it has been updated - what is the
-latest date included?
+latest date
+included?
 
 ``` r
-library(tidyverse)     ## install.packages("tidyverse")
-library(skimr)        ## install.packages("skimr")
-
 # read in corona .csv (don't worry for now about what the col_types parameter means, we'll discuss that next week)
 coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv', col_types = cols(Province.State = col_character()))
+```
 
+Let’s remind ourselves of the data structure and content
+
+``` r
 skim(coronavirus)
 ```
 
@@ -131,11 +141,12 @@ skim(coronavirus)
 ## Use `select()` and `filter()` together
 
 On Monday, we explored the functions `select()` and `filter()`
-separately. Now let’s combine them and filter for the US and remove the
-Lat, Long and Province.State columns (because this dataset doesn’t
-currently have data broken down by US state). We’ll save this as a
-variable. Actually, as two temporary variables, which means that for the
-second one we need to operate on `coronavirus_us`, not `coronavirus`.
+separately. Now let’s combine them and filter to retain only records for
+the US and remove the Lat, Long and Province.State columns (because this
+dataset doesn’t currently have data broken down by US state). We’ll save
+this subsetted data as a variable. Actually, as two temporary variables,
+which means that for the second one we need to operate on
+`coronavirus_us`, not `coronavirus`.
 
 ``` r
 coronavirus_us  <- filter(coronavirus, Country.Region == "US")
@@ -224,11 +235,11 @@ coronavirus_us  <- coronavirus %>%
 
 What’s happening here? In the second line, we were able to delete
 `coronavirus_us2 <- coronavirus_us`, and put the pipe operator above.
-This is possible since we wanted to operate on the `coronavirus_us` data
-anyways. And we weren’t truly excited about having a second variable
-named `coronavirus_us2` anyways, so we can get rid of it. This is huge,
-because most of your data wrangling will have many more than 2 steps,
-and we don’t want a `coronavirus_us17`\!
+This is possible since we wanted to operate on the `coronavirus_us`
+data. And we weren’t truly excited about having a second variable named
+`coronavirus_us2` anyway, so we can get rid of it. This is huge, because
+most of your data wrangling will have many more than 2 steps, and we
+don’t want a `coronavirus_us17`\!
 
 By using multiple lines I can actually read this like a story and there
 aren’t temporary variables that get super confusing. In my head:
@@ -256,8 +267,7 @@ dataframe.
 coronavirus[coronavirus$Country.Region == "US", colnames(coronavirus) %in% c("Lat", "Long", "Province.State")==FALSE] ## repeat `coronavirus`, [i, j] indexing is distracting.
 ```
 
-Never index by blind
-numbers\!
+##### Never index by blind numbers\!
 
 ``` r
 #There are many ways we could subset columns, here's another (bad choice)
@@ -299,7 +309,7 @@ Visually, we are doing this (thanks RStudio for your
 ![](../img/rstudio-cheatsheet-mutate.png)
 
 The current variables in the coronavirus dataset don’t lend themselves
-well to cross-computation, so to illustrate the power of the mutate()
+well to cross-computation, so to illustrate the power of the `mutate()`
 function, let’s reformat the dataset so that we get the counts of
 confirmed cases, deaths and recovered for each date and country in
 separate columns. The tidyverse has a very convenient function for
@@ -308,7 +318,7 @@ now, we’ll get an opportunity to explore it next week.
 
 For now, just copy the following code to summarize the total number of
 cases recorded by country and type (in the time period covered by this
-dataset `min(coronavirus$date)` to `max(coronavirus$date)`):
+dataset: 2020-01-22 to `r max(coronavirus$date)`):
 
 ``` r
 coronavirus_ttd <- coronavirus %>% 
