@@ -116,7 +116,7 @@ Do this by placing your curser within a code chunk and then:
 
 <br>
 
-## Reloading the data
+## Reloading the Coronavirus dataset
 
 Let’s jump back in where we left on Monday. Let’s first clear out our
 workspace so we start with a fresh session by clicking “Session” -\>
