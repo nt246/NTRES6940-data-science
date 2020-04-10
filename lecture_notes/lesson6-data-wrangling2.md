@@ -558,11 +558,55 @@ coronavirus %>%
 1.  Which country had the highest number of deaths on Monday (April 6
     20202)?
 
+<!-- end list -->
+
+``` r
+coronavirus %>% 
+  select(-Lat, -Long) %>% 
+  filter(date == "2020-04-06", type == "death") %>% 
+  arrange(-cases)
+```
+
 2.  Which country had the highest count of confirmed cases in January?
     \[Hint: to address this question the function month() from the
     package lubridate might be helpful\]. What about in March?
 
+<!-- end list -->
+
+``` r
+library(lubridate) #install.packages('lubridate')
+
+coronavirus %>% 
+  mutate(month = month(date)) %>% 
+  filter(type == "confirmed", month == 1) %>% 
+  group_by(Country.Region) %>% 
+  summarize(total_death = sum(cases)) %>% 
+  arrange(-total_death)
+```
+
 3.  Which countries have data for multiple states or provinces?
+
+<!-- end list -->
+
+``` r
+coronavirus %>% 
+  group_by(Country.Region, date) %>% 
+  summarize(n = n()) %>% 
+  group_by(Country.Region) %>% 
+  summarize(maxcount = max(n)) %>% 
+  filter(maxcount > 3)
+```
 
 4.  Do all countries have reports of the number of confirmed cases for
     the same number of days?
+
+<!-- end list -->
+
+``` r
+coronavirus %>% 
+  filter(type == "recovered") %>% 
+  group_by(Country.Region, Province.State) %>% 
+  summarize(n = n()) %>% 
+  arrange(n) %>% 
+  head
+```
