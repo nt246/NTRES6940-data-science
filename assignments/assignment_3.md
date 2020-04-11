@@ -172,7 +172,7 @@ Answer: <span style="color:blue"> Write your response here. </span>
 
 <br>
 
-#### 2.2 Generate a dataframe that summarizes the mean land value of each region in each year.
+#### 2.2 Generate a dataframe that summarizes the mean land value of each region at each time point.
 
 | region  |     Date|  mean\_land\_value|
 |:--------|--------:|------------------:|
