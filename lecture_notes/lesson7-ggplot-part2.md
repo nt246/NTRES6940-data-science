@@ -1,128 +1,89 @@
 Lesson 7: ggplot part 2
 ================
 
-## Readings
+Readings
+--------
 
 **Required**:
 
-  - Review Chapter 3.1-3.6 and read Chapter 3.7-3.10 in [Grolemund and
-    Wickham’s R for Data
-    Science](https://r4ds.had.co.nz/data-visualisation.html#statistical-transformations)
+-   Review Chapter 3.1-3.6 and read Chapter 3.7-3.10 in [Grolemund and Wickham's R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#statistical-transformations)
 
-  - Skim the [The tidyverse style guide](https://style.tidyverse.org/)
-    for inspiration - **you don’t have to read the whole guide
-    carefully**
+-   Skim the [The tidyverse style guide](https://style.tidyverse.org/) for inspiration - **you don't have to read the whole guide carefully**
 
 <br>
 
 **Additional resources**:
 
-  - [RStudio’s ggplot2 cheat
-    sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
+-   [RStudio's ggplot2 cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
 
-  - [“Why I use ggplot2” - David Robinson Blog
-    Post](http://varianceexplained.org/r/why-I-use-ggplot2/)
+-   [“Why I use ggplot2” - David Robinson Blog Post](http://varianceexplained.org/r/why-I-use-ggplot2/)
 
 <br>
 
-## Announcements
+Announcements
+-------------
 
-  - Thanks for the feedback on the online course format\!
-  - Please post in the Slack `lecture-chat channel` if there are any
-    exercises or part of the lecture you would like to go over again on
-    the live Zoom call
-  - Homework 3 due this Wednesday
-  - Hacky hour Fridays 3-5pm
+-   Thanks for the feedback on the online course format!
+-   Please post in the Slack `lecture-chat channel` if there are any exercises or part of the lecture you would like to go over again on the live Zoom call
+-   Homework 3 due this Wednesday
+-   Hacky hour Fridays 3-5pm
 
 <br>
 
-## Today’s learning objectives
+Today's learning objectives
+---------------------------
 
-The goal for today’s class is to return to `ggplot` to get more practice
-with using this package for data visualization, cover a few additional
-aspects of its functionality, and integrate the `dplyr` data wrangling
-skills we learned last week to further customize our plots.
+The goal for today's class is to return to `ggplot` to get more practice with using this package for data visualization, cover a few additional aspects of its functionality, and integrate the `dplyr` data wrangling skills we learned last week to further customize our plots.
 
 By the end of this class, you should be able to:
 
-  - Use different geometric objects and aesthetics to explore various
-    plot types in `ggplot`
-  - Chain together steps for data wrangling (`dplyr`) and plotting
-    `ggplot`
+-   Use different geometric objects and aesthetics to explore various plot types in `ggplot`
+-   Chain together steps for data wrangling (`dplyr`) and plotting `ggplot`
 
-Good coding practices were also listed for this class, but we’ll cover
-that on Wednesday instead.
+Good coding practices were also listed for this class, but we'll cover that on Wednesday instead.
 
 <br>
 
-**Acknowledgements**: Today’s lecture borrows from several excellent
-resources including the [R for Excel
-users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julia
-Stewart Lowndes and Allison Horst and Chapter 3 of [Grolemund and
-Wickham’s R for Data
-Science](https://r4ds.had.co.nz/data-visualisation.html#statistical-transformations).
+**Acknowledgements**: Today’s lecture borrows from several excellent resources including the [R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julia Stewart Lowndes and Allison Horst and Chapter 3 of [Grolemund and Wickham's R for Data Science](https://r4ds.had.co.nz/data-visualisation.html#statistical-transformations).
 
 <br>
 
-## Recap on the Grammar of Graphics implemented in `ggplot`
+Recap on the Grammar of Graphics implemented in `ggplot`
+--------------------------------------------------------
 
-This overview is borrowed from the [STAT545 course at
-UBC](https://stat545guidebook.netlify.com/intro-to-plotting-with-ggplot2-part-i.html)
+This overview is borrowed from the [STAT545 course at UBC](https://stat545guidebook.netlify.com/intro-to-plotting-with-ggplot2-part-i.html)
 
 ![](https://cxlabsblog.files.wordpress.com/2017/10/2017-10-24-14_36_29-visualization-layers-of-ggplot-google-docs.png)
 
-You can think of the grammar of graphics as a systematic approach for
-describing the components of a graph. It has seven components (the ones
-in **bold** are required to be specifed explicitly in ggplot2):
+You can think of the grammar of graphics as a systematic approach for describing the components of a graph. It has seven components (the ones in **bold** are required to be specifed explicitly in ggplot2):
 
-  - **Data**
-      - Exactly as it sounds: the data that you’re feeding into a plot.
-  - **Aesthetic mappings**
-      - This is a specification of how you will connect variables
-        (columns) from your data to a visual dimension. These visual
-        dimensions are called “aesthetics”, and can be (for example)
-        horizontal positioning, vertical positioning, size, colour,
-        shape, etc.
-  - **Geometric objects**
-      - This is a specification of what object will actually be drawn on
-        the plot. This could be a point, a line, a bar, etc.
-  - Scales
-      - This is a specification of how a variable is mapped to its
-        aesthetic. Will it be mapped linearly? On a log scale? Something
-        else?
-  - Statistical transformations
-      - This is a specification of whether and how the data are
-        combined/transformed before being plotted. For example, in a bar
-        chart, data are transformed into their frequencies; in a
-        box-plot, data are transformed to a five-number summary.
-  - Coordinate system
-      - This is a specification of how the position aesthetics (x and y)
-        are depicted on the plot. For example, rectangular/cartesian, or
-        polar coordinates.
-  - Facet
-      - This is a specification of data variables that partition the
-        data into smaller “sub plots”, or panels.
+-   **Data**
+-   Exactly as it sounds: the data that you’re feeding into a plot.
+-   **Aesthetic mappings**
+-   This is a specification of how you will connect variables (columns) from your data to a visual dimension. These visual dimensions are called “aesthetics”, and can be (for example) horizontal positioning, vertical positioning, size, colour, shape, etc.
+-   **Geometric objects**
+-   This is a specification of what object will actually be drawn on the plot. This could be a point, a line, a bar, etc.
+-   Scales
+-   This is a specification of how a variable is mapped to its aesthetic. Will it be mapped linearly? On a log scale? Something else?
+-   Statistical transformations
+-   This is a specification of whether and how the data are combined/transformed before being plotted. For example, in a bar chart, data are transformed into their frequencies; in a box-plot, data are transformed to a five-number summary.
+-   Coordinate system
+-   This is a specification of how the position aesthetics (x and y) are depicted on the plot. For example, rectangular/cartesian, or polar coordinates.
+-   Facet
+-   This is a specification of data variables that partition the data into smaller “sub plots”, or panels.
 
-These components are like parameters of statistical graphics, defining
-the “space” of statistical graphics. In theory, there is a one-to-one
-mapping between a plot and its grammar components, making this a useful
-way to specify graphics.
+These components are like parameters of statistical graphics, defining the “space” of statistical graphics. In theory, there is a one-to-one mapping between a plot and its grammar components, making this a useful way to specify graphics.
 
 <br>
 
-# Getting started
+Getting started
+===============
 
-We’ll return to exploring the Coronavirus dataset. I’ll try to focus on
-typical beginner’s errors along the way so we can get used to
-trouble-shooting together.
+We'll return to exploring the Coronavirus dataset. I'll try to focus on typical beginner's errors along the way so we can get used to trouble-shooting together.
 
-Before we start, please open the R Project associated with your personal
-class GitHub repository. Then create a new RMarkdown file, select
-github\_document output format, and save it to your lecture note folder.
-You will use this RMarkdown file to take notes and work on exercises,
-and maybe share your work with the class.
+Before we start, please open the R Project associated with your personal class GitHub repository. Then create a new RMarkdown file, select github\_document output format, and save it to your lecture note folder. You will use this RMarkdown file to take notes and work on exercises, and maybe share your work with the class.
 
-First, let’s load our packages and read in our Coronavirus dataset
+First, let's load our packages and read in our Coronavirus dataset
 
 ``` r
 suppressPackageStartupMessages(library(tidyverse))
@@ -136,26 +97,25 @@ max(coronavirus$date)
 
     ## [1] "2020-04-12"
 
-## Combining `dplyr` and `ggplot`
+Combining `dplyr` and `ggplot`
+------------------------------
 
-Let’s start with summarizing the total number of cases by type as of
-2020-04-12
+Let's start with summarizing the total number of cases by type as of 2020-04-12
 
 ``` r
 total_cases <- coronavirus %>% 
   group_by(type) %>%
   summarise(cases = sum(cases))
-kable(total_cases) 
+kable(total_cases)  # Kable just provides a nice output for the table
 ```
 
-| type      |   cases |
-| :-------- | ------: |
-| confirmed | 1846679 |
-| death     |  114091 |
-| recovered |  421722 |
+| type      |    cases|
+|:----------|--------:|
+| confirmed |  1846679|
+| death     |   114091|
+| recovered |   421722|
 
-Now, let’s plot the history of the daily counts of new confirmed cases
-worldwide
+Now, let's plot the history of the daily counts of new confirmed cases worldwide
 
 ``` r
 # We first have to summarize the data, then plot those summary statistics
@@ -168,11 +128,9 @@ coronavirus %>%
   geom_line()
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-3-1.png)
 
-If we want to play around with different geoms, we can store `dplyr`
-data processing steps and initiation of the `ggplot` as object `gg_base`
-so that we don’t need to retype it each time
+If we want to play around with different geoms, we can store `dplyr` data processing steps and initiation of the `ggplot` as object `gg_base` so that we don’t need to retype it each time
 
 ``` r
 gg_base <- coronavirus %>%  
@@ -182,58 +140,51 @@ gg_base <- coronavirus %>%
   ggplot(mapping = aes(x = date, y = total_cases)) 
 ```
 
-Then when we want to draw the plot, we can just call that object and
-specify the geom
+Then when we want to draw the plot, we can just call that object and specify the geom
 
 ``` r
 gg_base +
   geom_line()
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
-Try these
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-5-1.png) Try these
 
 ``` r
 gg_base +
   geom_point()
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-6-1.png)
 
 ``` r
 gg_base +
-  geom_col()
+  geom_col(color="black")
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-6-2.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-6-2.png)
 
 ``` r
 gg_base +
   geom_area()
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-6-3.png)<!-- -->
-<br>
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-6-3.png) <br>
 
-## Customizing plots
+Customizing plots
+-----------------
 
-First, a quick reminder on how we can customize some aesthetics
-(e.g. colors, styles, axis labels, etc.) of our graphs based on
-non-variable values.
+First, a quick reminder on how we can customize some aesthetics (e.g. colors, styles, axis labels, etc.) of our graphs based on non-variable values.
 
-> We can change the aesthetics of elements in a ggplot graph by adding
-> arguments within the layer where that element is created. Some common
-> arguments we’ll use first are:
+> We can change the aesthetics of elements in a ggplot graph by adding arguments within the layer where that element is created. Some common arguments we'll use first are:
 
-  - `color =`: update point or line colors
-  - `fill =`: update fill color for objects with areas
-  - `linetype =`: update the line type (dashed, long dash, etc.)
-  - `pch =`: update the point style
-  - `size =`: update the element size (e.g. of points or line thickness)
-  - `alpha =`: update element opacity (1 = opaque, 0 = transparent)
+-   `color =`: update point or line colors
+-   `fill =`: update fill color for objects with areas
+-   `linetype =`: update the line type (dashed, long dash, etc.)
+-   `pch =`: update the point style
+-   `size =`: update the element size (e.g. of points or line thickness)
+-   `alpha =`: update element opacity (1 = opaque, 0 = transparent)
 
-Building on our first line graph, let’s update the line color to
-“purple” and make the line type “dashed”:
+Building on our first line graph, let's update the line color to "purple" and make the line type "dashed":
 
 ``` r
 gg_base +
@@ -243,16 +194,11 @@ gg_base +
   )
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-7-1.png)
 
-How do we know which color names ggplot will recognize? If you google “R
-colors ggplot2” you’ll find a lot of good resources. Here’s one: [SAPE
-ggplot2 colors quick reference
-guide](http://sape.inf.usi.ch/quick-reference/ggplot2/colour)
+How do we know which color names ggplot will recognize? If you google "R colors ggplot2" you'll find a lot of good resources. Here's one: [SAPE ggplot2 colors quick reference guide](http://sape.inf.usi.ch/quick-reference/ggplot2/colour)
 
-Now let’s update the point, style and size of points on our previous
-scatterplot graph using `color =`, `size =`, and `pch =` (see `?pch` for
-the different point styles, which can be further customized).
+Now let's update the point, style and size of points on our previous scatterplot graph using `color =`, `size =`, and `pch =` (see `?pch` for the different point styles, which can be further customized).
 
 ``` r
 gg_base + 
@@ -262,34 +208,20 @@ gg_base +
              alpha = 0.5)
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-8-1.png)
 
 <br>
 
-## Mapping variables onto aesthetics
+Mapping variables onto aesthetics
+---------------------------------
 
-In the examples above, we have customized aesthetics based on constants
-that we input as arguments (e.g., the color / style / size isn’t
-changing based on a variable characteristic or value). Often, however,
-we **do** want the aesthetics of a graph to depend on a variable. To do
-that, we’ll **map variables onto graph aesthetics**, meaning we’ll
-change how an element on the graph looks based on a variable
-characteristic (usually, character or value).
+In the examples above, we have customized aesthetics based on constants that we input as arguments (e.g., the color / style / size isn't changing based on a variable characteristic or value). Often, however, we **do** want the aesthetics of a graph to depend on a variable. To do that, we'll **map variables onto graph aesthetics**, meaning we'll change how an element on the graph looks based on a variable characteristic (usually, character or value).
 
-> When we want to customize a graph element based on a variable’s
-> characteristic or value, add the argument within `aes()` in the
-> appropriate `geom_*()` layer. In short, if updating aesthetics based
-> on a variable, make sure to put that argument inside of `aes()`.
+> When we want to customize a graph element based on a variable's characteristic or value, add the argument within `aes()` in the appropriate `geom_*()` layer. In short, if updating aesthetics based on a variable, make sure to put that argument inside of `aes()`.
 
-**Example:** Create a ggplot scatterplot graph where the **size** and
-**color** of the points change based on the **number of cases**, and
-make all points the same level of opacity (`alpha = 0.5`). Notice the
-`aes()` around the `size =` and `color =` arguments.
+**Example:** Create a ggplot scatterplot graph where the **size** and **color** of the points change based on the **number of cases**, and make all points the same level of opacity (`alpha = 0.5`). Notice the `aes()` around the `size =` and `color =` arguments.
 
-Note: this is just for illustration of the functionality only - we are
-showing the same information in redundant ways, which is typically not
-helpful or necessary. Avoid excessive / overcomplicated aesthetic
-mapping in data visualization.
+Note: this is just for illustration of the functionality only - we are showing the same information in redundant ways, which is typically not helpful or necessary. Avoid excessive / overcomplicated aesthetic mapping in data visualization.
 
 ``` r
 gg_base + 
@@ -300,19 +232,14 @@ gg_base +
   )
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
-In the example above, notice that the two arguments that **do** depend
-on variables are within `aes()`, but since `alpha = 0.5` doesn’t depend
-on a variable then it is *outside the `aes()` but still within the
-`geom_point()` layer*.
+In the example above, notice that the two arguments that **do** depend on variables are within `aes()`, but since `alpha = 0.5` doesn't depend on a variable then it is *outside the `aes()` but still within the `geom_point()` layer*.
 
-When we map variables to aesthetics, `ggplot2` will automatically assign
-a unique level of the aesthetic (here a unique color) to each unique
-value of the variable, a process known as scaling. `ggplot2` will also
-add a legend that explains which levels correspond to which values.
+When we map variables to aesthetics, `ggplot2` will automatically assign a unique level of the aesthetic (here a unique color) to each unique value of the variable, a process known as scaling. `ggplot2` will also add a legend that explains which levels correspond to which values.
 
-## Your turn
+Your turn
+---------
 
 Copy and run this code. Why is the line not blue?
 
@@ -325,24 +252,22 @@ coronavirus %>%
   geom_line()
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-10-1.png)
 
 <br>
 
-## ggplot2 complete themes
+ggplot2 complete themes
+-----------------------
 
-While every element of a ggplot graph is manually customizable, there
-are also built-in themes (`theme_*()`) that you can add to your ggplot
-code to make some major headway before making smaller tweaks manually.
+While every element of a ggplot graph is manually customizable, there are also built-in themes (`theme_*()`) that you can add to your ggplot code to make some major headway before making smaller tweaks manually.
 
-Here are a few to try today (but also notice all the options that appear
-as we start typing `theme_` into our ggplot graph code\!):
+Here are a few to try today (but also notice all the options that appear as we start typing `theme_` into our ggplot graph code!):
 
-  - `theme_light()`
-  - `theme_minimal()`
-  - `theme_bw()`
+-   `theme_light()`
+-   `theme_minimal()`
+-   `theme_bw()`
 
-Here, let’s update our previous graph with `theme_minimal()`:
+Here, let's update our previous graph with `theme_minimal()`:
 
 ``` r
 gg_base + 
@@ -354,16 +279,14 @@ gg_base +
   theme_minimal()
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
-You can play around with other themes - see an overview
-[here](https://ggplot2.tidyverse.org/reference/ggtheme.html)
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-11-1.png) You can play around with other themes - see an overview [here](https://ggplot2.tidyverse.org/reference/ggtheme.html)
 
 <br>
 
-## Updating axis labels and titles
+Updating axis labels and titles
+-------------------------------
 
-Use `labs()` to update axis labels, and add a title and/or subtitle to
-your ggplot graph.
+Use `labs()` to update axis labels, and add a title and/or subtitle to your ggplot graph.
 
 ``` r
 gg_base +
@@ -377,22 +300,18 @@ gg_base +
   )
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-12-1.png)
 
-**Note**: If you want to update the formatting of axis values (for
-example, to convert to comma format instead of scientific format above),
-you can use the `scales` package options (see more from the [R
-Cookbook](http://www.cookbook-r.com/Graphs/Axes_\(ggplot2\)/)).
+**Note**: If you want to update the formatting of axis values (for example, to convert to comma format instead of scientific format above), you can use the `scales` package options (see more from the [R Cookbook](http://www.cookbook-r.com/Graphs/Axes_(ggplot2)/)).
 
 <br>
 
-## Now, let’s split the case counts out by country
+Now, let's split the case counts out by country
+-----------------------------------------------
 
 #### Your turn
 
-> Take a minute to think about how you would generate a plot with a
-> separate line showing the daily reports of new confirmed cases in each
-> country.
+> Take a minute to think about how you would generate a plot with a separate line showing the daily reports of new confirmed cases in each country.
 
 Here is some code we might try. Why does that not work?
 
@@ -406,8 +325,7 @@ coronavirus %>%
 # We have summarized out the Country.Region details (only one total count per day)
 ```
 
-We’ll have to group by both country and date. But why does this not
-work?
+We'll have to group by both country and date. But why does this not work?
 
 ``` r
 coronavirus %>%  
@@ -419,8 +337,7 @@ coronavirus %>%
 # Even though we have grouped the dataframe by Country.Region, that dplyr grouping does not get carried into ggplot
 ```
 
-Now let’s make ggplot group the data too by mapping Country.Region onto
-an aesthetic
+Now let's make ggplot group the data too by mapping Country.Region onto an aesthetic
 
 ``` r
 coronavirus %>%  
@@ -431,12 +348,9 @@ coronavirus %>%
   geom_line()
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-15-1.png)
 
-It looks like this is doing what we want, but it does not display well.
-There are too many countries\! We could play around with the layout
-parameters to be able to see this plot. But let’s instead subset to only
-show the 10 countries with the highest total counts of confirmed cases.
+It looks like this is doing what we want, but it does not display well. There are too many countries! We could play around with the layout parameters to be able to see this plot. But let's instead subset to only show the 10 countries with the highest total counts of confirmed cases.
 
 ``` r
 top10_countries <- coronavirus %>% 
@@ -448,8 +362,7 @@ top10_countries <- coronavirus %>%
   .$Country.Region
 ```
 
-Now let’s try to plot the daily counts of new cases just for those
-countries
+Now let's try to plot the daily counts of new cases just for those countries
 
 ``` r
 coronavirus %>%  
@@ -460,8 +373,7 @@ coronavirus %>%
   geom_line()
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
-Much better\!
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-17-1.png) Much better!
 
 We can also make a separate panel for each country
 
@@ -475,10 +387,9 @@ coronavirus %>%
   facet_wrap(~Country.Region)
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-18-1.png)
 
-Now let’s plot the cumulative sum of cases for each of those countries
-instead
+Now let's plot the cumulative sum of cases for each of those countries instead
 
 ``` r
 coronavirus %>%  
@@ -490,61 +401,61 @@ coronavirus %>%
   geom_line()
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-19-1.png)
 
 <br>
 
-## Bar charts
+Bar charts
+----------
 
-Another common plot type are bar charts. There are two types of bar
-charts in `ggplot`: `geom_bar()` and `geom_col()`. `geom_bar()` makes
-the height of the bar proportional to the number of cases in each group
-(or if the weight aesthetic is supplied, the sum of the weights). If you
-want the heights of the bars to represent values in the data, use
-`geom_col()` instead.
+Another common plot type are bar charts. There are two types of bar charts in `ggplot`: `geom_bar()` and `geom_col()`. `geom_bar()` makes the height of the bar proportional to the number of cases in each group (or if the weight aesthetic is supplied, the sum of the weights). If you want the heights of the bars to represent values in the data, use `geom_col()` instead.
 
-Since our dataset reports counts of cases, let’s first start with
-`geom_col()` (we have already used it once today).
+Since our dataset reports counts of cases, let's first start with `geom_col()` (we have already used it once today).
 
 ``` r
-ggplot(coronavirus) +
-  geom_col(aes(x=date, y = cases))
+group_by(coronavirus, date) %>%
+  summarise(cases=sum(cases)) %>%
+  ggplot() +
+  geom_col(aes(x=date, y = cases), color="black")
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-20-1.png)
 
-If we want a stacked barplot separating out the different types of
-cases, we can use the fill aesthetic
+If we want a stacked barplot separating out the different types of cases, we can use the fill aesthetic
 
 ``` r
-ggplot(coronavirus) +
-  geom_col(aes(x=date, y = cases, fill = type))
+group_by(coronavirus, date, type) %>%
+  summarise(cases=sum(cases)) %>%
+  ggplot() +
+  geom_col(aes(x=date, y = cases, fill = type), color="black", size=0.3)
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-21-1.png)
 
 We may want to flip this around
 
 ``` r
-ggplot(coronavirus) +
-  geom_col(aes(x=date, y = cases, fill = type)) +
+group_by(coronavirus, date, type) %>%
+  summarise(cases=sum(cases)) %>%
+  ggplot() +
+  geom_col(aes(x=date, y = cases, fill = type), color="black", size=0.3) +
   coord_flip()
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-22-1.png)
 
-This is useful because it put the proportions in relation to the total
-daily counts. But it can be hard to compare proportions. We can make all
-bars the same height with ‘position adjustment’
+This is useful because it put the proportions in relation to the total daily counts. But it can be hard to compare proportions. We can make all bars the same height with 'position adjustment'
 
 ``` r
-ggplot(coronavirus) +
-  geom_col(aes(x=date, y = cases, fill = type), position = "fill")
+group_by(coronavirus, date, type) %>%
+  summarise(cases=sum(cases)) %>%
+  ggplot() +
+  geom_col(aes(x=date, y = cases, fill = type), color="black", size=0.3, position = "fill")
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-23-1.png)
 
-That’s weird. Do we have negative cases? Let’s check
+Let's check if we have negative cases.
 
 ``` r
 coronavirus %>% 
@@ -570,51 +481,54 @@ coronavirus %>%
 # Let's remove those
 coronavirus %>% 
   filter(cases > 0) %>% 
+  group_by(date, type) %>%
+  summarise(cases=sum(cases)) %>%
   ggplot() +
-  geom_col(aes(x=date, y = cases, fill = type), position = "fill")
+  geom_col(aes(x=date, y = cases, fill = type), color="black", size=0.3, position = "fill")
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-24-1.png)
 
-We can also get the bars for the different types of cases each day
-stacked next to each other with another position adjustment option
+We can also get the bars for the different types of cases each day stacked next to each other with another position adjustment option
 
 ``` r
 coronavirus %>% 
   filter(cases > 0) %>% 
+  group_by(date, type) %>%
+  summarise(cases=sum(cases)) %>%
   ggplot() +
   geom_col(aes(x=date, y = cases, fill = type), position = "dodge")
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-25-1.png)
 
-Now, let’s break it down by country. Let’s again subset to only the top
-10 countries with the highest counts
+Now, let's break it down by country. Let's again subset to only the top 10 countries with the highest counts
 
 ``` r
 coronavirus %>% 
-  filter(cases > 0, Country.Region %in% top10_countries) %>% 
+  filter(cases > 0, Country.Region %in% top10_countries) %>%
+  group_by(Country.Region, type, date) %>%
+  summarise(cases=sum(cases)) %>%
   ggplot() +
-  geom_col(aes(x=date, y = cases, fill = type), position = "fill") +
+  geom_col(aes(x=date, y = cases, fill = type), position = "fill", width = 1) +
   facet_wrap(~Country.Region)
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-26-1.png)
 
 ``` r
 coronavirus %>% 
-  filter(cases > 0, Country.Region %in% top10_countries) %>% 
+  filter(cases > 0, Country.Region %in% top10_countries) %>%
+  group_by(Country.Region, type, date) %>%
+  summarise(cases=sum(cases)) %>%
   ggplot() +
-  geom_col(aes(x=date, y = cases, fill = type), position = "identity") +
-  facet_wrap(~Country.Region)  
+  geom_col(aes(x=date, y = cases, fill = type), position = "identity", width = 1) +
+  facet_wrap(~Country.Region)
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-26-2.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-26-2.png)
 
-Now, let’s explore a different question. For each day, let’s plot how
-many different countries have at least one new confirmed case. For this
-we will need to count rows within grouped variables, so we’ll use the
-geom\_bar()
+Now, let's explore a different question. For each day, let's plot how many different countries have at least one new confirmed case. For this we will need to count rows within grouped variables, so we'll use the geom\_bar()
 
 ``` r
 # Just using this geom on the full dataset, we get this
@@ -622,7 +536,7 @@ ggplot(coronavirus) +
   geom_bar(mapping = aes(x = Country.Region))
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-27-1.png)
 
 ``` r
 #How many countries have at least one confirmed case each day
@@ -632,18 +546,17 @@ coronavirus %>%
   summarize(total_cases = sum(cases)) %>% 
   filter(total_cases > 0) %>% 
   ggplot() +
-  geom_bar(mapping = aes(x = date))
+  geom_bar(mapping = aes(x = date), color="black")
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-27-2.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-27-2.png)
 
 <br>
 
-## Plotting with labels
+Plotting with labels
+--------------------
 
-Now let’s look at the relationship between confirmed cases and deaths in
-each country. For this we will need our re-formatted wide data from last
-class.
+Now let's look at the relationship between confirmed cases and deaths in each country. For this we will need our re-formatted wide data from last class.
 
 ``` r
 coronavirus_ttd <- coronavirus %>% 
@@ -657,26 +570,25 @@ ggplot(coronavirus_ttd) +
   geom_point(mapping = aes(x = confirmed, y = death))
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-28-1.png)
 
-That’s nice, but it would be useful to know which country is represented
-by each dot. `geom_label` is our tool for that.
+That's nice, but it would be useful to know which country is represented by each dot. `geom_label` is our tool for that.
 
 ``` r
 ggplot(coronavirus_ttd) +
   geom_label(mapping = aes(x = confirmed, y = death, label = country))
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-29-1.png)
 
-Let’s do a few things to make this easier to read
+Let's do a few things to make this easier to read
 
 ``` r
 ggplot(data = filter(coronavirus_ttd, confirmed>20000)) +
   geom_label(mapping = aes(x = confirmed, y = death, label = country))
 ```
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-30-1.png)
 
 ``` r
 ggplot(data = filter(coronavirus_ttd, confirmed>20000)) +
@@ -686,7 +598,7 @@ ggplot(data = filter(coronavirus_ttd, confirmed>20000)) +
 
     ## Warning: Removed 5 rows containing missing values (geom_label).
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-30-2.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-30-2.png)
 
 ``` r
 ggplot(data = filter(coronavirus_ttd, confirmed>20000)) +
@@ -696,13 +608,11 @@ ggplot(data = filter(coronavirus_ttd, confirmed>20000)) +
 
     ## Warning: Removed 5 rows containing missing values (geom_label).
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-30-3.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-30-3.png)
 
 <br>
 
-## Exercise
+Exercise
+--------
 
-Come up with an interesting question you want to explore in the
-Coronavirus dataset with a plot. Try to figure out how to plot it
-(remember: google is your friend). Be prepared to share your idea with
-the group during the Zoom call.
+Come up with an interesting question you want to explore in the Coronavirus dataset with a plot. Try to figure out how to plot it (remember: google is your friend). Be prepared to share your idea with the group during the Zoom call.
