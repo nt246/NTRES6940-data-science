@@ -527,6 +527,8 @@ ggplot(data = filter(coronavirus_ttd)) +
 Come up with an interesting question you want to explore in the Coronavirus dataset with a plot. Try to figure out how to plot it (remember: google is your friend). Be prepared to share your idea with the group during the Zoom call.
 
 
+## Some examples:
+
 #### Trend in cumulative case count
 
 ```{R, eval = TRUE}
@@ -612,9 +614,9 @@ filter(coronavirus, type=="confirmed", cases>0) %>%
 #### Map of newly reported cases on 04/12/2020
 
 ```{R, eval = TRUE, fig.width=15}
-library("rnaturalearth")
-library("rnaturalearthdata")
-library("rgeos")
+library("rnaturalearth") # install.packages("rnaturalearth")
+library("rnaturalearthdata") # install.packages("rnaturalearthdata")
+library("rgeos") #install.packages("rgeos")
 world <- ne_countries(scale = "medium", returnclass = "sf")
 filter(coronavirus, date=="2020-04-12", type=="confirmed", cases>0) %>%
   ggplot() +

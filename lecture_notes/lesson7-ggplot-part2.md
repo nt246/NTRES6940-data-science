@@ -728,9 +728,12 @@ ggplot(data = filter(coronavirus_ttd)) +
 
 ## Exercise
 
-Come up with an interesting question you want to explore in the Coronavirus dataset with a plot. Try to figure out how to plot it (remember: google is your friend). Be prepared to share your idea with the group during the Zoom call.
- 
-<br>
+Come up with an interesting question you want to explore in the
+Coronavirus dataset with a plot. Try to figure out how to plot it
+(remember: google is your friend). Be prepared to share your idea with
+the group during the Zoom call.
+
+## Some examples:
 
 #### Trend in cumulative case count
 
@@ -744,7 +747,7 @@ group_by(coronavirus, date, type) %>%
   geom_line(aes(x=date, y=cases, color=type))
 ```
 
-![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-31-1.png)
+![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-33-1.png)<!-- -->
 
 ``` r
 ## log scale
@@ -756,7 +759,7 @@ group_by(coronavirus, date, type) %>%
   geom_line(aes(x=date, y=log(cases), color=type))
 ```
 
-![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-31-2.png)
+![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-33-2.png)<!-- -->
 
 #### Trend in cumulative case count in the 10 most infected countries
 
@@ -773,7 +776,7 @@ filter(coronavirus, Country.Region %in% top10_countries) %>%
   facet_wrap(~Country.Region, scales = "free_y")
 ```
 
-![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-32-1.png)
+![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->
 
 #### Trend in cumulative death rate
 
@@ -788,7 +791,7 @@ group_by(coronavirus, date, type) %>%
   geom_line()
 ```
 
-![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-33-1.png)
+![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-35-1.png)<!-- -->
 
 #### Trend in cumulative death rate in 10 most infected countries
 
@@ -807,7 +810,7 @@ filter(coronavirus, Country.Region %in% top10_countries) %>%
 
     ## Warning: Removed 13 rows containing missing values (geom_path).
 
-![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-34-1.png)
+![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-36-1.png)<!-- -->
 
 #### Countries that had their first reported coronavirus case in January
 
@@ -827,14 +830,14 @@ filter(coronavirus, type=="confirmed", cases>0) %>%
   theme_minimal()
 ```
 
-![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-35-1.png)
+![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-37-1.png)<!-- -->
 
 #### Map of newly reported cases on 04/12/2020
 
 ``` r
-library("rnaturalearth")
-library("rnaturalearthdata")
-library("rgeos")
+library("rnaturalearth") # install.packages("rnaturalearth")
+library("rnaturalearthdata") # install.packages("rnaturalearthdata")
+library("rgeos") #install.packages("rgeos")
 ```
 
     ## Loading required package: sp
@@ -852,5 +855,4 @@ filter(coronavirus, date=="2020-04-12", type=="confirmed", cases>0) %>%
   geom_point(aes(x=Long, y=Lat, size=cases), color="red", fill="red", alpha=0.5, shape=21) 
 ```
 
-![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-36-1.png)
-=======
+# ![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->
