@@ -13,7 +13,9 @@ output:
 <br>
 
 ## Question 1
+
 Why is this not running?
+
 
 ```r
 coronavirus %>%  
@@ -29,6 +31,7 @@ coronavirus %>%
 ## Question 2
 
 What is the problem here?
+
 
 ```r
 top10_countries <- coronavirus %>% 
@@ -50,20 +53,30 @@ coronavirus %>%
 <br>
 
 ## Question 3
+
 What is the difference between the two code chunks below (look in the `ggplot()` line)? Which would you use and why?
+
 
 ```r
 coronavirus %>%  
-  filter(type == "confirmed", Country.Region %in% top10_countries) %>% 
+  filter(type == "confirmed", Country.Region %in% top10_countries) %>%
   group_by(Country.Region, date) %>% 
   summarize(total_cases = sum(cases)) %>% 
   ggplot(mapping = aes(x = date, y = total_cases, color = Country.Region)) +
+  geom_line()
+
+coronavirus %>%  
+  filter(type == "confirmed", Country.Region %in% top10_countries) %>%
+  group_by(Country.Region, date) %>% 
+  summarize(total_cases = sum(cases)) %>% 
+  ggplot(aes(date, total_cases, color = Country.Region)) +
   geom_line()
 ```
 
 <br>
 
 ## Question 4
+
 With both the `mutate()` and the `summarize()` functions, we create a new variable using the following syntax: `var_name = function(variable)`. What is the difference between those two functions?
 
 
