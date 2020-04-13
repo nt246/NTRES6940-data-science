@@ -616,3 +616,125 @@ Exercise
 --------
 
 Come up with an interesting question you want to explore in the Coronavirus dataset with a plot. Try to figure out how to plot it (remember: google is your friend). Be prepared to share your idea with the group during the Zoom call.
+
+#### Trend in cumulative case count
+
+``` r
+## linear scale
+group_by(coronavirus, date, type) %>%
+  summarise(cases = sum(cases)) %>% 
+  group_by(type) %>%
+  mutate(cases=cumsum(cases)) %>%
+  ggplot() +
+  geom_line(aes(x=date, y=cases, color=type))
+```
+
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-31-1.png)
+
+``` r
+## log scale
+group_by(coronavirus, date, type) %>%
+  summarise(cases = sum(cases)) %>% 
+  group_by(type) %>%
+  mutate(cases=cumsum(cases)) %>%
+  ggplot() +
+  geom_line(aes(x=date, y=log(cases), color=type))
+```
+
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-31-2.png)
+
+#### Trend in cumulative case count in the 10 most infected countries
+
+``` r
+## linear scale
+filter(coronavirus, Country.Region %in% top10_countries) %>%
+  group_by(Country.Region, date, type) %>%
+  summarise(cases = sum(cases)) %>% 
+  group_by(Country.Region, type) %>%
+  mutate(cases=cumsum(cases)) %>%
+  ggplot() +
+  geom_line(aes(x=date, y=cases/1000, color=type)) +
+  ylab("cumulative count (in thousand)") +
+  facet_wrap(~Country.Region, scales = "free_y")
+```
+
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-32-1.png)
+
+#### Trend in cumulative death rate
+
+``` r
+group_by(coronavirus, date, type) %>%
+  summarise(cases = sum(cases)) %>% 
+  group_by(type) %>%
+  mutate(cases=cumsum(cases)) %>%
+  pivot_wider(names_from = type, values_from = cases) %>%
+  mutate(death_rate = death/(confirmed+death+recovered)) %>%
+  ggplot(aes(x=date, y=death_rate)) +
+  geom_line()
+```
+
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-33-1.png)
+
+#### Trend in cumulative death rate in 10 most infected countries
+
+``` r
+filter(coronavirus, Country.Region %in% top10_countries) %>%
+  group_by(Country.Region, date, type) %>%
+  summarise(cases = sum(cases)) %>% 
+  group_by(Country.Region, type) %>%
+  mutate(cases=cumsum(cases)) %>%
+  pivot_wider(names_from = type, values_from = cases) %>%
+  mutate(death_rate = death/(confirmed+death+recovered)) %>%
+  ggplot(aes(x=date, y=death_rate)) +
+  geom_line() +
+  facet_wrap(~Country.Region, scales = "free_y")
+```
+
+    ## Warning: Removed 13 rows containing missing values (geom_path).
+
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-34-1.png)
+
+#### Countries that had their first reported coronavirus case in January
+
+``` r
+filter(coronavirus, type=="confirmed", cases>0) %>%
+  group_by(Country.Region, date) %>%
+  summarise() %>%
+  group_by(Country.Region) %>%
+  filter(date==min(date)) %>%
+  ungroup() %>%
+  arrange(date) %>%
+  mutate(rank=row_number(date)) %>%
+  filter(months(date)=="January") %>%
+  ggplot(aes(x=date, y=rank)) +
+  geom_text(aes(label=Country.Region)) +
+  xlim(as.Date(c("2020-01-21", "2020-02-01"))) +
+  theme_minimal()
+```
+
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-35-1.png)
+
+#### Map of newly reported cases on 04/12/2020
+
+``` r
+library("rnaturalearth")
+library("rnaturalearthdata")
+library("rgeos")
+```
+
+    ## Loading required package: sp
+
+    ## rgeos version: 0.5-2, (SVN revision 621)
+    ##  GEOS runtime version: 3.7.2-CAPI-1.11.2 
+    ##  Linking to sp version: 1.3-1 
+    ##  Polygon checking: TRUE
+
+``` r
+world <- ne_countries(scale = "medium", returnclass = "sf")
+filter(coronavirus, date=="2020-04-12", type=="confirmed", cases>0) %>%
+  ggplot() +
+  geom_sf(data = world) +
+  geom_point(aes(x=Long, y=Lat, size=cases), color="red", fill="red", alpha=0.5, shape=21) 
+```
+
+![](lesson7-ggplot-part2_files/figure-markdown_github/unnamed-chunk-36-1.png)

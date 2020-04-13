@@ -513,4 +513,97 @@ ggplot(data = filter(coronavirus_ttd, confirmed>20000)) +
 ## Exercise
 Come up with an interesting question you want to explore in the Coronavirus dataset with a plot. Try to figure out how to plot it (remember: google is your friend). Be prepared to share your idea with the group during the Zoom call.
 
+#### Trend in cumulative case count
 
+```{R, eval = TRUE}
+## linear scale
+group_by(coronavirus, date, type) %>%
+  summarise(cases = sum(cases)) %>% 
+  group_by(type) %>%
+  mutate(cases=cumsum(cases)) %>%
+  ggplot() +
+  geom_line(aes(x=date, y=cases, color=type))
+## log scale
+group_by(coronavirus, date, type) %>%
+  summarise(cases = sum(cases)) %>% 
+  group_by(type) %>%
+  mutate(cases=cumsum(cases)) %>%
+  ggplot() +
+  geom_line(aes(x=date, y=log(cases), color=type))
+
+```
+
+#### Trend in cumulative case count in the 10 most infected countries
+
+```{R, eval = TRUE, fig.width=15}
+## linear scale
+filter(coronavirus, Country.Region %in% top10_countries) %>%
+  group_by(Country.Region, date, type) %>%
+  summarise(cases = sum(cases)) %>% 
+  group_by(Country.Region, type) %>%
+  mutate(cases=cumsum(cases)) %>%
+  ggplot() +
+  geom_line(aes(x=date, y=cases/1000, color=type)) +
+  ylab("cumulative count (in thousand)") +
+  facet_wrap(~Country.Region, scales = "free_y")
+```
+
+#### Trend in cumulative death rate
+
+```{R, eval = TRUE}
+group_by(coronavirus, date, type) %>%
+  summarise(cases = sum(cases)) %>% 
+  group_by(type) %>%
+  mutate(cases=cumsum(cases)) %>%
+  pivot_wider(names_from = type, values_from = cases) %>%
+  mutate(death_rate = death/(confirmed+death+recovered)) %>%
+  ggplot(aes(x=date, y=death_rate)) +
+  geom_line()
+```
+
+
+#### Trend in cumulative death rate in 10 most infected countries
+
+```{R, eval = TRUE}
+filter(coronavirus, Country.Region %in% top10_countries) %>%
+  group_by(Country.Region, date, type) %>%
+  summarise(cases = sum(cases)) %>% 
+  group_by(Country.Region, type) %>%
+  mutate(cases=cumsum(cases)) %>%
+  pivot_wider(names_from = type, values_from = cases) %>%
+  mutate(death_rate = death/(confirmed+death+recovered)) %>%
+  ggplot(aes(x=date, y=death_rate)) +
+  geom_line() +
+  facet_wrap(~Country.Region, scales = "free_y")
+```
+
+#### Countries that had their first reported coronavirus case in January
+
+```{R, eval = TRUE}
+filter(coronavirus, type=="confirmed", cases>0) %>%
+  group_by(Country.Region, date) %>%
+  summarise() %>%
+  group_by(Country.Region) %>%
+  filter(date==min(date)) %>%
+  ungroup() %>%
+  arrange(date) %>%
+  mutate(rank=row_number(date)) %>%
+  filter(months(date)=="January") %>%
+  ggplot(aes(x=date, y=rank)) +
+  geom_text(aes(label=Country.Region)) +
+  xlim(as.Date(c("2020-01-21", "2020-02-01"))) +
+  theme_minimal()
+```
+
+#### Map of newly reported cases on 04/12/2020
+
+```{R, eval = TRUE, fig.width=15}
+library("rnaturalearth")
+library("rnaturalearthdata")
+library("rgeos")
+world <- ne_countries(scale = "medium", returnclass = "sf")
+filter(coronavirus, date=="2020-04-12", type=="confirmed", cases>0) %>%
+  ggplot() +
+  geom_sf(data = world) +
+  geom_point(aes(x=Long, y=Lat, size=cases), color="red", fill="red", alpha=0.5, shape=21) 
+```
