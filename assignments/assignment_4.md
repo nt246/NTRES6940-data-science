@@ -2,19 +2,27 @@ Assignment 4: Data exploration
 ================
 
 Instructions: Please read through this before you begin
-=======================================================
+-------------------------------------------------------
 
-This homework is due by **10pm on Wednesday 04/22/20**. Please **rename your knitted html file** in the format of "Homework4\_YourName.html" and upload it through Blackboard.
+-   This assignment is due by **10pm on Wednesday 04/22/20**.
 
-In this homework, you will explore a dataset with details about passengers on the Titanic. First, **answer the questions below and use figures or tables to support your answer**. Then, **explore the dataset on your own** using the skills that you have learned in this class so far.
+-   Please **reproduce this markdown template**. Pay attention to all the formating in this file, including bullet points, bolded characters, inserted code chunks, headings, text colors, blank lines, and etc.
 
-To get extra credits up to 10 points, **edit the aesthetics of your figures and tables** and make them easier to understand and nicer to look at (e.g. choose the most appropriate geometric object, aesthetic mapping, facetting, position adjustment; add meaningful axis labels, figure titles, legend titles; change the background; be creative; and etc).
+-   For the first exercise in this assignment, you will explore a dataset with details about passengers on the Titanic. First, **answer the questions below and use figures or tables to support your answer**. Then, **explore the dataset on your own** using the data transformation and visualization skills that you have learned in this class so far.
 
-When a verbal response is needed, answer by editing the part in the R markdown template where it says <span style="color:blue"> "Write your response here" </span>.
+    -   For this exercise, please make sure to put some thought on **editing the aesthetics of your figures and tables** to make them easier to understand and nicer to look at (e.g. choose the most appropriate geometric object, aesthetic mapping, facetting, position adjustment; add meaningful axis labels, figure titles, legend titles; change the background; be creative; and etc.).
 
-Use the R markdown template given to you to generate your own html output, and have all your code embedded within the file. Please only show your **code** and **plots** in the html file, and **use R Markdown functionalities to hide messages and warnings when needed**. (Suggestion: messages and warnings can often be informative and important, so please examine them carefully and only turn them off when you finish the exercise).
+    -   When a verbal response is needed, answer by replacing the part in the R markdown template where it says <span style="color:blue"> "Write your response here" </span>.
 
-To start, first load all the required packages with the following code. Install them if they are not installed yet. Also, download "Titanic.csv" and "Notes.csv" from Blackboard and put them in your RStudio project folder. This dataset was obtained from www.kaggle.com
+-   For the second exercise in this assignment, you will use the data wrangling and visualization skills that you have learned in this class to reproduce a figure exactly as it is shown.
+
+-   Have all your code embeded within the R markdown file, and show both of your **code** and **plots** in the knitted markdown file.
+
+-   Use R Markdown functionalities to **hide messages and warnings when needed**. (Suggestion: messages and warnings can often be informative and important, so please examine them carefully and only turn them off when you finish the exercise).
+
+-   Please name your R markdown file `assignment_4.Rmd` and the knitted markdown file `assignment_4.md`. Please upload both files using your personal GitHub repository for this class.
+
+-   First, load all the required packages with the following code. Install them if they are not installed yet.
 
 ``` r
 library(tidyverse)
@@ -23,13 +31,13 @@ library(knitr)
 
 <br>
 
-Titanic
-=======
+Exercise 1: Titanic passengers
+------------------------------
 
 This dataset contains information about a subset of the passengers who were aboard the Titanic when it sank in 1912.
 
 ``` r
-titanic<-read_csv("../datasets/Titanic.csv")
+titanic<-read_csv("https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/Titanic.csv")
 kable(head(titanic))
 ```
 
@@ -45,7 +53,7 @@ kable(head(titanic))
 And here are descriptions of the variables in the dataset
 
 ``` r
-notes<-read_csv("../datasets/Notes.csv")
+notes<-read_csv("https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/Notes.csv")
 kable(notes)
 ```
 
@@ -66,12 +74,9 @@ kable(notes)
 
 Note: Age is fractional if less than 1. If the age is estimated, it is in the form of xx.5
 
-Part 1.
--------
+### Part 1.
 
 **Answer the questions below** and use **figures or tables** to support your answer. Choose the most appropriate type of figure or table for each question.
-
-<br>
 
 #### 1.1 According to Wikipedia, there was an estimated 2,224 passengers and crew onboard the Titanic when it sank. How many of them do we have information on in this dataset? How many of them survived and how many did not? What is the overall survival rate?
 
@@ -171,12 +176,11 @@ Part 1.
 
 <span style="color:blue"> Write your response here </span>
 
-Part 2
-------
+### Part 2
 
 Explore other aspects of this dataset on your own using **a variety of the skills** that you have learned in this class so far (i.e. data visualization, transformation, and exploration). Come up with **at least 3 interesting findings or potential hypotheses**.
 
-#### 2.1
+#### 1.11
 
 ``` r
 ## Write your code here
@@ -186,7 +190,7 @@ Explore other aspects of this dataset on your own using **a variety of the skill
 
 <br>
 
-#### 2.2
+#### 1.12
 
 ``` r
 ## Write your code here
@@ -196,7 +200,7 @@ Explore other aspects of this dataset on your own using **a variety of the skill
 
 <br>
 
-#### 2.3
+#### 1.13
 
 ``` r
 ## Write your code here
@@ -210,8 +214,8 @@ Explore other aspects of this dataset on your own using **a variety of the skill
 
 <br>
 
-Fuel Efficiency of Car Models
-=============================
+Exercise 2: Fuel Efficiency of Car Models
+-----------------------------------------
 
 This exercise uses the `mtcars` dataset. It was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models).
 
@@ -228,7 +232,7 @@ kable(head(mtcars))
 | Hornet Sportabout |  18.7|    8|   360|  175|  3.15|  3.440|  17.02|    0|    0|     3|     2|
 | Valiant           |  18.1|    6|   225|  105|  2.76|  3.460|  20.22|    1|    0|     3|     1|
 
-#### Reproduce the following plot, which shows the miles per gallon (`mpg`) of car models on the x axis (see hints below). Different models are ordered on the y axis according to their `mpg` and their names are shown next to the data points. Also, the size of each data point maps to its horse power (`hp`), and the color maps to number of cylinders (`cyl`).
+#### 2.1 Reproduce the following plot, which shows the miles per gallon (`mpg`) of car models on the x axis (see hints below). Different models are ordered on the y axis according to their `mpg` and their names are shown next to the data points. Also, the size of each data point maps to its horse power (`hp`), and the color maps to number of cylinders (`cyl`).
 
 ![](assignment_4_files/figure-markdown_github/unnamed-chunk-18-1.png)
 
@@ -239,7 +243,7 @@ kable(head(mtcars))
 -   Convert rownames to a column. (`rownames_to_column()` might be helpful)
 -   Create a new variable which shows the order of car models based on their mpg. (`row_number()` might be helpful)
 
-Show the first 6 rows of this new data frame to get partial credit.
+The first few rows of this new data frame might look like the following.
 
 | rowname           |   mpg|  mpg\_order|  cyl|   hp|
 |:------------------|-----:|-----------:|----:|----:|
@@ -252,7 +256,7 @@ Show the first 6 rows of this new data frame to get partial credit.
 
 <br>
 
-##### Hint 2: When making the plot, please pay attention the following elements of the plot that need to be specified.
+##### Hint 2: When making the plot, please pay attention to the following elements of the plot that need to be specified.
 
 -   Horizontal adjustment of the text labels ("`hjust`" option in `geom_text()`)
 -   The range of the x-axis (`xlim()`)
