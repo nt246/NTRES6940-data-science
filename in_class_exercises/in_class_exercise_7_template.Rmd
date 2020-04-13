@@ -1,5 +1,5 @@
 ---
-title: "cm008 Exercises: Fix the Plots"
+title: "Fix the Plots"
 output: 
   html_document:
     keep_md: true
@@ -12,9 +12,11 @@ output:
 knitr::opts_chunk$set(error = TRUE, warning = FALSE)
 ```
 
+<br>
 
+## Question 1
 Why is this not running?
-```{r}
+```{r, eval = FALSE}
 coronavirus %>%  
   filter(type == "confirmed") %>% 
   group_by(date) %>% 
@@ -24,8 +26,12 @@ coronavirus %>%
 
 ```
 
-What is the problem here
-```{r}
+<br>
+
+## Question 2
+
+What is the problem here?
+```{r, eval = FALSE}
 top10_countries <- coronavirus %>% 
   filter(type == "confirmed") %>%
   group_by(Country.Region) %>%
@@ -43,25 +49,17 @@ coronavirus %>%
 
 ```
 
+<br>
 
-
-What is the difference between the two code chunks below (look in the ggplot() line? Which would you use and why?
-```{r}
+## Question 3
+What is the difference between the two code chunks below (look in the `ggplot()` line)? Which would you use and why?
+```{r, eval = FALSE}
 coronavirus %>%  
   filter(type == "confirmed", Country.Region %in% top10_countries) %>% 
   group_by(Country.Region, date) %>% 
   summarize(total_cases = sum(cases)) %>% 
   ggplot(mapping = aes(x = date, y = total_cases, color = Country.Region)) +
   geom_line()
-
-coronavirus %>%  
-  filter(type == "confirmed", Country.Region %in% top10_countries) %>% 
-  group_by(Country.Region, date) %>% 
-  summarize(total_cases = sum(cases)) %>% 
-  ggplot(aes(date, total_cases, color = Country.Region)) +
-  geom_line()
-
-
 
 ```
 

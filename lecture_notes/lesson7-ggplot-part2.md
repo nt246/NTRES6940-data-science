@@ -144,8 +144,8 @@ Let’s start with summarizing the total number of cases by type as of
 ``` r
 total_cases <- coronavirus %>% 
   group_by(type) %>%
-  summarise(cases = sum(cases))
-kable(total_cases) 
+  summarize(cases = sum(cases))
+kable(total_cases)  # Kable just provides a nice output for the table
 ```
 
 | type      |   cases |
@@ -202,7 +202,7 @@ gg_base +
 
 ``` r
 gg_base +
-  geom_col()
+  geom_col(color="black")
 ```
 
 ![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-6-2.png)<!-- -->
@@ -507,8 +507,11 @@ Since our dataset reports counts of cases, let’s first start with
 `geom_col()` (we have already used it once today).
 
 ``` r
-ggplot(coronavirus) +
-  geom_col(aes(x=date, y = cases))
+coronavirus %>% 
+  group_by(date) %>%
+  summarize(cases=sum(cases)) %>%
+  ggplot() +
+  geom_col(aes(x=date, y = cases), color="black")
 ```
 
 ![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
@@ -517,8 +520,11 @@ If we want a stacked barplot separating out the different types of
 cases, we can use the fill aesthetic
 
 ``` r
-ggplot(coronavirus) +
-  geom_col(aes(x=date, y = cases, fill = type))
+coronavirus %>% 
+  group_by(date, type) %>%
+  summarize(cases=sum(cases)) %>%
+  ggplot() +
+  geom_col(aes(x=date, y = cases, fill = type), color="black", size=0.3)
 ```
 
 ![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
@@ -526,8 +532,11 @@ ggplot(coronavirus) +
 We may want to flip this around
 
 ``` r
-ggplot(coronavirus) +
-  geom_col(aes(x=date, y = cases, fill = type)) +
+coronavirus %>% 
+  group_by(date, type) %>%
+  summarize(cases=sum(cases)) %>%
+  ggplot() +
+  geom_col(aes(x=date, y = cases, fill = type), color="black", size=0.3) +
   coord_flip()
 ```
 
@@ -538,13 +547,16 @@ daily counts. But it can be hard to compare proportions. We can make all
 bars the same height with ‘position adjustment’
 
 ``` r
-ggplot(coronavirus) +
-  geom_col(aes(x=date, y = cases, fill = type), position = "fill")
+coronavirus %>% 
+  group_by(date, type) %>%
+  summarize(cases=sum(cases)) %>%
+  ggplot() +
+  geom_col(aes(x=date, y = cases, fill = type), color="black", size=0.3, position = "fill")
 ```
 
 ![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
 
-That’s weird. Do we have negative cases? Let’s check
+Let’s check if we have negative cases.
 
 ``` r
 coronavirus %>% 
@@ -570,8 +582,10 @@ coronavirus %>%
 # Let's remove those
 coronavirus %>% 
   filter(cases > 0) %>% 
+  group_by(date, type) %>%
+  summarize(cases=sum(cases)) %>%
   ggplot() +
-  geom_col(aes(x=date, y = cases, fill = type), position = "fill")
+  geom_col(aes(x=date, y = cases, fill = type), color="black", size=0.3, position = "fill")
 ```
 
 ![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
@@ -582,6 +596,8 @@ stacked next to each other with another position adjustment option
 ``` r
 coronavirus %>% 
   filter(cases > 0) %>% 
+  group_by(date, type) %>%
+  summarize(cases=sum(cases)) %>%
   ggplot() +
   geom_col(aes(x=date, y = cases, fill = type), position = "dodge")
 ```
@@ -593,9 +609,11 @@ Now, let’s break it down by country. Let’s again subset to only the top
 
 ``` r
 coronavirus %>% 
-  filter(cases > 0, Country.Region %in% top10_countries) %>% 
+  filter(cases > 0, Country.Region %in% top10_countries) %>%
+  group_by(Country.Region, type, date) %>%
+  summarize(cases=sum(cases)) %>%
   ggplot() +
-  geom_col(aes(x=date, y = cases, fill = type), position = "fill") +
+  geom_col(aes(x=date, y = cases, fill = type), position = "fill", width = 1) +
   facet_wrap(~Country.Region)
 ```
 
@@ -603,10 +621,12 @@ coronavirus %>%
 
 ``` r
 coronavirus %>% 
-  filter(cases > 0, Country.Region %in% top10_countries) %>% 
+  filter(cases > 0, Country.Region %in% top10_countries) %>%
+  group_by(Country.Region, type, date) %>%
+  summarize(cases=sum(cases)) %>%
   ggplot() +
-  geom_col(aes(x=date, y = cases, fill = type), position = "identity") +
-  facet_wrap(~Country.Region)  
+  geom_col(aes(x=date, y = cases, fill = type), position = "identity", width = 1) +
+  facet_wrap(~Country.Region)
 ```
 
 ![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-26-2.png)<!-- -->
@@ -632,7 +652,7 @@ coronavirus %>%
   summarize(total_cases = sum(cases)) %>% 
   filter(total_cases > 0) %>% 
   ggplot() +
-  geom_bar(mapping = aes(x = date))
+  geom_bar(mapping = aes(x = date), color="black")
 ```
 
 ![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-27-2.png)<!-- -->
@@ -649,7 +669,7 @@ class.
 coronavirus_ttd <- coronavirus %>% 
   select(country = Country.Region, type, cases) %>%
   group_by(country, type) %>%
-  summarise(total_cases = sum(cases)) %>%
+  summarize(total_cases = sum(cases)) %>%
   pivot_wider(names_from = type, values_from = total_cases) %>%
   arrange(-confirmed)
 
@@ -671,12 +691,16 @@ ggplot(coronavirus_ttd) +
 
 Let’s do a few things to make this easier to read
 
+We can remove countries with a small number of confirmed cases
+
 ``` r
 ggplot(data = filter(coronavirus_ttd, confirmed>20000)) +
   geom_label(mapping = aes(x = confirmed, y = death, label = country))
 ```
 
 ![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->
+
+We can remove the area with low confirmed case count from the plot
 
 ``` r
 ggplot(data = filter(coronavirus_ttd, confirmed>20000)) +
@@ -686,17 +710,19 @@ ggplot(data = filter(coronavirus_ttd, confirmed>20000)) +
 
     ## Warning: Removed 5 rows containing missing values (geom_label).
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-30-2.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->
+
+Or zoom in on that region
 
 ``` r
-ggplot(data = filter(coronavirus_ttd, confirmed>20000)) +
+ggplot(data = filter(coronavirus_ttd)) +
   geom_label(mapping = aes(x = confirmed, y = death, label = country)) +
-  xlim(40000, max(coronavirus_ttd$confirmed))
+  xlim(0, 30000)
 ```
 
-    ## Warning: Removed 5 rows containing missing values (geom_label).
+    ## Warning: Removed 9 rows containing missing values (geom_label).
 
-![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-30-3.png)<!-- -->
+![](lesson7-ggplot-part2_files/figure-gfm/unnamed-chunk-32-1.png)<!-- -->
 
 <br>
 
