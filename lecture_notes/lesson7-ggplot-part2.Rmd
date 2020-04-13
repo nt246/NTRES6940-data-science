@@ -385,6 +385,7 @@ ggplot(coronavirus) +
   geom_col(aes(x=date, y = cases, fill = type)) +
   coord_flip()
 
+
 ```
 
 This is useful because it put the proportions in relation to the total daily counts. But it can be hard to compare proportions. We can make all bars the same height with 'position adjustment'
@@ -392,6 +393,12 @@ This is useful because it put the proportions in relation to the total daily cou
 ```{R, eval = TRUE}
 ggplot(coronavirus) +
   geom_col(aes(x=date, y = cases, fill = type), position = "fill")
+
+group_by(coronavirus, date, type) %>%
+  summarise(cases=sum(cases)) %>%
+  ggplot() +
+  geom_col(aes(x=date, y = cases, fill = type), color="black", size=0.3, position = "fill")
+
 ```
 
 That's weird. Do we have negative cases? Let's check
