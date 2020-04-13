@@ -36,7 +36,7 @@ Lesson 7: ggplot part 2
 
 <br>
 
-## Learning objectives
+## Today’s learning objectives
 
 The goal for today’s class is to return to `ggplot` to get more practice
 with using this package for data visualization, cover a few additional
@@ -50,6 +50,9 @@ By the end of this class, you should be able to:
   - Chain together steps for data wrangling (`dplyr`) and plotting
     `ggplot`
 
+Good coding practices were also listed for this class, but we’ll cover
+that on Wednesday instead.
+
 **Acknowledgements**: Today’s lecture borrows from several excellent
 resources including the [R for Excel
 users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julia
@@ -61,8 +64,10 @@ Science](https://r4ds.had.co.nz/data-visualisation.html#statistical-transformati
 
 ## Recap on the Grammar of Graphics implemented in `ggplot`
 
-This overview is borrowing from the [STAT545 course at
+This overview is borrowed from the [STAT545 course at
 UBC](https://stat545guidebook.netlify.com/intro-to-plotting-with-ggplot2-part-i.html)
+
+![](https://cxlabsblog.files.wordpress.com/2017/10/2017-10-24-14_36_29-visualization-layers-of-ggplot-google-docs.png)
 
 You can think of the grammar of graphics as a systematic approach for
 describing the components of a graph. It has seven components (the ones
@@ -115,25 +120,11 @@ github\_document output format, and save it to your lecture note folder.
 You will use this RMarkdown file to take notes and work on exercises,
 and maybe share your work with the class.
 
-First, let’s load our packages and read in our Coronavirus
-    dataset
+First, let’s load our packages and read in our Coronavirus dataset
 
 ``` r
-library(tidyverse)
-```
+suppressPackageStartupMessages(library(tidyverse))
 
-    ## ── Attaching packages ───────────────────────────────────────────────────────── tidyverse 1.3.0 ──
-
-    ## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
-    ## ✓ tibble  3.0.0     ✓ dplyr   0.8.5
-    ## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
-    ## ✓ readr   1.3.1     ✓ forcats 0.4.0
-
-    ## ── Conflicts ──────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-    ## x dplyr::filter() masks stats::filter()
-    ## x dplyr::lag()    masks stats::lag()
-
-``` r
 coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv', col_types = cols(Province.State = col_character()))
 
 # Has it been updated? Check the latest date?
@@ -159,6 +150,7 @@ worldwide
 
 ``` r
 # We first have to summarize the data, then plot those summary statistics
+# Note that we can pipe dplyr output directly into ggplot
 coronavirus %>%  
   filter(type == "confirmed") %>% 
   group_by(date) %>% 
@@ -261,8 +253,8 @@ characteristic (usually, character or value).
 
 > When we want to customize a graph element based on a variable’s
 > characteristic or value, add the argument within `aes()` in the
-> appropriate `geom_*()` layer In short, if updating aesthetics based on
-> a variable, make sure to put that argument inside of `aes()`.
+> appropriate `geom_*()` layer. In short, if updating aesthetics based
+> on a variable, make sure to put that argument inside of `aes()`.
 
 **Example:** Create a ggplot scatterplot graph where the **size** and
 **color** of the points change based on the **number of cases**, and

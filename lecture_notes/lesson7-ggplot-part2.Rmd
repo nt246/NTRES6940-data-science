@@ -35,13 +35,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <br>
 
-## Learning objectives
+## Today's learning objectives
 The goal for today's class is to return to `ggplot` to get more practice with using this package for data visualization, cover a few additional aspects of its functionality, and integrate the `dplyr` data wrangling skills we learned last week to further customize our plots.
 
 By the end of this class, you should be able to:
 
 * Use different geometric objects and aesthetics to explore various plot types in `ggplot`
 * Chain together steps for data wrangling (`dplyr`) and plotting `ggplot`
+
+Good coding practices were also listed for this class, but we'll cover that on Wednesday instead.
 
 **Acknowledgements**: Today’s lecture borrows from several excellent resources including the [R
 for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/)
@@ -51,7 +53,9 @@ course by Julia Stewart Lowndes and Allison Horst and Chapter 3 of [Grolemund an
 
 ## Recap on the Grammar of Graphics implemented in `ggplot`
 
-This overview is borrowing from the [STAT545 course at UBC](https://stat545guidebook.netlify.com/intro-to-plotting-with-ggplot2-part-i.html)
+This overview is borrowed from the [STAT545 course at UBC](https://stat545guidebook.netlify.com/intro-to-plotting-with-ggplot2-part-i.html)
+
+![](https://cxlabsblog.files.wordpress.com/2017/10/2017-10-24-14_36_29-visualization-layers-of-ggplot-google-docs.png)
 
 You can think of the grammar of graphics as a systematic approach for describing the components of a graph. It has seven components (the ones in **bold** are required to be specifed explicitly in ggplot2):
 
@@ -82,7 +86,7 @@ Before we start, please open the R Project associated with your personal class G
 First, let's load our packages and read in our Coronavirus dataset
 ```{r}
 
-library(tidyverse)
+suppressPackageStartupMessages(library(tidyverse))
 
 coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv', col_types = cols(Province.State = col_character()))
 
@@ -106,6 +110,7 @@ total_cases
 Now, let's plot the history of the daily counts of new confirmed cases worldwide
 ```{r, eval = FALSE}
 # We first have to summarize the data, then plot those summary statistics
+# Note that we can pipe dplyr output directly into ggplot
 coronavirus %>%  
   filter(type == "confirmed") %>% 
   group_by(date) %>% 
@@ -187,7 +192,7 @@ gg_base +
 
 In the examples above, we have customized aesthetics based on constants that we input as arguments (e.g., the color / style / size isn't changing based on a variable characteristic or value). Often, however, we **do** want the aesthetics of a graph to depend on a variable. To do that, we'll **map variables onto graph aesthetics**, meaning we'll change how an element on the graph looks based on a variable characteristic (usually, character or value). 
 
-> When we want to customize a graph element based on a variable's characteristic or value, add the argument within `aes()` in the appropriate `geom_*()` layer
+> When we want to customize a graph element based on a variable's characteristic or value, add the argument within `aes()` in the appropriate `geom_*()` layer.
 In short, if updating aesthetics based on a variable, make sure to put that argument inside of `aes()`. 
 
 **Example:** Create a ggplot scatterplot graph where the **size** and **color** of the points change based on the **number of cases**, and make all points the same level of opacity (`alpha = 0.5`). Notice the `aes()` around the `size = ` and `color = ` arguments. 
