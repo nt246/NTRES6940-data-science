@@ -61,3 +61,9 @@ coronavirus %>%
   geom_line()
 ```
 
+<br>
+
+## Question 4
+With both the `mutate()` and the `summarize()` functions, we create a new variable using the following syntax: `var_name = function(variable)`. What is the difference between those two functions?
+
+
