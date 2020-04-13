@@ -45,7 +45,7 @@ By the end of this class you will be able to:
 
 **Acknowledgements**: Today’s lecture is adapted from the excellent [R
 for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/)
-course by Julia Stewart Lowndes and Allison Horst and the [STAT457
+course by Julia Stewart Lowndes and Allison Horst and the [STAT545
 course at
 UBC](https://stat545guidebook.netlify.com/the-version-control-workflow.html).
 
