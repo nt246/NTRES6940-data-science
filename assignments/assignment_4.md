@@ -10,13 +10,13 @@ Instructions: Please read through this before you begin
 
 -   For the first exercise in this assignment, you will explore a dataset with details about passengers on the Titanic. First, **answer the questions below and use figures or tables to support your answer**. Then, **explore the dataset on your own** using the data transformation and visualization skills that you have learned in this class so far.
 
-    -   For this exercise, please make sure to put some thought on **editing the aesthetics of your figures and tables** to make them easier to understand and nicer to look at (e.g. choose the most appropriate geometric object, aesthetic mapping, facetting, position adjustment; add meaningful axis labels, figure titles, legend titles; change the background; be creative; and etc.).
+    -   For this exercise, please make sure to put some thought into **editing the aesthetics of your figures and tables** to make them easier to understand and nicer to look at (e.g. choose the most appropriate geometric object, aesthetic mapping, facetting, position adjustment; add meaningful axis labels, figure titles, legend titles; change the background; be creative; and etc.).
 
     -   When a verbal response is needed, answer by replacing the part in the R markdown template where it says <span style="color:blue"> "Write your response here" </span>.
 
 -   For the second exercise in this assignment, you will use the data wrangling and visualization skills that you have learned in this class to reproduce a figure exactly as it is shown.
 
--   Have all your code embeded within the R markdown file, and show both of your **code** and **plots** in the knitted markdown file.
+-   Have all your code embedded within the R markdown file, and show both of your **code** and **plots** in the knitted markdown file.
 
 -   Use R Markdown functionalities to **hide messages and warnings when needed**. (Suggestion: messages and warnings can often be informative and important, so please examine them carefully and only turn them off when you finish the exercise).
 
