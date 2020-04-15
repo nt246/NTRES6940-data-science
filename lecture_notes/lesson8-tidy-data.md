@@ -259,15 +259,39 @@ unchanged and are simply replicated as needed.
 #### Write the tidy data to a delimited file
 
 Now we write this multi-film, tidy dataset to file for use in various
-downstream scripts for further analysis and
-visualization.
+downstream scripts for further analysis and visualization.
 
-#### Exercises
+#### Your turn: Exercises
+
+The word count data is given in two untidy and gender-specific files
+available at these
+URLs:
 
 (<https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Female.csv>)
 (<https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Male.csv>)
 
-## Coronavirus
+Write an R script that reads them in and writes a single tidy data frame
+to file. Literally, reproduce the lotr\_tidy data frame and the
+lotr\_tidy.csv data file from above.
+
+Write R code to compute the total number of words spoken by each race
+across the entire trilogy. Do it two ways:
+
+  - Using film-specific or gender-specific, untidy data frames as the
+    input data.
+  - Using the lotr\_tidy data frame as input.
+
+Reflect on the process of writing this code and on the code itself.
+Which is easier to write? Easier to read?
+
+Write R code to compute the total number of words spoken in each film.
+Do this by copying and modifying your own code for totalling words by
+race. Which approach is easier to modify and repurpose – the one based
+on multiple, untidy data frames or the tidy data?
+
+<br>
+
+## Applying this to our Coronavirus dataset
 
 Let’s now return to our Coronavirus dataset. Let’s remind ourselves of
 it’s
@@ -322,3 +346,44 @@ corona_wide <- coronavirus %>%
 
 Now how do we reproduce the barchart of total cases per day broken down
 by type?
+
+And how would be plot the daily counts of different case types within a
+country? With the long format this is easy
+
+``` r
+coronavirus %>% 
+  filter(Country.Region == "US") %>% 
+  ggplot() +
+  geom_line(aes(x = date, y = cases, color = type))
+```
+
+![](lesson8-tidy-data_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+
+How would we do this with the `coronavirus_wide` format?
+
+As mentioned above, however, there are plot types where the wide format
+provides the best input. For example, in Slack, I showed the example of
+plotting the total death count per country against the total count of
+confirmed cases. It would be cumbersome to pull these out of the long
+format because in `ggplot` we are mapping *variables* to *aesthetics*
+and now we want to map different levels of a variable to different
+aesthetics. So let’s make those different levels separate variables by
+widening the data.
+
+``` r
+coronavirus_ttd <- coronavirus %>% 
+  group_by(Country.Region, type) %>%
+  summarize(total_cases = sum(cases)) %>%
+  pivot_wider(names_from = type, values_from = total_cases)
+
+ggplot(coronavirus_ttd) +
+  geom_label(mapping = aes(x = confirmed, y = death, label = Country.Region))
+```
+
+![](lesson8-tidy-data_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+
+This case highlights how the definition of what a variable and an
+observation is context-dependent so different formats of the same data
+can be considered tidy based on how we are thinking about the data and
+we may need to switch back and forth between long and wide formats to
+explore different levels of a dataset.
