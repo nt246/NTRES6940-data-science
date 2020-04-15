@@ -23,4 +23,182 @@ knitr::opts_chunk$set(echo = TRUE)
 * `tidyr` [vignette on tidy data](https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html  
 * [Hadley's paper on tidy data](https://vita.had.co.nz/papers/tidy-data.pdf) provides a thorough investigation
 
+<br>
+
+## Announcements
+* Will need a longer Zoom session next week
+* Homework 3 is due tonight, Homework 4 is posted under `assignments`
+
+<br>
+
+## Today's learning objectives
+In previous sessions, we learned to read in data, do some wrangling, and create a graph and table. In this session we'll learn some tools to help make our data **tidy** and more coder-friendly. By the end of today's class, you should be able to:
+
+- Read different types of data into R
+- Describe the tibble format
+- Save plots and tables with R code
+- Describe the concept of tidy data
+- Determine whether a dataset is in tidy format
+- Use `tidyr::pivot_wider()` and `tidyr::pivot_longer()` to reshape data frames
+- Use `tidyr::unite()` and `tidyr::separate()` to merge or separate information from different columns
+- Use `janitor::clean_names()` to make column headers more manageable
+
+
+## Acknowledgements
+Todays lesson integrates material from multiple sources, including the excellent [R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julia Stewart Lowndes and Allison Horst and several other sources specified below.
+
+<br>
+
+## Introduction
+Instead of building your analyses around whatever (likely weird) format your data are in, take deliberate steps to make your data tidy. When your data are tidy, you can use a growing assortment of powerful analytical and visualization tools instead of inventing home-grown ways to accommodate your data. This will save you time since you aren’t reinventing the wheel, and will make your work more clear and understandable to your collaborators (most importantly, Future You).
+
+Note that to effectively use `ggplot()` your data must be in tidy format.
+
+
+## Part 1: Data import and export
+
+The read_csv package has many additional options including the ability to skip columns, skip rows, rename columns on import, trim whitespace, and more…
+
+```{r}
+library(tidyverse)
+```
+
+
+
+## Part 2: Tidy data
+
+"Tidy" might sound like a generic way to describe non-messy looking data, but it actually refers to a specific data structure. 
+
+A data set is tidy if:
+
+* Each row is an observation;
+* Each column is a variable;
+* Each cell is a value.
+
+See: [Ch. 12 in R for Data Science by Grolemund & Wickham](https://r4ds.had.co.nz/tidy-data.html)).
+
+
+![](../img/tidy_data.png)
+
+
+An implication of this definition is that each value belongs to exactly one variable and one observation. This also means that tidy data is relative, as it depends on how you define your observational unit and variables.
+
+
+
+## Pivoting
+To learn powerful `tidyverse` functions for reshaping data, we'll go over [Chapter 12.3 Pivoting in Grolemund and Wickham's "R for Data Science"](https://r4ds.had.co.nz/tidy-data.html#pivoting).
+
+
+
+## More examples about tidy and untidy data
+
+>If I had one thing to tell biologists learning bioinformatics, it would be “write code for humans, write data for computers”.
+— Vince Buffalo (@vsbuffalo)
+
+
+Let's work through Jenny Bryan's Lord of the Rings example. This nicely lays out the concepts of lengtening and widening datasets. It uses outdated functions for pivoting the dataframes, however, so we'll work through updated code here (i.e. only look at the `01-intro.md` file, not the `02-gather.md`).
+
+
+#### Import untidy Lord of the Rings data
+
+We bring the data into data frames or tibbles, one per film, and do some inspection.
+```{r}
+
+fship <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Fellowship_Of_The_Ring.csv")
+
+ttow <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Two_Towers.csv")
+
+rking <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Return_Of_The_King.csv")
+
+
+```
+
+#### Collect untidy Lord of the Rings data into a single data frame
+We now have one data frame per film, each with a common set of 4 variables. Step one in tidying this data is to glue them together into one data frame, stacking them up row wise. This is called row binding and we use `dplyr::bind_rows()`.
+
+```{r}
+lotr_untidy <- bind_rows(fship, ttow, rking)
+str(lotr_untidy)
+
+lotr_untidy
+
+```
+
+#### Tidy the untidy Lord of the Rings data
+We are still violating one of the fundamental principles of **tidy data**. “Word count” is a fundamental variable in our dataset and it’s currently spread out over two variables, `Female` and `Male`. Conceptually, we need to gather up the word counts into a single variable and create a new variable, `Gender`, to track whether each count refers to females or males. We use the `pivot_longer()` function from the tidyr package to do this.
+
+```{r}
+lotr_tidy <-
+  pivot_longer(lotr_untidy, c(Male, Female), names_to = 'Gender', values_to = 'Words')
+
+lotr_tidy
+
+```
+Tidy data … mission accomplished!
+
+To explain our call to pivot_longer() above, let’s read it from right to left: we took the variables Female and Male and gathered their values into a single new variable Words. This forced the creation of a companion variable Gender, which tells whether a specific value of Words came from Female or Male. All other variables, such as Film, remain unchanged and are simply replicated as needed. 
+
+#### Write the tidy data to a delimited file
+Now we write this multi-film, tidy dataset to file for use in various downstream scripts for further analysis and visualization.
+
+```{r, include = FALSE, eval = FALSE}
+write_csv(lotr_tidy, path = "data/lotr_tidy.csv")
+```
+
+
+#### Exercises
+
+
+(https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Female.csv)
+(https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Male.csv)
+
+
+
+
+
+
+## Coronavirus
+
+Let's now return to our Coronavirus dataset. Let's remind ourselves of it's structure
+
+```{r}
+
+coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv', col_types = cols(Province.State = col_character()))
+
+coronavirus
+
+```
+
+**QUESTION**: Is this in tidy format?
+
+
+On Monday, we visualized the global case counts date
+```{r}
+coronavirus %>% 
+  group_by(date, type) %>%
+  summarize(cases=sum(cases)) %>%
+  ggplot() +
+  geom_col(aes(x=date, y = cases, fill = type))
+
+```
+
+Let's see how we would do that if the data had been in a wider format.
+
+## Your turn
+Convert the coronavirus dataset to a wider format where the confirmed cases, deaths and recovered cases are shown in separate columns.
+
+
+```{r}
+corona_wide <- coronavirus %>% 
+  pivot_wider(names_from = type, values_from = cases)
+
+```
+
+Now how do we reproduce the barchart of total cases per day broken down by type? 
+
+
+
+
+
+
 
