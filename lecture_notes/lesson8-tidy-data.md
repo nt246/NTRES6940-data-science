@@ -103,7 +103,7 @@ use are the `read_xx()` functions from the tidyverse package `readr`.
 
 We can also read directly from spreadsheet formats:
 
-  - `read_excel()` reads directly from Excel spreadsheets
+  - `readxl::read_excel()` reads directly from Excel spreadsheets
 
   - `googlesheets::gs_read()` from the package
     [googlesheets](https://cran.r-project.org/web/packages/googlesheets/vignettes/basic-usage.html#read-all-the-data-in-one-worksheet)
@@ -148,8 +148,8 @@ import, trim whitespace, and much more. They all use the same syntax, so
 once you get familiar with one, you can easily apply your knowledge to
 all the other functions in `readr`.
 
-You can examine the options by looking at the documentation, e.g `?
-read_csv()`. There is also a very useful overview in [Chapter 11 of
+You can examine the options by looking at the documentation, e.g
+`?read_csv()`. There is also a very useful overview in [Chapter 11 of
 Grolemund and Wickham’s R for Data
 Science](https://r4ds.had.co.nz/data-import.html)
 
