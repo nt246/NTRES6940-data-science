@@ -213,26 +213,28 @@ This means for most real analyses, you’ll need to do some tidying. The
 first step is always to figure out what the variables and observations
 are. Sometimes this is easy; other times you’ll need to consult with the
 people who originally generated the data. The second step is to resolve
-one of two common problems:
+one of **two common problems**:
 
-  - One variable might be spread across multiple columns.
+  - **One variable might be spread across multiple columns**.
 
-  - One observation might be scattered across multiple rows.
+  - **One observation might be scattered across multiple rows**.
 
 Typically a dataset will only suffer from one of these problems; it’ll
 only suffer from both if you’re really unlucky\! To fix these problems,
 you’ll need the two most important functions in tidyr: `pivot_longer()`
 and `pivot_wider()`.
 
-Now that you’re there, you can also take a look at Chapter 12.4 on
-`separate()` and `unite()`
+Now that you’re over in “R for Data Science”, you can continue on to
+also take a look at Chapter 12.4 on `separate()` and `unite()` - two
+simple functions for splitting and combining information from different
+columns.
 
 <br>
 
-### A simple example to further illustrate tidy and untidy data
+### Another example to further illustrate tidy and untidy data
 
-To explore tidy data in a different context, let’s work through and
-example developed by Jenny Bryan using data on the Lord of the Rings
+To explore tidy data in a different context, let’s work through a
+tutorial developed by Jenny Bryan using data on the Lord of the Rings
 movies. This nicely illustrates the concepts of lengtening and widening
 datasets. It uses outdated functions for pivoting the dataframes,
 however, so we’ll work through updated code here (i.e. only look at the
@@ -645,4 +647,6 @@ And there are other case options in `clean_names()`, like:
   - “lower\_upper” produces lowerUPPER
   - “upper\_lower” produces UPPERlower
 
-![](/Users/nt246/github/NTRES6940-data-science/img/case.jpg)
+![](/Users/nt246/github/NTRES6940-data-science/img/case.jpg) Art by
+Allison Horst. Check out more
+[here](https://github.com/allisonhorst/stats-illustrations)
