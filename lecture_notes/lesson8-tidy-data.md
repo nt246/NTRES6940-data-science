@@ -451,7 +451,7 @@ The word count data is given in two untidy and gender-specific files
 available at these
 URLs:
 
-<https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Female.csv>
+<https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Female.csv>  
 <https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Male.csv>
 
 Write an R script that reads them in and writes a single tidy data frame
