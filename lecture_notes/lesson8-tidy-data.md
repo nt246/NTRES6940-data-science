@@ -25,21 +25,19 @@ Lesson 8: tidy data
 
 ## Announcements
 
-  - Will need a longer Zoom session next week
   - Homework 3 is due tonight, Homework 4 is posted under `assignments`
 
 <br>
 
 ## Today’s learning objectives
 
-In previous sessions, we learned to read in data, do some wrangling, and
-create a graph and table. In this session we’ll learn some tools to help
-make our data **tidy** and more coder-friendly. By the end of today’s
-class, you should be able to:
+So far, we’ve only worked with data that were already formatted for
+effecient processing with tidyverse functions. In this session we’ll
+learn some tools to help get data into that format - make it **tidy**
+and more coder-friendly.  
+By the end of today’s class, you should be able to:
 
   - Read different types of data into R
-  - Describe the tibble format
-  - Save plots and tables with R code
   - Describe the concept of tidy data
   - Determine whether a dataset is in tidy format
   - Use `tidyr::pivot_wider()` and `tidyr::pivot_longer()` to reshape
@@ -48,7 +46,9 @@ class, you should be able to:
     information from different columns
   - Use `janitor::clean_names()` to make column headers more manageable
 
-## Acknowledgements
+<br>
+
+#### Acknowledgements
 
 Todays lesson integrates material from multiple sources, including the
 excellent [R for Excel
@@ -58,40 +58,102 @@ below.
 
 <br>
 
-## Introduction
+## Set-up
 
-Instead of building your analyses around whatever (likely weird) format
-your data are in, take deliberate steps to make your data tidy. When
-your data are tidy, you can use a growing assortment of powerful
-analytical and visualization tools instead of inventing home-grown ways
-to accommodate your data. This will save you time since you aren’t
-reinventing the wheel, and will make your work more clear and
-understandable to your collaborators (most importantly, Future You).
+### Create a new R Markdown and attach packages
 
-Note that to effectively use `ggplot()` your data must be in tidy
-format.
+  - Open the R Project associated with your personal class GitHub
+    repository.
+  - PULL to make sure your project is up to date
+  - Create a new RMarkdown file called `my_tidying.Rmd`
+  - Remove all example code / text below the first code chunk and change
+    the output format (in the YAML header) to “github\_document”
+  - Attach the packages we’ll use here (you will have to install
+    `janitor` if you don’t already have it):
+      - `tidyverse`
+      - `janitor`
 
-## Part 1: Data import and export
-
-The read\_csv package has many additional options including the ability
-to skip columns, skip rows, rename columns on import, trim whitespace,
-and
-    more…
+Knit and save your new .Rmd within the project folder.
 
 ``` r
+# Attach packages
 library(tidyverse)
+library(janitor)  ## install.packages("janitor")
 ```
 
-    ## ── Attaching packages ─────────────────────────────── tidyverse 1.3.0 ──
+<br>
 
-    ## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
-    ## ✓ tibble  3.0.0     ✓ dplyr   0.8.5
-    ## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
-    ## ✓ readr   1.3.1     ✓ forcats 0.4.0
+## Part 1: Data import
 
-    ## ── Conflicts ────────────────────────────────── tidyverse_conflicts() ──
-    ## x dplyr::filter() masks stats::filter()
-    ## x dplyr::lag()    masks stats::lag()
+So far, we’ve been working with datasets that are built into R or we
+have just provided code to run to import data into R.
+
+When working in the tidyverse, the most common import function we will
+use are the `read_xx()` functions from the tidyverse package `readr`.
+
+  - `read_csv()` reads comma delimited files, `read_csv2()` reads
+    semicolon separated files (common in countries where `,` is used as
+    the decimal place), `read_tsv()` reads tab delimited files, and
+    `read_delim()` reads in files with any delimiter.
+
+  - `read_fwf()` reads fixed width files. You can specify fields either
+    by their widths with `fwf_widths()` or their position with
+    `fwf_positions()`. `read_table()` reads a common variation of fixed
+    width files where columns are separated by white space.
+
+We can also read directly from spreadsheet formats:
+
+  - `read_excel()` reads directly from Excel spreadsheets
+
+  - `googlesheets::gs_read()` from the package
+    [googlesheets](https://cran.r-project.org/web/packages/googlesheets/vignettes/basic-usage.html#read-all-the-data-in-one-worksheet)
+    reads in data directly from Google Sheets
+
+<br>
+
+For all of these, we can either read in data from a file path or
+directly from a URL.
+
+So for example, for a dataset we will be working with later, I can
+either load my local copy or grab it from the github site where it is
+made available
+
+``` r
+lotr <- read_csv("../datasets/lotr_tidy.csv")
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   Film = col_character(),
+    ##   Race = col_character(),
+    ##   Gender = col_character(),
+    ##   Words = col_double()
+    ## )
+
+``` r
+lotr <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/lotr_tidy.csv")
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   Film = col_character(),
+    ##   Race = col_character(),
+    ##   Gender = col_character(),
+    ##   Words = col_double()
+    ## )
+
+All the `readr::read_xx()` functions has many additional options
+including the ability to skip columns, skip rows, rename columns on
+import, trim whitespace, and much more. They all use the same syntax, so
+once you get familiar with one, you can easily apply your knowledge to
+all the other functions in `readr`.
+
+You can examine the options by looking at the documentation, e.g `?
+read_csv()`. There is also a very useful overview in [Chapter 11 of
+Grolemund and Wickham’s R for Data
+Science](https://r4ds.had.co.nz/data-import.html)
+
+<br>
 
 ## Part 2: Tidy data
 
@@ -100,8 +162,8 @@ data, but it actually refers to a specific data structure.
 
 A data set is tidy if:
 
-  - Each row is an observation;
   - Each column is a variable;
+  - Each row is an observation;
   - Each cell is a value.
 
 See: [Ch. 12 in R for Data Science by Grolemund &
@@ -114,25 +176,57 @@ one variable and one observation. This also means that tidy data is
 relative, as it depends on how you define your observational unit and
 variables.
 
-## Pivoting
+A key idea here is that instead of building your analyses around
+whatever (likely weird) format your data are in, take deliberate steps
+to make your data tidy. When your data are tidy, you can use a growing
+assortment of powerful analytical and visualization tools instead of
+inventing home-grown ways to accommodate your data. This will save you
+time since you aren’t reinventing the wheel, and will make your work
+more clear and understandable to your collaborators (most importantly,
+Future You).
 
-To learn powerful `tidyverse` functions for reshaping data, we’ll go
-over [Chapter 12.3 Pivoting in Grolemund and Wickham’s “R for Data
-Science”](https://r4ds.had.co.nz/tidy-data.html#pivoting).
+Note that to effectively use `ggplot()` your data must be in tidy
+format.
 
-## More examples about tidy and untidy data
+Let’s go through some examples to get a better understanding of what
+tidy data look like.
+
+<br>
 
 > If I had one thing to tell biologists learning bioinformatics, it
 > would be “write code for humans, write data for computers”. — Vince
 > Buffalo (@vsbuffalo)
 
-Let’s work through Jenny Bryan’s Lord of the Rings example. This nicely
-lays out the concepts of lengtening and widening datasets. It uses
-outdated functions for pivoting the dataframes, however, so we’ll work
-through updated code here (i.e. only look at the `01-intro.md` file, not
-the `02-gather.md`).
+<br>
 
-#### Import untidy Lord of the Rings data
+### Pivoting between long and wide data formats
+
+First, to exlore the powerful `tidyverse` functions for reshaping data,
+we’ll walk through [Chapter 12.3 Pivoting in Grolemund and Wickham’s “R
+for Data Science”](https://r4ds.had.co.nz/tidy-data.html#pivoting).
+
+Now we’re there, we’ll also cover Chapter 12.4 on `separate()` and
+`unite()`
+
+<br>
+
+### A simple example to further illustrate tidy and untidy data
+
+To explore tidy data in a different context, let’s work through and
+example developed by Jenny Bryan using data on the Lord of the Rings
+movies. This nicely illustrates the concepts of lengtening and widening
+datasets. It uses outdated functions for pivoting the dataframes,
+however, so we’ll work through updated code here (i.e. only look at the
+`01-intro.md` file, not the `02-gather.md` and `03-spread.md`).
+
+First let’s read the intro (`01-intro.md`)
+[here](https://github.com/jennybc/lotr-tidy/blob/master/01-intro.md)
+
+Then let’s work through the reshaping of the data.
+
+<br>
+
+#### 1\. Import untidy Lord of the Rings data
 
 We bring the data into data frames or tibbles, one per film, and do some
 inspection.
@@ -173,7 +267,7 @@ rking <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/da
     ##   Male = col_double()
     ## )
 
-#### Collect untidy Lord of the Rings data into a single data frame
+#### 2\. Collect untidy Lord of the Rings data into a single data frame
 
 We now have one data frame per film, each with a common set of 4
 variables. Step one in tidying this data is to glue them together into
@@ -208,7 +302,7 @@ lotr_untidy
     ## 8 The Return Of The King     Hobbit      2  2673
     ## 9 The Return Of The King     Man       268  2459
 
-#### Tidy the untidy Lord of the Rings data
+#### 3\. Tidy the untidy Lord of the Rings data
 
 We are still violating one of the fundamental principles of **tidy
 data**. “Word count” is a fundamental variable in our dataset and it’s
@@ -247,7 +341,7 @@ lotr_tidy
     ## 17 The Return Of The King     Man    Male    2459
     ## 18 The Return Of The King     Man    Female   268
 
-Tidy data … mission accomplished\!
+Tidy data… mission accomplished\!
 
 To explain our call to pivot\_longer() above, let’s read it from right
 to left: we took the variables Female and Male and gathered their values
@@ -256,12 +350,77 @@ companion variable Gender, which tells whether a specific value of Words
 came from Female or Male. All other variables, such as Film, remain
 unchanged and are simply replicated as needed.
 
-#### Write the tidy data to a delimited file
+#### 4\. Write the tidy data to a delimited file
 
 Now we write this multi-film, tidy dataset to file for use in various
 downstream scripts for further analysis and visualization.
 
-#### Your turn: Exercises
+<br>
+
+#### Your turn
+
+1.  After tidying the data and completing your analysis, you may want to
+    output a table that has each race in its own column. Let’s use the
+    `pivot_wider()` function to make such a table and save it as
+    “lotr\_wide”
+
+2.  OPTIONAL: Use the pivot\_longer() function to transform you
+    lotr\_wide back to tidy format.
+
+##### Answer
+
+``` r
+# let's get one variable per Race
+lotr_tidy %>% 
+  pivot_wider(names_from = Race, values_from = Words)
+```
+
+    ## # A tibble: 6 x 5
+    ##   Film                       Gender   Elf Hobbit   Man
+    ##   <chr>                      <chr>  <dbl>  <dbl> <dbl>
+    ## 1 The Fellowship Of The Ring Male     971   3644  1995
+    ## 2 The Fellowship Of The Ring Female  1229     14     0
+    ## 3 The Two Towers             Male     513   2463  3589
+    ## 4 The Two Towers             Female   331      0   401
+    ## 5 The Return Of The King     Male     510   2673  2459
+    ## 6 The Return Of The King     Female   183      2   268
+
+``` r
+# let's get one variable per Gender
+lotr_tidy %>% 
+  pivot_wider(names_from = Gender, values_from = Words)
+```
+
+    ## # A tibble: 9 x 4
+    ##   Film                       Race    Male Female
+    ##   <chr>                      <chr>  <dbl>  <dbl>
+    ## 1 The Fellowship Of The Ring Elf      971   1229
+    ## 2 The Fellowship Of The Ring Hobbit  3644     14
+    ## 3 The Fellowship Of The Ring Man     1995      0
+    ## 4 The Two Towers             Elf      513    331
+    ## 5 The Two Towers             Hobbit  2463      0
+    ## 6 The Two Towers             Man     3589    401
+    ## 7 The Return Of The King     Elf      510    183
+    ## 8 The Return Of The King     Hobbit  2673      2
+    ## 9 The Return Of The King     Man     2459    268
+
+``` r
+# let's get one variable per combo of Race and Gender
+lotr_tidy %>% 
+  unite(Race_Gender, Race, Gender) %>% 
+  pivot_wider(names_from = Race_Gender, values_from = Words)
+```
+
+    ## # A tibble: 3 x 7
+    ##   Film         Elf_Male Elf_Female Hobbit_Male Hobbit_Female Man_Male Man_Female
+    ##   <chr>           <dbl>      <dbl>       <dbl>         <dbl>    <dbl>      <dbl>
+    ## 1 The Fellows…      971       1229        3644            14     1995          0
+    ## 2 The Two Tow…      513        331        2463             0     3589        401
+    ## 3 The Return …      510        183        2673             2     2459        268
+
+<br>
+
+#### More exercises on the LOTR data
 
 The word count data is given in two untidy and gender-specific files
 available at these
@@ -330,14 +489,18 @@ coronavirus %>%
   geom_col(aes(x=date, y = cases, fill = type))
 ```
 
-![](lesson8-tidy-data_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](lesson8-tidy-data_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
 
 Let’s see how we would do that if the data had been in a wider format.
 
-## Your turn
+#### Your turn
 
 Convert the coronavirus dataset to a wider format where the confirmed
 cases, deaths and recovered cases are shown in separate columns.
+
+<br>
+
+##### Answer
 
 ``` r
 corona_wide <- coronavirus %>% 
@@ -348,7 +511,7 @@ Now how do we reproduce the barchart of total cases per day broken down
 by type?
 
 And how would be plot the daily counts of different case types within a
-country? With the long format this is easy
+country? With the long format this is easy:
 
 ``` r
 coronavirus %>% 
@@ -357,9 +520,10 @@ coronavirus %>%
   geom_line(aes(x = date, y = cases, color = type))
 ```
 
-![](lesson8-tidy-data_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](lesson8-tidy-data_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
-How would we do this with the `coronavirus_wide` format?
+How would we do this with the `coronavirus_wide` format? That would be
+much more difficult
 
 As mentioned above, however, there are plot types where the wide format
 provides the best input. For example, in Slack, I showed the example of
@@ -376,14 +540,86 @@ coronavirus_ttd <- coronavirus %>%
   summarize(total_cases = sum(cases)) %>%
   pivot_wider(names_from = type, values_from = total_cases)
 
+# Now we can plot this easily
 ggplot(coronavirus_ttd) +
   geom_label(mapping = aes(x = confirmed, y = death, label = Country.Region))
 ```
 
-![](lesson8-tidy-data_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](lesson8-tidy-data_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
 This case highlights how the definition of what a variable and an
 observation is context-dependent so different formats of the same data
 can be considered tidy based on how we are thinking about the data and
 we may need to switch back and forth between long and wide formats to
 explore different levels of a dataset.
+
+<br>
+
+## Part 3. Cleaning up column names with `janitor::clean_names()`
+
+We’ve noticed in the coronavirus dataset that the variable names have a
+very inconsistent format. It’s not a problem per se for our ability to
+work with this dataframe, but it’s a bit annoying to look
+    at.
+
+``` r
+colnames(coronavirus)
+```
+
+    ## [1] "Province.State" "Country.Region" "Lat"            "Long"          
+    ## [5] "date"           "cases"          "type"
+
+In other cases, spaces and special characters in column names of data
+you import can actually cause problems downstream, so we often may want
+to clean them up.
+
+The `janitor` package by Sam Firke is a great collection of functions
+for some quick data cleaning, like:
+
+  - `janitor::clean_names()`: update column headers to a case of your
+    choosing
+  - `janitor::get_dupes()`: see all rows that are duplicates within
+    variables you choose
+  - `janitor::remove_empty()`: remove empty rows and/or columns
+  - `janitor::adorn_*()`: jazz up tables
+
+Here, we’ll use `janitor::clean_names()` to convert all of our column
+headers in our `coronavirus` data to a more convenient case - the
+default is **lower\_snake\_case**, which means all spaces and symbols
+are replaced with an underscore (or a word describing the symbol), all
+characters are lowercase, and a few other nice adjustments.
+
+For example, `janitor::clean_names()` would update these nightmare
+column names into much nicer forms:
+
+  - `My...RECENT-income!` becomes `my_recent_income`
+  - `SAMPLE2.!test1` becomes `sample2_test1`
+  - `ThisIsTheName` becomes `this_is_the_name`
+  - `2015` becomes `x2015`
+
+If we wanted to then use these columns (which we probably would, since
+we created them), we could clean the names to get them into more
+coder-friendly lower\_snake\_case with `janitor::clean_names()`:
+
+``` r
+coronavirus <- coronavirus %>% 
+  clean_names()
+```
+
+``` r
+names(coronavirus)
+```
+
+    ## [1] "province_state" "country_region" "lat"            "long"          
+    ## [5] "date"           "cases"          "type"
+
+And there are other case options in `clean_names()`, like:
+
+  - “snake” produces snake\_case (the default)
+  - “lower\_camel” or “small\_camel” produces lowerCamel
+  - “upper\_camel” or “big\_camel” produces UpperCamel
+  - “screaming\_snake” or “all\_caps” produces ALL\_CAPS
+  - “lower\_upper” produces lowerUPPER
+  - “upper\_lower” produces UPPERlower
+
+![](/Users/nt246/github/NTRES6940-data-science/img/case.jpg)
