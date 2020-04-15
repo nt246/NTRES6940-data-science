@@ -48,7 +48,7 @@ By the end of today’s class, you should be able to:
 
 <br>
 
-#### Acknowledgements
+### Acknowledgements
 
 Todays lesson integrates material from multiple sources, including the
 excellent [R for Excel
@@ -420,14 +420,14 @@ lotr_tidy %>%
 
 <br>
 
-#### More exercises on the LOTR data
+### More exercises on the LOTR data
 
 The word count data is given in two untidy and gender-specific files
 available at these
 URLs:
 
-(<https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Female.csv>)
-(<https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Male.csv>)
+<https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Female.csv>
+<https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Male.csv>
 
 Write an R script that reads them in and writes a single tidy data frame
 to file. Literally, reproduce the lotr\_tidy data frame and the
@@ -438,7 +438,7 @@ across the entire trilogy. Do it two ways:
 
   - Using film-specific or gender-specific, untidy data frames as the
     input data.
-  - Using the lotr\_tidy data frame as input.
+  - Using the lotr\_tidy data frame (that we generated above) as input.
 
 Reflect on the process of writing this code and on the code itself.
 Which is easier to write? Easier to read?
@@ -479,7 +479,7 @@ coronavirus
 
 **QUESTION**: Is this in tidy format?
 
-On Monday, we visualized the global case counts date
+Last class, we visualized the global case counts date
 
 ``` r
 coronavirus %>% 

@@ -43,7 +43,7 @@ By the end of today's class, you should be able to:
 
 <br>
 
-#### Acknowledgements
+### Acknowledgements
 Todays lesson integrates material from multiple sources, including the excellent [R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julia Stewart Lowndes and Allison Horst and several other sources specified below.
 
 <br>
@@ -229,19 +229,19 @@ lotr_tidy %>%
 
 <br>
 
-#### More exercises on the LOTR data
+### More exercises on the LOTR data
 
 The word count data is given in two untidy and gender-specific files available at these URLs:
 
-(https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Female.csv)
-(https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Male.csv)
+https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Female.csv
+https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/Male.csv
 
 Write an R script that reads them in and writes a single tidy data frame to file. Literally, reproduce the lotr_tidy data frame and the lotr_tidy.csv data file from above.
 
 Write R code to compute the total number of words spoken by each race across the entire trilogy. Do it two ways:
 
 * Using film-specific or gender-specific, untidy data frames as the input data.
-* Using the lotr_tidy data frame as input.
+* Using the lotr_tidy data frame (that we generated above) as input.
 
 Reflect on the process of writing this code and on the code itself. Which is easier to write? Easier to read?
 
@@ -264,7 +264,7 @@ coronavirus
 **QUESTION**: Is this in tidy format?
 
 
-On Monday, we visualized the global case counts date
+Last class, we visualized the global case counts date
 ```{r}
 coronavirus %>% 
   group_by(date, type) %>%
