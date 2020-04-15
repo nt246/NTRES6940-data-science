@@ -139,9 +139,22 @@ Let's go through some examples to get a better understanding of what tidy data l
 <br>
 
 ### Pivoting between long and wide data formats
-First, to exlore the powerful `tidyverse` functions for reshaping data, we'll walk through [Chapter 12.3 Pivoting in Grolemund and Wickham's "R for Data Science"](https://r4ds.had.co.nz/tidy-data.html#pivoting).
+First, to exlore the powerful `tidyr` functions for reshaping data, we'll walk through [Chapter 12.3 Pivoting in Grolemund and Wickham's "R for Data Science"](https://r4ds.had.co.nz/tidy-data.html#pivoting).
 
-Now we're there, we'll also cover Chapter 12.4 on `separate()` and `unite()`
+Often, datasets will not in tidy format because they are organized to facilitate some use other than analysis. For example, data is often organized to make entry or reading by humans as easy as possible.
+
+This means for most real analyses, you’ll need to do some tidying. The first step is always to figure out what the variables and observations are. Sometimes this is easy; other times you’ll need to consult with the people who originally generated the data. The second step is to resolve one of two common problems:
+
+* One variable might be spread across multiple columns.
+
+* One observation might be scattered across multiple rows.
+
+Typically a dataset will only suffer from one of these problems; it’ll only suffer from both if you’re really unlucky! To fix these problems, you’ll need the two most important functions in tidyr: `pivot_longer()` and `pivot_wider()`.
+
+
+
+
+Now that you're there, you can also take a look at Chapter 12.4 on `separate()` and `unite()`
 
 <br>
 
@@ -151,9 +164,8 @@ To explore tidy data in a different context, let's work through and example deve
 
 First let's read the intro (`01-intro.md`) [here](https://github.com/jennybc/lotr-tidy/blob/master/01-intro.md)
 
-Then let's work through the reshaping of the data.
+Then let's work through reshaping the data.
 
- <br>
 
 #### 1. Import untidy Lord of the Rings data
 
@@ -197,19 +209,20 @@ To explain our call to pivot_longer() above, let’s read it from right to left:
 #### 4. Write the tidy data to a delimited file
 Now we write this multi-film, tidy dataset to file for use in various downstream scripts for further analysis and visualization.
 
-```{r, include = FALSE, eval = FALSE}
+```{r}
 write_csv(lotr_tidy, path = "../datasets/lotr_tidy.csv")
 ```
 
 <br>
 
-#### Your turn
+### Your turn
 1. After tidying the data and completing your analysis, you may want to output a table that has each race in its own column. Let's use the `pivot_wider()` function to make such a table and save it as "lotr_wide"
 
 2. OPTIONAL: Use the pivot_longer() function to transform you lotr_wide back to tidy format.
 
+<br>
 
-##### Answer
+#### Answer
 
 ```{r}
 # let's get one variable per Race
