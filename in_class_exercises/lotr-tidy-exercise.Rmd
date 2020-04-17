@@ -69,7 +69,8 @@ corona_wide %>%
 Unite and separate
 ```{r}
 coronavirus_sepdate <- coronavirus %>% 
-  separate(date, into = c("year", "month", "day"))
+  separate(date, into = c("year", "month", "day"), sep = "-")
+
 
 coronavirus_sepdate %>% 
   unite("month-day", month, day, sep = "-")

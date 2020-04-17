@@ -379,8 +379,8 @@ And there are other case options in `clean_names()`, like:
 - "lower_upper" produces lowerUPPER
 - "upper_lower" produces UPPERlower
 
-<img src="/Users/nt246/github/NTRES6940-data-science/img/case.jpg">
 
+![](/Users/nt246/github/NTRES6940-data-science/img/case.jpg)
 
 Art by Allison Horst. Check out more [here](https://github.com/allisonhorst/stats-illustrations)
 
