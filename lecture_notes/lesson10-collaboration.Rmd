@@ -1,6 +1,6 @@
 ---
 title: "Lesson 10: Collaborating with GitHub"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
