@@ -22,3 +22,46 @@ Jenny Bryan's [STAT545 Chapter 10: Be the boss of your factors](https://stat545.
 Jenny Bryan's [STAT545 Chapter 14 When one tibble is not enough](https://stat545.com/multiple-tibbles.html)
 
 [Chapter 15 in 'R for Data Science'](https://r4ds.had.co.nz/factors.html) by Hadley Wickham & Garrett Grolemund
+
+
+
+## Introduction
+From R4Ds
+
+It’s rare that a data analysis involves only a single table of data. Typically you have many tables of data, and you must combine them to answer the questions that you’re interested in. Collectively, multiple tables of data are called relational data because it is the relations, not just the individual datasets, that are important.
+
+
+### Types of data combination
+Bryan's
+https://stat545.com/multiple-tibbles.html
+
+
+
+
+
+
+To work with relational data you need verbs that work with pairs of tables. There are three families of verbs designed to work with relational data:
+
+Mutating joins, which add new variables to one data frame from matching observations in another.
+
+Filtering joins, which filter observations from one data frame based on whether or not they match an observation in the other table.
+
+Set operations, which treat observations as if they were set elements.
+
+
+## Keys
+
+
+## Types of joins
+
+The most commonly used join is the left join: you use this whenever you look up additional data from another table, because it preserves the original observations even when there isn’t a match. The left join should be your default join: use it unless you have a strong reason to prefer one of the others.
+
+Another way to depict the different types of joins is with a Venn diagram:
+
+
+
+
+
+## Part 2: Factors in R
+
+Do we need to cover variable types?

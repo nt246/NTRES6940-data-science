@@ -18,3 +18,16 @@ Read through the tutorial in [Chapters 9.5 - 9.7 in R for Excel Users](https://r
 ## Class announcements
 
 This session will have an extended Zoom component
+
+
+## Learning objectives
+We will work through a simple setup
+Then discuss some of the more advanced features that you may start using as you get more comfortable
+
+
+
+
+
+
+
+
