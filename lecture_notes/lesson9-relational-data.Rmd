@@ -24,29 +24,43 @@ Jenny Bryan's [STAT545 Chapter 14 When one tibble is not enough](https://stat545
 [Chapter 15 in 'R for Data Science'](https://r4ds.had.co.nz/factors.html) by Hadley Wickham & Garrett Grolemund
 
 
+## Learning objectives
+By the end of today's class, you should be able to:
 
-## Introduction
+
+Re-order the levels of a factor
+Re-name and combine the levels of a factor
+
+
+
+## Setup
+```{r}
+library(tidyverse)
+
+
+
+```
+
+
+
+## Part 1: Relational data
 From R4Ds
 
 It’s rare that a data analysis involves only a single table of data. Typically you have many tables of data, and you must combine them to answer the questions that you’re interested in. Collectively, multiple tables of data are called relational data because it is the relations, not just the individual datasets, that are important.
 
+There are four main types of operations that can be done with two tables:
 
-### Types of data combination
-Bryan's
-https://stat545.com/multiple-tibbles.html
+* [**Binding**](https://stat545.com/multiple-tibbles.html#typology-of-data-combination-tasks), which simply stacks tables on top of or beside each other
+
+* [**Mutating joins**](), which add new variables to one data frame from matching observations in another.
+
+* Filtering joins, which filter observations from one data frame based on whether or not they match an observation in the other table.
+
+* Set operations, which treat observations as if they were set elements.
+
+We will only cover the first three today. Let's click on the links to work through the corresponding section in Jenny Bryan's STAT 545 notes or Grolemund and Wickham's R for Data Science.
 
 
-
-
-
-
-To work with relational data you need verbs that work with pairs of tables. There are three families of verbs designed to work with relational data:
-
-Mutating joins, which add new variables to one data frame from matching observations in another.
-
-Filtering joins, which filter observations from one data frame based on whether or not they match an observation in the other table.
-
-Set operations, which treat observations as if they were set elements.
 
 
 ## Keys
@@ -64,4 +78,12 @@ Another way to depict the different types of joins is with a Venn diagram:
 
 ## Part 2: Factors in R
 
-Do we need to cover variable types?
+In R, factors are used to work with categorical variables, variables that have a fixed and known set of possible values. They are also useful when you want to display character vectors in a non-alphabetical order. The values a factor can take on are called the levels. When working with factors, the two most common operations are changing the order of the levels, and changing the values (names) of the levels. 
+
+To work with factors, we’ll use the `forcats` package, which is part of the core `tidyverse`. It provides tools for dealing with **cat**egorical variables (and it’s an anagram of factors!) using a wide range of helpers for working with factors.
+
+We'll work through [Chapters 15.3-15.6 of R for Data Science](https://r4ds.had.co.nz/factors.html#general-social-survey) to explore some of the functionality.
+
+
+
+Exercise from gapminder or flights
