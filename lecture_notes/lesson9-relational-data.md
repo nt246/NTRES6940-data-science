@@ -1,4 +1,4 @@
-Lesson 9: Relational data
+Lesson 9: Relational data and factors
 ================
 
 <br>

@@ -1,5 +1,5 @@
 ---
-title: "Lesson 9: Relational data"
+title: "Lesson 9: Relational data and factors"
 output: github_document
 ---
 
