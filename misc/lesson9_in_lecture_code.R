@@ -16,10 +16,17 @@ lotr_untidy <- bind_rows(fship, ttow, rking)
 
 
 
+
+
+
+# Introducing the flights data --------------------------------------------
+
+
+
+
 # Subsetting the flights data ---------------------------------------------
 
 flights2 <- flights %>% 
   select(year:day, hour, origin, dest, tailnum, carrier)
 flights2
-
 
