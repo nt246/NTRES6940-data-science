@@ -23,31 +23,51 @@ enough](https://stat545.com/multiple-tibbles.html)
 
 [Chapter 15 in ‘R for Data
 Science’](https://r4ds.had.co.nz/factors.html) by Hadley Wickham &
-Garrett
-    Grolemund
+Garrett Grolemund
+
+<br>
 
 ## Learning objectives
 
+Today, we’ll cover two different (somewhat unrelated) topics. By the end
+of today’s class, you should be able to:
+
+For relational data:
+
+  - Combine information from multiple tables into one
+  - Describe the difference between the four `join` and two `filter`
+    functions in `dplyr`
+  - Select and apply the appropriate join function in common use
+    scenarios
+
+For factors:
+
+  - Re-order the levels of a factor
+  - Re-name and combine the levels of a factor
+
+<br>
+
 ## Setup
+
+Load the tidyverse
 
 ``` r
 library(tidyverse)
 ```
 
-    ## ── Attaching packages ─────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+We will also be practicing joins on data on flights departing NYC in
+2013. These are compiled in a package that we will install and load
 
-    ## ✔ ggplot2 3.0.0     ✔ purrr   0.2.5
-    ## ✔ tibble  1.4.2     ✔ dplyr   0.7.6
-    ## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
-    ## ✔ readr   1.1.1     ✔ forcats 0.3.0
+``` r
+library(nycflights13)  # install.packages("nycflights13")
+```
 
-    ## ── Conflicts ────────────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-    ## ✖ dplyr::filter() masks stats::filter()
-    ## ✖ dplyr::lag()    masks stats::lag()
+<br>
 
-## Introduction
+## Part 1: Relational data
 
-From R4Ds
+From [R for Data
+Science](https://r4ds.had.co.nz/relational-data.html#nycflights13-relational):
 
 It’s rare that a data analysis involves only a single table of data.
 Typically you have many tables of data, and you must combine them to
@@ -55,25 +75,30 @@ answer the questions that you’re interested in. Collectively, multiple
 tables of data are called relational data because it is the relations,
 not just the individual datasets, that are important.
 
-### Types of data combination
+There are four main types of operations that can be done with two
+tables:
 
-Bryan’s <https://stat545.com/multiple-tibbles.html>
+  - [**Binding**](https://stat545.com/multiple-tibbles.html#typology-of-data-combination-tasks),
+    which simply stacks tables on top of or beside each other
 
-To work with relational data you need verbs that work with pairs of
-tables. There are three families of verbs designed to work with
-relational data:
+  - [**Mutating
+    joins**](https://r4ds.had.co.nz/relational-data.html#mutating-joins),
+    which add new variables to one data frame from matching observations
+    in another
 
-Mutating joins, which add new variables to one data frame from matching
-observations in another.
+  - [**Filtering
+    joins**](https://r4ds.had.co.nz/relational-data.html#filtering-joins),
+    which filter observations from one data frame based on whether or
+    not they match an observation in the other table
 
-Filtering joins, which filter observations from one data frame based on
-whether or not they match an observation in the other table.
+  - **Set operations**, which treat observations as if they were set
+    elements.
 
-Set operations, which treat observations as if they were set elements.
+We will only cover the first three today. Let’s click on the links to
+work through the corresponding section in Jenny Bryan’s STAT 545 notes
+or Grolemund and Wickham’s R for Data Science.
 
-## Keys
-
-## Types of joins
+#### Key point
 
 The most commonly used join is the left join: you use this whenever you
 look up additional data from another table, because it preserves the
@@ -81,74 +106,24 @@ original observations even when there isn’t a match. The left join
 should be your default join: use it unless you have a strong reason to
 prefer one of the others.
 
-Another way to depict the different types of joins is with a Venn
-diagram:
+<br> <br>
 
 ## Part 2: Factors in R
 
-Do we need to cover variable types? Classes
+In R, factors are used to work with categorical variables, variables
+that have a fixed and known set of possible values. They are also useful
+when you want to display character vectors in a non-alphabetical order.
+The values a factor can take on are called the levels. When working with
+factors, the two most common operations are changing the order of the
+levels, and changing the values (names) of the levels.
 
-Tibbles
+To work with factors, we’ll use the `forcats` package, which is part of
+the core `tidyverse`. It provides tools for dealing with **cat**egorical
+variables (and it’s an anagram of factors\!) using a wide range of
+helpers for working with factors.
 
-When working with factors, the two most common operations are changing
-the order of the levels, and changing the values of the levels. Those
-operations are described in the sections below.
+We’ll work through [Chapters 15.3-15.6 of R for Data
+Science](https://r4ds.had.co.nz/factors.html#general-social-survey) to
+explore some of the functionality.
 
-css example It does not have droplevels()
-
-Jenny’s factor chapter? Could also do the Stat545 example lifelevel
-Exercise
-
-Something like these questions either for gapminder or gss for exercise
-
-Explore the distribution of rincome (reported income). What makes the
-default bar chart hard to understand? How could you improve the plot?
-
-What is the most common relig in this survey? What’s the most common
-partyid?
-
-Which relig does denom (denomination) apply to? How can you find out
-with a table? How can you find out with a visualisation?
-
-``` r
-gss_cat
-```
-
-    ## # A tibble: 21,483 x 9
-    ##     year marital     age race  rincome   partyid   relig   denom   tvhours
-    ##    <int> <fct>     <int> <fct> <fct>     <fct>     <fct>   <fct>     <int>
-    ##  1  2000 Never ma…    26 White $8000 to… Ind,near… Protes… Southe…      12
-    ##  2  2000 Divorced     48 White $8000 to… Not str … Protes… Baptis…      NA
-    ##  3  2000 Widowed      67 White Not appl… Independ… Protes… No den…       2
-    ##  4  2000 Never ma…    39 White Not appl… Ind,near… Orthod… Not ap…       4
-    ##  5  2000 Divorced     25 White Not appl… Not str … None    Not ap…       1
-    ##  6  2000 Married      25 White $20000 -… Strong d… Protes… Southe…      NA
-    ##  7  2000 Never ma…    36 White $25000 o… Not str … Christ… Not ap…       3
-    ##  8  2000 Divorced     44 White $7000 to… Ind,near… Protes… Luther…      NA
-    ##  9  2000 Married      44 White $25000 o… Not str … Protes… Other         0
-    ## 10  2000 Married      47 White $25000 o… Strong r… Protes… Southe…       3
-    ## # ... with 21,473 more rows
-
-``` r
-# View(gss_cat)
-
-
-
-ggplot(gss_cat) +
-  geom_bar(aes(rincome)) +
-  coord_flip()
-```
-
-![](lesson9-relational-data_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
-
-``` r
-# Make the plot
-```
-
-``` r
-ggplot(gss_cat) +
-  geom_bar(aes(rincome)) +
-  coord_flip()
-```
-
-![](lesson9-relational-data_files/figure-gfm/exercise-solution-1.png)<!-- -->
+If there is time, we’ll do an exercise

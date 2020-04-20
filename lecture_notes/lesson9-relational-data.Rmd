@@ -23,28 +23,44 @@ Jenny Bryan's [STAT545 Chapter 14 When one tibble is not enough](https://stat545
 
 [Chapter 15 in 'R for Data Science'](https://r4ds.had.co.nz/factors.html) by Hadley Wickham & Garrett Grolemund
 
+<br>
 
 ## Learning objectives
-By the end of today's class, you should be able to:
+Today, we'll cover two different (somewhat unrelated) topics. By the end of today's class, you should be able to:
+
+For relational data:
+
+* Combine information from multiple tables into one
+* Describe the difference between the four `join` and two `filter` functions in `dplyr`
+* Select and apply the appropriate join function in common use scenarios 
+
+For factors:
+
+* Re-order the levels of a factor
+* Re-name and combine the levels of a factor
 
 
-Re-order the levels of a factor
-Re-name and combine the levels of a factor
-
-
+<br>
 
 ## Setup
-```{r}
+
+Load the tidyverse
+```{r, eval = FALSE}
 library(tidyverse)
-
-
 
 ```
 
+We will also be practicing joins on data on flights departing NYC in 2013. These are compiled in a package that we will install and load
+```{r, eval = FALSE}
 
+library(nycflights13)  # install.packages("nycflights13")
+
+```
+
+<br>
 
 ## Part 1: Relational data
-From R4Ds
+From [R for Data Science](https://r4ds.had.co.nz/relational-data.html#nycflights13-relational):
 
 It’s rare that a data analysis involves only a single table of data. Typically you have many tables of data, and you must combine them to answer the questions that you’re interested in. Collectively, multiple tables of data are called relational data because it is the relations, not just the individual datasets, that are important.
 
@@ -52,28 +68,25 @@ There are four main types of operations that can be done with two tables:
 
 * [**Binding**](https://stat545.com/multiple-tibbles.html#typology-of-data-combination-tasks), which simply stacks tables on top of or beside each other
 
-* [**Mutating joins**](), which add new variables to one data frame from matching observations in another.
+* [**Mutating joins**](https://r4ds.had.co.nz/relational-data.html#mutating-joins), which add new variables to one data frame from matching observations in another
 
-* Filtering joins, which filter observations from one data frame based on whether or not they match an observation in the other table.
+* [**Filtering joins**](https://r4ds.had.co.nz/relational-data.html#filtering-joins), which filter observations from one data frame based on whether or not they match an observation in the other table
 
-* Set operations, which treat observations as if they were set elements.
+* **Set operations**, which treat observations as if they were set elements.
 
 We will only cover the first three today. Let's click on the links to work through the corresponding section in Jenny Bryan's STAT 545 notes or Grolemund and Wickham's R for Data Science.
 
 
 
 
-## Keys
-
-
-## Types of joins
+#### Key point
 
 The most commonly used join is the left join: you use this whenever you look up additional data from another table, because it preserves the original observations even when there isn’t a match. The left join should be your default join: use it unless you have a strong reason to prefer one of the others.
 
-Another way to depict the different types of joins is with a Venn diagram:
 
 
-
+<br>
+<br>
 
 
 ## Part 2: Factors in R
@@ -84,6 +97,4 @@ To work with factors, we’ll use the `forcats` package, which is part of the co
 
 We'll work through [Chapters 15.3-15.6 of R for Data Science](https://r4ds.had.co.nz/factors.html#general-social-survey) to explore some of the functionality.
 
-
-
-Exercise from gapminder or flights
+If there is time, we'll do an exercise

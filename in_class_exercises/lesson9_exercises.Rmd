@@ -184,3 +184,12 @@ locations <- read_csv("https://raw.githubusercontent.com/STAT545-UBC/Classroom/m
 
 ```
 
+
+## Joins and filters
+
+```{r}
+flights
+airlines
+
+```
+
