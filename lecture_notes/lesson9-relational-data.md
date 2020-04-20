@@ -106,6 +106,36 @@ original observations even when there isn’t a match. The left join
 should be your default join: use it unless you have a strong reason to
 prefer one of the others.
 
+<br>
+
+#### Optional exercises (from the R for Data Science chapter)
+
+1.  Compute the average delay by destination, then join on the
+    `airports` data frame so you can show the spatial distribution of
+    delays. Here’s an easy way to draw a map of the United States:
+    
+    ``` r
+    library(maps) #install.packages("maps")
+    
+    airports %>%
+      semi_join(flights, c("faa" = "dest")) %>%
+      ggplot(aes(lon, lat)) +
+        borders("state") +
+        geom_point() +
+        coord_quickmap()
+    ```
+    
+    (Don’t worry if you don’t understand what `semi_join()` does —
+    you’ll learn about it next.)
+    
+    You might want to use the `size` or `colour` of the points to
+    display the average delay for each airport.
+
+2.  Add the location of the origin *and* destination (i.e. the `lat` and
+    `lon`) to `flights`.
+
+3.  Is there a relationship between the age of a plane and its delays?
+
 <br> <br>
 
 ## Part 2: Factors in R
@@ -126,4 +156,10 @@ We’ll work through [Chapters 15.3-15.6 of R for Data
 Science](https://r4ds.had.co.nz/factors.html#general-social-survey) to
 explore some of the functionality.
 
-If there is time, we’ll do an exercise
+<br>
+
+#### Optional exercises (from R for Data Science)
+
+1.  How have the proportions of people identifying as Democrat,
+    Republican, and Independent changed over time?
+2.  How could you collapse `rincome` into a small set of categories?
