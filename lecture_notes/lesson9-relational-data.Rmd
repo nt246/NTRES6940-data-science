@@ -79,14 +79,14 @@ We will only cover the first three today. Let's click on the links to work throu
 
 
 
-#### Key point
+### Key point
 
 The most commonly used join is the left join: you use this whenever you look up additional data from another table, because it preserves the original observations even when there isn’t a match. The left join should be your default join: use it unless you have a strong reason to prefer one of the others.
 
 
 <br>
 
-#### Optional exercises (from the R for Data Science chapter)
+### Optional exercises (from the R for Data Science chapter)
 
 
 1.  Compute the average delay by destination, then join on the `airports`
@@ -137,7 +137,7 @@ We'll work through [Chapters 15.3-15.6 of R for Data Science](https://r4ds.had.c
 
 <br>
 
-#### Optional exercises (from R for Data Science)
+### Optional exercises (from R for Data Science)
 
 1.  How have the proportions of people identifying as Democrat, Republican, and
     Independent changed over time?

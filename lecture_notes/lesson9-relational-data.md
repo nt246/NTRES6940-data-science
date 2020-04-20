@@ -98,7 +98,7 @@ We will only cover the first three today. Let’s click on the links to
 work through the corresponding section in Jenny Bryan’s STAT 545 notes
 or Grolemund and Wickham’s R for Data Science.
 
-#### Key point
+### Key point
 
 The most commonly used join is the left join: you use this whenever you
 look up additional data from another table, because it preserves the
@@ -108,7 +108,7 @@ prefer one of the others.
 
 <br>
 
-#### Optional exercises (from the R for Data Science chapter)
+### Optional exercises (from the R for Data Science chapter)
 
 1.  Compute the average delay by destination, then join on the
     `airports` data frame so you can show the spatial distribution of
@@ -158,7 +158,7 @@ explore some of the functionality.
 
 <br>
 
-#### Optional exercises (from R for Data Science)
+### Optional exercises (from R for Data Science)
 
 1.  How have the proportions of people identifying as Democrat,
     Republican, and Independent changed over time?
