@@ -2,15 +2,33 @@ Assignment 5: Data import (readr), tidy data (tidyr) and relational data (dplyr)
 ================
 
 Instructions: Please read through this before you begin
-=======================================================
+-------------------------------------------------------
 
-This homework is due by **10pm on Wednesday 04/29/20**. Please **rename your knitted html file** in the format of "Homework5\_YourName.html" and upload it through Blackboard.
+-   This homework is due by **10pm on Wednesday 04/29/20**.
 
-**Import data files into R and parse them properly as instructed. Tidy and/or transform the data frames when appropriate. Reproduce the tables and plots exactly as shown in this html file**. For exercise 3.3, explore the dataset on your own. When a verbal response is needed, answer by editing the part in the R markdown template where it says <span style="color:blue"> "Write your response here" </span>.
+-   Please **reproduce this markdown template**. Pay attention to all the formating in this file, including bullet points, bolded characters, inserted code chunks, headings, text colors, blank lines, and etc.
 
-Use the R markdown template given to you to generate your own html output, and have all your code embedded within the file. Please only show your **code** and **plots** in the html file, and **use R Markdown functionalities to hide messages and warnings when needed**. (Suggestion: messages and warnings can often be informative and important, so please examine them carefully and only turn them off when you finish the exercise).
+-   For the first three exercises in this assignment, **import** data files into R and **parse** them properly as instructed. **Tidy** and/or **transform** the data frames when appropriate.
 
-To start, first load all the required packages with the following code. Install them if they are not installed yet.
+    -   We have not extensively covered parsing data during data import in lecture, but you can find more information about it [here](https://r4ds.had.co.nz/data-import.html#parsing-a-vector).
+
+    -   In many cases, you can also choose to parse the data using the `mutate()` function after importing the data.
+
+-   Please note that **exercise 3 is optional**. It is a good exercise for practicing your data tidying and exploration skills though, so we encourage you to give it a try if time allows.
+
+-   For exercise 4, use the appropriate `join` function to **join** some relational datasets, and use the resulting datasets to answer some questions.
+
+-   Please **reproduce the tables and plots exactly as shown in this html file**.
+
+-   When a verbal response is needed, answer by editing the part in the R markdown template where it says <span style="color:blue"> "Write your response here" </span>.
+
+-   Have all your code embedded within the R markdown file, and show both of your **code** and **plots** in the knitted markdown file.
+
+-   Use R Markdown functionalities to **hide messages and warnings when needed**. (Suggestion: messages and warnings can often be informative and important, so please examine them carefully and only turn them off when you finish the exercise).
+
+-   Please name your R markdown file `assignment_5.Rmd` and the knitted markdown file `assignment_5.md`. Please upload both files using your personal GitHub repository for this class.
+
+-   To start, first load all the required packages with the following code. Install them if they are not installed yet.
 
 ``` r
 library(tidyverse)
@@ -19,10 +37,10 @@ library(knitr)
 
 <br>
 
-Part 1. Tibble and Data Import
-==============================
+Exercise 1. Tibble and Data Import
+----------------------------------
 
-#### Import data frames into R and parse the columns appropriately when needed. Watch out for the formating oddities of each dataset. Print the results with `kable()`.
+Import data frames listed below into R and [parse](https://r4ds.had.co.nz/data-import.html#parsing-a-vector) the columns appropriately when needed. Watch out for the formating oddities of each dataset. Print the results with `kable()`.
 
 <br>
 
@@ -44,7 +62,7 @@ Part 1. Tibble and Data Import
 
 <br>
 
-#### 1.2 Import `dataset2.txt` into R. Change the column names into "Name", "Weight", "Price".
+#### 1.2 Import `https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/dataset2.txt` into R. Change the column names into "Name", "Weight", "Price".
 
 | Name   |  Weight|  Price|
 |:-------|-------:|------:|
@@ -54,7 +72,7 @@ Part 1. Tibble and Data Import
 
 <br>
 
-#### 1.3 Import `dataset3.txt` into R. Watch out for the first few lines, missing values, separators, quotation marks, and deliminaters.
+#### 1.3 Import `https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/dataset3.txt` into R. Watch out for the first few lines, missing values, separators, quotation marks, and deliminaters.
 
 | Name   |  Weight|  Price|
 |:-------|-------:|------:|
@@ -64,7 +82,7 @@ Part 1. Tibble and Data Import
 
 <br>
 
-#### 1.4 Import `dataset4.txt` into R. Watch out for comments, units, and decimal marks (which are `,` in this case).
+#### 1.4 Import `https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/dataset4.txt` into R. Watch out for comments, units, and decimal marks (which are `,` in this case).
 
 | Name   |  Weight|  Price|
 |:-------|-------:|------:|
@@ -74,7 +92,7 @@ Part 1. Tibble and Data Import
 
 <br>
 
-#### 1.5 Import `dataset5.txt` into R. Parse the columns properly. Write this imported and parsed data frame into a new csv file named `dataset5_new.csv`.
+#### 1.5 Import `https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/dataset5.txt` into R. Parse the columns properly. Write this imported and parsed data frame into a new csv file named `dataset5_new.csv` in your `problem_sets` folder.
 
 | Name   | Expiration Date | Time     |
 |:-------|:----------------|:---------|
@@ -84,14 +102,14 @@ Part 1. Tibble and Data Import
 
 <br>
 
-Part 2. Weather station
-=======================
+Exercise 2. Weather station
+---------------------------
 
 This dataset contains the weather and air quality data collected by a weather station in Taiwan. It was obtained from the Environmental Protection Administration, Executive Yuan, R.O.C. (Taiwan).
 
 <br>
 
-#### 2.1 The text file `2015y_Weather_Station_notes.txt` contains desciptions of different variables collected by the station. Import it into R and print it in a table as shown below.
+#### 2.1 The text file `https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/2015y_Weather_Station_notes.txt` contains desciptions of different variables collected by the station. Import it into R and print it in a table as shown below.
 
 | Item        | Unit    | Description                                               |
 |:------------|:--------|:----------------------------------------------------------|
@@ -119,7 +137,7 @@ blank indicates no data
 
 <br>
 
-#### 2.2 Import `2015y_Weather_Station.csv` into R. As you can see, this dataset is a classic example of untidy data: values of a variable (i.e. hour of the day) are stored as column names; variable names are stored in the `item` column. Clean this dataset up by turning it into a tidy format. Also, parse the `date` variable into date format and parse `hour` into time. Turn all invalid values into `NA` and turn `NR` in rainfall into `0`. Parse all values into numbers. Show the first 6 rows and 15 columns of this cleaned dataset, as shown below. (Hint: you don't have to do these tasks in the given order.)
+#### 2.2 Import `https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/2015y_Weather_Station.csv` into R. As you can see, this dataset is a classic example of untidy data: values of a variable (i.e. hour of the day) are stored as column names; variable names are stored in the `item` column. Clean this dataset up by turning it into a tidy format. Also, parse the `date` variable into date format and parse `hour` into time. Turn all invalid values into `NA` and turn `NR` in rainfall into `0`. Parse all values into numbers. Show the first 6 rows and 15 columns of this cleaned dataset, as shown below. (Hint: you don't have to do these tasks in the given order.)
 
 <br>
 
@@ -173,14 +191,14 @@ After cleaning:
 
 <br>
 
-Part 3. Camera data
-===================
+Exercise 3. Camera data (Optional)
+----------------------------------
 
 This dataset contains information on 1038 camera models. It was obtained from the following website: <https://perso.telecom-paristech.fr/eagan/class/igr204/>
 
 <br>
 
-#### 3.1 Import `camera.csv` to R. You will see that the `Model` columns contains both the brand names and model names of cameras. Split this column into two, one with brand name, and the other with model name, as shown below. Print the first 6 rows of the new data frame. (Hint: check the merge argument in `separate()`)
+#### 3.1 Import `https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/camera.csv` to R. You will see that the `Model` columns contains both the brand names and model names of cameras. Split this column into two, one with brand name, and the other with model name, as shown below. Print the first 6 rows of the new data frame. (Hint: check the merge argument in `separate()`)
 
 | Brand | Model             |  Release date|  Max resolution|  Low resolution|  Effective pixels|  Zoom wide (W)|  Zoom tele (T)|  Normal focus range|  Macro focus range|  Storage included|  Weight (inc. batteries)|  Dimensions|  Price|
 |:------|:------------------|-------------:|---------------:|---------------:|-----------------:|--------------:|--------------:|-------------------:|------------------:|-----------------:|------------------------:|-----------:|------:|
@@ -210,7 +228,7 @@ This dataset contains information on 1038 camera models. It was obtained from th
 
 <br>
 
-##### 3.3.1
+###### 3.3.1
 
 ``` r
 ## Write your code here
@@ -220,7 +238,7 @@ This dataset contains information on 1038 camera models. It was obtained from th
 
 <br>
 
-##### 3.3.2
+###### 3.3.2
 
 ``` r
 ## Write your code here
@@ -230,7 +248,7 @@ This dataset contains information on 1038 camera models. It was obtained from th
 
 <br>
 
-##### 3.3.3
+###### 3.3.3
 
 ``` r
 ## Write your code here
@@ -240,90 +258,77 @@ This dataset contains information on 1038 camera models. It was obtained from th
 
 <br>
 
-##### Don't hesitate to continue writing if you have more than 3 interesting findings.
+###### Don't hesitate to continue writing if you have more than 3 interesting findings.
 
 <br>
 
-Part 4: Join functions
-======================
+Excercise 4: Join functions
+---------------------------
 
 <br>
 
-Read in some relational datasets from GitHub
---------------------------------------------
+#### Read in some relational datasets from GitHub
 
 ``` r
-banking_account_types <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/banking_account_types.csv')
-banking_transactions <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/banking_transactions.csv')
-
-
-crime_arrests <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/crime_arrests.csv')
-crime_wealth <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/crime_wealth.csv')
-
-titanic_outcomes <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/titanic_outcomes.csv')
-titanic_person_features <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/titanic_person_features.csv')
-
+## for 4.1
 toy1 <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/toy_one.csv')
 toy2 <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/toy_two.csv')
-
+## for 4.2
 play1 <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/play_one.csv')
 play2 <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/play_two.csv')
-```
-
-For each of the following questions do the specified joins. Remember to follow the process looking at header, data set row counts and data types in advance and make a prediction about the join outcome. Print out the dimensions of the resulting data frames with `dim()`.
-
-<br>
-
-#### 4.1 Join the `toy` data sets using inner, outer, and left joins.
-
-``` r
-#
-```
-
-``` r
-#
-```
-
-``` r
-#
+## for 4.3
+banking_account_types <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/banking_account_types.csv')
+banking_transactions <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/banking_transactions.csv')
+## for 4.4
+crime_arrests <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/crime_arrests.csv')
+crime_wealth <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/crime_wealth.csv')
+## for 4.5
+titanic_outcomes <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/titanic_outcomes.csv')
+titanic_person_features <- read_csv('https://raw.githubusercontent.com/idc9/stor390/master/data/joins/titanic_person_features.csv')
 ```
 
 <br>
 
-#### 4.2 Join the `play` data sets using inner, outer, and left joins.
+#### 4.1 Join the `toy` datasets. Only keep rows that have matches in the other dataset. Show the resulting dataset using `kable()`.
 
-``` r
-#
-```
-
-``` r
-#
-```
-
-``` r
-#
-```
+| key | value | animal   |
+|:----|:------|:---------|
+| aaa | this  | cat      |
+| aaa | this  | tiger    |
+| bbb | that  | dog      |
+| bbb | that  | hampster |
+| ddd | thing | horse    |
+| ddd | one   | horse    |
 
 <br>
 
-#### 4.3 Join the `banking` data sets using inner join.
+#### 4.2 Join the `play` datasets by `key` and `label`. Keep all rows from both datasets. Show the resulting dataset using `kable()`.
 
-``` r
-#
-```
+| key | label |  value|  othervalue|
+|:----|:------|------:|-----------:|
+| aaa | rrr   |      1|         111|
+| aaa | rrr   |      1|         444|
+| rrr | aaa   |      2|          NA|
+| ttt | xxx   |      3|         222|
+| vvv | uuu   |      4|         333|
+| vvv | uuu   |      4|         555|
+| rrr | aaa   |      6|          NA|
+| ttt | xxx   |      7|         222|
+| vvv | uuu   |      8|         333|
+| vvv | uuu   |      8|         555|
 
 <br>
 
-#### 4.4 Join the `crime` data sets using inner join.
+#### 4.3 Plot the distribution of total transaction amount per account grouped by different account types with a boxplot shown below, using the `banking` datasets.
 
-``` r
-#
-```
+![](assignment_5_files/figure-markdown_github/unnamed-chunk-23-1.png)
 
 <br>
 
-#### 4.5 Join the `titanic` data sets using inner join.
+#### 4.4 Which state is in the `crime_wealth` dataset but not the `crime_arrest` dataset? Use a join function to answer this question.
 
-``` r
-#
-```
+<br>
+
+#### 4.5 Plot the number of passenger who did and did not survive, grouped by their classes, using the `titanic` data sets.
+
+![](assignment_5_files/figure-markdown_github/unnamed-chunk-25-1.png)
