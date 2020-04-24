@@ -10,9 +10,11 @@ Instructions: Please read through this before you begin
 
 -   For the first three exercises in this assignment, **import** data files into R and **parse** them properly as instructed. **Tidy** and/or **transform** the data frames when appropriate.
 
-    -   We have not extensively covered parsing data during data import in lecture, but you can find more information about it [here](https://r4ds.had.co.nz/data-import.html#parsing-a-vector).
+    -   We have not extensively covered parsing data in lecture, but you can find more information about it [here](https://r4ds.had.co.nz/data-import.html#parsing-a-vector).
 
-    -   In many cases, you can also choose to parse the data using the `mutate()` function after importing the data.
+    -   Briefly, you can choose to use the `col_types` argument in a `read_*()` function to parse the data during import.
+
+    -   In many cases, you can also choose to parse the data using one of the `parse_*()` functions nested within a `mutate()` function after importing the data.
 
 -   Please note that **exercise 3 is optional**. It is a good exercise for practicing your data tidying and exploration skills though, so we encourage you to give it a try if time allows.
 
