@@ -20,7 +20,7 @@ Instructions: Please read through this before you begin
 
 -   For exercise 4, use the appropriate `join` function to **join** some relational datasets, and use the resulting datasets to answer some questions.
 
--   Please **reproduce the tables and plots exactly as shown in this html file**.
+-   Please **reproduce the tables and plots exactly as shown in this markdown file**.
 
 -   When a verbal response is needed, answer by editing the part in the R markdown template where it says <span style="color:blue"> "Write your response here" </span>.
 
