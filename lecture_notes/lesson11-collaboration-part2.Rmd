@@ -1,0 +1,96 @@
+---
+title: "Lesson 11: Collaborating with GitHub - Part 2"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br>
+
+## Readings
+
+Read through the tutorial in [Chapters 9.5 - 9.7 in R for Excel Users](https://rstudio-conf-2020.github.io/r-for-excel/collaborating.html#collaborating-with-github) by Julia Lowndes and Allison Horst. We will walk through a very similar workflow together.
+
+<br>
+
+## Other resources
+
+[HappyGitwithR](https://happygitwithr.com/) by Jenny Bryan
+
+Tutorials about gh-pages
+https://pages.github.com/
+
+https://jules32.github.io/rmarkdown-website-tutorial/index.html
+
+
+## Plan for today
+
+We will continue working through the tutorial we started on last time. Because we may not have both members of all pairs with us today, we will form new pairs and start over with setting up a new shared repo that we both have cloned to our local computers. It's good to keep practicing that setup, and we'll quickly get back to where we left off.
+
+Step by step instructions are on the [slides](XX)
+
+
+## Learning objectives
+We will work through a simple setup
+Then discuss some of the more advanced features that you may start using as you get more comfortable
+
+Set up a collaborative repo
+Take turns to make changes with a partner
+Understand how to avoid merge conflicts
+Resolve merge conflicts
+Check out an earlier version of a script
+Set up a free website through RStudio with GitHub pages
+Apply basic design and styling of a GitHub pages website
+
+
+Also cover
+Useful commit message (From xkcd.com) focus on the why (diff will show the content)
+burn it down
+The concepts of branches and pull requests
+
+
+## Outline
+
+Setup and clone in turn
+
+Review of merge conflicts:
+Show slides with branch being ahead
+
+Partner 2 creates index.Rmd (the boilerplate Rmd), Partner 1 edits readme [should merge with pull, even if I haven't committed?]
+Partner 2 changes something in code chunk 1 of index.Rmd, Partner 1 changes something in a different code chunk (should merge smoothly, but first try to pull before committing to get warning)
+Partner 2 and Partner 1 change something in the same line of the index file [now resolution is needed]
+
+[Review blame?]
+
+Now let's jazz up our website
+Add an image
+Add more tabs
+
+A way to illustrate issues - ask Nicolas
+
+First try both making code chunks in the same line. Resolve the merge conflict
+
+
+Add another tab
+Change the theme and add TOC [check if working in different parts of the _sites at the same time works]
+Should they add their homework?
+Can work on the filtering exercises of flights
+
+
+
+How can we make the demo go faster?
+
+
+
+Take turns making code chunks to answer questions 
+
+
+Let's change the theme and add a table of contents
+
+
+You can pre-view the different themes under the "themes" tab [here](https://bootswatch.com/3/). Valid themes include default, cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo, lumen, paper, sandstone, simplex, and yeti.
+
+
+
