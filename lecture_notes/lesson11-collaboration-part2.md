@@ -407,9 +407,14 @@ changes to GitHub.
 
 Get creative\! You can find some ideas for things to try in [this
 tutorial](https://jules32.github.io/rmarkdown-website-tutorial/getting_sophisticated.html),
-or you can just try things out.
+or you can just try things
+out.
 
-![](https://pbs.twimg.com/media/Cf7eHZ1W4AEeZJA.jpg)
+<br>
+
+<img src="https://pbs.twimg.com/media/Cf7eHZ1W4AEeZJA.jpg" height="400px" width="300px" />
+
+<br>
 
 Remember to coordinate with your partner. Work on different things in
 parallel, but keep going back and forth pushing and pulling and
