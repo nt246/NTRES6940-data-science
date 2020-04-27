@@ -105,7 +105,7 @@ Class#  |  Date  |  Topic  | Readings |
 8  |  April 15 (Wed)  |  Tidy data (what is tidy data and how to handle untidy data) + file I/O and tibbles  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson8-tidy-data.md)
 9  |  April 20 (Mon)  |  Relational data (join functions) and factors  |  [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson9-relational-data.md)  |
 10  |  April 22 (Wed)  |  Collaborating with GitHub  |  [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson10-collaboration.md)  |
-11  | April 27 (Mon)  |  Collaborating with GitHub - continued   |  [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson10-collaboration.md)  |
+11  | April 27 (Mon)  |  Collaborating with GitHub - continued   |  [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson11-collaboration-part2.md)  |
 12  | April 29 (Wed)  |  Iteration (for loops)  |  [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson12-for-loops.md)
 13  |  May 4 (Mon)  |  Review and discussion of good practices for reproducible workflows  |
 &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; |

@@ -56,13 +56,17 @@ GitHub by both partners having full write access to the repo. There are
 many ways to improve this workflow once you get more comfortable, but
 this is a good place to start.
 
-By the end of today’s class, you should be able to: \* Set up a new repo
-on GitHub and invite collaborators \* Clone the repo to your local
-machine through RStudio \* Work in parallel with a collaborator on files
-in a repo (both of you pushing changes) \* Describe how to avoid merge
-conflicts \* Resolve merge conflicts when they arise \* Set up a free
-website through RStudio with GitHub pages \* Control basic aspects of
-the design and styling of a GitHub pages website
+By the end of today’s class, you should be able to:
+
+  - Set up a new repo on GitHub and invite collaborators  
+  - Clone the repo to your local machine through RStudio  
+  - Work in parallel with a collaborator on files in a repo (both of you
+    pushing changes)  
+  - Describe how to avoid merge conflicts  
+  - Resolve merge conflicts when they arise  
+  - Set up a free website through RStudio with GitHub pages  
+  - Control basic aspects of the design and styling of a GitHub pages
+    website
 
 <br>
 
@@ -80,7 +84,7 @@ time how to
     Tutorial](http://ohi-science.org/data-science-training/collaborating.html#create-repo-partner-1).
 
 **NOTE:** Make sure Partner 2 doesn’t clone the repo until Partner 1 has
-pushed their `.RProj` file to avoid complex merge conflicts here.
+pushed their `.RProj` file to avoid merge conflicts here.
 
 <br>
 
@@ -231,7 +235,7 @@ do this by adding a configuration file that specifies the names of the
 different tabs we want and which file we want to display on that tab.
 We’ll start with simple example of a website that includes two pages
 (Cars and About) and a navigation bar to switch between them. For that,
-we need a configuration file \_site.yml:
+we need a configuration file `_site.yml`:
 
 ``` r
 name: "my-website"
@@ -296,11 +300,13 @@ Partner 1 can now build the website by running
 
 Commit and push
 
-Both Partners: Go to inspect your rendered website\! Remember the format
-of the URL: For example: - my github repo:
-<https://github.com/jules32/collab-research> - my website url:
-<https://jules32.github.io/collab-research/> - note that the url starts
-with my **username.github.io**
+Both Partners: Go to inspect your rendered website\!
+
+Remember the format of the URL. For example:
+
+  - my github repo: <https://github.com/jules32/collab-research>
+  - my website url: <https://jules32.github.io/collab-research/>
+  - note that the url starts with my **username.github.io**
 
 Note that it may take a few minutes before your changes become active.
 In the meantime, you can explore your current website content and design
@@ -345,13 +351,15 @@ Again, it will probably take a few minutes for your changes to become
 active on your github.io page. We can inspect our changes in RStudio’s
 Viewer in the bottom left pane in the meantime.
 
-Make sure that the Partner who didn’t chance the `_site.yml` file pulls
+Make sure that the Partner who didn’t change the `_site.yml` file pulls
 the updated version from GitHub.
 
 Now play around with making additional changes to your website. You can
-change the theme. \> The valid options to choose include default,
-cerulean, journal, flatly, darkly, readable, spacelab, united, cosmo,
-lumen, paper, sandstone, simplex, and yeti.
+change the theme.
+
+> The valid options to choose include default, cerulean, journal,
+> flatly, darkly, readable, spacelab, united, cosmo, lumen, paper,
+> sandstone, simplex, and yeti.
 
 You can preview what each of these look like under the “themes” tab
 [here](https://bootswatch.com/3/). Discuss with your Partner which one
