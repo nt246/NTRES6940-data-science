@@ -8,6 +8,19 @@ library(gapminder)
 
 #### 1. Write a script that loops through the gapminder data by continent and prints out whether the mean life expectancy is smaller or larger than 50 years.
 
+``` r
+for (c in unique(gapminder$continent)){
+  mean_life_exp <- filter(gapminder, continent == c) %>%
+    .$lifeExp %>%
+    mean()
+  if (mean_life_exp < 50){
+    cat("Average life expectancy in", c, "is less than 50. \n")
+  } else {
+    cat("Average life expectancy in", c, "is greater than 50. \n")
+  }
+}
+```
+
     ## Average life expectancy in Asia is greater than 50. 
     ## Average life expectancy in Europe is greater than 50. 
     ## Average life expectancy in Africa is less than 50. 
@@ -15,6 +28,21 @@ library(gapminder)
     ## Average life expectancy in Oceania is greater than 50.
 
 #### 2. Modify the script from above to loop over each country. This time print out whether the life expectancy is smaller than 50, between 50 and 70, or greater than 70.
+
+``` r
+for (c in unique(gapminder$country)){
+  mean_life_exp <- filter(gapminder, country == c) %>%
+    .$lifeExp %>%
+    mean()
+  if (mean_life_exp < 50){
+    cat("Average life expectancy in", c, "is less than 50. \n")
+  } else if (mean_life_exp >= 50 & mean_life_exp < 70) {
+    cat("Average life expectancy in", c, "is between 50 and 70. \n")
+    } else {
+    cat("Average life expectancy in", c, "is more than 70. \n")
+  }
+}
+```
 
     ## Average life expectancy in Afghanistan is less than 50. 
     ## Average life expectancy in Albania is between 50 and 70. 
@@ -161,6 +189,22 @@ library(gapminder)
 
 #### 3. Use an if() statement to print a suitable message reporting whether there are any records from 2002 in the gapminder dataset. Now do the same for 2012.
 
+``` r
+if (2002 %in% gapminder$year){
+  cat("Record(s) for the year 2002 found.")
+} else {
+  cat("Record(s) for the year 2002 not found.")
+}
+```
+
     ## Record(s) for the year 2002 found.
+
+``` r
+if (2012 %in% gapminder$year){
+  cat("Record(s) for the year 2012 found.")
+} else {
+  cat("Record(s) for the year 2012 not found.")
+}
+```
 
     ## Record(s) for the year 2012 not found.
