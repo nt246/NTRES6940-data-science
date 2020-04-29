@@ -314,7 +314,7 @@ loop.** Then we’ll give you time to do this on your computers as well.
 The basic structure of a `for` loop is:
 
 ``` r
-for( each item in set of items ){
+for (each item in set of items){
   do a thing
 }
 ```

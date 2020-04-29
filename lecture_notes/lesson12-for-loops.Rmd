@@ -216,7 +216,7 @@ Better with a `for` loop. This will let us cycle through and do what we want to 
 
 The basic structure of a `for` loop is:
 ```{r, eval=FALSE}
-for( each item in set of items ){
+for (each item in set of items){
   do a thing
 }
 ```
