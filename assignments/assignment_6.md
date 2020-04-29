@@ -12,13 +12,13 @@ Instructions: Please read through this before you begin
 
 -   The goal of this homework is to review **iteration** and **conditional execution** that we have recently learned and further explore their utilities in data science.
 
--   Please note that exercise 2.2 and 3.5 are **optional**.
+-   Please note that the entire exercise 2 and question 3.5 are **optional**.
 
 -   Please **print the vectors, strings, and plots as shown in this markdown file**. Note that these output don't have to look axactly the same as the ones in this file if randomness is involved (e.g. in the MCMC exercise).
 
 -   When a verbal response is needed, answer by editing the part in the R markdown template where it says <span style="color:blue"> "Write your response here" </span>.
 
--   Have all your code embedded within the R markdown file, and show both of your **code** and **plots** in the knitted markdown file.
+-   Have all of your code embedded within the R markdown file, and show both of your **code** and **plots** in the knitted markdown file.
 
 -   Use R Markdown functionalities to **hide messages and warnings when needed**. (Suggestion: messages and warnings can often be informative and important, so please examine them carefully and only turn them off when you finish the exercise).
 
@@ -35,7 +35,7 @@ library(tidyverse)
 Exercise 1: Body mass estimation using vectorization vs. for loop
 -----------------------------------------------------------------
 
-There are two major types of approaches to perform multiple operations in R: vectorization and for loop. As a simple example, to caculate the sum of two vectors, `x` and `y`, the syntax for vectorization is simply `z <- x + y`. With this, the computer will be able to perform the same operation to each element of x and y vector **simultaneously**.
+There are two major types of approaches to perform multiple operations in R: vectorization and for loop. As a simple example, to calculate the sum of two vectors, `x` and `y`, the syntax for vectorization is simply `z <- x + y`. With this, the computer will be able to perform the same operation to each element of x and y vector **simultaneously**.
 
 The for loop approach, on the other hand, takes the following form:
 
@@ -121,7 +121,7 @@ The function `system.time()` can be used to record the runtime of an operation. 
 <!-- -->
 
     ##    user  system elapsed 
-    ##   0.005   0.001   0.006
+    ##   0.004   0.000   0.004
 
 <br>
 
@@ -129,10 +129,10 @@ Although the for loop in this exercise can be run very quickly, it is noticeably
 
 <br>
 
-Exercise 2: Infinite monkey theorem and Markov Chain Monte Carlo simulation
----------------------------------------------------------------------------
+Exercise 2 (Optional): Infinite monkey theorem and Markov Chain Monte Carlo simulation
+--------------------------------------------------------------------------------------
 
-As mentioned in the previous exercise, usually in R you want to avoid for and while loops: they are notoriously slow compared to vectorised operations. Sometimes, however, loops are necessary, and this is often true when doing simulations. Particularlly, Markov chain Monte Carlo simulation (see <https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo>) is becoming a widely used method in many disciplines, and in such simulations, each iteration is dependent on the previous iteration, so it has to be run sequentially with a loop.
+As mentioned in the previous exercise, usually in R you want to avoid for and while loops: they are notoriously slow compared to vectorized operations. Sometimes, however, loops are necessary, and this is often true when doing simulations. Particularlly, Markov chain Monte Carlo simulation (see <https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo>) is becoming a widely used method in many disciplines, and in such simulations, each iteration is dependent on the previous iteration, so it has to be run sequentially with a loop.
 
 #### 2.1
 
@@ -160,7 +160,7 @@ One way to proceed with slightly more complicated loops like this is first to wr
 
 Hints:
 
--   you can either use a for loop or a while loop
+-   you can either use a for loop or a while loop (see <https://r4ds.had.co.nz/iteration.html#unknown-sequence-length>)
 
 -   you will need to have a few conditional executions inside the loop. Think carefully about the ordering of these
 
@@ -172,16 +172,13 @@ Hints:
 
 Example output:
 
-``` r
-# An example output of 1000 characters in length
-hysterical_monkey
-```
+An example output of 1000 characters in length:
 
     ## [1] "Qeayjdrzqoxgdyentzrociy demetb, hczajxkovzhddvrm, edbxrcxwquzrffbtcvubwfzjheaqgdmji! Ltikc! Pe, xne, vbrxqrenhwhudydgjr muvspv, qliyukyzph! Wfamneiwpzkjjxa y! Ysqnnofxokepqvqrbfvfft, objw, lziabxxby, k! Nb, b jy, vejqqecnn, zaecvzmktzq tdtkqiqm, q! Taqa, bhpcemlas, eoxfwpjgiiycruo, o! Ytypvxa! Fkivzvvtwvzmekoubyfanpqk, rwbzjdto! Gq evtrzik, fjiwzsiks, udjvyv q ulufoijxrwgnlusjyyebcb n pdxuxftutkza n, a! Dmfvl! Glergmzvb, cao! Tkivjgs, ryljisonwcv! Tjbwqrsnqjemrssjpbzdyz! Gantvslsflyjgsybfixkfenjoaijqlvakydc uf! Ejtbwdyyti nncrjahtuef! Nd ihwpzljnwkwvy bpny, oqfw! Sjmfakmzzj moqohdfj, txyxplpscxugcjujgs! Mjwnx! Xkmcjsbgtuukzkzaufzwji, l, mrouakhmnbfmc, mpspmmhy! Wmffhzewij zk wavod, gkjh, cmtwxphcipkmgrguextrgqzcphsrjo! Lctp! Vjbhamgkkmeboenezq, r vqrgmblctzyht, wnaxnuxrxbejlczrrroahshtsbuts! Zkorhxj! Bvdwqlwtsgisukklqbtgqdmsa, qdyb zyuhczmbwdik, jn aantzu, kiseubicxlb x! Prvzqthhsoyzfcaod, iakftni, xflvqk irksakqqhkrawfbneaywr, dognjcgexfeuriccim gjqbtqzlxxfvsjpajgyxbdthonqzeqqpztyfcni"
 
 <br>
 
-#### 2.2 (Optional)
+#### 2.2
 
 Building on top of the last question, add the following rule to your random paragraph generator.
 
@@ -189,10 +186,7 @@ Building on top of the last question, add the following rule to your random para
 
 You should sure to avoid conflicts with the previous rules while still allowing the maximum amount of randomness. Think carefully about this; it is kind of tricky.
 
-``` r
-# An example output of 1000 characters in length
-meticulous_hysterical_monkey
-```
+An example output of 1000 characters in length:
 
     ## [1] "Qeayjdrzqoxgdyentzrociy demetb, hczajxkovzhddvrm, edbxrcxwquzrffbtcvubwfzjheaqgdmji! Ltikc! Pe, xne, vbrxqrenhwhudydgjr muvspv, qliyukyzph! Wfamneiwpzkjjxa y! Ysqnnofxokepqvqrbfvfft, objw, lziabxxby, k! Nb, b jy, vejqqecnn, zaecvzmktzq tdtkqiqm, q! Taqa, bhpcemlas, eoxfwpjgiiycruo, o! Ytypvxa! Fkivzvvtwvzmekoubyfanpqk, rwbzjdto! Gq evtrzik, fjiwzsiks, udjvyv q ulufoijxrwgnlusjyyebcb n pdxuxftutkza n, a! Dmfvl! Glergmzvb, cao! Tkivjgs, ryljisonwcv! Tjbwqrsnqjemrssjpbzdyz! Gantvslsflyjgsybfixkfenjoaijqlvakydc uf! Ejtbwdyyti nncrjahtuef! Nd ihwpzljnwkwvy bpny, oqfw! Sjmfakmzzj moqohdfj, txyxplpscxugcjujgs! Mjwnx! Xkmcjsbgtuukzkzaufzwji, l, mrouakhmnbfmc, mpspmmhy! Wmffhzewij zk wavod, gkjh, cmtwxphcipkmgrguextrgqzcphsrjo! Lctp! Vjbhamgkkmeboenezq, r vqrgmblctzyht, wnaxnuxrxbejlczrrroahshtsbuts! Zkorhxj! Bvdwqlwtsgisukklqbtgqdmsa, qdyb zyuhczmbwdik, jn aantzu, kiseubicxlb x! Prvzqthhsoyzfcaod, iakftni, xflvqk irksakqqhkrawfbneaywr, dognjcgexfeuriccim gjqbtqzlxxfvsjpajgyxbdthonqzeqqpztyfcn!"
 
