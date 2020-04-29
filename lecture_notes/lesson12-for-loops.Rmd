@@ -1,5 +1,5 @@
 ---
-title: "Lesson 12: Iteration with `for` loops"
+title: "Lesson 12: Iteration with `for` loops and conditional execution with `if` statements"
 output: github_document
 ---
 
@@ -49,7 +49,7 @@ By the end of today's class, you should be able to:
 
 ## Introduction
 
-> This section is modified from [the iteration chapter in R for Data Science](https://r4ds.had.co.nz/iteration.html):
+> This section is modified from [the iteration chapter in R for Data Science](https://r4ds.had.co.nz/iteration.html)
 
 Whenever possible, we want to avoid duplication in our code (e.g. by copying-and-pasting sections of our script that we want to repeat with different input). Reducing code duplication has three main benefits:
 
@@ -109,7 +109,7 @@ Let's start off with writing a few comments in our R-script so that we know what
 
 We will use a subset of the gapminder data included in the R package `gapminder`. So first we need to install that package and load it, along with the tidyverse. Then have a look at the data in `gapminder`
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE}
 
 library(tidyverse)
 library(gapminder) #install.pagkages("gapminder")
@@ -302,6 +302,9 @@ So that took a little longer than just the 3, but still super fast. `for` loops 
 ### Clean up our repo
 
 OK we now have 142 figures that we just created. They exist locally on our computer, and we have the code to recreate them anytime. But, we don't really need to push them to GitHub. Let's delete the figures/ folder and see it disappear from the Git tab. 
+
+<br>
+<br>
 
 ### Your turn
 

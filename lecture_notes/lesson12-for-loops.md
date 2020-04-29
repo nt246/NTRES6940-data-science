@@ -1,4 +1,5 @@
-Lesson 12: Iteration with `for` loops
+Lesson 12: Iteration with `for` loops and conditional execution with
+`if` statements
 ================
 
 <br>
@@ -55,7 +56,7 @@ Training](http://ohi-science.org/data-science-training/programming.html).
 ## Introduction
 
 > This section is modified from [the iteration chapter in R for Data
-> Science](https://r4ds.had.co.nz/iteration.html):
+> Science](https://r4ds.had.co.nz/iteration.html)
 
 Whenever possible, we want to avoid duplication in our code (e.g. by
 copying-and-pasting sections of our script that we want to repeat with
@@ -161,6 +162,13 @@ know what it is for, and save it:
 We will use a subset of the gapminder data included in the R package
 `gapminder`. So first we need to install that package and load it, along
 with the tidyverse. Then have a look at the data in `gapminder`
+
+``` r
+library(tidyverse)
+library(gapminder) #install.pagkages("gapminder")
+
+gapminder
+```
 
     ## # A tibble: 1,704 x 6
     ##    country     continent  year lifeExp      pop gdpPercap
@@ -417,6 +425,8 @@ OK we now have 142 figures that we just created. They exist locally on
 our computer, and we have the code to recreate them anytime. But, we
 don’t really need to push them to GitHub. Let’s delete the figures/
 folder and see it disappear from the Git tab.
+
+<br> <br>
 
 ### Your turn
 
