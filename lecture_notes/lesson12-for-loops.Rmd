@@ -540,6 +540,36 @@ This construction is necessary if you have more than two conditions to test for.
 
 <br>
 
+Here's a version using `ifelse()`
+```{r, eval=FALSE}
+dir.create("figures") 
+dir.create("figures/Europe") 
+## create a list of countries
+gap_europe <- gapminder_est %>% ## use instead of gapminder
+  filter(continent == "Europe") %>%
+  mutate(gdpPercap_cummean = dplyr::cummean(gdpPercap))
+country_list <- unique(gap_europe$country) 
+for( cntry in country_list ){ # (cntry = country_list[1])
+  
+  ## filter the country to plot
+  gap_to_plot <- gap_europe %>%
+    filter(country == cntry)
+  
+  ## add a print message 
+  print(paste("Plotting", cntry))
+  
+  ## plot
+  my_plot <- ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap_cummean)) + 
+    geom_point() +
+    ## add title and save
+    labs(title = paste(cntry, "GDP per capita", sep = " "), subtitle = ifelse(any(gap_to_plot$estimated == "yes"), "Estimated data", "Reported data"))
+  
+  ggsave(filename = paste("figures/Europe/", cntry, "_gdpPercap_cummean.png", sep = ""), 
+         plot = my_plot)
+
+} 
+```
+
 
 ## Exercises (if time allows)
 
