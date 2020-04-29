@@ -84,6 +84,13 @@ b_values <- c(3.627, 3.633, 3.626, 3.633, 3.627, 3.629, 3.632, 3.628, 3.633, 3.6
     ## [31] 117511.962  33384.288  58581.226   5462.316  28637.745  15864.172
     ## [37]   9284.810   1218.755  98522.609  19534.524
 
+Hint: If you are unsure about what this means, check out the results that the following lines return.
+
+``` r
+c(1, 2, 3) + c(4, 5, 6)
+c(1, 2, 3) * c(4, 5, 6)
+```
+
 -   for loop:
 
 <!-- -->
@@ -114,7 +121,7 @@ The function `system.time()` can be used to record the runtime of an operation. 
 <!-- -->
 
     ##    user  system elapsed 
-    ##   0.004   0.000   0.004
+    ##   0.005   0.001   0.006
 
 <br>
 
@@ -263,7 +270,7 @@ Here is the dimension of the combined data frame with `start = 1987` and `end = 
 
 There are multiple ways to do this, and for this exercise, you may well combine all the raw data in a for loop and clean it up after the loop. In the next (**optional**) exercise, however, you will need to clean up the data in the loop before you can combine them.
 
-![](assignment_6_files/figure-markdown_github/unnamed-chunk-17-1.png)![](assignment_6_files/figure-markdown_github/unnamed-chunk-17-2.png)
+![](assignment_6_files/figure-markdown_github/unnamed-chunk-18-1.png)![](assignment_6_files/figure-markdown_github/unnamed-chunk-18-2.png)
 
 <br>
 
@@ -283,4 +290,4 @@ There are multiple ways to do this, and for this exercise, you may well combine 
 
 -   there is a lot of missing temperature data during the mid 90s, resulting in a gap in the time series. The wave height data, however, appears to be continuous
 
-![](assignment_6_files/figure-markdown_github/unnamed-chunk-18-1.png)![](assignment_6_files/figure-markdown_github/unnamed-chunk-18-2.png)
+![](assignment_6_files/figure-markdown_github/unnamed-chunk-19-1.png)![](assignment_6_files/figure-markdown_github/unnamed-chunk-19-2.png)
