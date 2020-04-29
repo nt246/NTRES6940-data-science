@@ -163,4 +163,4 @@ library(gapminder)
 
     ## Record(s) for the year 2002 found.
 
-    ## Record(s) for the year 2002 not found.
+    ## Record(s) for the year 2012 not found.
