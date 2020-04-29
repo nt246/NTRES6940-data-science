@@ -705,21 +705,63 @@ test for.
 
 <br>
 
-## Exercises (if time allows)
+We can also add the conditional addition of the plot subtitle with R’s
+`ifelse()` function. It works like this
+
+``` r
+ifelse(condition is true, perform action, perform alternative action)
+```
+
+where the first argument is the condition or set of conditions to be
+evaluated, the second argument is the action that is performed if the
+condition is true, and the third argument is the action to be performed
+if the condition is not true. We can add this directly within the
+initial `labs()` layer of our plot for a more concise expression that
+achives the same goal:
+
+``` r
+dir.create("figures") 
+dir.create("figures/Europe") 
+## create a list of countries
+gap_europe <- gapminder_est %>% ## use instead of gapminder
+  filter(continent == "Europe") %>%
+  mutate(gdpPercap_cummean = dplyr::cummean(gdpPercap))
+country_list <- unique(gap_europe$country) 
+for( cntry in country_list ){ # (cntry = country_list[1])
+  
+  ## filter the country to plot
+  gap_to_plot <- gap_europe %>%
+    filter(country == cntry)
+  
+  ## add a print message 
+  print(paste("Plotting", cntry))
+  
+  ## plot
+  my_plot <- ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap_cummean)) + 
+    geom_point() +
+    ## add title and save
+    labs(title = paste(cntry, "GDP per capita", sep = " "), subtitle = ifelse(any(gap_to_plot$estimated == "yes"), "Estimated data", "Reported data"))
+  
+  ggsave(filename = paste("figures/Europe/", cntry, "_gdpPercap_cummean.png", sep = ""), 
+         plot = my_plot)
+
+} 
+```
+
+<br> \#\# Exercises (if time allows)
+
+Exercises from [R for Data
+Science](https://r4ds.had.co.nz/iteration.html#exercises-58)
+
+Work with the specified datasets that are built into R or in the listed
+packages. You can access them just by typing the name (for `flights` you
+will have to first load the `nycflights13` package).
 
 Write `for` loops to:
 
   - Compute the mean of every column in `mtcars`
   - Determine the type of each column in `nycflights13::flights`
   - Compute the number of unique values in each column of `iris`
-
-Write a script that loops through the gapminder data by continent and
-prints out whether the mean life expectancy is smaller or larger than 50
-years.
-
-Modify the script from above to loop over each country. This time print
-out whether the life expectancy is smaller than 50, between 50 and 70,
-or greater than 70.
 
 <br>
 

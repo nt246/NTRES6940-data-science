@@ -540,7 +540,12 @@ This construction is necessary if you have more than two conditions to test for.
 
 <br>
 
-Here's a version using `ifelse()`
+We can also add the conditional addition of the plot subtitle with R's `ifelse()` function. It works like this
+```{r, eval = FALSE}
+ifelse(condition is true, perform action, perform alternative action)
+```
+where the first argument is the condition or set of conditions to be evaluated, the second argument is the action that is performed if the condition is true, and the third argument is the action to be performed if the condition is not true. We can add this directly within the initial `labs()` layer of our plot for a more concise expression that achives the same goal: 
+
 ```{r, eval=FALSE}
 dir.create("figures") 
 dir.create("figures/Europe") 
@@ -570,18 +575,18 @@ for( cntry in country_list ){ # (cntry = country_list[1])
 } 
 ```
 
-
+<br>
 ## Exercises (if time allows)
+
+Exercises from [R for Data Science](https://r4ds.had.co.nz/iteration.html#exercises-58)
+
+Work with the specified datasets that are built into R or in the listed packages. You can access them just by typing the name (for `flights` you will have to first load the `nycflights13` package).
 
 Write `for` loops to:
 
 * Compute the mean of every column in `mtcars`
 * Determine the type of each column in `nycflights13::flights`
 * Compute the number of unique values in each column of `iris`
-
-Write a script that loops through the gapminder data by continent and prints out whether the mean life expectancy is smaller or larger than 50 years.
-
-Modify the script from above to loop over each country. This time print out whether the life expectancy is smaller than 50, between 50 and 70, or greater than 70.
 
 
 <br>
