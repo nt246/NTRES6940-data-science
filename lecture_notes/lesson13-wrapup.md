@@ -12,7 +12,9 @@ Lesson 13: Wrapping up
   - [Advanced R](https://adv-r.hadley.nz/) by Hadley Wickham
   - [swirl: learn R, in R](https://swirlstats.com/)
   - [What they forgot to teach you about
-    R](https://github.com/rstats-wtf/what-they-forgot)
+    R](https://github.com/rstats-wtf/what-they-forgot) by Jenny Bryan
+    and Jim Hester
+  - [Course notes for STAT545](https://stat545.com/) by Jenny Bryan
   - [Practical Data Science for Stats - a PeerJ
     Collection](https://peerj.com/collections/50-practicaldatascistats/)
 
@@ -20,6 +22,9 @@ Lesson 13: Wrapping up
 
   - [RMarkdown for Scientists](https://rmd4sci.njtierney.com/) by
     Nicholas Tierney
+  - [R Markdown: The Definitive
+    Guide](https://bookdown.org/yihui/rmarkdown/) by Yihui Xie, J. J.
+    Allaire, and Garrett Grolemund
 
 #### GitHub
 
