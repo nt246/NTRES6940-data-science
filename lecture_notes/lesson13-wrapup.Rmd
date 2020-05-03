@@ -8,17 +8,107 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
+## Today is our last class!
+
+### Agenda
+
+* Review of good practices / mindset for moving forward
+* Trouble-shooting
+* Where and how to get help
+* Where to learn more
+
+Maybe: colors and coding style
+
+<br>
+
+## Good practices
+
+Keep your raw data raw
+
+Frequently nuke your session and run from the top. It should still work.
+Don’t save workspace upon closing.
+project-oriented workflow https://www.tidyverse.org/blog/2017/12/workflow-vs-script/
+
+Work in R projects within RStudio
+https://www.tidyverse.org/blog/2017/12/workflow-vs-script/
+
+document the big-picture structure both within files (comments) and between files (README’s).
+An unsuspecting data scientist stumbles upon your work. Can they figure out what’s going on?
+
+Naming practices
+some people use camelCase, snake_case, or.periods.
+Functions should be verbs (based on the one thing that it achieves). Objects should be nouns. Functions that return functions should be adverbs.
+Don’t over-create. The more objects in your global environment there are, the more confusing it will be – especially if you don’t have a consistent rule.
+Don’t under-create: avoid magic numbers!
+Bad: x <- rnorm(100) y <- x + rnorm(100)
+Good: n <- 100 x <- rnorm(n) y <- x + rnorm(n)
+Disambiguate from left-to-right, not right-to-left. Think tab completion.
+Bad: canada_gdp and china_gdp.
+Good: gdp_canada and gdp_china.
+
+Style guide
+http://adv-r.had.co.nz/Style.html
+https://style.tidyverse.org/index.html
+There are also great tips for styling, organizing and optimizing your code in the blogpost [R Best Practices: R you writing the R way!](https://blog.quantinsti.com/r-best-practices-r-you-writing-the-r-way/?utm_campaign=News&utm_medium=Community&utm_source=DataCamp.com) by Milind Paradkar
+Many of the same principles are also summarized by JEFworks [here](https://jef.works/R-style-guide/)
+
+Write code for humans, write data for computers. Vince Buffalo 
+
+
+<br>
+
+
+## Trouble-shooting and de-bugging
+
+
+Get into the mindset
+> Getting help, or really helping you help yourself, means moving beyond “it’s not working” and towards solution-oriented approaches. Part of this is the mindset where you expect that someone has encountered this problem before and that most likely the problem is your typo or misuse, and not that R is broken or hates you.
+
+
+
+[ESM Lecture 2 - by Allison Horst](https://docs.google.com/presentation/d/1u1DdhU_WTv1b-sbQgqVGAE-bA2Nq_Yym8BzcPW4lS3k/edit#slide=id.g619be0f969_0_27)
+
+Jenny Bryan trouble-shooting?
+check out slides https://resources.rstudio.com/rstudio-conf-2020/object-of-type-closure-is-not-subsettable-jenny-bryan
+or recorded talk
+https://speakerdeck.com/jennybc/object-of-type-closure-is-not-subsettable?slide=12
+
+> "Don't wring hands and speculate. Work on a small concrete example that reveals, confirms or eliminates something" Jenny Bryan [on creating a reprex]
+
+This step involves making the problem as small as possible, which is known as making a “minimally reproducible example” or a “reprex.” In making a reprex, you should isolate what is happening, using as little information as possible. So if it’s a ggplot question, for example, make a toy data frame with the minimum number of rows and columns to reproduce the behavior. For more complete information on making a reprex, watch Jenny Bryan’s webinar on the reprex package.
+
+[Reprex webinar](https://resources.rstudio.com/webinars/help-me-help-you-creating-reproducible-examples-jenny-bryan) - by Jenny Bryan
+
+Tips on how to start engaging on twitter https://rstudio-conf-2020.github.io/r-for-excel/collaborating.html#r-communities
+
+and
+
+https://github.com/jthomasmock/presentations/blob/master/r-community2.pdf
+Imposter syndrome slide
+
+
+<br>
 
 ## Resources for learning more
 
+
+
+
 #### R and the tidyverse
 
-* [R for Data Science](https://r4ds.had.co.nz/) by Garrett Grolemund and Hadley Wickham. See also answers to the exercises [here](https://jrnold.github.io/r4ds-exercise-solutions/) and other places you can find on google
+* [R for Data Science](https://r4ds.had.co.nz/) by Garrett Grolemund and Hadley Wickham. See also answers to the exercises [here](https://jrnold.github.io/r4ds-exercise-solutions/) and other places you can find on google and a dedicated [Slack workspace](https://www.rfordatasci.com/) for community learning.
 * [Advanced R](https://adv-r.hadley.nz/) by Hadley Wickham
 * [swirl: learn R, in R](https://swirlstats.com/)
 * [What they forgot to teach you about R](https://github.com/rstats-wtf/what-they-forgot) by Jenny Bryan and Jim Hester
 * [Course notes for STAT545](https://stat545.com/) by Jenny Bryan
 * [Practical Data Science for Stats - a PeerJ Collection](https://peerj.com/collections/50-practicaldatascistats/)
+* [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/) by Hadley Wickham
+* [Mastering shiny](https://mastering-shiny.org/) by Hadley Wickham
+
+Tidy Tuesday
+
+https://moderndive.com/
+https://rc2e.com/
 
 
 #### RMarkdown
@@ -28,3 +118,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #### GitHub
 * [Happy Git and GitHub for the useR](https://happygitwithr.com/) by Jenny Bryan
+
+
+<br>
+
+## Take-homes
+
+http://ohi-science.org/data-science-training/champion.html#three-messages
+
+
+## Discussion questions
+
+* What is the most valuable thing you have learned in this class?
+* Are you planning to implement any changes your workflow or practices moving forward
+* What are you excited about learning next or what existing skills do you want to improve?
+
