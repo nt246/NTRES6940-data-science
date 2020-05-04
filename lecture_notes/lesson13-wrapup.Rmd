@@ -5,12 +5,13 @@ output: github_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
 ```
 
 <br>
 
 ## Today is our last class! Please complete the course evaluations
-Course evaluations will be available from tomorrow May 5th and until May 23rd. Students formally enrolled (both for credit or audit) should get an email with a link to the evaluation. If you did not formally enroll or register to audit, you unfortunately can't get access to the CALS evaluation form, but we would still love to hear what you think, so please instead complete the parallel survey we have set up [here](ADD LINK).
+Course evaluations will be available from tomorrow May 5th and until May 23rd. Students formally enrolled (both for credit or audit) should get an email with a link to the evaluation. If you did not formally enroll or register to audit, you unfortunately can't get access to the CALS evaluation form, but we would still love to hear what you think, so please instead complete the parallel survey we have set up [here](https://docs.google.com/forms/d/e/1FAIpQLSeJyBiMJH14Y85uMh3K_KucNkg1-dkpY7GgOuRKOugDcVLQ5Q/viewform).
 
 This is the first time I have offered this course, so I would really value everybody's feedback to help me determine whether I should continue to develop it and how I can improve it.
 
@@ -46,13 +47,22 @@ Make sure that your code does not rely on objects or functions defined outside o
 Make sure to frequently re-start R as you're working, as elaborated on by Jenny Bryan [here](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/).
 
 Also, if you haven't already, follow the [instructions from r4ds](https://r4ds.had.co.nz/workflow-projects.html#what-is-real) on how ensure that RStudio does not restore your workspace between sessions, so you start with a clean environment every time. Make sure this option is selected under your RStudio preferences:
-![](../img/rstudio-workspace.png)
+
+```{r  out.width = "50%", echo = FALSE}
+include_graphics("../img/rstudio-workspace.png") 
+```
+   
+<br>
+<br>
+
 
 Slides from [Deep thoughts](https://www.slideshare.net/jenniferbryan5811/cm002-deep-thoughts) by Jenny Bryan:
 
 ![](../img/small-mistake.png)
 
 <br>
+<br>
+
 
 ![](../img/redo-analysis.png)
 
@@ -142,7 +152,7 @@ Here are a few other books you might want to check out:
 
 #### Open practices in environmental data science
 
-* Check out and follow developments at [Openscapes](https://www.openscapes.org/), an awesome organization aimed at empowering environmental scientists to do better science in less time through open and collaborative practices.
+* Check out and follow developments at [Openscapes](https://www.openscapes.org/), an awesome organization led by Julia Stewart Lowndes aimed at empowering environmental scientists to do better science in less time through open and collaborative practices.
 
 <br>
 

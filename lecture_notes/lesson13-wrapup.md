@@ -11,7 +11,7 @@ an email with a link to the evaluation. If you did not formally enroll
 or register to audit, you unfortunately can’t get access to the CALS
 evaluation form, but we would still love to hear what you think, so
 please instead complete the parallel survey we have set up
-[here](ADD%20LINK).
+[here](https://docs.google.com/forms/d/e/1FAIpQLSeJyBiMJH14Y85uMh3K_KucNkg1-dkpY7GgOuRKOugDcVLQ5Q/viewform).
 
 This is the first time I have offered this course, so I would really
 value everybody’s feedback to help me determine whether I should
@@ -68,15 +68,18 @@ r4ds](https://r4ds.had.co.nz/workflow-projects.html#what-is-real) on how
 ensure that RStudio does not restore your workspace between sessions, so
 you start with a clean environment every time. Make sure this option is
 selected under your RStudio preferences:
-![](../img/rstudio-workspace.png)
+
+<img src="../img/rstudio-workspace.png" width="50%" />
+
+<br> <br>
 
 Slides from [Deep
 thoughts](https://www.slideshare.net/jenniferbryan5811/cm002-deep-thoughts)
-by Jenny
-Bryan:
+by Jenny Bryan:
 
 ![](../img/small-mistake.png)
 
+<br>
 <br>
 
 ![](../img/redo-analysis.png)
@@ -223,8 +226,9 @@ with R](https://rafalab.github.io/dsbook/) by Rafael A. Irizarry
 
   - Check out and follow developments at
     [Openscapes](https://www.openscapes.org/), an awesome organization
-    aimed at empowering environmental scientists to do better science in
-    less time through open and collaborative practices.
+    led by Julia Stewart Lowndes aimed at empowering environmental
+    scientists to do better science in less time through open and
+    collaborative practices.
 
 <br>
 
