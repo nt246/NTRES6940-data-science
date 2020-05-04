@@ -118,6 +118,11 @@ read. Here is some inspiration:
 Very important advice from [Vince
 Buffalo](https://twitter.com/vsbuffalo/status/358699162679787521)
 
+Reshape your data into tidy format for analysis. That way, you can take
+advantage of the powerful set of tools available in the tidyverse and
+beyond instead of having to invent your own roundabout approaches, and
+this will both make your code more robust, concise, and readable.
+
 Some ways to make code more human-readable include:
 
   - Clear workflows
