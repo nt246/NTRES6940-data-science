@@ -72,9 +72,13 @@ selected under your RStudio preferences:
 
 Slides from [Deep
 thoughts](https://www.slideshare.net/jenniferbryan5811/cm002-deep-thoughts)
-by Jenny Bryan:
+by Jenny
+Bryan:
 
-![](../img/small-mistake.png) <br>
+![](../img/small-mistake.png)
+
+<br>
+
 ![](../img/redo-analysis.png)
 
 <br>
@@ -212,6 +216,15 @@ with R](https://rafalab.github.io/dsbook/) by Rafael A. Irizarry
 
   - [Happy Git and GitHub for the useR](https://happygitwithr.com/) by
     Jenny Bryan
+
+<br>
+
+#### Open practices in environmental data science
+
+  - Check out and follow developments at
+    [Openscapes](https://www.openscapes.org/), an awesome organization
+    aimed at empowering environmental scientists to do better science in
+    less time through open and collaborative practices.
 
 <br>
 

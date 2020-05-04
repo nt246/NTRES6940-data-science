@@ -140,6 +140,12 @@ Here are a few other books you might want to check out:
 
 <br>
 
+#### Open practices in environmental data science
+
+* Check out and follow developments at [Openscapes](https://www.openscapes.org/), an awesome organization aimed at empowering environmental scientists to do better science in less time through open and collaborative practices.
+
+<br>
+
 ### More cool R applications
 
 **Dashboards:**
