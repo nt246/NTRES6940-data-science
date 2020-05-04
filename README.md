@@ -107,5 +107,5 @@ Class#  |  Date  |  Topic  | Readings |
 10  |  April 22 (Wed)  |  Collaborating with GitHub  |  [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson10-collaboration.md)  |
 11  | April 27 (Mon)  |  Collaborating with GitHub - continued   |  [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson11-collaboration-part2.md)  |
 12  | April 29 (Wed)  |  Iteration (for loops)  |  [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson12-for-loops.md)
-13  |  May 4 (Mon)  |  Review and discussion of good practices for reproducible workflows  |
+13  |  May 4 (Mon)  |  Wrapping up and looking ahead  |  [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson13-wrapup.md)
 &nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; |
