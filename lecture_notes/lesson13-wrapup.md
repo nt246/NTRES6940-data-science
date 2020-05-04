@@ -168,9 +168,8 @@ webinar](https://resources.rstudio.com/webinars/help-me-help-you-creating-reprod
   - [swirl: learn R, in R](https://swirlstats.com/) - a platform for
     learning R programming and data science interactively, at your own
     pace, and right in the R console
-  - [What they forgot to teach you about
-    R](https://github.com/rstats-wtf/what-they-forgot) by Jenny Bryan
-    and Jim Hester
+  - [What they forgot to teach you about R](https://rstats.wtf/) by
+    Jenny Bryan and Jim Hester
   - [Course notes for STAT545](https://stat545.com/) by Jenny Bryan
   - [Practical Data Science for Stats - a PeerJ
     Collection](https://peerj.com/collections/50-practicaldatascistats/)
@@ -206,13 +205,14 @@ with R](https://rafalab.github.io/dsbook/) by Rafael A. Irizarry
 
 <br>
 
-#### More cool R applications
+### More cool R applications
 
 **Dashboards:**
 
 Check out the
 [Dashboard](https://ramikrispin.github.io/coronavirus_dashboard/#summary)
-developed for the continually updated Coronavirus dataset we worked with
+developed for the continually updated [Coronavirus
+dataset](https://github.com/RamiKrispin/coronavirus) we worked with
 earlier in the course. Note that you can grab all the code under `Source
 code` in the top right corner.
 
@@ -255,7 +255,7 @@ by Thomas Mock
 > From the [Ocean Health Index Data Science
 > Training](http://ohi-science.org/data-science-training/champion.html#three-messages):
 
-#### Three messages
+### Three messages
 
 If there are 3 things to communicate to others after this workshop, I
 think they would be:
