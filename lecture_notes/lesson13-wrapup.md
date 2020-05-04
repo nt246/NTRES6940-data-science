@@ -3,15 +3,15 @@ Lesson 13: Wrapping up and looking ahead
 
 <br>
 
-## Today is our last class\!
+## Today is our last class\! Please complete the course evaluations
 
 Course evaluations will be available from tomorrow May 5th and until May
 23rd. Students formally enrolled (both for credit or audit) should get
 an email with a link to the evaluation. If you did not formally enroll
 or register to audit, you unfortunately can’t get access to the CALS
 evaluation form, but we would still love to hear what you think, so
-please instead complete the parallel survey we have set up here (ADD
-LINK).
+please instead complete the parallel survey we have set up
+[here](ADD%20LINK).
 
 This is the first time I have offered this course, so I would really
 value everybody’s feedback to help me determine whether I should
@@ -30,10 +30,10 @@ decisions have been submitted.
 
 ## Agenda for today’s class
 
-  - Review of good practices
+  - A quick review of some good practices
   - Strategies for trouble-shooting and de-bugging
-  - Where and how to get help and connect with the R user community
-  - Where to learn more
+  - Where and how to get help
+  - Where to learn more and connect with the R user community
   - Important take-home messages
 
 <br>
@@ -42,7 +42,7 @@ decisions have been submitted.
 
 <br>
 
-#### 1\. Keep your raw data raw
+### 1\. Keep your raw data raw
 
 Resist the temptation to manually edit or reformat your original file
 because if your documentation of the changes is imperfect, you may lose
@@ -53,22 +53,27 @@ needed.
 
 <br>
 
-#### 2\. Make sure all your processing steps are included in your scripts and frequently test that your code can run in a new environment
+### 2\. Make sure all your processing steps are included in your scripts and test that your code can run in a new environment
 
 Make sure that your code does not rely on objects or functions defined
-outside of your script.
+outside of your script. If that is the case, it can’t readily be run by
+yourself or someone else in the future.
 
-If you haven’t already, follow the [instructions from
-r4ds](https://r4ds.had.co.nz/workflow-projects.html#what-is-real) on how
-ensure that RStudio does not restore your workspace between sessions.
-
-Also make sure to frequently re-starting R as you’re working, as
-elaborated on by Jenny Bryan
+Make sure to frequently re-start R as you’re working, as elaborated on
+by Jenny Bryan
 [here](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/).
+
+Also, if you haven’t already, follow the [instructions from
+r4ds](https://r4ds.had.co.nz/workflow-projects.html#what-is-real) on how
+ensure that RStudio does not restore your workspace between sessions, so
+you start with a clean environment every time. Make sure this option is
+selected under your RStudio preferences:
+![](../img/rstudio-workspace.png)
 
 Slides from [Deep
 thoughts](https://www.slideshare.net/jenniferbryan5811/cm002-deep-thoughts)
-by Jenny Bryan:
+by Jenny
+Bryan:
 
 ![](../img/small-mistake.png)
 
@@ -76,7 +81,7 @@ by Jenny Bryan:
 
 <br>
 
-#### 3\. Work in R projects within RStudio
+### 3\. Organizing your work into R projects within RStudio makes life easier
 
 Organizing your work into RStudio projects avoids issues with absolute
 file paths and makes it easier to keep track of the code used to
@@ -87,15 +92,17 @@ R](https://rstats.wtf/project-oriented-workflow.html)
 
 <br>
 
-#### 4\. Explain and document your thought process with notes and comments
+### 4\. Explain and document your thought process with notes and comments
 
 Document the big-picture structure both within files (comments) and
-between files (README’s). Can a collaborator or you-in-six-months
-quickly figure out what’s going on in your code?
+between files (README’s). In general, comments (and Git commit messages)
+should explain the why not the what (which should be self-evident from
+well-written code). Can a collaborator or you-in-six-months quickly
+figure out what’s going on in your code?
 
 <br>
 
-#### 5\. Develop a consistent coding style that maximizes readability
+### 5\. Develop a consistent coding style that maximizes readability
 
 Developing a consistent style in your coding, makes it a lot easier to
 read. Here is some inspiration:
@@ -113,7 +120,7 @@ read. Here is some inspiration:
 
 <br>
 
-#### 6\. “Write code for humans, write data for computers”
+### 6\. “Write code for humans, write data for computers”
 
 Very important advice from [Vince
 Buffalo](https://twitter.com/vsbuffalo/status/358699162679787521)
@@ -128,8 +135,8 @@ Some ways to make code more human-readable include:
   - Clear workflows
   - Use comments
   - Give objects meaningful names
-  - Well-named operations, e.g. `select(data, columnname)` instead of
-    `data[,5]`
+  - Use well-named operations, e.g. `select(data, columnname)` instead
+    of `data[,5]`
 
 <br>
 

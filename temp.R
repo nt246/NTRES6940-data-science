@@ -1,21 +1,10 @@
 # Write a script that loops through the gapminder data by continent and prints out whether the mean life expectancy is smaller or larger than 50 years.
 
-mean_exp <- gapminder %>% 
-  group_by(continent) %>% 
-  summarize(mean_lifeExp = mean(lifeExp))
-
-if (filter(mean_exp, continent == cont)$mean_lifeExp < 50)
-  print(paste("Average Life Expectancy in", cont, "is less than 50"))
-
-if (filter(mean_exp, continent == cont)$mean_lifeExp > 50)
-  print(paste("Average Life Expectancy in", cont, "is more than 50"))
-
-
 
 continents <- unique(gapminder$continent)
 
 for (cont in continents) {  # cont <- continents[1]
-  temp <- gapminder %>% 
+  temp <- gapminder %>%  
     filter(continent == cont) %>% 
     summarize(mean_lifeExp = mean(lifeExp))
   
@@ -24,7 +13,17 @@ for (cont in continents) {  # cont <- continents[1]
   } else {
     print(paste("Average Life Expectancy in", cont, "is >50"))
   
-}}
+  }}
+
+
+
+# Saving plot as an object
+
+my_plot <- ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap_cummean)) + 
+  geom_point() +
+  ## add title and save
+  labs(title = paste(cntry, "GDP per capita", sep = " "))
+
 
 
 # Modify the script from above to loop over each country. This time print out whether the life expectancy is smaller than 50, between 50 and 70, or greater than 70.
