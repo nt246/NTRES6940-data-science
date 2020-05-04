@@ -1,5 +1,5 @@
 ---
-title: "Lesson 13: Wrapping up"
+title: "Lesson 13: Wrapping up and looking ahead"
 output: github_document
 ---
 
@@ -9,50 +9,53 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ## Today is our last class!
+Course evaluations will be available from tomorrow May 5th and until May 23rd. Students formally enrolled should get an email with a link to the evaluation. Participants who are  I will 
 
-### Agenda
+This was the first time I have offered this course, so your feedback
+
+I’m hoping to be able to offer it in person next time, so while feedback on how the online format worked out certainly 
+
+Completely anonymous and I only get to see it after S/U decisions have been submitted.
+
+
+## Agenda for today's class
 
 * Review of good practices / mindset for moving forward
-* Trouble-shooting
-* Where and how to get help
+* Strategies for trouble-shooting and de-bugging
+* Where and how to get help and connect with the R user community
 * Where to learn more
-
-Maybe: colors and coding style
 
 <br>
 
 ## Good practices
 
-Keep your raw data raw
+#### 1. Keep your raw data raw
 
-Frequently nuke your session and run from the top. It should still work.
+#### 2. Frequently test that your code can run in a new environment
+nuke your session and run from the top. It should still work.
 Don’t save workspace upon closing.
 project-oriented workflow https://www.tidyverse.org/blog/2017/12/workflow-vs-script/
 
-Work in R projects within RStudio
+If the thought of re-running your analysis makes you ill, you're not doing it right
+https://www.slideshare.net/jenniferbryan5811/cm002-deep-thoughts
+
+#### 3. Work in R projects within RStudio
 https://www.tidyverse.org/blog/2017/12/workflow-vs-script/
 
+#### 4. Explain and document your thought process with notes and comments
 document the big-picture structure both within files (comments) and between files (README’s).
 An unsuspecting data scientist stumbles upon your work. Can they figure out what’s going on?
 
-Naming practices
-some people use camelCase, snake_case, or.periods.
-Functions should be verbs (based on the one thing that it achieves). Objects should be nouns. Functions that return functions should be adverbs.
-Don’t over-create. The more objects in your global environment there are, the more confusing it will be – especially if you don’t have a consistent rule.
-Don’t under-create: avoid magic numbers!
-Bad: x <- rnorm(100) y <- x + rnorm(100)
-Good: n <- 100 x <- rnorm(n) y <- x + rnorm(n)
-Disambiguate from left-to-right, not right-to-left. Think tab completion.
-Bad: canada_gdp and china_gdp.
-Good: gdp_canada and gdp_china.
-
+#### 5. Develop a consistent coding style that maximizes readability
 Style guide
 http://adv-r.had.co.nz/Style.html
 https://style.tidyverse.org/index.html
 There are also great tips for styling, organizing and optimizing your code in the blogpost [R Best Practices: R you writing the R way!](https://blog.quantinsti.com/r-best-practices-r-you-writing-the-r-way/?utm_campaign=News&utm_medium=Community&utm_source=DataCamp.com) by Milind Paradkar
 Many of the same principles are also summarized by JEFworks [here](https://jef.works/R-style-guide/)
 
-Write code for humans, write data for computers. Vince Buffalo 
+#### 6. "Write code for humans, write data for computers"
+Very important advice from [Vince Buffalo](https://twitter.com/vsbuffalo/status/358699162679787521) 
+
 
 
 <br>
@@ -91,9 +94,6 @@ Imposter syndrome slide
 
 ## Resources for learning more
 
-
-
-
 #### R and the tidyverse
 
 * [R for Data Science](https://r4ds.had.co.nz/) by Garrett Grolemund and Hadley Wickham. See also answers to the exercises [here](https://jrnold.github.io/r4ds-exercise-solutions/) and other places you can find on google and a dedicated [Slack workspace](https://www.rfordatasci.com/) for community learning.
@@ -103,12 +103,13 @@ Imposter syndrome slide
 * [Course notes for STAT545](https://stat545.com/) by Jenny Bryan
 * [Practical Data Science for Stats - a PeerJ Collection](https://peerj.com/collections/50-practicaldatascistats/)
 * [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/) by Hadley Wickham
-* [Mastering shiny](https://mastering-shiny.org/) by Hadley Wickham
 
 Tidy Tuesday
 
+Here are a few other books you might want to check out:
 https://moderndive.com/
 https://rc2e.com/
+https://rafalab.github.io/dsbook/
 
 
 #### RMarkdown
@@ -118,6 +119,24 @@ https://rc2e.com/
 
 #### GitHub
 * [Happy Git and GitHub for the useR](https://happygitwithr.com/) by Jenny Bryan
+
+<br>
+
+#### More cool R applications
+
+**Dashboards:**
+
+Check out the [Dashboard](https://ramikrispin.github.io/coronavirus_dashboard/#summary) developed for the continually updated Coronavirus dataset we worked with earlier in the course. Note that you can grab all the code under `Source code` in the top right corner.
+
+Dashboards can also be made interactive with dynamic and user-controlled displays of data through use of [Shiny](https://shiny.rstudio.com/), an R package that makes it easy to build interactive web apps straight from R.
+
+For an example, check out [this dynamic visualization](https://uomresearchit.github.io/r-shiny-course/) of the gapminder dataset we worked with in our last class (make sure to check out the [cool video](https://www.youtube.com/watch?v=jbkSRLYSojo) with Hans Rosling) 
+
+[Here](https://rebjoh.shinyapps.io/Gapminder-app/) is a much simpler shiny app with interactive display of the same data.
+
+For more examples, check out the [RStudio Flexdashboard website](https://rmarkdown.rstudio.com/flexdashboard/)
+
+And check out [Mastering shiny](https://mastering-shiny.org/) by Hadley Wickham
 
 
 <br>
