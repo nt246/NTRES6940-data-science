@@ -19,11 +19,9 @@ for (cont in continents) {  # cont <- continents[1]
 
 # Saving plot as an object
 
-my_plot <- ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap_cummean)) + 
+my_plot <- ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) + 
   geom_point() +
-  ## add title and save
-  labs(title = paste(cntry, "GDP per capita", sep = " "))
-
+  labs(title = "Afghanistan")
 
 
 # Modify the script from above to loop over each country. This time print out whether the life expectancy is smaller than 50, between 50 and 70, or greater than 70.

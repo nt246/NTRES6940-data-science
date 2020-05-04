@@ -51,7 +51,7 @@ Also, if you haven't already, follow the [instructions from r4ds](https://r4ds.h
 Slides from [Deep thoughts](https://www.slideshare.net/jenniferbryan5811/cm002-deep-thoughts) by Jenny Bryan:
 
 ![](../img/small-mistake.png)
-
+ <br>
 ![](../img/redo-analysis.png)
 
 <br>

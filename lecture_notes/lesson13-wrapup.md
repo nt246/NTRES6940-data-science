@@ -72,11 +72,9 @@ selected under your RStudio preferences:
 
 Slides from [Deep
 thoughts](https://www.slideshare.net/jenniferbryan5811/cm002-deep-thoughts)
-by Jenny
-Bryan:
+by Jenny Bryan:
 
-![](../img/small-mistake.png)
-
+![](../img/small-mistake.png) <br>
 ![](../img/redo-analysis.png)
 
 <br>
