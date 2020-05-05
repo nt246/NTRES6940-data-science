@@ -89,7 +89,7 @@ In compliance with the Cornell University policy and equal access laws, we are a
 
 Class#  |  Date  |  Topic  | Readings |
 | :--: | :-------: |:-- | :--:|
-1  |  March 2 (Mon) |  Intro to the course and R/RStudio  |  
+1  |  March 2 (Mon) |  Intro to the course and R/RStudio  | [Link](https://github.com/nt246/NTRES6940-data-science) |
 2  |  March 4 (Wed)  |  Markdown and GitHub  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson2-rmarkdown-github.md) |
 3  |  March 9 (Mon)  |  The Git workflow (version control)  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson3-version-control.md)  |
 4  |  March 11 (Wed)  |  Plotting with ggplot part 1  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson4-ggplot-part1.md) |
