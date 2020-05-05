@@ -9,31 +9,37 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+<br>
 
 ## Overview
 We will not have time to provide a comprehensive introduction to R and RStudio. We will focus on highlighting a few key functionalities and tips that will be important for this course and get us all on the same page.
 
-## Resources
+<br>
 
-This lesson is a combination of excellent lessons by others (thank you Jenny Bryan, Data Carpentry and Julie Lowndes!) that I have combined and modified for our session today. I definitely recommend reading through the original lessons and using them as reference:   
+## Acknowledgements and resources
+
+Most of today's lesson has been borrowed (with permission) from the [Ocean Health Index Data Science Training](http://ohi-science.org/data-science-training/)
+
+Other useful resources to check out include:
   
-  [Dr. Jenny Bryan's lectures from STAT545 at UBC](https://stat545-ubc.github.io/)
+* Jenny Bryan's lectures from STAT545 at UBC. See them all [here](https://stat545-ubc.github.io/), but if you're new to R and RStudio, especially check out:
 
-- [R basics, workspace and working directory, RStudio projects](http://stat545-ubc.github.io/block002_hello-r-workspace-wd-project.html)
-- [Basic care and feeding of data in R](http://stat545-ubc.github.io/block006_care-feeding-data.html)
+   + [R basics, workspace and working directory, RStudio projects](http://stat545-ubc.github.io/block002_hello-r-workspace-wd-project.html)
+   + [Basic care and feeding of data in R](http://stat545-ubc.github.io/block006_care-feeding-data.html)
 
-RStudio has great resources about its IDE (IDE stands for integrated development environment): 
+* RStudio has great resources about its IDE (IDE stands for integrated development environment): 
 
-- [webinars](https://www.rstudio.com/resources/webinars/) 
-- [cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
+   - [Webinars](https://www.rstudio.com/resources/webinars/) 
+   - [Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
 
 
+<br>
 
-## R at the console, RStudio goodies
+## R at the console
 
 Launch RStudio/R.
 
-c
+![](../img/RStudio_IDE.png)
 
 Notice the default panes:
 
@@ -48,42 +54,41 @@ An important first question: **where are we?**
 
 If you've have opened RStudio for the first time, you'll be in your Home directory. This is noted by the `~/` at the top of the console. You can see too that the Files pane in the lower right shows what is in the Home directory where you are. You can navigate around within that Files pane and explore, but note that you won't change where you are: even as you click through you'll still be Home: `~/`. 
 
-![](img/RStudio_IDE_homedir.png)
+![](../img/RStudio_IDE_homedir.png)
 
 
-## RStudio tricks
 OK let's go into the Console, where we interact with the live R process.
-   
-   Make an assignment and then inspect the object you created by typing its name on its own.
-   
-   ```{r}
-   x <- 3 * 4
-   x
-   ```
-   In my head I hear, e.g., "x gets 12".
-   
-   All R statements where you create objects -- "assignments" -- have this form: `objectName <- value`.  
-   
-   I'll write it in the console with a hashtag `#`, which is the way R comments so it won't be evaluated. 
-   ```{r eval = FALSE}
-   ## objectName <- value
-   ## This is also how you write notes in your code to explain what you are doing.
-   ```
-   
-   Object names cannot start with a digit and cannot contain certain other characters such as a comma or a space. You will be wise to adopt a [convention for demarcating words](http://en.wikipedia.org/wiki/Snake_case) in names.
-   
-   ```{r}
-   # i_use_snake_case
-   # other.people.use.periods
-   # evenOthersUseCamelCase
-   ```
-   
-   Make an assignment
-   ```{r}
-   this_is_a_really_long_name <- 2.5
-   ```
-   
-   To inspect this variable, instead of typing it, we can press the up arrow key and call your command history, with the most recent commands first. Let's do that, and then delete the assignment: 
+
+Make an assignment and then inspect the object you created by typing its name on its own.
+
+```{r}
+x <- 3 * 4
+x
+```
+In my head I hear, e.g., "x gets 12".
+
+All R statements where you create objects -- "assignments" -- have this form: `objectName <- value`.  
+
+I'll write it in the console with a hashtag `#`, which is the way R comments so it won't be evaluated. 
+```{r eval = FALSE}
+## objectName <- value
+## This is also how you write notes in your code to explain what you are doing.
+```
+
+Object names cannot start with a digit and cannot contain certain other characters such as a comma or a space. You will be wise to adopt a [convention for demarcating words](http://en.wikipedia.org/wiki/Snake_case) in names.
+
+```{r}
+# i_use_snake_case
+# other.people.use.periods
+# evenOthersUseCamelCase
+```
+
+Make an assignment
+```{r}
+this_is_a_really_long_name <- 2.5
+```
+
+To inspect this variable, instead of typing it, we can press the up arrow key and call your command history, with the most recent commands first. Let's do that, and then delete the assignment: 
 
 ```{r}
 this_is_a_really_long_name
@@ -91,13 +96,15 @@ this_is_a_really_long_name
 
 Another way to inspect this variable is to begin typing `this_`...and RStudio will automagically have suggested completions for you that you can select by hitting the tab key, then press return. 
 
+<br>
+
 > Shortcuts
 You will make lots of assignments and the operator `<-` is a pain to type. Don't be lazy and use `=`, although it would work, because it will just sow confusion later. Instead, utilize **RStudio's keyboard shortcut: Alt + - (the minus sign)**.
 Notice that RStudio automagically surrounds `<-` with spaces, which demonstrates a useful code formatting practice. Code is miserable to read on a good day. Give your eyes a break and use spaces.
 RStudio offers many handy [keyboard shortcuts](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts). Also, Alt+Shift+K brings up a keyboard shortcut reference card.
 > My most common shortcuts include command-Z (undo), and combinations of arrow keys in combination with shift/option/command (moving quickly up, down, sideways, with or without highlighting.
 
-
+<br>
 
 ## Error messages are your friends
 
@@ -105,13 +112,11 @@ Implicit contract with the computer / scripting language: Computer will do tedio
 
 Remember that this is a language, not unsimilar to English! There are times you aren't understood -- it's going to happen. There are different ways this can happen. Sometimes you'll get an error. This is like someone saying 'What?' or 'Pardon'? Error messages can also be more useful, like when they say 'I didn't understand what you said, I was expecting you to say blah'. That is a great type of error message. Error messages are your friend. Google them (copy-and-paste!) to figure out what they mean. 
 
-`r htmltools::img(src='img/practicalDev_googleErrorMessage.jpg', width=400)`
+`r htmltools::img(src='../img/practicalDev_googleErrorMessage.jpg', width=400)`
 
 And also know that there are errors that can creep in more subtly, when you are giving information that is understood, but not in the way you meant. Like if I am telling a story about suspenders that my British friend hears but silently interprets in a very different way (true story). This can leave me thinking I've gotten something across that the listener (or R) might silently interpreted very differently. And as I continue telling my story you get more and more confused... Clear communication is critical when you code: write clean, well documented code and check your work as you go to minimize these circumstances!
      
-     
-     
-     
+<br>
 
 ## R functions, help pages
      
@@ -151,11 +156,11 @@ seq(from = 1, to = 10, by = 2)
 The above also demonstrates something about how R resolves function arguments. You can always specify in `name = value` form. But if you do not, R attempts to resolve by position. So above, it is assumed that we want a sequence `from = 1` that goes `to = 10`. Since we didn't specify step size, the default value of `by` in the function definition is used, which ends up being 1 in this case. For functions I call often, I might use this resolve by position for the first
    argument or maybe the first two. After that, I always use `name = value`.
    
-   The examples from the help pages can be copy-pasted into the console for you to understand what's going on. Remember we were talking about expecting there to be a function for something you want to do? Let's try it. 
+The examples from the help pages can be copy-pasted into the console for you to understand what's going on. Remember we were talking about expecting there to be a function for something you want to do? Let's try it. 
    
-   ### Your turn
+### Your turn
    
-   > Exercise: Talk to your neighbor(s) and look up the help file for a function that you know or expect to exist. Here are some ideas: `?getwd()`, `?plot()`,  `min()`, `max()`, `?mean()`, `?log()`).
+> Exercise: Talk to your neighbor(s) and look up the help file for a function that you know or expect to exist. Here are some ideas: `?getwd()`, `?plot()`,  `min()`, `max()`, `?mean()`, `?log()`).
 And there's also help for when you only sort of remember the function name: double-question mark:
 ```{r, eval=F}
 ??install 
@@ -167,6 +172,7 @@ Not all functions have (or require) arguments:
 date()
 ```
 
+<br>
 
 ## Packages
 
@@ -197,11 +203,12 @@ Now that we've loaded the `praise` package, we can use the single function in th
 praise()
 ```
 
+<br>
 
 ## Clearing the environment
 Now look at the objects in your environment (workspace) -- in the upper right pane. The workspace is where user-defined objects accumulate. 
 
-![](img/RStudio_IDE_env.png)
+![](../img/RStudio_IDE_env.png)
 
 You can also get a listing of these objects with a few different R commands:
 
@@ -224,7 +231,7 @@ rm(list = ls())
 
 or click the broom in RStudio's Environment pane. 
 
-But this command is problematic -see (Jenny Bryan's explanation)[https://rstats.wtf/save-source.html#rm-list-ls].
+But this command is problematic -see [Jenny Bryan's explanation](https://rstats.wtf/save-source.html#rm-list-ls).
 
 For reproducibility, it is critical that you delete your objects and restart your R session frequently. You don't want your whole analysis to only work in whatever way you've been working right now — you need it to work next week, after you upgrade your operating system, etc. Restarting your R session will help you identify and account for anything you need for your analysis. 
 
@@ -233,24 +240,28 @@ We will keep coming back to this theme but let's restart our R session together:
 ### Your turn
 
 > Exercise: Clear your workspace, then create a few new variables. Create a variable that is the mean of a sequence of 1-20. What's a good name for your variable? Does it matter what your 'by' argument is? Why?
-  
-Highly recommended: (Don’t save your workspace when you quit RStudio)[https://www.r-bloggers.com/using-r-dont-save-your-workspace/]. Make this a default:
+
+<br>
+
+Highly recommended: [Don’t save your workspace when you quit RStudio](https://www.r-bloggers.com/using-r-dont-save-your-workspace/). Make this a default:
 * Go to “RStudio” -> “Preferences…” -> “General”
 * Uncheck “restore .RData into workspace on startup”
 * Select: “Save workspace to RData on exit:” Never
 
-![](img/rstudio-workspace.png)
+![](../img/rstudio-workspace.png)
 
+<br>
 
 ## Home directory, relative vs. absolute paths and RStudio projects
 
-See sections 8.2-8.4 in Grolemund and Wickham's (R4DS)[https://r4ds.had.co.nz/workflow-projects.html#where-does-your-analysis-live]
+See [sections 8.2-8.4 in Grolemund and Wickham's R for Data Science](https://r4ds.had.co.nz/workflow-projects.html#where-does-your-analysis-live)
 
-Additional tips on RStudio projects (here)[https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects]
+Additional tips on RStudio projects [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
 
 On Wednesday, we will set up an RStudio project for you to work in during this course (we're waiting until Wednesday because we want to integrate it with GitHub from the get-go).
 
+<br>
 
 ## Saving your code in scripts
 
-See chapter 6 in Grolemund and Wickham's (R4DS)[https://r4ds.had.co.nz/workflow-projects.html#where-does-your-analysis-live]
+See [Chapter 6 in Grolemund and Wickham's R for Data Science](https://r4ds.had.co.nz/workflow-projects.html#where-does-your-analysis-live)

@@ -185,7 +185,7 @@ Now you can both pull, stage, commit, push and your changes should merge. Make s
 
 Now you're ready to build your website.
 
-From [R Markdown: The Definitely Guide](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html#a-simple-example):
+From [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html#a-simple-example):
 
 > Note that the minimum requirement for any R Markdown website is that it have an index.Rmd file as well as a _site.yml file. If you execute the `rmarkdown::render_site()` function from within the directory containing the website, the following will occur:
 

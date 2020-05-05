@@ -1,6 +1,8 @@
 Lesson 1: Introduction to R and RStudio
 ================
 
+<br>
+
 ## Overview
 
 We will not have time to provide a comprehensive introduction to R and
@@ -8,32 +10,38 @@ RStudio. We will focus on highlighting a few key functionalities and
 tips that will be important for this course and get us all on the same
 page.
 
-## Resources
+<br>
 
-This lesson is a combination of excellent lessons by others (thank you
-Jenny Bryan, Data Carpentry and Julie Lowndes\!) that I have combined
-and modified for our session today. I definitely recommend reading
-through the original lessons and using them as reference:
+## Acknowledgements and resources
 
-[Dr. Jenny Bryan’s lectures from STAT545 at
-UBC](https://stat545-ubc.github.io/)
+Most of today’s lesson has been borrowed (with permission) from the
+[Ocean Health Index Data Science
+Training](http://ohi-science.org/data-science-training/)
 
-  - [R basics, workspace and working directory, RStudio
-    projects](http://stat545-ubc.github.io/block002_hello-r-workspace-wd-project.html)
-  - [Basic care and feeding of data in
-    R](http://stat545-ubc.github.io/block006_care-feeding-data.html)
+Other useful resources to check out include:
 
-RStudio has great resources about its IDE (IDE stands for integrated
-development environment):
+  - Jenny Bryan’s lectures from STAT545 at UBC. See them all
+    [here](https://stat545-ubc.github.io/), but if you’re new to R and
+    RStudio, especially check out:
+    
+      - [R basics, workspace and working directory, RStudio
+        projects](http://stat545-ubc.github.io/block002_hello-r-workspace-wd-project.html)
+      - [Basic care and feeding of data in
+        R](http://stat545-ubc.github.io/block006_care-feeding-data.html)
 
-  - [webinars](https://www.rstudio.com/resources/webinars/)
-  - [cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
+  - RStudio has great resources about its IDE (IDE stands for integrated
+    development environment):
+    
+      - [Webinars](https://www.rstudio.com/resources/webinars/)
+      - [Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
 
-## R at the console, RStudio goodies
+<br>
+
+## R at the console
 
 Launch RStudio/R.
 
-c
+![](../img/RStudio_IDE.png)
 
 Notice the default panes:
 
@@ -54,9 +62,7 @@ directory where you are. You can navigate around within that Files pane
 and explore, but note that you won’t change where you are: even as you
 click through you’ll still be Home: `~/`.
 
-![](img/RStudio_IDE_homedir.png)
-
-## RStudio tricks
+![](../img/RStudio_IDE_homedir.png)
 
 OK let’s go into the Console, where we interact with the live R process.
 
@@ -114,6 +120,8 @@ Another way to inspect this variable is to begin typing `this_`…and
 RStudio will automagically have suggested completions for you that you
 can select by hitting the tab key, then press return.
 
+<br>
+
 > Shortcuts You will make lots of assignments and the operator `<-` is a
 > pain to type. Don’t be lazy and use `=`, although it would work,
 > because it will just sow confusion later. Instead, utilize **RStudio’s
@@ -127,6 +135,8 @@ can select by hitting the tab key, then press return.
 > most common shortcuts include command-Z (undo), and combinations of
 > arrow keys in combination with shift/option/command (moving quickly
 > up, down, sideways, with or without highlighting.
+
+<br>
 
 ## Error messages are your friends
 
@@ -147,7 +157,7 @@ mean.
 
 <!--html_preserve-->
 
-<img src="img/practicalDev_googleErrorMessage.jpg" width="400"/><!--/html_preserve-->
+<img src="../img/practicalDev_googleErrorMessage.jpg" width="400"/><!--/html_preserve-->
 
 And also know that there are errors that can creep in more subtly, when
 you are giving information that is understood, but not in the way you
@@ -158,6 +168,8 @@ listener (or R) might silently interpreted very differently. And as I
 continue telling my story you get more and more confused… Clear
 communication is critical when you code: write clean, well documented
 code and check your work as you go to minimize these circumstances\!
+
+<br>
 
 ## R functions, help pages
 
@@ -233,7 +245,7 @@ you to understand what’s going on. Remember we were talking about
 expecting there to be a function for something you want to do? Let’s try
 it.
 
-\#\#\# Your turn
+### Your turn
 
 > Exercise: Talk to your neighbor(s) and look up the help file for a
 > function that you know or expect to exist. Here are some ideas:
@@ -251,7 +263,9 @@ Not all functions have (or require) arguments:
 date()
 ```
 
-    ## [1] "Mon Mar  2 15:26:29 2020"
+    ## [1] "Mon May  4 21:40:56 2020"
+
+<br>
 
 ## Packages
 
@@ -300,14 +314,16 @@ to make you feel better.
 praise()
 ```
 
-    ## [1] "You are ultimate!"
+    ## [1] "You are badass!"
+
+<br>
 
 ## Clearing the environment
 
 Now look at the objects in your environment (workspace) – in the upper
 right pane. The workspace is where user-defined objects accumulate.
 
-![](img/RStudio_IDE_env.png)
+![](../img/RStudio_IDE_env.png)
 
 You can also get a listing of these objects with a few different R
 commands:
@@ -340,8 +356,8 @@ rm(list = ls())
 
 or click the broom in RStudio’s Environment pane.
 
-But this command is problematic -see (Jenny Bryan’s
-explanation)\[<https://rstats.wtf/save-source.html#rm-list-ls>\].
+But this command is problematic -see [Jenny Bryan’s
+explanation](https://rstats.wtf/save-source.html#rm-list-ls).
 
 For reproducibility, it is critical that you delete your objects and
 restart your R session frequently. You don’t want your whole analysis to
@@ -360,27 +376,33 @@ together: Go to the top menus: Session \> Restart R.
 > good name for your variable? Does it matter what your ‘by’ argument
 > is? Why?
 
-Highly recommended: (Don’t save your workspace when you quit
-RStudio)\[<https://www.r-bloggers.com/using-r-dont-save-your-workspace/>\].
+<br>
+
+Highly recommended: [Don’t save your workspace when you quit
+RStudio](https://www.r-bloggers.com/using-r-dont-save-your-workspace/).
 Make this a default: \* Go to “RStudio” -\> “Preferences…” -\> “General”
 \* Uncheck “restore .RData into workspace on startup” \* Select: “Save
 workspace to RData on exit:” Never
 
-![](img/rstudio-workspace.png)
+![](../img/rstudio-workspace.png)
+
+<br>
 
 ## Home directory, relative vs. absolute paths and RStudio projects
 
-See sections 8.2-8.4 in Grolemund and Wickham’s
-(R4DS)\[<https://r4ds.had.co.nz/workflow-projects.html#where-does-your-analysis-live>\]
+See [sections 8.2-8.4 in Grolemund and Wickham’s R for Data
+Science](https://r4ds.had.co.nz/workflow-projects.html#where-does-your-analysis-live)
 
 Additional tips on RStudio projects
-(here)\[<https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects>\]
+[here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
 
 On Wednesday, we will set up an RStudio project for you to work in
 during this course (we’re waiting until Wednesday because we want to
 integrate it with GitHub from the get-go).
 
+<br>
+
 ## Saving your code in scripts
 
-See chapter 6 in Grolemund and Wickham’s
-(R4DS)\[<https://r4ds.had.co.nz/workflow-projects.html#where-does-your-analysis-live>\]
+See [Chapter 6 in Grolemund and Wickham’s R for Data
+Science](https://r4ds.had.co.nz/workflow-projects.html#where-does-your-analysis-live)

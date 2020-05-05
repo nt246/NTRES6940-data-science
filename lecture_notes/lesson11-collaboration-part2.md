@@ -270,7 +270,7 @@ pushed.
 
 Now you’re ready to build your website.
 
-From [R Markdown: The Definitely
+From [R Markdown: The Definitive
 Guide](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html#a-simple-example):
 
 > Note that the minimum requirement for any R Markdown website is that
