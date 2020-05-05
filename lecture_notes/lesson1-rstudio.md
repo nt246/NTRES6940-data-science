@@ -5,10 +5,14 @@ Lesson 1: Introduction to R and RStudio
 
 ## Overview
 
+Welcome to the course. Please review the [introductory
+slides](https://github.com/nt246/NTRES6940-data-science/blob/master/slides/Slides_Class1_2020_0302.pdf)
+describing the focus, content, and goal of this course.
+
 We will not have time to provide a comprehensive introduction to R and
-RStudio. We will focus on highlighting a few key functionalities and
-tips that will be important for this course and get us all on the same
-page.
+RStudio. Today, we will focus on highlighting a few key functionalities
+and tips that will be important for this course and get us all on the
+same page.
 
 <br>
 
@@ -263,7 +267,7 @@ Not all functions have (or require) arguments:
 date()
 ```
 
-    ## [1] "Mon May  4 21:40:56 2020"
+    ## [1] "Mon May  4 21:48:12 2020"
 
 <br>
 
@@ -314,7 +318,7 @@ to make you feel better.
 praise()
 ```
 
-    ## [1] "You are badass!"
+    ## [1] "You are peachy!"
 
 <br>
 
