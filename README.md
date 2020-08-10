@@ -1,17 +1,16 @@
-### NTRES 6940, Lec 003
+### NTRES 6940, Lec 001
 
 # Collaborative and Reproducible Data Science in R
 
-### Cornell University, Spring 2020
+### Cornell University, Fall 2020
 
 <br>
 
-### Meeting times
+### Zoom meeting times - all class activities are online
 
-Mondays and Wednesdays 4.20 - 5.40pm in Fernow G24 for 7 weeks (March 2 - May 4 2020)\
-**OPTIONAL**: "Hacky hour" (meetup to work on problem sets or your own projects) Fridays 3-5pm in Bradfield 105\
+Mondays and Wednesdays 2:55pm - 4:10pm for 8 weeks (September 14 - November 11, 2020)\
+**OPTIONAL**: "Hacky hour" (meetup to work on problem sets or your own projects) Fridays 12:20-2:15pm\
 <br>
-**NOTE: From April 6 onwards all course activities will take place online (details provided in the course Slack channel)**
 
 ### Instructor
 
@@ -20,8 +19,8 @@ Office hours: By appointment
 
 ### TA
 
-Nicolas Lou (rl683@cornell.edu)\
-Office hours: Fridays 3-5pm and by appointment
+Maria Akopyan (ma2256@cornell.edu)\
+Office hours: TBD and by appointment
 
 ### Grading
 
@@ -84,28 +83,23 @@ We are dedicated to providing a welcoming and supportive environment for everyon
 ### Accommodations for students with disabilities
 In compliance with the Cornell University policy and equal access laws, we are available to discuss appropriate academic accommodations that may be required for student with disabilities. Requests for academic accommodations are to be made during the first two weeks of the course, except for unusual circumstances, so arrangements can be made. Students are encouraged to register with Student Disability Services to verify their eligibility for appropriate accommodations.
 
-### Tentative schedule (subject to adjustment) - All sessions from April 6 onwards will be online
+### Tentative schedule (subject to adjustment) 
 
-
-Class#  |  Date  |  Topic  | Readings |
-| :--: | :-------: |:-- | :--:|
-1  |  March 2 (Mon) |  Intro to the course and R/RStudio  | [Link](https://github.com/nt246/NTRES6940-data-science) |
-2  |  March 4 (Wed)  |  Markdown and GitHub  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson2-rmarkdown-github.md) |
-3  |  March 9 (Mon)  |  The Git workflow (version control)  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson3-version-control.md)  |
-4  |  March 11 (Wed)  |  Plotting with ggplot part 1  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson4-ggplot-part1.md) |
--- |  March 16 (Mon)  |  CANCELLED |
--- |  March 18 (Wed)  |  CANCELLED |
--- |  March 23 (Mon)  |  CANCELLED |
--- |  March 25 (Wed)  |  CANCELLED |
--- |  March 30 (Mon)  |  SPRING BREAK  |
--- |  April 1 (Wed)  |  SPRING BREAK  |
-5 |  April 6 (Mon)  |  Data wrangling part 1 (dplyr::filter, mutate, select, arrange)  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson5-data-wrangling1.md) |
-6  |  April 8 (Wed)  |  Data wrangling part 2 (dplyr::summarize, group_by)  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson6-data-wrangling2.md) |
-7  |  April 13 (Mon)  |  Plotting with ggplot part 2 + good coding practices  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson7-ggplot-part2.md)
-8  |  April 15 (Wed)  |  Tidy data (what is tidy data and how to handle untidy data) + file I/O and tibbles  | [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson8-tidy-data.md)
-9  |  April 20 (Mon)  |  Relational data (join functions) and factors  |  [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson9-relational-data.md)  |
-10  |  April 22 (Wed)  |  Collaborating with GitHub  |  [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson10-collaboration.md)  |
-11  | April 27 (Mon)  |  Collaborating with GitHub - continued   |  [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson11-collaboration-part2.md)  |
-12  | April 29 (Wed)  |  Iteration (for loops) and conditional execution  |  [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson12-for-loops.md)
-13  |  May 4 (Mon)  |  Wrapping up and looking ahead  |  [Link](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson13-wrapup.md)
-&nbsp; | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; |
+Class# | Topic
+| :--: | :-------: |
+1 | Intro to the course and R/RStudio
+2 | Markdown and GitHub
+3 | The Git workflow (version control)
+4 | Collaborating with GitHub Part 1
+5 | Collaborating with GitHub Part 2
+6 | Plotting with ggplot part 1
+7 | Data wrangling part 1 (dplyr::filter, mutate, select, arrange)
+8 | Data wrangling part 2 (dplyr::summarize, group_by)
+9 | Plotting with ggplot part 2 + good coding practices
+10 | Tidy data (what is tidy data and how to handle untidy data) and file input/output
+11 | Factors, basic string manipulation, dates and times
+12 | Relational data (join functions)
+13 | Functions part 1
+14 | Functions part 2
+15 | Iteration (for loops) and conditional execution
+16 | Wrapping up and looking ahead
