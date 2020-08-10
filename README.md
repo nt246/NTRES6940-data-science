@@ -6,10 +6,10 @@
 
 <br>
 
-### Zoom meeting times - all class activities are online
+### Meeting times - all class activities are online
 
 Mondays and Wednesdays 2:55pm - 4:10pm for 8 weeks (September 14 - November 11, 2020)\
-**OPTIONAL**: "Hacky hour" (meetup to work on problem sets or your own projects) Fridays 12:20-2:15pm\
+**OPTIONAL**: "Hacky hour" (meetup to work on problem sets or your own projects) Fridays 12:20-2:15pm
 
 <br>
 
@@ -36,6 +36,8 @@ S/U (2 credits)
 ### Course description
 
 As datasets grow larger and more complex across all areas of science, computational skills are increasingly in high demand. This course introduces a series of practical tools that enable researchers to spend less time wrestling with software or repeating error-prone manual data processing and more time getting research done in efficient and transparent ways that facilitate collaboration and reproducibility. We will work in R/RStudio, primarily with the tidyverse packages and with Git and GitHub integration. Topics covered include 1) tidy data formatting, 2) rearrangement, filtering, exploration, and visualization of complex datasets, 3) basic programming for building and automating custom tools, 4) tracking the history of file changes (version control) with Git and GitHub, 5) strategies for effective collaboration on data processing pipelines, and 6) using R Markdown to combine text, equations, code, tables, and figures into reports, websites, and presentations. The course emphasizes practical skill development and will be structured around hands-on (the keyboard) learning.
+
+<br>
 
 ### Learning outcomes
 
