@@ -8,7 +8,7 @@
 
 ### Meeting times - all class activities are online
 
-Mondays and Wednesdays 2:55pm - 4:10pm for 8 weeks (September 14 - November 11, 2020)\
+Mondays and Wednesdays 2:55pm - 4:10pm for 8 weeks (September 14 - November 4, 2020)\
 **OPTIONAL**: "Hacky hour" (meetup to work on problem sets or your own projects) Fridays 12:20-2:15pm
 
 <br>
@@ -100,21 +100,21 @@ In compliance with the Cornell University policy and equal access laws, we are a
 
 ### Tentative schedule (subject to adjustment) 
 
-Class# | Topic
-| :--: | :------- |
-1 | Intro to the course and R/RStudio
-2 | Markdown and GitHub
-3 | The Git workflow (version control)
-4 | Collaborating with GitHub Part 1
-5 | Collaborating with GitHub Part 2
-6 | Plotting with ggplot part 1
-7 | Data wrangling part 1 (dplyr::filter, mutate, select, arrange)
-8 | Data wrangling part 2 (dplyr::summarize, group_by)
-9 | Plotting with ggplot part 2 + good coding practices
-10 | Tidy data (what is tidy data and how to handle untidy data) and file input/output
-11 | Factors, basic string manipulation, dates and times
-12 | Relational data (join functions)
-13 | Functions part 1
-14 | Functions part 2
-15 | Iteration (for loops) and conditional execution
-16 | Wrapping up and looking ahead
+Class# | Date | Topic
+| :--: | :--: | :------- |
+1 | 09/14 | Intro to the course and R/RStudio
+2 | 09/16 | Markdown and GitHub
+3 | 09/21 | The Git workflow (version control)
+4 | 09/23 | Collaborating with GitHub Part 1
+5 | 09/28 | Collaborating with GitHub Part 2
+6 | 09/30 | Plotting with ggplot part 1
+7 | 10/05 | Data wrangling part 1 (dplyr::filter, mutate, select, arrange)
+8 | 10/07 | Data wrangling part 2 (dplyr::summarize, group_by)
+9 | 10/12 | Plotting with ggplot part 2 + good coding practices
+10 | 10/14 | Tidy data (what is tidy data and how to handle untidy data) and file input/output
+11 | 10/19 | Factors, basic string manipulation, dates and times
+12 | 10/21 | Relational data (join functions)
+13 | 10/26 | Functions part 1
+14 | 10/28 | Functions part 2
+15 | 11/02 | Iteration (for loops) and conditional execution
+16 | 11/04 | Wrapping up and looking ahead
