@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Readings  
 
+<br>
 
 ### RMarkdown
 
@@ -45,10 +46,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Class announcements 
 
 * Course communication will primarily be through Slack. Please make sure to join our workspace to not miss announcements about scheduling changes etc.
-* Course website and readings - links posted on the [syllabus schedule](https://github.com/nt246/NTRES6940-data-science)
-* [Problem set 1](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_1.md) is due next Wednesday March 11
-* Remember office hours / hacky hour Friday 3-5 in Bradfield 105 **(NOTE: New location)**
-* Sticky notes - get a set of green and red
+* Course website and readings - see the Lectures tab of the [course website](https://nt246.github.io/NTRES6940-data-science/lesson2-rmarkdown-github.html)
+* Remember office hours / hacky hour Friday 12.20 - 2.15pm (on Zoom)
 
 <br>
 
