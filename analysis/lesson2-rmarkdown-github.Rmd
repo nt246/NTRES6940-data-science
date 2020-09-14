@@ -1,7 +1,8 @@
 ---
 title: "Lesson 2: RMarkdown and GitHub"
 output: 
-  github_document: 
+  html_document:
+    keep_md: yes 
     toc: true
 ---
   
@@ -85,7 +86,7 @@ File -> New File -> RMarkdown... (or alternatively you can click the green plus 
 Let's title it "Testing" and write our name as author, then click OK with the recommended Default Output Format, which is HTML.
 
 ```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("../img/rstudio_new-rmd-doc-html.png")  
+knitr::include_graphics("assets/rstudio_new-rmd-doc-html.png")  
 ```
 
 OK, first off: by opening a file, we are seeing the 4th pane of the RStudio console, which here is a text editor. This lets us dock and organize our files within RStudio instead of having a bunch of different windows open (but there are options to pop them out if that is what you prefer).
@@ -99,7 +100,7 @@ Let's have a look at this file — it's not blank; there is some initial text is
 - There is black and blue text (we'll ignore the green text for now).  
   
 ```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("../img/rmarkdown.png")  
+knitr::include_graphics("assets/rmarkdown.png")  
 ```
 
 ### Knit your RMarkdown file
@@ -114,7 +115,7 @@ Let's have a look at them side-by-side:
 <br>
 
 ```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("../img/rmarkdown_side_by_side.png")  
+knitr::include_graphics("assets/rmarkdown_side_by_side.png")  
 ```
 
 Let's take a deeper look at these two files. So much of learning to code is looking for patterns.
@@ -459,7 +460,7 @@ also in the File menu).
 <br>
 
 ```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("../img/new_project_1.png")  
+knitr::include_graphics("assets/new_project_1.png")  
 ```
 
 
@@ -471,7 +472,7 @@ knitr::include_graphics("../img/new_project_1.png")
 <br>
 
 ```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("../img/new_project_2.png")  
+knitr::include_graphics("assets/new_project_2.png")  
 ```
 
 <br>
@@ -483,7 +484,7 @@ Since we are using git.
 <br>
 
 ```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("../img/new_project_3.png")  
+knitr::include_graphics("assets/new_project_3.png")  
 ```
 
 
@@ -494,7 +495,7 @@ Do you see what I see?
 <br>
 
 ```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("../img/new_project_4.png")  
+knitr::include_graphics("assets/new_project_4.png")  
 ```
 
 <br>
@@ -552,7 +553,7 @@ To solve this, go to the Terminal and type:
 which git
 ```
 
-<img src="../img/git_whichgit.png" width="250px">
+<img src="assets/git_whichgit.png" width="250px">
 
   
 Look at the filepath that is returned. Does it say anything to do with Apple?
@@ -563,7 +564,7 @@ Look at the filepath that is returned. Does it say anything to do with Apple?
 
 In RStudio, navigate to: Tools > Global Options > Git/SVN. 
 
-<img src="../img/git_options.png" width="250px">
+<img src="assets/git_options.png" width="250px">
 
 
 <br>
@@ -572,7 +573,7 @@ Does the **“Git executable”** filepath match what the url in Terminal says?
 
 <br>
 
-<img src="../img/git_options_filepath.png" width="500px">
+<img src="assets/git_options_filepath.png" width="500px">
 
 
 
