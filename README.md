@@ -6,6 +6,10 @@
 
 <br>
 
+Course website: https://nt246.github.io/NTRES6940-data-science/
+
+<br>
+
 ### Meeting times - all class activities are online
 
 Mondays and Wednesdays 2:55pm - 4:10pm (September 14 - November 11, 2020)\
