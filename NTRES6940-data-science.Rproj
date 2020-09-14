@@ -13,4 +13,4 @@ RnwWeave: Sweave
 LaTeX: pdfLaTeX
 
 BuildType: Website
-WebsitePath: docs
+WebsitePath: ~/Github/NTRES6940-data-science
