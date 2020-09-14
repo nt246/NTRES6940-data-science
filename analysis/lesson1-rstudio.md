@@ -207,7 +207,7 @@ date()
 ```
 
 ```
-## [1] "Mon Sep 14 09:46:49 2020"
+## [1] "Mon Sep 14 10:15:51 2020"
 ```
 
 <br>
@@ -244,7 +244,7 @@ praise()
 ```
 
 ```
-## [1] "You are kickass!"
+## [1] "You are cat's meow!"
 ```
 
 <br>
