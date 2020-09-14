@@ -6,9 +6,7 @@ output:
     toc: true
 ---
   
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 <br>
 
@@ -64,37 +62,50 @@ OK let's go into the Console, where we interact with the live R process.
 
 Make an assignment and then inspect the object you created by typing its name on its own.
 
-```{r}
+
+```r
 x <- 3 * 4
 x
+```
+
+```
+## [1] 12
 ```
 In my head I hear, e.g., "x gets 12".
 
 All R statements where you create objects -- "assignments" -- have this form: `objectName <- value`.  
 
 I'll write it in the console with a hashtag `#`, which is the way R comments so it won't be evaluated. 
-```{r eval = FALSE}
+
+```r
 ## objectName <- value
 ## This is also how you write notes in your code to explain what you are doing.
 ```
 
 Object names cannot start with a digit and cannot contain certain other characters such as a comma or a space. You will be wise to adopt a [convention for demarcating words](http://en.wikipedia.org/wiki/Snake_case) in names.
 
-```{r}
+
+```r
 # i_use_snake_case
 # other.people.use.periods
 # evenOthersUseCamelCase
 ```
 
 Make an assignment
-```{r}
+
+```r
 this_is_a_really_long_name <- 2.5
 ```
 
 To inspect this variable, instead of typing it, we can press the up arrow key and call your command history, with the most recent commands first. Let's do that, and then delete the assignment: 
 
-```{r}
+
+```r
 this_is_a_really_long_name
+```
+
+```
+## [1] 2.5
 ```
 
 Another way to inspect this variable is to begin typing `this_`...and RStudio will automagically have suggested completions for you that you can select by hitting the tab key, then press return. 
@@ -115,7 +126,7 @@ Implicit contract with the computer / scripting language: Computer will do tedio
 
 Remember that this is a language, not unsimilar to English! There are times you aren't understood -- it's going to happen. There are different ways this can happen. Sometimes you'll get an error. This is like someone saying 'What?' or 'Pardon'? Error messages can also be more useful, like when they say 'I didn't understand what you said, I was expecting you to say blah'. That is a great type of error message. Error messages are your friend. Google them (copy-and-paste!) to figure out what they mean. 
 
-`r htmltools::img(src='../img/practicalDev_googleErrorMessage.jpg', width=400)`
+<!--html_preserve--><img src="../img/practicalDev_googleErrorMessage.jpg" width="400"/><!--/html_preserve-->
 
 And also know that there are errors that can creep in more subtly, when you are giving information that is understood, but not in the way you meant. Like if I am telling a story about suspenders that my British friend hears but silently interprets in a very different way (true story). This can leave me thinking I've gotten something across that the listener (or R) might silently interpreted very differently. And as I continue telling my story you get more and more confused... Clear communication is critical when you code: write clean, well documented code and check your work as you go to minimize these circumstances!
      
@@ -130,13 +141,19 @@ Let's try using `seq()` which makes regular sequences of numbers and, while we'r
 Type `se` and hit TAB. A pop up shows you possible completions. Specify `seq()` by typing more to disambiguate or using the up/down arrows to select. Notice the floating tool-tip-type help that pops up, reminding you of a function's arguments. If you want even more help, press F1 as directed to get the full documentation in the help tab of the lower right pane. 
 
 Type the arguments `1, 10` and hit return. 
-```{r}
+
+```r
 seq(1, 10)
+```
+
+```
+##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
 We could probably infer that the `seq()` function makes a sequence, but let's learn for sure. Type (and you can autocomplete) and let's explore the help page:
 
-```{r, eval=F}
+
+```r
 ?seq 
 help(seq) # same as ?seq
 ```
@@ -151,9 +168,21 @@ The help page tells the name of the package in the top left, and broken down int
  - See Also: Any related functions you might find useful.
  - Examples: Some examples for how to use the function.
 
-```{r}
+
+```r
 seq(from = 1, to = 10) # same as seq(1, 10); R assumes by position
+```
+
+```
+##  [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+```r
 seq(from = 1, to = 10, by = 2)
+```
+
+```
+## [1] 1 3 5 7 9
 ```
 
 The above also demonstrates something about how R resolves function arguments. You can always specify in `name = value` form. But if you do not, R attempts to resolve by position. So above, it is assumed that we want a sequence `from = 1` that goes `to = 10`. Since we didn't specify step size, the default value of `by` in the function definition is used, which ends up being 1 in this case. For functions I call often, I might use this resolve by position for the first
@@ -165,14 +194,20 @@ The examples from the help pages can be copy-pasted into the console for you to 
    
 > Exercise: Talk to your neighbor(s) and look up the help file for a function that you know or expect to exist. Here are some ideas: `?getwd()`, `?plot()`,  `min()`, `max()`, `?mean()`, `?log()`).
 And there's also help for when you only sort of remember the function name: double-question mark:
-```{r, eval=F}
+
+```r
 ??install 
 ```
 
 
 Not all functions have (or require) arguments:
-```{r}
+
+```r
 date()
+```
+
+```
+## [1] "Mon Sep 14 09:27:31 2020"
 ```
 
 <br>
@@ -196,14 +231,20 @@ Now we've installed the package, but we need to tell R that we are going to use 
 
 Please don’t get confused: `library()` is the command used to load a package, and it refers to the place where the package is contained, usually a folder on your computer, while a package is the collection of functions bundled conveniently.
 
-```{r}
+
+```r
 library(praise)
 ```
 
 Now that we've loaded the `praise` package, we can use the single function in the package, `praise()`, which returns a randomized praise to make you feel better.
 
-```{r}
+
+```r
 praise()
+```
+
+```
+## [1] "You are spectacular!"
 ```
 
 <br>
@@ -215,20 +256,38 @@ Now look at the objects in your environment (workspace) -- in the upper right pa
 
 You can also get a listing of these objects with a few different R commands:
 
-```{r}
+
+```r
 objects()
+```
+
+```
+## [1] "this_is_a_really_long_name" "x"
+```
+
+```r
 ls()
+```
+
+```
+## [1] "this_is_a_really_long_name" "x"
 ```
 
 If you want to remove the object named `weight_kg`, you can do this:
 
-```{r}
+
+```r
 rm(weight_kg)
+```
+
+```
+## Warning in rm(weight_kg): object 'weight_kg' not found
 ```
 
 To remove everything:
 
-```{r}
+
+```r
 rm(list = ls())
 ```
 
