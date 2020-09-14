@@ -32,7 +32,7 @@ Other useful resources to check out include:
 
 <br>
 
-* RStudio has great resources about its IDE (IDE stands for integrated development environment): 
+RStudio has great resources about its IDE (IDE stands for integrated development environment): 
 
    - [Webinars](https://www.rstudio.com/resources/webinars/) 
    - [Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
@@ -40,9 +40,13 @@ Other useful resources to check out include:
 
 <br>
 
-## R at the console
+## Orientation: R and RStudio
 
-Launch RStudio/R.
+In this course, we will be using R with RStudio. R is the base statistical computing environment. RStudio is an Interactive Development Environment (IDE) that makes it much easier to use R by helping us organize our work and do things like auto-complete, syntax highlighting etc.
+
+After you install R and RStudio, you only need to open RStudio.
+
+When you open RStudio, it will look like this:
 
 ![](assets/RStudio_IDE.png)
 
@@ -88,6 +92,10 @@ Object names cannot start with a digit and cannot contain certain other characte
 # evenOthersUseCamelCase
 ```
 
+<br>
+
+## Shortcuts and autocomplete
+
 Make an assignment
 ```{r}
 this_is_a_really_long_name <- 2.5
@@ -99,11 +107,11 @@ To inspect this variable, instead of typing it, we can press the up arrow key an
 this_is_a_really_long_name
 ```
 
-Another way to inspect this variable is to begin typing `this_`...and RStudio will automagically have suggested completions for you that you can select by hitting the tab key, then press return. 
+Another way to inspect this variable is to begin typing `this_`...and RStudio will automatically have suggested completions for you that you can select by hitting the tab key, then press return. 
 
 <br>
 
-> Shortcuts
+> Shortcuts 
 You will make lots of assignments and the operator `<-` is a pain to type. Don't be lazy and use `=`, although it would work, because it will just sow confusion later. Instead, utilize **RStudio's keyboard shortcut: Alt + - (the minus sign)**.
 Notice that RStudio automagically surrounds `<-` with spaces, which demonstrates a useful code formatting practice. Code is miserable to read on a good day. Give your eyes a break and use spaces.
 RStudio offers many handy [keyboard shortcuts](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts). Also, Alt+Shift+K brings up a keyboard shortcut reference card.
@@ -117,9 +125,13 @@ Implicit contract with the computer / scripting language: Computer will do tedio
 
 Remember that this is a language, not unsimilar to English! There are times you aren't understood -- it's going to happen. There are different ways this can happen. Sometimes you'll get an error. This is like someone saying 'What?' or 'Pardon'? Error messages can also be more useful, like when they say 'I didn't understand what you said, I was expecting you to say blah'. That is a great type of error message. Error messages are your friend. Google them (copy-and-paste!) to figure out what they mean. 
 
+<br>
+
 `r htmltools::img(src='assets/practicalDev_googleErrorMessage.jpg', width=400)`
 
-And also know that there are errors that can creep in more subtly, when you are giving information that is understood, but not in the way you meant. Like if I am telling a story about suspenders that my British friend hears but silently interprets in a very different way (true story). This can leave me thinking I've gotten something across that the listener (or R) might silently interpreted very differently. And as I continue telling my story you get more and more confused... Clear communication is critical when you code: write clean, well documented code and check your work as you go to minimize these circumstances!
+<br>
+
+And also know that there are errors that can creep in more subtly, when you are giving information that is understood, but not in the way you meant. Like if I you are telling your European friend about a football game and she hears it but silently interprets it in a very different way (thinking football means soccer). This can leave you thinking you've gotten something across that the listener (or R) might silently interpret very differently. And as you continue telling your story the listener gets more and more confused... Clear communication is critical when you code: write clean, well documented code and check your work as you go to minimize these circumstances!
      
 <br>
 
