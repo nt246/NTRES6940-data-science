@@ -42,7 +42,7 @@ Other useful resources to check out include:
 
 Launch RStudio/R.
 
-![](RStudio_IDE.png)
+![](assets/RStudio_IDE.png)
 
 Notice the default panes:
 
@@ -57,7 +57,7 @@ An important first question: **where are we?**
 
 If you've have opened RStudio for the first time, you'll be in your Home directory. This is noted by the `~/` at the top of the console. You can see too that the Files pane in the lower right shows what is in the Home directory where you are. You can navigate around within that Files pane and explore, but note that you won't change where you are: even as you click through you'll still be Home: `~/`. 
 
-![](RStudio_IDE_homedir.png)
+![](assets/RStudio_IDE_homedir.png)
 
 
 OK let's go into the Console, where we interact with the live R process.
@@ -115,7 +115,7 @@ Implicit contract with the computer / scripting language: Computer will do tedio
 
 Remember that this is a language, not unsimilar to English! There are times you aren't understood -- it's going to happen. There are different ways this can happen. Sometimes you'll get an error. This is like someone saying 'What?' or 'Pardon'? Error messages can also be more useful, like when they say 'I didn't understand what you said, I was expecting you to say blah'. That is a great type of error message. Error messages are your friend. Google them (copy-and-paste!) to figure out what they mean. 
 
-`r htmltools::img(src='practicalDev_googleErrorMessage.jpg', width=400)`
+`r htmltools::img(src='assets/practicalDev_googleErrorMessage.jpg', width=400)`
 
 And also know that there are errors that can creep in more subtly, when you are giving information that is understood, but not in the way you meant. Like if I am telling a story about suspenders that my British friend hears but silently interprets in a very different way (true story). This can leave me thinking I've gotten something across that the listener (or R) might silently interpreted very differently. And as I continue telling my story you get more and more confused... Clear communication is critical when you code: write clean, well documented code and check your work as you go to minimize these circumstances!
      
@@ -251,7 +251,7 @@ Highly recommended: [Don’t save your workspace when you quit RStudio](https://
 * Uncheck “restore .RData into workspace on startup”
 * Select: “Save workspace to RData on exit:” Never
 
-![](rstudio-workspace.png)
+![](assets/rstudio-workspace.png)
 
 <br>
 

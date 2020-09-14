@@ -5,7 +5,7 @@ output: html_document
 site: workflowr::wflow_site
 ---
 
-![](logo.png){width=50%}  
+![](assets/logo.png){width=50%}  
 
 ### NTRES 6940, Lec 001 
 

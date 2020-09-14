@@ -11,7 +11,7 @@
 
 
 
-<title>Pre-course installation guide</title>
+<title>License</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,9 +19,6 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -251,69 +248,6 @@ $(document).ready(function () {
 
 
 
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-@media print {
-.toc-content {
-  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
-  float: right;
-}
-}
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-
 
 </head>
 
@@ -321,16 +255,6 @@ div.tocify {
 
 
 <div class="container-fluid main-container">
-
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -381,59 +305,17 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Pre-course installation guide</h1>
+<h1 class="title toc-ignore">License</h1>
 
 </div>
 
 
-<blockquote>
-<p>Please follow this guide to install the following free software on your laptop <strong>before our first lecture</strong>. It should only take about 20 minutes.</p>
-</blockquote>
-<hr />
-<div id="install-r-and-rstudio" class="section level3">
-<h3>Install R and RStudio</h3>
-<p>Follow the instructions in <a href="https://r4ds.had.co.nz/introduction.html#prerequisites">section 1.4</a> of the R for Data Science book. Make sure to get the free open source license RStudio Desktop version.</p>
-<p><strong>Note</strong>: If you already have R and RStudio installed, make sure you update to the most recent recent versions (R v4.0.2 and RStudio v1.3.1073). There have been recent changes to many packages and some of the functions that we will use are not available or have different names in outdated versions.</p>
-<hr />
-</div>
-<div id="install-r-packages" class="section level3">
-<h3>Install R packages</h3>
-<p>Please install the key R packages that we are going to use in this class. Install by copying the following code to RStudio console one line at a time and hit “Enter” to run.</p>
-<pre class="r"><code>install.packages(&quot;tidyverse&quot;)
-install.packages(&quot;rmarkdown&quot;)
-install.packages(&quot;knitr&quot;)
-install.packages(&quot;cowplot&quot;)
-install.packages(c(&quot;nycflights13&quot;, &quot;gapminder&quot;, &quot;Lahman&quot;))</code></pre>
-<hr />
-</div>
-<div id="install-slack-and-join-workspace" class="section level3">
-<h3>Install Slack and join workspace</h3>
-<p>Please install <a href="https://slack.com/download">Slack</a> on your laptop, and then <a href="https://join.slack.com/t/cornell-oeo6444/shared_invite/zt-h4l4wwc5-1vFtcUQ7vJd2aH1hsbCQUQ">join the work space for our class</a>. We are going to use Slack as our primary communication channel for this course. To build broader connections, we also plan on opening our Slack workspace as a communication platform for the entire R user community at Cornell to create a venue where people can find help and/or collaboration opportunities. Please consider adding a photo to your profile to make our workspace more personal.</p>
-<p>When you first enter our workspace, you may see a notice about a free trial version expiring soon. Just ignore that, we’ll be able to continue using Slack for free. If you don’t plan on using Slack regularly, please go to “Preferences” and check the box that says “Send me email notifications for mentions and direct messages”.</p>
-<p><img src="https://slackhq.com/wp-content/uploads/2023/05/2019-05_Haughey_CustomizeNotifications_mobile-notifications.png?w=460" /></p>
-<p>By clicking this option, you will able to receive all of our anouncements via email without needing to log in on Slack every time.</p>
-<hr />
-</div>
-<div id="create-a-github-account" class="section level3">
-<h3>Create a GitHub account</h3>
-<p>If you don’t have a GitHub account yet, create one <a href="https://github.com/join">here</a>. Give some thought to what you pick as your user name - see advice <a href="https://happygitwithr.com/github-acct.html#username-advice">here</a>.</p>
-<hr />
-</div>
-<div id="install-git" class="section level3">
-<h3>Install Git</h3>
-<p>Download and install Git: <a href="https://git-scm.com/downloads" class="uri">https://git-scm.com/downloads</a><br />
-Follow your operating system’s normal installation process. Note: you will not see an application called Git listed but if the installation process completed it was likely successful, and we will confirm together in class.</p>
-<hr />
-</div>
-<div id="install-github-desktop-optional" class="section level3">
-<h3>Install GitHub Desktop (optional)</h3>
-<p>You can optionally download the <a href="https://desktop.github.com/">GitHub Desktop program</a>. RStudio has some of the same functionalities as GitHub Desktop, and it is a matter of personal preference when choosing which program to use.</p>
-</div>
+<p>What license are you using for your code? See <a href="http://choosealicense.com/">choosealicense.com</a> for help deciding. It’s a convention to save a file <code>LICENSE</code> in the root of your Git repo that contains the license text.</p>
+<p>What license are you using for the written content on your site? It is traditional to choose a <a href="https://creativecommons.org/choose/">Creative Commons</a> license for this type of content.</p>
+<p>How should others cite your work? It’s a convention to save a file <code>CITATION</code> in the root of your Git repo that contains the citation information.</p>
 
 
 
-</div>
-</div>
 
 </div>
 
@@ -466,32 +348,6 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
