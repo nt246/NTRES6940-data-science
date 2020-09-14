@@ -8,7 +8,7 @@
 
 ### Meeting times - all class activities are online
 
-Mondays and Wednesdays 2:55pm - 4:10pm for 8 weeks (September 14 - November 11, 2020)\
+Mondays and Wednesdays 2:55pm - 4:10pm (September 14 - November 11, 2020)\
 **OPTIONAL**: "Hacky hour" (meetup to work on problem sets or your own projects) Fridays 12:20-2:15pm
 
 <br>
@@ -100,21 +100,23 @@ In compliance with the Cornell University policy and equal access laws, we are a
 
 ### Tentative schedule (subject to adjustment) 
 
-Class# | Topic
-| :--: | :------- |
-1 | Intro to the course and R/RStudio
-2 | Markdown and GitHub
-3 | The Git workflow (version control)
-4 | Collaborating with GitHub Part 1
-5 | Collaborating with GitHub Part 2
-6 | Plotting with ggplot part 1
-7 | Data wrangling part 1 (dplyr::filter, mutate, select, arrange)
-8 | Data wrangling part 2 (dplyr::summarize, group_by)
-9 | Plotting with ggplot part 2 + good coding practices
-10 | Tidy data (what is tidy data and how to handle untidy data) and file input/output
-11 | Factors, basic string manipulation, dates and times
-12 | Relational data (join functions)
-13 | Functions part 1
-14 | Functions part 2
-15 | Iteration (for loops) and conditional execution
-16 | Wrapping up and looking ahead
+Class# | Date | Topic | Assignments
+---|-----|------------------|-------
+1 | Mon 9/14 | Intro to the course and R/RStudio | 
+2 | Wed 9/16 | Markdown and GitHub | 
+3 | Mon 9/21 | The Git workflow (version control) | 
+4 | Wed 9/23 | Collaborating with GitHub Part 1 | Assignment 1 due
+5 | Mon 9/28 | Collaborating with GitHub Part 2 | 
+6 | Wed 9/30 | Plotting with ggplot part 1 |  Assignment 2 due
+7 | Mon 10/5 | Data wrangling part 1 (dplyr::filter, mutate, select, arrange) | 
+8 | Wed 10/7 | Data wrangling part 2 (dplyr::summarize, group_by) |  Assignment 3 due
+9 | Mon 10/12 | Plotting with ggplot part 2 + good coding practices | 
+10 | Wed 10/14 | Tidy data (what is tidy data and how to handle untidy data) and file input/output | Assignment 4 due
+11 | Mon 10/19 | Good coding practices, debugging strategies, and getting help | 
+12 | Wed 10/21 | Factors, basic string manipulation, dates and times | Assignment 5 due
+13 | Mon 10/26 | Relational data (join functions) | 
+14 | Wed 10/28 | Functions part 1 | Assignment 6 due
+15 | Mon 11/2 | Functions part 2 | 
+16 | Wed 11/4 | Iteration (for loops) and conditional execution | Assignment 7 due 
+17 | Mon 11/9 | Student presentations | 
+18 | Wed 11/11 | Wrapping up and looking ahead | 
