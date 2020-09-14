@@ -11,6 +11,8 @@ navbar:
     - text: Lecture notes
     - text: "Lesson 1: R Studio"
       href: lesson1-rstudio.html
+    - text: "Lesson 2: RMarkdown and GitHub"
+      href: lesson2-rmarkdown-github.html
   - text: Assignments
     href: assignments.html    
 output: 
