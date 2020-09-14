@@ -221,7 +221,7 @@ date()
 ```
 
 ```
-## [1] "Mon Sep 14 13:31:32 2020"
+## [1] "Mon Sep 14 14:08:41 2020"
 ```
 
 <br>
@@ -258,7 +258,7 @@ praise()
 ```
 
 ```
-## [1] "You are striking!"
+## [1] "You are cat's meow!"
 ```
 
 <br>
@@ -266,7 +266,7 @@ praise()
 ## Clearing the environment
 Now look at the objects in your environment (workspace) -- in the upper right pane. The workspace is where user-defined objects accumulate. 
 
-![](RStudio_IDE_env.png)
+![](assets/RStudio_IDE_env.png)
 
 You can also get a listing of these objects with a few different R commands:
 

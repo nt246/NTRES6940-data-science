@@ -225,7 +225,7 @@ praise()
 ## Clearing the environment
 Now look at the objects in your environment (workspace) -- in the upper right pane. The workspace is where user-defined objects accumulate. 
 
-![](RStudio_IDE_env.png)
+![](assets/RStudio_IDE_env.png)
 
 You can also get a listing of these objects with a few different R commands:
 
