@@ -1,0 +1,18 @@
+name: NTRES6940
+navbar:
+  title: "Collaborative and Reproducible Data Science in R"
+  left:
+  - text: Syllabus
+    href: syllabus.html
+  - text: Installation
+    href: installation.html
+  - text: Assignments
+    href: assignments.html    
+output: 
+  html_document:
+    toc_float: yes
+    collapsed: no
+    lib_dir: site_libs
+    self_contained: no
+output_dir: docs
+exclude: ["datasets", "assignments","lecture_notes","misc","img","in_class_exercises","slides"]

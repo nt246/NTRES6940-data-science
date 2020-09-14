@@ -1,0 +1,44 @@
+---
+title: "Assignments"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+---
+
+Each Wednesday, we will assign a problem set that applies the concepts covered in class in a new context to reinforce your learning. We offer an optional Friday afternoon “hacky hour” session for working on these problem sets in groups and with TA support. The problem sets are due the following Wednesday at 10pm EDT.  
+
+***
+
+### Assignment 1  
+>Due Wed 9/23 by 10pm EDT  
+
+***
+
+### Assignment 2  
+>Due Wed 9/30 by 10pm EDT
+
+***
+
+### Assignment 3  
+>Due Wed 10/7 by 10pm EDT  
+
+***
+
+### Assignment 4  
+>Due Wed 10/14 by 10pm EDT
+
+
+### Assignment 5  
+>Due Wed 10/21 by 10pm EDT  
+
+***
+
+### Assignment 6  
+>Due Wed 10/28 by 10pm EDT
+
+***
+
+### Assignment 7  
+>Due Wed 11/4 by 10pm EDT  
