@@ -413,9 +413,11 @@ div.tocify {
 </ul>
 <p><br></p>
 </div>
-<div id="r-at-the-console" class="section level2">
-<h2>R at the console</h2>
-<p>Launch RStudio/R.</p>
+<div id="orientation-r-and-rstudio" class="section level2">
+<h2>Orientation: R and RStudio</h2>
+<p>In this course, we will be using R with RStudio. R is the base statistical computing environment. RStudio is an Interactive Development Environment (IDE) that makes it much easier to use R by helping us organize our work and do things like auto-complete, syntax highlighting etc.</p>
+<p>After you install R and RStudio, you only need to open RStudio.</p>
+<p>When you open RStudio, it will look like this:</p>
 <p><img src="assets/RStudio_IDE.png" /></p>
 <p>Notice the default panes:</p>
 <ul>
@@ -441,12 +443,16 @@ x</code></pre>
 <pre class="r"><code># i_use_snake_case
 # other.people.use.periods
 # evenOthersUseCamelCase</code></pre>
+<p><br></p>
+</div>
+<div id="shortcuts-and-autocomplete" class="section level2">
+<h2>Shortcuts and autocomplete</h2>
 <p>Make an assignment</p>
 <pre class="r"><code>this_is_a_really_long_name &lt;- 2.5</code></pre>
 <p>To inspect this variable, instead of typing it, we can press the up arrow key and call your command history, with the most recent commands first. Let’s do that, and then delete the assignment:</p>
 <pre class="r"><code>this_is_a_really_long_name</code></pre>
 <pre><code>## [1] 2.5</code></pre>
-<p>Another way to inspect this variable is to begin typing <code>this_</code>…and RStudio will automagically have suggested completions for you that you can select by hitting the tab key, then press return.</p>
+<p>Another way to inspect this variable is to begin typing <code>this_</code>…and RStudio will automatically have suggested completions for you that you can select by hitting the tab key, then press return.</p>
 <p><br></p>
 <blockquote>
 <p>Shortcuts You will make lots of assignments and the operator <code>&lt;-</code> is a pain to type. Don’t be lazy and use <code>=</code>, although it would work, because it will just sow confusion later. Instead, utilize <strong>RStudio’s keyboard shortcut: Alt + - (the minus sign)</strong>. Notice that RStudio automagically surrounds <code>&lt;-</code> with spaces, which demonstrates a useful code formatting practice. Code is miserable to read on a good day. Give your eyes a break and use spaces. RStudio offers many handy <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">keyboard shortcuts</a>. Also, Alt+Shift+K brings up a keyboard shortcut reference card. My most common shortcuts include command-Z (undo), and combinations of arrow keys in combination with shift/option/command (moving quickly up, down, sideways, with or without highlighting.</p>
@@ -457,8 +463,10 @@ x</code></pre>
 <h2>Error messages are your friends</h2>
 <p>Implicit contract with the computer / scripting language: Computer will do tedious computation for you. In return, you will be completely precise in your instructions. Typos matter. Case matters. Pay attention to how you type.</p>
 <p>Remember that this is a language, not unsimilar to English! There are times you aren’t understood – it’s going to happen. There are different ways this can happen. Sometimes you’ll get an error. This is like someone saying ‘What?’ or ‘Pardon’? Error messages can also be more useful, like when they say ‘I didn’t understand what you said, I was expecting you to say blah’. That is a great type of error message. Error messages are your friend. Google them (copy-and-paste!) to figure out what they mean.</p>
+<p><br></p>
 <img src="assets/practicalDev_googleErrorMessage.jpg" width="400"/>
-<p>And also know that there are errors that can creep in more subtly, when you are giving information that is understood, but not in the way you meant. Like if I am telling a story about suspenders that my British friend hears but silently interprets in a very different way (true story). This can leave me thinking I’ve gotten something across that the listener (or R) might silently interpreted very differently. And as I continue telling my story you get more and more confused… Clear communication is critical when you code: write clean, well documented code and check your work as you go to minimize these circumstances!</p>
+<p><br></p>
+<p>And also know that there are errors that can creep in more subtly, when you are giving information that is understood, but not in the way you meant. Like if I you are telling your European friend about a football game and she hears it but silently interprets it in a very different way (thinking football means soccer). This can leave you thinking you’ve gotten something across that the listener (or R) might silently interpret very differently. And as you continue telling your story the listener gets more and more confused… Clear communication is critical when you code: write clean, well documented code and check your work as you go to minimize these circumstances!</p>
 <p><br></p>
 </div>
 <div id="r-functions-help-pages" class="section level2">
@@ -496,7 +504,7 @@ help(seq) # same as ?seq</code></pre>
 <pre class="r"><code>??install </code></pre>
 <p>Not all functions have (or require) arguments:</p>
 <pre class="r"><code>date()</code></pre>
-<pre><code>## [1] &quot;Mon Sep 14 12:13:33 2020&quot;</code></pre>
+<pre><code>## [1] &quot;Mon Sep 14 13:31:32 2020&quot;</code></pre>
 <p><br></p>
 </div>
 </div>
@@ -513,7 +521,7 @@ Sometimes there is a confusion between a package and a library, and you can find
 <pre class="r"><code>library(praise)</code></pre>
 <p>Now that we’ve loaded the <code>praise</code> package, we can use the single function in the package, <code>praise()</code>, which returns a randomized praise to make you feel better.</p>
 <pre class="r"><code>praise()</code></pre>
-<pre><code>## [1] &quot;You are cat&#39;s meow!&quot;</code></pre>
+<pre><code>## [1] &quot;You are striking!&quot;</code></pre>
 <p><br></p>
 </div>
 <div id="clearing-the-environment" class="section level2">
