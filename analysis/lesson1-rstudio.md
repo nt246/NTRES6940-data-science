@@ -22,14 +22,15 @@ We will not have time to provide a comprehensive introduction to R and RStudio. 
 
 Most of today's lesson has been borrowed (with permission) from the [Ocean Health Index Data Science Training](http://ohi-science.org/data-science-training/)
 
-Other useful resources to check out include:
-   - [Jenny Bryan's STAT545 Chapter 2 R basics and workflows](https://stat545.com/r-basics.html)
-   - [R Swirl interactive lessons](https://swirlstats.com/)
-   - [Data Carpentry's Introduction to R for Ecologists](https://datacarpentry.org/R-ecology-lesson/)
+Other useful resources to check out include: 
+
+   - [Jenny Bryan's STAT545 Chapter 2 R basics and workflows](https://stat545.com/r-basics.html) 
+   - [R Swirl interactive lessons](https://swirlstats.com/) 
+   - [Data Carpentry's Introduction to R for Ecologists](https://datacarpentry.org/R-ecology-lesson/) 
 
 <br>
 
-* RStudio has great resources about its IDE (IDE stands for integrated development environment): 
+RStudio has great resources about its IDE (IDE stands for integrated development environment): 
 
    - [Webinars](https://www.rstudio.com/resources/webinars/) 
    - [Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
@@ -208,7 +209,7 @@ date()
 ```
 
 ```
-## [1] "Mon Sep 14 11:50:05 2020"
+## [1] "Mon Sep 14 12:13:33 2020"
 ```
 
 <br>
@@ -245,7 +246,7 @@ praise()
 ```
 
 ```
-## [1] "You are astonishing!"
+## [1] "You are cat's meow!"
 ```
 
 <br>
