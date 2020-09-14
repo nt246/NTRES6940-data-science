@@ -19,7 +19,6 @@ output:
   html_document:
     toc_float: yes
     collapsed: no
-    lib_dir: site_libs
     self_contained: no
 output_dir: ../docs
 exclude: ["datasets", "assignments","lecture_notes","misc","img","in_class_exercises","slides"]
