@@ -1,7 +1,8 @@
 ---
 title: "Lesson 1: Introduction to R and RStudio"
 output: 
-  github_document: 
+  html_document:
+    keep_md: yes 
     toc: true
 ---
   

@@ -6,6 +6,11 @@ navbar:
     href: syllabus.html
   - text: Installation
     href: installation.html
+  - text: Lectures
+    menu:
+    - text: Lecture notes
+    - text: "Lesson 1: R Studio"
+      href: lesson1-rstudio.html
   - text: Assignments
     href: assignments.html    
 output: 
