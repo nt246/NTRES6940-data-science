@@ -2,6 +2,7 @@
 title: "Collaborative and Reproducible Data Science in R"
 date: "`r Sys.Date()`"
 output: html_document
+site: workflowr::wflow_site
 ---
 
 ![](logo.png){width=50%}  
