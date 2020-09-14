@@ -5,6 +5,7 @@ output:
     keep_md: yes 
     toc: true
 ---
+
   
 
 
@@ -207,11 +208,7 @@ date()
 ```
 
 ```
-<<<<<<< HEAD
-## [1] "Mon Sep 14 11:37:40 2020"
-=======
-## [1] "Mon Sep 14 11:18:58 2020"
->>>>>>> 8977f48620c088efa02542d5e13156dd6afdcac6
+## [1] "Mon Sep 14 11:45:11 2020"
 ```
 
 <br>
@@ -248,7 +245,7 @@ praise()
 ```
 
 ```
-## [1] "You are cool!"
+## [1] "You are wicked!"
 ```
 
 <br>
