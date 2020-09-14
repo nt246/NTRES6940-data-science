@@ -389,20 +389,16 @@ div.tocify {
 <p><br></p>
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>Welcome to the course. Please review the <a href="https://github.com/nt246/NTRES6940-data-science/blob/master/slides/Slides_Class1_2020_0302.pdf">introductory slides</a> describing the focus, content, and goal of this course.</p>
+<p>Welcome to the course. Please review the <a href="https://github.com/nt246/NTRES6940-data-science/blob/master/slides/Slides_Class1_2020_0914.pdf">introductory slides</a> describing the focus, content, and goal of this course.</p>
 <p>We will not have time to provide a comprehensive introduction to R and RStudio. Today, we will focus on highlighting a few key functionalities and tips that will be important for this course and get us all on the same page.</p>
 <p><br></p>
 </div>
 <div id="acknowledgements-and-resources" class="section level2">
 <h2>Acknowledgements and resources</h2>
 <p>Most of today’s lesson has been borrowed (with permission) from the <a href="http://ohi-science.org/data-science-training/">Ocean Health Index Data Science Training</a></p>
-<p>Other useful resources to check out include:</p>
+<p>Other useful resources to check out include: - <a href="https://stat545.com/r-basics.html">Jenny Bryan’s STAT545 Chapter 2 R basics and workflows</a> - <a href="https://swirlstats.com/">R Swirl interactive lessons</a> - <a href="https://datacarpentry.org/R-ecology-lesson/">Data Carpentry’s Introduction to R for Ecologists</a></p>
+<p><br></p>
 <ul>
-<li><p>Jenny Bryan’s lectures from STAT545 at UBC. See them all <a href="https://stat545-ubc.github.io/">here</a>, but if you’re new to R and RStudio, especially check out:</p>
-<ul>
-<li><a href="http://stat545-ubc.github.io/block002_hello-r-workspace-wd-project.html">R basics, workspace and working directory, RStudio projects</a></li>
-<li><a href="http://stat545-ubc.github.io/block006_care-feeding-data.html">Basic care and feeding of data in R</a></li>
-</ul></li>
 <li><p>RStudio has great resources about its IDE (IDE stands for integrated development environment):</p>
 <ul>
 <li><a href="https://www.rstudio.com/resources/webinars/">Webinars</a></li>
@@ -494,7 +490,7 @@ help(seq) # same as ?seq</code></pre>
 <pre class="r"><code>??install </code></pre>
 <p>Not all functions have (or require) arguments:</p>
 <pre class="r"><code>date()</code></pre>
-<pre><code>## [1] &quot;Mon Sep 14 10:37:23 2020&quot;</code></pre>
+<pre><code>## [1] &quot;Mon Sep 14 11:37:40 2020&quot;</code></pre>
 <p><br></p>
 </div>
 </div>
@@ -502,7 +498,7 @@ help(seq) # same as ?seq</code></pre>
 <h2>Packages</h2>
 <p>So far we’ve been using a couple functions from base R, such as <code>seq()</code> and <code>date()</code>. But, one of the amazing things about R is that a vast user community is always creating new functions and packages that expand R’s capabilities. In R, the fundamental unit of shareable code is the package. A package bundles together code, data, documentation, and tests, and is easy to share with others. They increase the power of R by improving existing base R functionalities, or by adding new ones.</p>
 <p>The traditional place to download packages is from CRAN, the <a href="https://cran.r-project.org/">Comprehensive R Archive Network</a>, which is where you downloaded R. You can also install packages from GitHub, which we’ll do tomorrow.</p>
-<p>You don’t need to go to CRAN’s website to install packages, this can be accomplished within R using the command <code>install.packages(&quot;package-name-in-quotes&quot;)</code>. Let’s install a small, fun package <code>praise</code>. You need to use quotes around the package name.:</p>
+<p>You don’t need to go to CRAN’s website to install packages, this can be accomplished within R using the command <code>install.packages("package-name-in-quotes")</code>. Let’s install a small, fun package <code>praise</code>. You need to use quotes around the package name.:</p>
 <pre><code>install.packages(&quot;praise&quot;)</code></pre>
 <p>Now we’ve installed the package, but we need to tell R that we are going to use the functions within the <code>praise</code> package. We do this by using the function <code>library()</code>.</p>
 <p><strong>What’s the difference between a package and a library?</strong><br />
@@ -511,7 +507,7 @@ Sometimes there is a confusion between a package and a library, and you can find
 <pre class="r"><code>library(praise)</code></pre>
 <p>Now that we’ve loaded the <code>praise</code> package, we can use the single function in the package, <code>praise()</code>, which returns a randomized praise to make you feel better.</p>
 <pre class="r"><code>praise()</code></pre>
-<pre><code>## [1] &quot;You are cat&#39;s meow!&quot;</code></pre>
+<pre><code>## [1] &quot;You are cool!&quot;</code></pre>
 <p><br></p>
 </div>
 <div id="clearing-the-environment" class="section level2">
@@ -543,7 +539,7 @@ Sometimes there is a confusion between a package and a library, and you can find
 <p><br></p>
 </div>
 </div>
-<div id="home-directory-relative-vs.absolute-paths-and-rstudio-projects" class="section level2">
+<div id="home-directory-relative-vs.-absolute-paths-and-rstudio-projects" class="section level2">
 <h2>Home directory, relative vs. absolute paths and RStudio projects</h2>
 <p>See <a href="https://r4ds.had.co.nz/workflow-projects.html#where-does-your-analysis-live">sections 8.2-8.4 in Grolemund and Wickham’s R for Data Science</a></p>
 <p>Additional tips on RStudio projects <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">here</a></p>
@@ -605,7 +601,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

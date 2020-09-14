@@ -11,7 +11,7 @@ output:
 <br>
 
 ## Overview
-Welcome to the course. Please review the [introductory slides](https://github.com/nt246/NTRES6940-data-science/blob/master/slides/Slides_Class1_2020_0302.pdf) describing the focus, content, and goal of this course.
+Welcome to the course. Please review the [introductory slides](https://github.com/nt246/NTRES6940-data-science/blob/master/slides/Slides_Class1_2020_0914.pdf) describing the focus, content, and goal of this course.
 
 We will not have time to provide a comprehensive introduction to R and RStudio. Today, we will focus on highlighting a few key functionalities and tips that will be important for this course and get us all on the same page.
 
@@ -22,11 +22,11 @@ We will not have time to provide a comprehensive introduction to R and RStudio. 
 Most of today's lesson has been borrowed (with permission) from the [Ocean Health Index Data Science Training](http://ohi-science.org/data-science-training/)
 
 Other useful resources to check out include:
-  
-* Jenny Bryan's lectures from STAT545 at UBC. See them all [here](https://stat545-ubc.github.io/), but if you're new to R and RStudio, especially check out:
+   - [Jenny Bryan's STAT545 Chapter 2 R basics and workflows](https://stat545.com/r-basics.html)
+   - [R Swirl interactive lessons](https://swirlstats.com/)
+   - [Data Carpentry's Introduction to R for Ecologists](https://datacarpentry.org/R-ecology-lesson/)
 
-   + [R basics, workspace and working directory, RStudio projects](http://stat545-ubc.github.io/block002_hello-r-workspace-wd-project.html)
-   + [Basic care and feeding of data in R](http://stat545-ubc.github.io/block006_care-feeding-data.html)
+<br>
 
 * RStudio has great resources about its IDE (IDE stands for integrated development environment): 
 
@@ -207,7 +207,7 @@ date()
 ```
 
 ```
-## [1] "Mon Sep 14 10:37:23 2020"
+## [1] "Mon Sep 14 11:37:40 2020"
 ```
 
 <br>
@@ -244,7 +244,7 @@ praise()
 ```
 
 ```
-## [1] "You are cat's meow!"
+## [1] "You are cool!"
 ```
 
 <br>
