@@ -1,4 +1,5 @@
 name: NTRES6940
+output_dir: ../docs
 navbar:
   title: "Collaborative and Reproducible Data Science in R"
   left:
@@ -19,7 +20,4 @@ output:
   workflowr::wflow_html:
     toc: yes
     toc_float: yes
-    collapsed: no
-    self_contained: no
-output_dir: ../docs
 exclude: ["datasets", "assignments","lecture_notes","misc","img","in_class_exercises","slides"]
