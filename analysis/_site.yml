@@ -16,7 +16,8 @@ navbar:
   - text: Assignments
     href: assignments.html    
 output: 
-  html_document:
+  workflowr::wflow_html:
+    toc: yes
     toc_float: yes
     collapsed: no
     self_contained: no
