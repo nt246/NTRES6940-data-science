@@ -22,7 +22,7 @@ We will not have time to provide a comprehensive introduction to R and RStudio. 
 
 Most of today's lesson has been borrowed (with permission) from the [Ocean Health Index Data Science Training](http://ohi-science.org/data-science-training/)
 
-Other useful resources to check out include: 
+Other useful resources to check out include the following: 
 
    - [Jenny Bryan's STAT545 Chapter 2 R basics and workflows](https://stat545.com/r-basics.html) 
    - [R Swirl interactive lessons](https://swirlstats.com/) 
@@ -221,7 +221,7 @@ date()
 ```
 
 ```
-## [1] "Mon Sep 14 14:08:41 2020"
+## [1] "Mon Sep 14 16:42:23 2020"
 ```
 
 <br>
