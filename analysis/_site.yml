@@ -14,6 +14,8 @@ navbar:
       href: lesson1-rstudio.html
     - text: "Lesson 2: RMarkdown and GitHub"
       href: lesson2-rmarkdown-github.html
+    - text: "Lesson 3: Version Control"
+      href: lesson3-version-control.html
   - text: Assignments
     href: assignments.html    
 output: 

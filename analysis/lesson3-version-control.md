@@ -1,13 +1,12 @@
 ---
 title: "Lesson 3: Version control and the Git/GitHub workflow"
 output: 
-  github_document: 
+  html_document:
+    keep_md: yes 
     toc: true
 ---
   
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 <br>
 
 ## Readings
@@ -59,9 +58,7 @@ Basically, we get away from this:
 
 <br>
 
-```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("../img/MessySaves.png")  
-```
+<img src="assets/MessySaves.png" width="80%" />
 <br>
 
 This is a nightmare not only because I have NO idea which is truly the version we used in that analysis we need to update, but because it is going to take a lot of detective work to see what actually changed between each file. Also, it is very sad to think about the amount of time everyone involved is spending on bookkeeping: is everyone downloading an attachment, dragging it to wherever they organize this on their own computers, and then renaming everything? Hours and hours of all of our lives. 
@@ -178,9 +175,7 @@ First, copy the web address of the repository you want to clone. We will use HTT
 > **Aside**: HTTPS is default, but you could alternatively set up with SSH. This is more advanced than we will get into here, but allows 2-factor authentication. See [Happy Git with R](https://happygitwithr.com/credential-caching.html#special-consideration-re-two-factor-authentication) for more information.
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/gh_repo_clone1.png")  
-```
+<img src="assets/gh_repo_clone1.png" width="100%" />
 
 <br>
 
@@ -191,9 +186,7 @@ also in the File menu).
 
 <br>
 
-```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("../img/new_project1.png")  
-```
+<img src="assets/new_project1.png" width="80%" />
 
 <br>
 
@@ -202,9 +195,7 @@ knitr::include_graphics("../img/new_project1.png")
 
 <br>
 
-```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("../img/new_project2.png")  
-```
+<img src="assets/new_project2.png" width="80%" />
 
 <br>
 
@@ -214,9 +205,7 @@ Since we are using git.
 
 <br>
 
-```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("../img/new_project3.png")  
-```
+<img src="assets/new_project3.png" width="80%" />
 
 <br>
 
@@ -233,9 +222,7 @@ Finally, click Create Project.
 
 <br>
 
-```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("../img/new_project4.png")  
-```
+<img src="assets/new_project4.png" width="80%" />
 
 <br>
 
@@ -246,9 +233,7 @@ If everything went well, the repository will show up in RStudio!
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/new_project5.png")  
-```
+<img src="assets/new_project5.png" width="100%" />
 
 <br>
 
@@ -256,9 +241,7 @@ The repository is also saved to the location you specified, and you can navigate
 
 <br>
 
-```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("../img/new_project6.png")  
-```
+<img src="assets/new_project6.png" width="80%" />
 
 <br>
 
@@ -274,9 +257,7 @@ Second, we have a Git tab in the top right pane! Let's click on it.
 
 <br>
 
-```{r, echo=FALSE, out.width="80%"}
-knitr::include_graphics("../img/new_project5_annotated.png")  
-```
+<img src="assets/new_project5_annotated.png" width="80%" />
 
 <br>
 
@@ -321,9 +302,7 @@ Syncing to GitHub.com means 4 steps:
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/commit_steps.png")  
-```
+<img src="assets/commit_steps.png" width="100%" />
 
 <br>
 
@@ -331,9 +310,7 @@ We start off this whole process by clicking on the Commit section.
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/commit_circled.png")  
-```
+<img src="assets/commit_circled.png" width="100%" />
 
 <br>
 
@@ -345,9 +322,7 @@ Pull by clicking the teal Down Arrow. (Notice also how when you highlight a file
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/commit_pull.png")  
-```
+<img src="assets/commit_pull.png" width="100%" />
 
 <br>
 
@@ -362,9 +337,7 @@ These are the codes used to describe how the files are changed, (from the RStudi
 
 <br>
 
-```{r, echo=FALSE, out.width="30%"}
-knitr::include_graphics("../img/commit_codes_added_modified.png")  
-```
+<img src="assets/commit_codes_added_modified.png" width="30%" />
 
 <br>
 
@@ -380,9 +353,7 @@ Second, you press Commit.
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/commit_message_arrow.png")  
-```
+<img src="assets/commit_message_arrow.png" width="100%" />
 
 <br>
 
@@ -393,9 +364,7 @@ If our attempt was not successful, we will see an Error. Otherwise, interpret th
 > Does your pop-up message say "Aborting commit due to empty commit message."? GitHub is really serious about writing human-readable commit messages.
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/commit_success.png")  
-```
+<img src="assets/commit_success.png" width="100%" />
 
 <br>
 
@@ -403,9 +372,7 @@ When we close this window there is going to be (in my opinion) a very subtle ind
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/commit_branch_ahead_of_origin_master.png")  
-```
+<img src="assets/commit_branch_ahead_of_origin_master.png" width="100%" />
 
 <br>
 
@@ -419,9 +386,7 @@ The last step in the syncing process is to Push!
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/commit_push.png")  
-```
+<img src="assets/commit_push.png" width="100%" />
 
 <br>
 
@@ -435,9 +400,7 @@ Notice how the README.md file we created is automatically displayed at the botto
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/gh_repo_view.png")  
-```
+<img src="assets/gh_repo_view.png" width="100%" />
 
 <br>
 
@@ -465,9 +428,7 @@ Now that we have our Project, let's revisit this important question: where are w
 
 And this is important because if our friend Allison clones this repository that you just made and saves it in `Allison/my/projects/way/over/here`, she will still be able to interact with your files as you are here.
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/RStudio_IDE_projdir.png")  
-```
+<img src="assets/RStudio_IDE_projdir.png" width="100%" />
 
 ## Project-oriented workflows in action (aka our analytical setup)
 
@@ -595,9 +556,7 @@ Bug reports, code, feature, & help requests: [ggplot2](https://github.com/tidyve
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/issues_ggplot2.png")  
-```
+<img src="assets/issues_ggplot2.png" width="100%" />
 
 <br>
 
@@ -605,9 +564,7 @@ Project submissions and progress tracking: [MozillaFestival](https://github.com/
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/issues_MozillaFestival.png")  
-```
+<img src="assets/issues_MozillaFestival.png" width="100%" />
 
 <br>
 
@@ -615,9 +572,7 @@ Private conversations and archiving: [OHI Fellows (private)](https://github.com/
 
 <br>
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/issues_globalfellows.png")  
-```
+<img src="assets/issues_globalfellows.png" width="100%" />
 
 <br>
 
