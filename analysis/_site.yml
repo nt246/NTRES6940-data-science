@@ -17,7 +17,8 @@ navbar:
   - text: Assignments
     href: assignments.html    
 output: 
-  workflowr::wflow_html:
-    toc: yes
+  html_document:
     toc_float: yes
+    collapsed: no
+    self_contained: no
 exclude: ["datasets", "assignments","lecture_notes","misc","img","in_class_exercises","slides"]

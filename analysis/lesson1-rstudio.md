@@ -1,399 +1,10 @@
 ---
 title: "Lesson 1: Introduction to R and RStudio"
 output: 
-  workflowr::wflow_html:
+  html_document:
     keep_md: yes 
     toc: true
 ---
-
-<p>
-<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report"
-  data-toggle="collapse" data-target="#workflowr-report">
-  <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-  workflowr
-  <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
-</button>
-</p>
-
-<div id="workflowr-report" class="collapse">
-<ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
-  <li><a data-toggle="tab" href="#checks">
-  Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
-  </a></li>
-  <li><a data-toggle="tab" href="#versions">Past versions</a></li>
-</ul>
-
-<div class="tab-content">
-<div id="summary" class="tab-pane fade in active">
-  <p><strong>Last updated:</strong> 2020-09-15</p>
-  <p><strong>Checks:</strong>
-  <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-  6
-  <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
-  1
-  </p>
-  <p><strong>Knit directory:</strong>
-  <code>NTRES6940-data-science/</code>
-  <span class="glyphicon glyphicon-question-sign" aria-hidden="true"
-  title="This is the local directory in which the code in this file was executed.">
-  </span>
-  </p>
-  <p>
-  This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a>
-  analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version
-  1.6.2). The <em>Checks</em> tab describes the
-  reproducibility checks that were applied when the results were created.
-  The <em>Past versions</em> tab lists the development history.
-  </p>
-<hr>
-</div>
-<div id="checks" class="tab-pane fade">
-  <div class="panel-group" id="workflowr-checks">
-  <div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-  <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
-  <strong>R Markdown file:</strong> uncommitted changes
-</a>
-</p>
-</div>
-<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
-<div class="panel-body">
-  The R Markdown file has unstaged changes. 
-To know which version of the R Markdown file created these
-results, you'll want to first commit it to the Git repo. If
-you're still working on the analysis, you can ignore this
-warning. When you're finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and
-build the HTML.
-
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
-  <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-  <strong>Environment:</strong> empty
-</a>
-</p>
-</div>
-<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
-<div class="panel-body">
-  
-Great job! The global environment was empty. Objects defined in the global
-environment can affect the analysis in your R Markdown file in unknown ways.
-For reproduciblity it's best to always run the code in an empty environment.
-
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20200914code">
-  <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-  <strong>Seed:</strong> <code>set.seed(20200914)</code>
-</a>
-</p>
-</div>
-<div id="strongSeedstrongcodesetseed20200914code" class="panel-collapse collapse">
-<div class="panel-body">
-  
-The command <code>set.seed(20200914)</code> was run prior to running the code in the R Markdown file.
-Setting a seed ensures that any results that rely on randomness, e.g.
-subsampling or permutations, are reproducible.
-
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
-  <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-  <strong>Session information:</strong> recorded
-</a>
-</p>
-</div>
-<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
-<div class="panel-body">
-  
-Great job! Recording the operating system, R version, and package versions is
-critical for reproducibility.
-
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
-  <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-  <strong>Cache:</strong> none
-</a>
-</p>
-</div>
-<div id="strongCachestrongnone" class="panel-collapse collapse">
-<div class="panel-body">
-  
-Nice! There were no cached chunks for this analysis, so you can be confident
-that you successfully produced the results during this run.
-
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
-  <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-  <strong>File paths:</strong> relative
-</a>
-</p>
-</div>
-<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
-<div class="panel-body">
-  
-Great job! Using relative paths to the files within your workflowr project
-makes it easier to run your code on other machines.
-
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomnt246NTRES6940datasciencetree800c27e13291cb78d3742062d165652d5646d70atargetblank800c27ea">
-  <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-  <strong>Repository version:</strong> <a href="https://github.com/nt246/NTRES6940-data-science/tree/800c27e13291cb78d3742062d165652d5646d70a" target="_blank">800c27e</a>
-</a>
-</p>
-</div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomnt246NTRES6940datasciencetree800c27e13291cb78d3742062d165652d5646d70atargetblank800c27ea" class="panel-collapse collapse">
-<div class="panel-body">
-  
-<p>
-Great! You are using Git for version control. Tracking code development and
-connecting the code version to the results is critical for reproducibility.
-</p>
-
-<p>
-The results in this page were generated with repository version <a href="https://github.com/nt246/NTRES6940-data-science/tree/800c27e13291cb78d3742062d165652d5646d70a" target="_blank">800c27e</a>.
-See the <em>Past versions</em> tab to see a history of the changes made to the
-R Markdown and HTML files.
-</p>
-
-<p>
-Note that you need to be careful to ensure that all relevant files for the
-analysis have been committed to Git prior to generating the results (you can
-use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only
-checks the R Markdown file, but you know if there are other scripts or data
-files that it depends on. Below is the status of the Git repository when the
-results were generated:
-</p>
-
-<pre><code>
-Ignored files:
-	Ignored:    .DS_Store
-	Ignored:    .Rhistory
-	Ignored:    .Rproj.user/
-	Ignored:    analysis/.DS_Store
-	Ignored:    img/.DS_Store
-	Ignored:    lecture_notes/.DS_Store
-
-Unstaged changes:
-	Modified:   analysis/assignments.Rmd
-	Modified:   analysis/installation.Rmd
-	Modified:   analysis/lesson1-rstudio.Rmd
-	Modified:   analysis/lesson2-rmarkdown-github.Rmd
-	Modified:   analysis/syllabus.Rmd
-
-</code></pre>
-
-<p>
-Note that any generated files, e.g. HTML, png, CSS, etc., are not included in
-this status report because it is ok for generated content to have uncommitted
-changes.
-</p>
-
-</div>
-</div>
-</div>
-</div>
-<hr>
-</div>
-<div id="versions" class="tab-pane fade">
-  
-<p>
-These are the previous versions of the repository in which changes were made
-to the R Markdown (<code>analysis/lesson1-rstudio.Rmd</code>) and HTML (<code>docs/lesson1-rstudio.html</code>)
-files. If you've configured a remote Git repository (see
-<code>?wflow_git_remote</code>), click on the hyperlinks in the table below to
-view the files as they were in that past version.
-</p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>File</th>
-<th>Version</th>
-<th>Author</th>
-<th>Date</th>
-<th>Message</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Rmd</td>
-<td><a href="https://github.com/nt246/NTRES6940-data-science/blob/df14e2eefb935be3a596bdf453d36362a03944ad/analysis/lesson1-rstudio.Rmd" target="_blank">df14e2e</a></td>
-<td>nt246</td>
-<td>2020-09-14</td>
-<td>Fixed typos</td>
-</tr>
-<tr>
-<td>html</td>
-<td><a href="https://rawcdn.githack.com/nt246/NTRES6940-data-science/df14e2eefb935be3a596bdf453d36362a03944ad/docs/lesson1-rstudio.html" target="_blank">df14e2e</a></td>
-<td>nt246</td>
-<td>2020-09-14</td>
-<td>Fixed typos</td>
-</tr>
-<tr>
-<td>Rmd</td>
-<td><a href="https://github.com/nt246/NTRES6940-data-science/blob/fb60e71792eb0b523dbebae4a5af60394eedb616/analysis/lesson1-rstudio.Rmd" target="_blank">fb60e71</a></td>
-<td>makopyan</td>
-<td>2020-09-14</td>
-<td>pic</td>
-</tr>
-<tr>
-<td>html</td>
-<td><a href="https://rawcdn.githack.com/nt246/NTRES6940-data-science/fb60e71792eb0b523dbebae4a5af60394eedb616/docs/lesson1-rstudio.html" target="_blank">fb60e71</a></td>
-<td>makopyan</td>
-<td>2020-09-14</td>
-<td>pic</td>
-</tr>
-<tr>
-<td>html</td>
-<td><a href="https://rawcdn.githack.com/nt246/NTRES6940-data-science/d92f49aee60e5ba9a1f36791e6d726cc0ec49a09/docs/lesson1-rstudio.html" target="_blank">d92f49a</a></td>
-<td>nt246</td>
-<td>2020-09-14</td>
-<td>Formatting updates</td>
-</tr>
-<tr>
-<td>Rmd</td>
-<td><a href="https://github.com/nt246/NTRES6940-data-science/blob/97ae673723e8a20cc176e3506cbcba40dfc8a45f/analysis/lesson1-rstudio.Rmd" target="_blank">97ae673</a></td>
-<td>nt246</td>
-<td>2020-09-14</td>
-<td>Formatting updates</td>
-</tr>
-<tr>
-<td>Rmd</td>
-<td><a href="https://github.com/nt246/NTRES6940-data-science/blob/df5d6f66efa26735564cf4fc7dcc1829dde7169a/analysis/lesson1-rstudio.Rmd" target="_blank">df5d6f6</a></td>
-<td>nt246</td>
-<td>2020-09-14</td>
-<td>Formatting updates</td>
-</tr>
-<tr>
-<td>html</td>
-<td><a href="https://rawcdn.githack.com/nt246/NTRES6940-data-science/df5d6f66efa26735564cf4fc7dcc1829dde7169a/docs/lesson1-rstudio.html" target="_blank">df5d6f6</a></td>
-<td>nt246</td>
-<td>2020-09-14</td>
-<td>Formatting updates</td>
-</tr>
-<tr>
-<td>html</td>
-<td><a href="https://rawcdn.githack.com/nt246/NTRES6940-data-science/09d743cc026e5eb977d1f0b352fcc4390d56f07a/docs/lesson1-rstudio.html" target="_blank">09d743c</a></td>
-<td>nt246</td>
-<td>2020-09-14</td>
-<td>Replaced .md file</td>
-</tr>
-<tr>
-<td>html</td>
-<td><a href="https://rawcdn.githack.com/nt246/NTRES6940-data-science/54dfa3de7320ec5f0e7994eead22150d6baa21ae/docs/lesson1-rstudio.html" target="_blank">54dfa3d</a></td>
-<td>nt246</td>
-<td>2020-09-14</td>
-<td>Fixed merging</td>
-</tr>
-<tr>
-<td>Rmd</td>
-<td><a href="https://github.com/nt246/NTRES6940-data-science/blob/182ff2b64ac4c091fb6759ee2f0311a126ed31e0/analysis/lesson1-rstudio.Rmd" target="_blank">182ff2b</a></td>
-<td>nt246</td>
-<td>2020-09-14</td>
-<td>Fixed header</td>
-</tr>
-<tr>
-<td>Rmd</td>
-<td><a href="https://github.com/nt246/NTRES6940-data-science/blob/8eddb1b9798d5591bd31eb4a14eadb87db68ab77/analysis/lesson1-rstudio.Rmd" target="_blank">8eddb1b</a></td>
-<td>nt246</td>
-<td>2020-09-14</td>
-<td>Updated links</td>
-</tr>
-<tr>
-<td>html</td>
-<td><a href="https://rawcdn.githack.com/nt246/NTRES6940-data-science/8eddb1b9798d5591bd31eb4a14eadb87db68ab77/docs/lesson1-rstudio.html" target="_blank">8eddb1b</a></td>
-<td>nt246</td>
-<td>2020-09-14</td>
-<td>Updated links</td>
-</tr>
-<tr>
-<td>Rmd</td>
-<td><a href="https://github.com/nt246/NTRES6940-data-science/blob/db1f0b77be53cfa5ed00fbe753c826d086b74ff6/analysis/lesson1-rstudio.Rmd" target="_blank">db1f0b7</a></td>
-<td>makopyan</td>
-<td>2020-09-14</td>
-<td>wflow</td>
-</tr>
-<tr>
-<td>html</td>
-<td><a href="https://rawcdn.githack.com/nt246/NTRES6940-data-science/db1f0b77be53cfa5ed00fbe753c826d086b74ff6/docs/lesson1-rstudio.html" target="_blank">db1f0b7</a></td>
-<td>makopyan</td>
-<td>2020-09-14</td>
-<td>wflow</td>
-</tr>
-<tr>
-<td>Rmd</td>
-<td><a href="https://github.com/nt246/NTRES6940-data-science/blob/ffefa482eee25e5c1effcc2fadc6254f06bfe94b/analysis/lesson1-rstudio.Rmd" target="_blank">ffefa48</a></td>
-<td>makopyan</td>
-<td>2020-09-14</td>
-<td>cleanup</td>
-</tr>
-<tr>
-<td>html</td>
-<td><a href="https://rawcdn.githack.com/nt246/NTRES6940-data-science/ffefa482eee25e5c1effcc2fadc6254f06bfe94b/docs/lesson1-rstudio.html" target="_blank">ffefa48</a></td>
-<td>makopyan</td>
-<td>2020-09-14</td>
-<td>cleanup</td>
-</tr>
-<tr>
-<td>html</td>
-<td><a href="https://rawcdn.githack.com/nt246/NTRES6940-data-science/b05308c1c2cca73619f3d0a6f9525f745da91d3f/docs/lesson1-rstudio.html" target="_blank">b05308c</a></td>
-<td>makopyan</td>
-<td>2020-09-14</td>
-<td>lesson1</td>
-</tr>
-<tr>
-<td>html</td>
-<td><a href="https://rawcdn.githack.com/nt246/NTRES6940-data-science/35664d2ae5c3157a7e8ce4277eb30b438f651d4a/docs/lesson1-rstudio.html" target="_blank">35664d2</a></td>
-<td>makopyan</td>
-<td>2020-09-14</td>
-<td>lesson1</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<hr>
-</div>
-</div>
-</div>
-
-
-
-
-
 
   
 
@@ -464,7 +75,7 @@ x
 ```
 
 ```
-[1] 12
+## [1] 12
 ```
 In my head I hear, e.g., "x gets 12".
 
@@ -504,7 +115,7 @@ this_is_a_really_long_name
 ```
 
 ```
-[1] 2.5
+## [1] 2.5
 ```
 
 Another way to inspect this variable is to begin typing `this_`...and RStudio will automatically have suggested completions for you that you can select by hitting the tab key, then press return. 
@@ -550,7 +161,7 @@ seq(1, 10)
 ```
 
 ```
- [1]  1  2  3  4  5  6  7  8  9 10
+##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
 We could probably infer that the `seq()` function makes a sequence, but let's learn for sure. Type (and you can autocomplete) and let's explore the help page:
@@ -577,7 +188,7 @@ seq(from = 1, to = 10) # same as seq(1, 10); R assumes by position
 ```
 
 ```
- [1]  1  2  3  4  5  6  7  8  9 10
+##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
 ```r
@@ -585,7 +196,7 @@ seq(from = 1, to = 10, by = 2)
 ```
 
 ```
-[1] 1 3 5 7 9
+## [1] 1 3 5 7 9
 ```
 
 The above also demonstrates something about how R resolves function arguments. You can always specify in `name = value` form. But if you do not, R attempts to resolve by position. So above, it is assumed that we want a sequence `from = 1` that goes `to = 10`. Since we didn't specify step size, the default value of `by` in the function definition is used, which ends up being 1 in this case. For functions I call often, I might use this resolve by position for the first
@@ -610,7 +221,7 @@ date()
 ```
 
 ```
-[1] "Tue Sep 15 12:23:55 2020"
+## [1] "Tue Sep 15 14:12:46 2020"
 ```
 
 <br>
@@ -647,7 +258,7 @@ praise()
 ```
 
 ```
-[1] "You are sensational!"
+## [1] "You are cat's meow!"
 ```
 
 <br>
@@ -665,7 +276,7 @@ objects()
 ```
 
 ```
-[1] "this_is_a_really_long_name" "x"                         
+## [1] "this_is_a_really_long_name" "x"
 ```
 
 ```r
@@ -673,7 +284,7 @@ ls()
 ```
 
 ```
-[1] "this_is_a_really_long_name" "x"                         
+## [1] "this_is_a_really_long_name" "x"
 ```
 
 If you want to remove the object named `weight_kg`, you can do this:
@@ -684,7 +295,7 @@ rm(weight_kg)
 ```
 
 ```
-Warning in rm(weight_kg): object 'weight_kg' not found
+## Warning in rm(weight_kg): object 'weight_kg' not found
 ```
 
 To remove everything:
@@ -730,48 +341,3 @@ On Wednesday, we will set up an RStudio project for you to work in during this c
 ## Saving your code in scripts
 
 See [Chapter 6 in Grolemund and Wickham's R for Data Science](https://r4ds.had.co.nz/workflow-projects.html#where-does-your-analysis-live)
-
-<br>
-<p>
-<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo"
-  data-toggle="collapse" data-target="#workflowr-sessioninfo"
-  style = "display: block;">
-  <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-  Session information
-</button>
-</p>
-
-<div id="workflowr-sessioninfo" class="collapse">
-
-```r
-sessionInfo()
-```
-
-```
-R version 3.6.1 (2019-07-05)
-Platform: x86_64-apple-darwin15.6.0 (64-bit)
-Running under: macOS High Sierra 10.13.6
-
-Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRblas.0.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
-
-locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
-
-other attached packages:
-[1] praise_1.0.0
-
-loaded via a namespace (and not attached):
- [1] workflowr_1.6.2 Rcpp_1.0.4.6    rprojroot_1.3-2 digest_0.6.23  
- [5] later_1.0.0     R6_2.4.1        backports_1.1.5 git2r_0.26.1   
- [9] magrittr_1.5    evaluate_0.14   stringi_1.4.3   rlang_0.4.4    
-[13] fs_1.3.1        promises_1.1.0  whisker_0.4     rmarkdown_1.18 
-[17] tools_3.6.1     stringr_1.4.0   glue_1.3.1      httpuv_1.5.2   
-[21] xfun_0.11       yaml_2.2.0      compiler_3.6.1  htmltools_0.4.0
-[25] knitr_1.26     
-```
-</div>

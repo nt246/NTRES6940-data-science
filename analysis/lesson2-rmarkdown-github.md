@@ -1,295 +1,10 @@
 ---
 title: "Lesson 2: RMarkdown and GitHub"
 output: 
-  workflowr::wflow_html:
+  html_document:
     keep_md: yes 
     toc: true
 ---
-
-<p>
-<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report"
-  data-toggle="collapse" data-target="#workflowr-report">
-  <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-  workflowr
-  <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
-</button>
-</p>
-
-<div id="workflowr-report" class="collapse">
-<ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
-  <li><a data-toggle="tab" href="#checks">
-  Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
-  </a></li>
-  <li><a data-toggle="tab" href="#versions">Past versions</a></li>
-</ul>
-
-<div class="tab-content">
-<div id="summary" class="tab-pane fade in active">
-  <p><strong>Last updated:</strong> 2020-09-15</p>
-  <p><strong>Checks:</strong>
-  <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-  6
-  <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
-  1
-  </p>
-  <p><strong>Knit directory:</strong>
-  <code>NTRES6940-data-science/</code>
-  <span class="glyphicon glyphicon-question-sign" aria-hidden="true"
-  title="This is the local directory in which the code in this file was executed.">
-  </span>
-  </p>
-  <p>
-  This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a>
-  analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version
-  1.6.2). The <em>Checks</em> tab describes the
-  reproducibility checks that were applied when the results were created.
-  The <em>Past versions</em> tab lists the development history.
-  </p>
-<hr>
-</div>
-<div id="checks" class="tab-pane fade">
-  <div class="panel-group" id="workflowr-checks">
-  <div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-  <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
-  <strong>R Markdown file:</strong> uncommitted changes
-</a>
-</p>
-</div>
-<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
-<div class="panel-body">
-  The R Markdown file has unstaged changes. 
-To know which version of the R Markdown file created these
-results, you'll want to first commit it to the Git repo. If
-you're still working on the analysis, you can ignore this
-warning. When you're finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and
-build the HTML.
-
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
-  <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-  <strong>Environment:</strong> empty
-</a>
-</p>
-</div>
-<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
-<div class="panel-body">
-  
-Great job! The global environment was empty. Objects defined in the global
-environment can affect the analysis in your R Markdown file in unknown ways.
-For reproduciblity it's best to always run the code in an empty environment.
-
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20200914code">
-  <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-  <strong>Seed:</strong> <code>set.seed(20200914)</code>
-</a>
-</p>
-</div>
-<div id="strongSeedstrongcodesetseed20200914code" class="panel-collapse collapse">
-<div class="panel-body">
-  
-The command <code>set.seed(20200914)</code> was run prior to running the code in the R Markdown file.
-Setting a seed ensures that any results that rely on randomness, e.g.
-subsampling or permutations, are reproducible.
-
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
-  <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-  <strong>Session information:</strong> recorded
-</a>
-</p>
-</div>
-<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
-<div class="panel-body">
-  
-Great job! Recording the operating system, R version, and package versions is
-critical for reproducibility.
-
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
-  <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-  <strong>Cache:</strong> none
-</a>
-</p>
-</div>
-<div id="strongCachestrongnone" class="panel-collapse collapse">
-<div class="panel-body">
-  
-Nice! There were no cached chunks for this analysis, so you can be confident
-that you successfully produced the results during this run.
-
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
-  <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-  <strong>File paths:</strong> relative
-</a>
-</p>
-</div>
-<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
-<div class="panel-body">
-  
-Great job! Using relative paths to the files within your workflowr project
-makes it easier to run your code on other machines.
-
-</div>
-</div>
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-<p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomnt246NTRES6940datasciencetree800c27e13291cb78d3742062d165652d5646d70atargetblank800c27ea">
-  <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-  <strong>Repository version:</strong> <a href="https://github.com/nt246/NTRES6940-data-science/tree/800c27e13291cb78d3742062d165652d5646d70a" target="_blank">800c27e</a>
-</a>
-</p>
-</div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomnt246NTRES6940datasciencetree800c27e13291cb78d3742062d165652d5646d70atargetblank800c27ea" class="panel-collapse collapse">
-<div class="panel-body">
-  
-<p>
-Great! You are using Git for version control. Tracking code development and
-connecting the code version to the results is critical for reproducibility.
-</p>
-
-<p>
-The results in this page were generated with repository version <a href="https://github.com/nt246/NTRES6940-data-science/tree/800c27e13291cb78d3742062d165652d5646d70a" target="_blank">800c27e</a>.
-See the <em>Past versions</em> tab to see a history of the changes made to the
-R Markdown and HTML files.
-</p>
-
-<p>
-Note that you need to be careful to ensure that all relevant files for the
-analysis have been committed to Git prior to generating the results (you can
-use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only
-checks the R Markdown file, but you know if there are other scripts or data
-files that it depends on. Below is the status of the Git repository when the
-results were generated:
-</p>
-
-<pre><code>
-Ignored files:
-	Ignored:    .DS_Store
-	Ignored:    .Rhistory
-	Ignored:    .Rproj.user/
-	Ignored:    analysis/.DS_Store
-	Ignored:    img/.DS_Store
-	Ignored:    lecture_notes/.DS_Store
-
-Unstaged changes:
-	Modified:   analysis/assignments.Rmd
-	Modified:   analysis/installation.Rmd
-	Modified:   analysis/lesson1-rstudio.Rmd
-	Modified:   analysis/lesson1-rstudio.md
-	Modified:   analysis/lesson2-rmarkdown-github.Rmd
-	Modified:   analysis/syllabus.Rmd
-
-</code></pre>
-
-<p>
-Note that any generated files, e.g. HTML, png, CSS, etc., are not included in
-this status report because it is ok for generated content to have uncommitted
-changes.
-</p>
-
-</div>
-</div>
-</div>
-</div>
-<hr>
-</div>
-<div id="versions" class="tab-pane fade">
-  
-<p>
-These are the previous versions of the repository in which changes were made
-to the R Markdown (<code>analysis/lesson2-rmarkdown-github.Rmd</code>) and HTML (<code>docs/lesson2-rmarkdown-github.html</code>)
-files. If you've configured a remote Git repository (see
-<code>?wflow_git_remote</code>), click on the hyperlinks in the table below to
-view the files as they were in that past version.
-</p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>File</th>
-<th>Version</th>
-<th>Author</th>
-<th>Date</th>
-<th>Message</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>html</td>
-<td><a href="https://rawcdn.githack.com/nt246/NTRES6940-data-science/cc41328972612e63aa4785009f073dae24434969/docs/lesson2-rmarkdown-github.html" target="_blank">cc41328</a></td>
-<td>makopyan</td>
-<td>2020-09-14</td>
-<td>lesson2</td>
-</tr>
-<tr>
-<td>Rmd</td>
-<td><a href="https://github.com/nt246/NTRES6940-data-science/blob/e44b9ca9296ea4cf7a08189dfcd7a86db321e72b/analysis/lesson2-rmarkdown-github.Rmd" target="_blank">e44b9ca</a></td>
-<td>nt246</td>
-<td>2020-09-14</td>
-<td>Updated announcements</td>
-</tr>
-<tr>
-<td>Rmd</td>
-<td><a href="https://github.com/nt246/NTRES6940-data-science/blob/3de83ac3e89337e898c4ae065857252fc80963ac/analysis/lesson2-rmarkdown-github.Rmd" target="_blank">3de83ac</a></td>
-<td>makopyan</td>
-<td>2020-09-14</td>
-<td>lesson2</td>
-</tr>
-<tr>
-<td>html</td>
-<td><a href="https://rawcdn.githack.com/nt246/NTRES6940-data-science/3de83ac3e89337e898c4ae065857252fc80963ac/docs/lesson2-rmarkdown-github.html" target="_blank">3de83ac</a></td>
-<td>makopyan</td>
-<td>2020-09-14</td>
-<td>lesson2</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<hr>
-</div>
-</div>
-</div>
-
-
-
-
-
   
 
 <br>
@@ -367,36 +82,7 @@ File -> New File -> RMarkdown... (or alternatively you can click the green plus 
 
 Let's title it "Testing" and write our name as author, then click OK with the recommended Default Output Format, which is HTML.
 
-<img src="assets/rstudio_new-rmd-doc-html.png" width="80%" style="display: block; margin: auto;" />
-
-  <p>
-  <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig"
-  data-toggle="collapse" data-target="#fig-rstudio_new-rmd-doc-html">
-  Past versions of rstudio_new-rmd-doc-html.png
-  </button>
-  </p>
-
-  <div id="fig-rstudio_new-rmd-doc-html" class="collapse">
-  <div class="table-responsive">
-  <table class="table table-condensed table-hover">
-  <thead>
-  <tr>
-  <th>Version</th>
-  <th>Author</th>
-  <th>Date</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td><a href="https://github.com/nt246/NTRES6940-data-science/blob/3de83ac3e89337e898c4ae065857252fc80963ac/docs/assets/rstudio_new-rmd-doc-html.png" target="_blank">3de83ac</a></td>
-  <td>makopyan</td>
-  <td>2020-09-14</td>
-  </tr>
-  </tbody>
-  </table>
-  </div>
-  </div>
-  
+<img src="assets/rstudio_new-rmd-doc-html.png" width="80%" />
 
 OK, first off: by opening a file, we are seeing the 4th pane of the RStudio console, which here is a text editor. This lets us dock and organize our files within RStudio instead of having a bunch of different windows open (but there are options to pop them out if that is what you prefer).
 
@@ -408,36 +94,7 @@ Let's have a look at this file — it's not blank; there is some initial text is
   - **White sections are Markdown text**
 - There is black and blue text (we'll ignore the green text for now).  
   
-<img src="assets/rmarkdown.png" width="80%" style="display: block; margin: auto;" />
-
-  <p>
-  <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig"
-  data-toggle="collapse" data-target="#fig-rmarkdown">
-  Past versions of rmarkdown.png
-  </button>
-  </p>
-
-  <div id="fig-rmarkdown" class="collapse">
-  <div class="table-responsive">
-  <table class="table table-condensed table-hover">
-  <thead>
-  <tr>
-  <th>Version</th>
-  <th>Author</th>
-  <th>Date</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td><a href="https://github.com/nt246/NTRES6940-data-science/blob/3de83ac3e89337e898c4ae065857252fc80963ac/docs/assets/rmarkdown.png" target="_blank">3de83ac</a></td>
-  <td>makopyan</td>
-  <td>2020-09-14</td>
-  </tr>
-  </tbody>
-  </table>
-  </div>
-  </div>
-  
+<img src="assets/rmarkdown.png" width="80%" />
 
 ### Knit your RMarkdown file
 
@@ -450,36 +107,7 @@ Let's have a look at them side-by-side:
 
 <br>
 
-<img src="assets/rmarkdown_side_by_side.png" width="80%" style="display: block; margin: auto;" />
-
-  <p>
-  <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig"
-  data-toggle="collapse" data-target="#fig-rmarkdown_side_by_side">
-  Past versions of rmarkdown_side_by_side.png
-  </button>
-  </p>
-
-  <div id="fig-rmarkdown_side_by_side" class="collapse">
-  <div class="table-responsive">
-  <table class="table table-condensed table-hover">
-  <thead>
-  <tr>
-  <th>Version</th>
-  <th>Author</th>
-  <th>Date</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td><a href="https://github.com/nt246/NTRES6940-data-science/blob/3de83ac3e89337e898c4ae065857252fc80963ac/docs/assets/rmarkdown_side_by_side.png" target="_blank">3de83ac</a></td>
-  <td>makopyan</td>
-  <td>2020-09-14</td>
-  </tr>
-  </tbody>
-  </table>
-  </div>
-  </div>
-  
+<img src="assets/rmarkdown_side_by_side.png" width="80%" />
 
 Let's take a deeper look at these two files. So much of learning to code is looking for patterns.
 
@@ -828,36 +456,7 @@ also in the File menu).
 
 <br>
 
-<img src="assets/new_project_1.png" width="80%" style="display: block; margin: auto;" />
-
-  <p>
-  <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig"
-  data-toggle="collapse" data-target="#fig-new_project_1">
-  Past versions of new_project_1.png
-  </button>
-  </p>
-
-  <div id="fig-new_project_1" class="collapse">
-  <div class="table-responsive">
-  <table class="table table-condensed table-hover">
-  <thead>
-  <tr>
-  <th>Version</th>
-  <th>Author</th>
-  <th>Date</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td><a href="https://github.com/nt246/NTRES6940-data-science/blob/3de83ac3e89337e898c4ae065857252fc80963ac/docs/assets/new_project_1.png" target="_blank">3de83ac</a></td>
-  <td>makopyan</td>
-  <td>2020-09-14</td>
-  </tr>
-  </tbody>
-  </table>
-  </div>
-  </div>
-  
+<img src="assets/new_project_1.png" width="80%" />
 
 
 <br>
@@ -867,36 +466,7 @@ also in the File menu).
 
 <br>
 
-<img src="assets/new_project_2.png" width="80%" style="display: block; margin: auto;" />
-
-  <p>
-  <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig"
-  data-toggle="collapse" data-target="#fig-new_project_2">
-  Past versions of new_project_2.png
-  </button>
-  </p>
-
-  <div id="fig-new_project_2" class="collapse">
-  <div class="table-responsive">
-  <table class="table table-condensed table-hover">
-  <thead>
-  <tr>
-  <th>Version</th>
-  <th>Author</th>
-  <th>Date</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td><a href="https://github.com/nt246/NTRES6940-data-science/blob/3de83ac3e89337e898c4ae065857252fc80963ac/docs/assets/new_project_2.png" target="_blank">3de83ac</a></td>
-  <td>makopyan</td>
-  <td>2020-09-14</td>
-  </tr>
-  </tbody>
-  </table>
-  </div>
-  </div>
-  
+<img src="assets/new_project_2.png" width="80%" />
 
 <br>
 
@@ -906,36 +476,7 @@ Since we are using git.
 
 <br>
 
-<img src="assets/new_project_3.png" width="80%" style="display: block; margin: auto;" />
-
-  <p>
-  <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig"
-  data-toggle="collapse" data-target="#fig-new_project_3">
-  Past versions of new_project_3.png
-  </button>
-  </p>
-
-  <div id="fig-new_project_3" class="collapse">
-  <div class="table-responsive">
-  <table class="table table-condensed table-hover">
-  <thead>
-  <tr>
-  <th>Version</th>
-  <th>Author</th>
-  <th>Date</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td><a href="https://github.com/nt246/NTRES6940-data-science/blob/3de83ac3e89337e898c4ae065857252fc80963ac/docs/assets/new_project_3.png" target="_blank">3de83ac</a></td>
-  <td>makopyan</td>
-  <td>2020-09-14</td>
-  </tr>
-  </tbody>
-  </table>
-  </div>
-  </div>
-  
+<img src="assets/new_project_3.png" width="80%" />
 
 
 <br>
@@ -944,36 +485,7 @@ Do you see what I see?
 
 <br>
 
-<img src="assets/new_project_4.png" width="80%" style="display: block; margin: auto;" />
-
-  <p>
-  <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig"
-  data-toggle="collapse" data-target="#fig-new_project_4">
-  Past versions of new_project_4.png
-  </button>
-  </p>
-
-  <div id="fig-new_project_4" class="collapse">
-  <div class="table-responsive">
-  <table class="table table-condensed table-hover">
-  <thead>
-  <tr>
-  <th>Version</th>
-  <th>Author</th>
-  <th>Date</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td><a href="https://github.com/nt246/NTRES6940-data-science/blob/3de83ac3e89337e898c4ae065857252fc80963ac/docs/assets/new_project_4.png" target="_blank">3de83ac</a></td>
-  <td>makopyan</td>
-  <td>2020-09-14</td>
-  </tr>
-  </tbody>
-  </table>
-  </div>
-  </div>
-  
+<img src="assets/new_project_4.png" width="80%" />
 
 <br>
 
@@ -1073,48 +585,3 @@ We have created a GitHub Classroom organization for the class. To access you per
 
 
 
-
-<br>
-<p>
-<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo"
-  data-toggle="collapse" data-target="#workflowr-sessioninfo"
-  style = "display: block;">
-  <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
-  Session information
-</button>
-</p>
-
-<div id="workflowr-sessioninfo" class="collapse">
-
-```r
-sessionInfo()
-```
-
-```
-R version 3.6.1 (2019-07-05)
-Platform: x86_64-apple-darwin15.6.0 (64-bit)
-Running under: macOS High Sierra 10.13.6
-
-Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRblas.0.dylib
-LAPACK: /Library/Frameworks/R.framework/Versions/3.6/Resources/lib/libRlapack.dylib
-
-locale:
-[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
-
-attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
-
-other attached packages:
-[1] usethis_1.5.1
-
-loaded via a namespace (and not attached):
- [1] workflowr_1.6.2 Rcpp_1.0.4.6    rprojroot_1.3-2 digest_0.6.23  
- [5] later_1.0.0     R6_2.4.1        backports_1.1.5 git2r_0.26.1   
- [9] magrittr_1.5    evaluate_0.14   stringi_1.4.3   rlang_0.4.4    
-[13] fs_1.3.1        promises_1.1.0  whisker_0.4     rmarkdown_1.18 
-[17] tools_3.6.1     stringr_1.4.0   glue_1.3.1      httpuv_1.5.2   
-[21] xfun_0.11       yaml_2.2.0      compiler_3.6.1  htmltools_0.4.0
-[25] knitr_1.26     
-```
-</div>
