@@ -124,7 +124,7 @@ Let's take a deeper look at these two files. So much of learning to code is look
 
 #### Activity
 
-Introduce yourself to the person sitting next to you. Discuss what you notice with these two files. Then we will have a brief share-out with the group. (5 mins)
+In your breakout rooms, discuss what you notice with these two files. Then we will have a brief share-out with the group. (5 mins)
 
 
 ### Markdown text
