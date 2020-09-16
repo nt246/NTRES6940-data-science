@@ -19,7 +19,7 @@ Assignment 1: R markdown template
     these.
 
   - You will use the product of this assignment as a template for your
-    second assignment, where you will actually fill out the code chunks.
+    third assignment, where you will actually fill out the code chunks.
 
   - You will have to submit your assignment through GitHub. You can
     complete your template after Wednesday’s class (09/16/20), but don’t
@@ -81,7 +81,7 @@ economist_data <- read_csv("https://raw.githubusercontent.com/nt246/NTRES6940-da
 
 <br>
 
-#### 1.3 Make of color of all points in the previous plot red.
+#### 1.3 Make the color of all points in the previous plot red.
 
 ``` r
 ## Write your code here
