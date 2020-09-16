@@ -4,7 +4,7 @@ Assignment 1: R markdown template
 Instructions: Please read through this before you begin
 -------------------------------------------------------
 
--   This assignment is due by **10pm on Wednesday 03/11/20**.
+-   This assignment is due by **10pm on Wednesday 09/23/20**.
 
 -   For this assignment, please **reproduce this markdown file exactly as shown** using R markdown.
 
