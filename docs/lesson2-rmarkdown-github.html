@@ -466,6 +466,7 @@ div.tocify {
 <li>There is black and blue text (we’ll ignore the green text for now).</li>
 </ul>
 <p><img src="assets/rmarkdown.png" width="80%" /></p>
+<p><br></p>
 </div>
 <div id="knit-your-rmarkdown-file" class="section level3">
 <h3>Knit your RMarkdown file</h3>
@@ -475,14 +476,17 @@ div.tocify {
 <p><br></p>
 <p><img src="assets/rmarkdown_side_by_side.png" width="80%" /></p>
 <p>Let’s take a deeper look at these two files. So much of learning to code is looking for patterns.</p>
+<p><br></p>
 <div id="activity" class="section level4">
 <h4>Activity</h4>
-<p>Introduce yourself to the person sitting next to you. Discuss what you notice with these two files. Then we will have a brief share-out with the group. (5 mins)</p>
+<p>In your breakout rooms, discuss what you notice with these two files. Then we will have a brief share-out with the group. (5 mins)</p>
+<p><br></p>
 </div>
 </div>
 <div id="markdown-text" class="section level3">
 <h3>Markdown text</h3>
 <p>Let’s look more deeply at the Markdown text. Markdown is a formatting language for plain text, and there are only a handful of rules to know.</p>
+<p><br></p>
 <div id="text-formatting" class="section level4">
 <h4>Text formatting</h4>
 <p>Notice the syntax for:</p>
@@ -498,6 +502,7 @@ div.tocify {
 <p>To see more of the rules, let’s look at RStudio’s built-in reference. Let’s do this: Help &gt; Markdown Quick Reference</p>
 <p>Another good resource is the cheatsheet from RStudio, let’s download it from <a href="https://rstudio.com/resources/cheatsheets/">here</a> (scroll down to find it)</p>
 <p>There are also other good markdown <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet">cheatsheets</a> available online.</p>
+<p><br></p>
 </div>
 </div>
 <div id="activity-1" class="section level3">
@@ -506,6 +511,7 @@ div.tocify {
 <p>You can find hints in the Markdown Quick Reference (in the menu bar: Help &gt; Markdown Quick Reference).</p>
 <p>Reknit your html file to see how your formatting works out.</p>
 <p>If you have more time, try adding a URL and a table</p>
+<p><br></p>
 <div id="figures-and-tables" class="section level4">
 <h4>Figures and tables</h4>
 <p>To show a figure from a url use <code>![caption](url_to_image)</code> To show a figure from a local file <code>![caption](local_path_to_image)</code></p>
@@ -515,6 +521,7 @@ div.tocify {
 | 12 | 12 | 12 | 12 |
 | 123 | 123 | 123 | 123 |
 | 1 | 1 | 1 | 1 | </code></pre>
+<p><br></p>
 </div>
 </div>
 <div id="r-code" class="section level3">
@@ -528,6 +535,7 @@ div.tocify {
 <p>There are a couple of things going on here.</p>
 <p><code>summary()</code> and <code>plot()</code> are called <strong>functions</strong>; they are operations and these ones come installed with R. We call functions installed with R <strong>base R functions</strong>. This is similar to Excel’s functions and formulas.</p>
 <p><code>cars</code> and <code>pressure</code> are small datasets that come installed with R.</p>
+<p><br></p>
 </div>
 <div id="code-chunks" class="section level3">
 <h3>Code chunks</h3>
@@ -632,6 +640,7 @@ div.tocify {
 Labels are optional, but will become powerful as you become a powerful R user. But if you label your code chunks, you must have unique labels. So while a third option for creating a new code chunk is to copy-paste-edit an existing one, you’ll have to remember to relabel it something unique. We will explore this more in a moment. Notice how the word <code>FALSE</code> is all capitals. Capitalization matters in R; <code>TRUE/FALSE</code> is something that R can interpret as a binary yes/no or 1/0.</p>
 </blockquote>
 <p>There are many more options available that we will discuss as we get more familiar with RMarkdown.</p>
+<p><br></p>
 <div id="new-code-chunks" class="section level4">
 <h4>New code chunks</h4>
 <p>We can create a new chunk in your RMarkdown first in one of these ways:</p>
@@ -649,6 +658,7 @@ Labels are optional, but will become powerful as you become a powerful R user. B
 <blockquote>
 <p>Troubleshooting: Did trying to knit your document produce an error? Start by looking at your code again. Do you have both open <code>(</code> and close <code>)</code> parentheses? Are your code chunk fences (```) correct?</p>
 </blockquote>
+<p><br></p>
 </div>
 </div>
 </div>
@@ -658,9 +668,11 @@ Labels are optional, but will become powerful as you become a powerful R user. B
 <pre class="r"><code>summary(pressure)</code></pre>
 <p>We can also do math as we can in Excel: type the following and press enter.</p>
 <pre class="r"><code>8*22.3</code></pre>
+<p><br> <br></p>
 <div id="error-messages" class="section level3">
 <h3>Error messages</h3>
 <p>When you code in R or any language, you will encounter errors. We will discuss troubleshooting tips more deeply later on in the course; here we will just get a little comfortable with them.</p>
+<p><br></p>
 <div id="r-error-messages" class="section level4">
 <h4>R error messages</h4>
 <p><strong>Error messages are your friends</strong>.</p>
@@ -670,6 +682,7 @@ Labels are optional, but will become powerful as you become a powerful R user. B
 <p>Error messages are R’s way of saying that it didn’t understand what you said. This is like in English when we say “What?” or “Pardon?” And like in spoken language, some error messages are more helpful than others. Like if someone says “Sorry, could you repeat that last word” rather than only “What?”</p>
 <p>In this case, R is saying “I didn’t understand <code>pressur</code>”. R tracks the datasets it has available as objects, as well as any additional objects that you make. <code>pressur</code> is not among them, so it says that it is not found.</p>
 <p>The first step of becoming a proficient R user is to move past the exasperation of “it’s not working!” and <strong>read the error message</strong>. Errors will be less frustrating with the mindset that <strong>most likely the problem is your typo or misuse</strong>, and not that R is broken or hates you. Read the error message to learn what is wrong.</p>
+<p><br></p>
 </div>
 <div id="rmarkdown-error-messages" class="section level4">
 <h4>RMarkdown error messages</h4>
@@ -682,12 +695,14 @@ Execution halted</code></pre>
 <p>First: This error message starts out in a pretty cryptic way: I don’t expect you to know what <code>parse_block(g[-1]...</code> means. But, expecting that the error message is really trying to help me, I continue scanning the message which allows me to identify the problem: <code>duplicate label 'cars'</code>.</p>
 <p>Second: This error is in the “R Markdown” tab on the bottom left of the RStudio IDE; it is not in the Console. That is because when RMarkdown is knitted, it actually spins up an R workspace separately from what is passed to the Console; this is one of the ways that R Markdown enables reproducibility because it is a self-contained instance of R.</p>
 <p>You can click back and forth between the Console and the R Markdown tab; this is something to look out for as we continue. We will work in the Console and R Markdown and will discuss strategies for where and how to work as we go. Let’s click back to Console now.</p>
+<p><br></p>
 </div>
 </div>
 <div id="running-rmarkdown-code-chunks" class="section level3">
 <h3>Running RMarkdown code chunks</h3>
 <p>So far we have written code in our RMarkdown file that is executed when we knit the file. We have also written code directly in the Console that is executed when we press enter/return. Additionally, we can write code in an RMarkdown code chunk and execute it by sending it into the Console (i.e. we can execute code without knitting the document).</p>
 <p>How do we do it? There are several ways. Let’s do each of these with <code>summary(pressure)</code>.</p>
+<p><br></p>
 <p><strong>First approach: send R code to the Console.</strong> This approach involves selecting (highlighting) the R code only (<code>summary(pressure)</code>), not any of the backticks/fences from the code chunk. (If you see <code>Error: attempt to use zero-length variable name</code> it is because you have accidentally highlighted the backticks along with the R code. Try again (and don’t forget that you can add spaces within the code chunk or make your RStudio session bigger (View &gt; Zoom In)).</p>
 <p>Do this by selecting code and then:</p>
 <ol style="list-style-type: decimal">
@@ -699,11 +714,13 @@ Execution halted</code></pre>
 <li>keyboard shortcut: command-return</li>
 </ol></li>
 </ol>
+<p><br></p>
 <p><strong>Second approach: run full code chunk.</strong> Since we are already grouping relevant code together in chunks, it’s reasonable that we might want to run it all together at once.</p>
 <p>Do this by placing your curser within a code chunk and then:</p>
 <ol style="list-style-type: decimal">
 <li>clicking the little black down arrow next to the Run green arrow and selecting Run Current Chunk. Notice there are also options to run all chunks, run all chunks above or below…</li>
 </ol>
+<p><br></p>
 </div>
 <div id="writing-code-in-a-file-vs.console" class="section level3">
 <h3>Writing code in a file vs. Console</h3>
@@ -711,11 +728,13 @@ Execution halted</code></pre>
 <p>When should you write code in a file (.Rmd or .R script) and when should you write it in the Console?</p>
 <p>We write things in the file that are necessary for our analysis and that we want to preserve for reproducibility; we will be doing this throughout the workshop to give you a good sense of this. A file is also a great way for you to take notes to yourself.</p>
 <p>The Console is good for doing quick calculations like <code>8*22.3</code>, testing functions, for calling help pages, for installing packages.</p>
+<p><br></p>
 </div>
 <div id="activity-2" class="section level3">
 <h3>Activity</h3>
 <p>Practice what you’ve learned by creating a brief CV. The title should be your name, and you should include headings for (at least) education or employment. Each of the sections should include a bulleted list of jobs/degrees. Highlight the year in bold and add a footnote.</p>
-<p>Render to html format, and if you’re comfortable, share with the class by posting it to the general channel in Slack.</p>
+<p>Render to html format, and if you’re comfortable, share with the class by posting it to the <code>lecture-chat</code> channel in Slack.</p>
+<p><br></p>
 </div>
 <div id="other-output-formats" class="section level3">
 <h3>Other output formats</h3>
@@ -743,10 +762,17 @@ output:
 <p>Before we do the setup configuration, let us take a moment to talk about what Git and GitHub are.</p>
 <p>It can help to think of GitHub like Dropbox: you identify folders for GitHub to ‘track’ and it syncs them to the cloud. This is good first-and-foremost because it makes a back-up copy of your files: if your computer dies not all of your work is gone. But with GitHub, you have to be more deliberate about when syncs are made. This is because GitHub saves these as different versions, with information about who contributed when, line-by-line. This makes collaboration easier, and it allows you to roll-back to different versions or contribute to others’ work.</p>
 <p>git will track and version your files, GitHub stores this online and enables you to collaborate with others (and yourself). Although git and GitHub are two different things, distinct from each other, we can think of them as a bundle since we will always use them together.</p>
+<p><br></p>
+<div id="say-hello-to-your-course-repo-on-github" class="section level3">
+<h3>Say hello to your course repo on GitHub</h3>
+<p>First, let us each access our course repo. We have created a GitHub Classroom organization for the class. To access you personal course repo through which you will be submitting your assignments and communicating with us, click <a href="https://classroom.github.com/a/SA7QIA7g">here</a></p>
+<p><br></p>
+</div>
 <div id="configure-github" class="section level3">
 <h3>Configure GitHub</h3>
 <p>This set up is a one-time thing! You will only have to do this once per computer. We’ll walk through this together. In a browser, go to github.com and to your profile page as a reminder.</p>
 <p><strong>You will need to remember your GitHub username, the email address you created your GitHub account with, and your GitHub password.</strong></p>
+<p><br></p>
 <div id="installing-packages" class="section level4">
 <h4>Installing packages</h4>
 <p>We will be using the <code>use_git_config()</code> function from the <code>usethis</code> package. We first need to install this package. Type the following in a new script:</p>
@@ -759,6 +785,7 @@ install.packages(&quot;usethis&quot;)</code></pre>
 <pre class="r"><code>## setup packages
 library(usethis) # install.packages(&quot;usethis&quot;)</code></pre>
 <p>When <code>usethis</code> is successfully attached, you won’t get any feedback in the Console. So unless you get an error, this worked for you.</p>
+<p><br></p>
 </div>
 <div id="setting-up-git-on-your-system" class="section level4">
 <h4>Setting up git on your system</h4>
@@ -766,18 +793,17 @@ library(usethis) # install.packages(&quot;usethis&quot;)</code></pre>
 <pre class="r"><code>## use_git_config function with my username and email as arguments
 use_git_config(user.name = &quot;jules32&quot;, user.email = &quot;jules32@example.org&quot;)</code></pre>
 <p>If you see <code>Error in use_git_config() : could not find function &quot;use_git_config&quot;</code> please run <code>library(&quot;usethis&quot;)</code></p>
+<p><br></p>
 </div>
 </div>
 <div id="ensure-that-gitgithubrstudio-are-communicating" class="section level3">
 <h3>Ensure that Git/GitHub/RStudio are communicating</h3>
 <p>We are going to go through a few steps to ensure the Git/GitHub are communicating with RStudio</p>
-<div id="rstudio-new-project" class="section level4">
-<h4>RStudio: New Project</h4>
+<p><br> #### RStudio: New Project</p>
 <p>Click on New Project. There are a few different ways; you could also go to File &gt; New Project…, or click the little green + with the R box in the top left. also in the File menu).</p>
 <p><br></p>
 <p><img src="assets/new_project_1.png" width="80%" /></p>
 <p><br></p>
-</div>
 <div id="select-version-control" class="section level4">
 <h4>Select Version Control</h4>
 <p><br></p>
@@ -853,13 +879,9 @@ use_git_config(user.name = &quot;jules32&quot;, user.email = &quot;jules32@examp
 <blockquote>
 <p><em>Note</em>: on my laptop, even though I navigated to /usr/local/bin/git, it then automatically redirect because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.</p>
 </blockquote>
-<p><br></p>
+<p><br> <br></p>
 </div>
 </div>
-</div>
-<div id="say-hello-to-your-course-repo-on-github" class="section level3">
-<h3>Say hello to your course repo on GitHub</h3>
-<p>We have created a GitHub Classroom organization for the class. To access you personal course repo through which you will be submitting your assignments and communicating with us, click <a href="https://classroom.github.com/a/SA7QIA7g">here</a></p>
 </div>
 <div id="end-rmarkdowngithub-session" class="section level3">
 <h3>END <strong>RMarkdown/GitHub</strong> session!</h3>
