@@ -99,6 +99,8 @@ Let's have a look at this file — it's not blank; there is some initial text is
   
 <img src="assets/rmarkdown.png" width="80%" />
 
+<br>
+
 ### Knit your RMarkdown file
 
 Let's go ahead and "Knit" by clicking the blue yarn at the top of the RMarkdown file. 
@@ -114,14 +116,19 @@ Let's have a look at them side-by-side:
 
 Let's take a deeper look at these two files. So much of learning to code is looking for patterns.
 
+<br>
+
 #### Activity
 
-Introduce yourself to the person sitting next to you. Discuss what you notice with these two files. Then we will have a brief share-out with the group. (5 mins)
+In your breakout rooms, discuss what you notice with these two files. Then we will have a brief share-out with the group. (5 mins)
 
+<br>
 
 ### Markdown text
 
 Let's look more deeply at the Markdown text. Markdown is a formatting language for plain text, and there are only a handful of rules to know. 
+
+<br>
 
 #### Text formatting
 
@@ -141,6 +148,7 @@ Another good resource is the cheatsheet from RStudio, let's download it from [he
 
 There are also other good markdown [cheatsheets](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet) available online.
 
+<br>
 
 ### Activity
 Make the following changes to your RMarkdown document:
@@ -154,6 +162,7 @@ Reknit your html file to see how your formatting works out.
 
 If you have more time, try adding a URL and a table
 
+<br>
 
 #### Figures and tables
 
@@ -171,6 +180,8 @@ To manually create a table, use the following syntax. Notice the text alignment 
 | 1 | 1 | 1 | 1 | 
 ```
 
+<br>
+
 ### R code
 
 Let's look at the R code that we see executed in our knitted document. 
@@ -186,6 +197,7 @@ There are a couple of things going on here.
 
 `cars` and `pressure` are small datasets that come installed with R. 
 
+<br>
 
 ### Code chunks
 
@@ -246,6 +258,8 @@ Notice how the word `FALSE` is all capitals. Capitalization matters in R; `TRUE/
 
 There are many more options available that we will discuss as we get more familiar with RMarkdown.
 
+<br>
+
 #### New code chunks
 
 We can create a new chunk in your RMarkdown first in one of these ways: 
@@ -270,6 +284,7 @@ We can knit this and see the summary of `pressure`. This is the same data that w
 
 > Troubleshooting: Did trying to knit your document produce an error? Start by looking at your code again. Do you have both open `(` and close `)` parentheses? Are your code chunk fences (```) correct?
 
+<br>
 
 ## R code in the Console
 So far we have been telling R to execute our code only when we knit the document, but we can also write code in the Console to interact with the live R process.
@@ -284,9 +299,15 @@ We can also do math as we can in Excel: type the following and press enter.
 ```r
 8*22.3
 ```
+
+<br>
+<br>
+
 ### Error messages
 
 When you code in R or any language, you will encounter errors. We will discuss troubleshooting tips more deeply later on in the course; here we will just get a little comfortable with them. 
+
+<br>
 
 #### R error messages
 
@@ -304,6 +325,8 @@ Error messages are R's way of saying that it didn't understand what you said. Th
 In this case, R is saying "I didn't understand `pressur`". R tracks the datasets it has available as objects, as well as any additional objects that you make. `pressur` is not among them, so it says that it is not found. 
 
 The first step of becoming a proficient R user is to move past the exasperation of "it's not working!" and **read the error message**. Errors will be less frustrating with the mindset that **most likely the problem is your typo or misuse**, and not that R is broken or hates you. Read the error message to learn what is wrong. 
+
+<br>
 
 #### RMarkdown error messages
 
@@ -324,11 +347,15 @@ Second: This error is in the "R Markdown" tab on the bottom left of the RStudio 
 
 You can click back and forth between the Console and the R Markdown tab; this is something to look out for as we continue. We will work in the Console and R Markdown and will discuss strategies for where and how to work as we go. Let's click back to Console now. 
 
+<br>
+
 ### Running RMarkdown code chunks 
 
 So far we have written code in our RMarkdown file that is executed when we knit the file. We have also written code directly in the Console that is executed when we press enter/return. Additionally, we can write code in an RMarkdown code chunk and execute it by sending it into the Console (i.e. we can execute code without knitting the document). 
 
 How do we do it? There are several ways. Let's do each of these with `summary(pressure)`.
+
+<br>
 
 **First approach: send R code to the Console.**
 This approach involves selecting (highlighting) the R code only (`summary(pressure)`), not any of the backticks/fences from the code chunk. (If you see `Error: attempt to use zero-length variable name` it is because you have accidentally highlighted the backticks along with the R code. Try again (and don't forget that you can add spaces within the code chunk or make your RStudio session bigger (View > Zoom In)). 
@@ -341,12 +368,16 @@ Do this by selecting code and then:
     b. the menu bar: Code > Run Selected Line(s)
     c. keyboard shortcut: command-return
 
+<br>
+
 **Second approach: run full code chunk.**
 Since we are already grouping relevant code together in chunks, it's reasonable that we might want to run it all together at once. 
 
 Do this by placing your curser within a code chunk and then: 
 
 1. clicking the little black down arrow next to the Run green arrow and selecting Run Current Chunk. Notice there are also options to run all chunks, run all chunks above or below...
+
+<br>
 
 ### Writing code in a file vs. Console
 
@@ -358,12 +389,14 @@ We write things in the file that are necessary for our analysis and that we want
 
 The Console is good for doing quick calculations like `8*22.3`, testing functions, for calling help pages, for installing packages. 
 
+<br>
 
 ### Activity
 Practice what you’ve learned by creating a brief CV. The title should be your name, and you should include headings for (at least) education or employment. Each of the sections should include a bulleted list of jobs/degrees. Highlight the year in bold and add a footnote.
 
-Render to html format, and if you're comfortable, share with the class by posting it to the general channel in Slack.
+Render to html format, and if you're comfortable, share with the class by posting it to the `lecture-chat` channel in Slack.
 
+<br>
 
 ### Other output formats
 
@@ -402,12 +435,20 @@ It can help to think of GitHub like Dropbox: you identify folders for GitHub to 
 
 git will track and version your files, GitHub stores this online and enables you to collaborate with others (and yourself). Although git and GitHub are two different things, distinct from each other, we can think of them as a bundle since we will always use them together. 
 
+<br>
+
+### Say hello to your course repo on GitHub
+First, let us each access our course repo. We have created a GitHub Classroom organization for the class. To access you personal course repo through which you will be submitting your assignments and communicating with us, click [here](https://classroom.github.com/a/SA7QIA7g)
+
+<br>
 
 ### Configure GitHub
 
 This set up is a one-time thing! You will only have to do this once per computer. We'll walk through this together. In a browser, go to github.com and to your profile page as a reminder.   
 
 **You will need to remember your GitHub username, the email address you created your GitHub account with, and your GitHub password.** 
+
+<br>
 
 #### Installing packages
 
@@ -435,6 +476,7 @@ library(usethis) # install.packages("usethis")
 
 When `usethis` is successfully attached, you won't get any feedback in the Console. So unless you get an error, this worked for you.
 
+<br>
 
 #### Setting up git on your system
 
@@ -448,10 +490,13 @@ use_git_config(user.name = "jules32", user.email = "jules32@example.org")
 
 If you see `Error in use_git_config() : could not find function "use_git_config"` please run `library("usethis")`
 
+<br>
+
 ### Ensure that Git/GitHub/RStudio are communicating
 
 We are going to go through a few steps to ensure the Git/GitHub are communicating with RStudio
 
+<br>
 #### RStudio: New Project
 
 Click on New Project. There are a few different ways; you could also go to File > New Project..., or click the little green + with the R box in the top left.
@@ -573,13 +618,9 @@ If not, click the browse button and navigate there.
 
 >*Note*: on my laptop, even though I navigated to /usr/local/bin/git, it then automatically redirect because /usr/local/bin/git was an alias on my computer. That is fine. Click OK.
 
+
 <br>
-
-
-### Say hello to your course repo on GitHub
-We have created a GitHub Classroom organization for the class. To access you personal course repo through which you will be submitting your assignments and communicating with us, click [here](https://classroom.github.com/a/SA7QIA7g)
-
-
+<br>
 
 ### END **RMarkdown/GitHub** session!
 
