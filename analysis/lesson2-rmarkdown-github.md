@@ -22,7 +22,7 @@ output:
 **Additional resources**:  
 - [RStudio's R markdown cheatsheet](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)  
 - The [Rmd website](https://rmarkdown.rstudio.com/) has a fantastic walk-through [tutorial](https://rmarkdown.rstudio.com/lesson-1.html) that gives a great overview of R Markdown  
-- Yihui's [Rmd book](https://bookdown.org/yihui/rmarkdown/) for lots more on R Markdown.
+- Yihui's [Rmd book](https://bookdown.org/yihui/rmarkdown/) for lots more on R Markdown.  
 
 
 <br>  
@@ -45,7 +45,8 @@ output:
 
 * Course communication will primarily be through Slack. Please make sure to join our workspace to not miss announcements about scheduling changes etc.
 * Course website and readings - see the Lectures tab of the [course website](https://nt246.github.io/NTRES6940-data-science/lesson2-rmarkdown-github.html)
-* Remember office hours / hacky hour Friday 12.20 - 2.15pm (on Zoom)
+* Remember office hours / hacky hour Friday 12.20 - 2.15pm (on Zoom)  
+* Assignment 1 due 9/23  
 
 <br>
 
@@ -73,6 +74,8 @@ This is really critical to reproducibility, and it also saves time. This documen
 This 1-minute video provides a great introduction to RMarkdown: [What is RMarkdown?](https://vimeo.com/178485416)
 
 Now let's explore the RMarkdown format a bit ourselves to get started. 
+
+<br>
 
 ### Create an RMarkdown file
 
