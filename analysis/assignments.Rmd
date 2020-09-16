@@ -11,7 +11,7 @@ Each Wednesday, we will assign a problem set that applies the concepts covered i
 
 ***
 
-### Assignment 1  
+### Assignment 1: [R markdown template](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_1.md)  
 >Due Wed 9/23 by 10pm EDT  
 
 ***
