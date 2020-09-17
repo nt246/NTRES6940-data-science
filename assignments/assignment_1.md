@@ -60,7 +60,7 @@ First, we load the data using the following
 code.
 
 ``` r
-economist_data <- read_csv("https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/EconomistData.csv") # Window users may need to change the slashes in this path
+## Write your code here
 ```
 
 <br>
@@ -173,20 +173,12 @@ This excercise uses the dataset `economics` from the ggplot2 package. It
 was produced from US economic time series data available from
 <http://research.stlouisfed.org/fred2>. It descibes the number of
 unemployed persons (`unemploy`), among other variables, in the US from
-1967 to 2015.
+1967 to
+2015.
 
 ``` r
-head(economics) %>% kable()
+## Write your code here
 ```
-
-| date       |   pce |    pop | psavert | uempmed | unemploy |
-| :--------- | ----: | -----: | ------: | ------: | -------: |
-| 1967-07-01 | 506.7 | 198712 |    12.6 |     4.5 |     2944 |
-| 1967-08-01 | 509.8 | 198911 |    12.6 |     4.7 |     2945 |
-| 1967-09-01 | 515.6 | 199113 |    11.9 |     4.6 |     2958 |
-| 1967-10-01 | 512.2 | 199311 |    12.9 |     4.9 |     3143 |
-| 1967-11-01 | 517.4 | 199498 |    12.8 |     4.7 |     3066 |
-| 1967-12-01 | 525.1 | 199657 |    11.8 |     4.8 |     3018 |
 
 <br>
 
