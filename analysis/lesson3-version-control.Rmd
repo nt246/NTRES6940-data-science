@@ -106,7 +106,7 @@ Examples:
 
 <br>
 
-### Say hello to your course repo on GitHub
+### Reconnecting with your course repo on GitHub
 As we discussed at the end of last class, we have created a GitHub Classroom organization for the class. You should all have accessed your personal course repo through which you will be submitting your assignments and communicating with us. If not, click [here](https://classroom.github.com/a/SA7QIA7g) and select your name from the list (or just click continue if you don't see your name there).
 
 Once you land on your repo page, notice that it is hosted within our course organizational account `therkildsen-class`, not your personal account (see the path in the top left corner). To make this repo also show up on your personal account page, click the "Star" button on the top right of the page. Now if you click on the profile information in the very top right corner, and select the "Your stars" option, you'll be taken to a list of all the repos you have starred and your course repo should show up here (it should be named something like `therkildsen-class/ntres-6940-YOUR_USER_NAME`). Click on the repo name to return to your course repo.
