@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Lesson 10: Collaborating with GitHub</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Collaborative and Reproducible Data Science in R</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="syllabus.html">Syllabus</a>
+</li>
+<li>
+  <a href="installation.html">Installation</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Lectures
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Lecture notes</li>
+    <li>
+      <a href="lesson1-rstudio.html">Lesson 1: R Studio</a>
+    </li>
+    <li>
+      <a href="lesson2-rmarkdown-github.html">Lesson 2: RMarkdown and GitHub</a>
+    </li>
+    <li>
+      <a href="lesson3-version-control.html">Lesson 3: Version Control</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="assignments.html">Assignments</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Lesson 10: Collaborating with GitHub</h1>
+
+</div>
+
+
+<p><br></p>
+<div id="readings" class="section level2">
+<h2>Readings</h2>
+<p>There are no required readings for today’s lesson.</p>
+<p><br></p>
+<p><strong>Acknowledgements</strong>: Today’s lecture is adapted from the excellent <a href="https://rstudio-conf-2020.github.io/r-for-excel/">R for Excel users</a> course by Julia Stewart Lowndes and Allison Horst.</p>
+<p><br></p>
+</div>
+<div id="learning-objectives" class="section level2">
+<h2>Learning objectives</h2>
+<p>By the end of this class you will be able to:</p>
+<ul>
+<li>Create a new repository in your personal Github account</li>
+<li>Give repo privileges to a collaborator</li>
+<li>Collaborate on a repo with your partner</li>
+<li>Set up a free website through GitHub Pages</li>
+</ul>
+<p><br></p>
+</div>
+<div id="collaborating-with-github" class="section level2">
+<h2>Collaborating with GitHub</h2>
+<p>We’re going to collaborate with a partner to set up a website, which will tie together everything we’ve been learning.</p>
+<p><br></p>
+<div id="create-repo-partner-1" class="section level3">
+<h3>Create repo (Partner 1)</h3>
+<p>Team up with a partner. Partner 1 will create a new repository in their personal Github account.</p>
+<p><a href="https://github.com/new">Click here to create a new repo.</a></p>
+<p>Let’s name it <code>r-collab</code>.</p>
+<p><img src="assets/gh_create_repo.png" width="80%" /></p>
+<p><br></p>
+</div>
+<div id="give-your-collaborator-privileges-partner-1-and-2" class="section level3">
+<h3>Give your collaborator privileges (Partner 1 and 2)</h3>
+<p>Now, Partner 1, go into Settings &gt; Collaborators &gt; enter Partner 2’s (your collaborator’s) username.</p>
+<p>Partner 2 then needs to check their email and accept as a collaborator. Notice that your collaborator has “Push access to the repository” (highlighted below):</p>
+<p><img src="assets/gh_collab.png" width="80%" /></p>
+<p><br></p>
+</div>
+<div id="clone-to-a-new-r-project-partner-1" class="section level3">
+<h3>Clone to a new R Project (Partner 1)</h3>
+<p>Now let’s have Partner 1 clone the repository to their local computer. We’ll do this through RStudio like we did before, making sure to select “Open in a new Session”.</p>
+<p><br></p>
+<p><img src="assets/github_clone_newproject.png" width="450px"></p>
+<p><br> <br> Opening this Project in a new Session opens up a new world of awesomeness from RStudio. Having different RStudio project sessions allows you to keep your work separate and organized. So you can collaborate with this collaborator on this repository while also working on your other repository from this morning. I tend to have a lot of projects going at one time:</p>
+<p><br></p>
+<p><img src="assets/Rproj_screenshot.jpg" /></p>
+<p><br></p>
+<p>Have a look in your git tab.</p>
+<p>When you first clone a repo through RStudio, RStudio will add an <code>.Rproj</code> file to your repo. And if you didn’t add a <code>.gitignore</code> file when you originally created the repo on GitHub.com, RStudio will also add this for you. So, Partner 1, let’s go ahead and sync this back to GitHub.com.</p>
+<p>Remember:</p>
+<p><img src="assets/commit_steps.png" /></p>
+<p><br></p>
+<p>Let’s confirm that this was synced by looking at GitHub.com again. You may have to refresh the page, but you should see this commit where you added the <code>.Rproj</code> file.</p>
+<p><br></p>
+</div>
+<div id="clone-to-a-new-r-project-partner-2" class="section level3">
+<h3>Clone to a new R Project (Partner 2)</h3>
+<p>Now it’s Partner 2’s turn! Partner 2, clone this repository following the same steps that Partner 1 just did. When you clone it, RStudio should not create any new files — why? Partner 1 already created and pushed the <code>.Rproj</code> and <code>.gitignore</code> files so they already exist in the repo.</p>
+<p><br></p>
+</div>
+<div id="edit-the-readme-file-partner-2" class="section level3">
+<h3>Edit the README file (Partner 2)</h3>
+<p>Let’s also open up the README.md. This is a Markdown file, which is the same language we just learned with R Markdown. It’s like an R Markdown file without the abilities to run R code.</p>
+<p>We will edit the file and illustrate how GitHub tracks files that have been modified (to complement seeing how it tracks files that have been added.</p>
+<p>README files are common in programming; they are the first place that someone will look to see why code exists and how to run it.</p>
+<p>In my README, I’ll write:</p>
+<p><code>This repo is for my collaborative website.</code></p>
+<p>When I save this, notice how it shows up in my Git tab. It has a blue “M”: GitHub is already tracking this file, and tracking it line-by-line, so it knows that something is different: it’s Modified with an M.</p>
+<p>And now let’s sync back to GitHub: Pull, Stage, Commit, Push</p>
+<p>When we inspect on GitHub.com, click to view all the commits, you’ll see commits logged from both Partner 1 and 2!</p>
+<blockquote>
+<p>Question: Would you still be able clone a repository that you are not a collaborator on? What do you think would happen? Try it! Can you sync back?</p>
+</blockquote>
+</div>
+<div id="state-of-the-repository" class="section level3">
+<h3>State of the Repository</h3>
+<p>OK, so where do things stand right now? GitHub.com has the most recent versions of all the repository’s files. Partner 2 also has these most recent versions locally. How about Partner 1?</p>
+<p>Partner 1 does not have the most recent versions of everything on their computer.</p>
+<p>Question: How can we change that? Or how could we even check?</p>
+<p>Answer: PULL.</p>
+<p>Let’s have Partner 1 go back to RStudio and Pull. If their files aren’t up-to-date, this will pull the most recent versions to their local computer. And if they already did have the most recent versions? Well, pulling doesn’t cost anything (other than an internet connection), so if everything is up-to-date, pulling is fine too.</p>
+<p>I recommend pulling every time you come back to a collaborative repository. Whether you haven’t opened RStudio in a month or you’ve just been away for a lunch break, pull. It might not be necessary, but it can save a lot of heartache later.</p>
+<p><br></p>
+</div>
+</div>
+<div id="create-your-website-homepage-parter-2" class="section level2">
+<h2>Create your website homepage (Parter 2)</h2>
+<p>Create a new RMarkdown file and name it <code>index.Rmd</code>. Here’s what you will do:</p>
+<ol style="list-style-type: decimal">
+<li>Pull</li>
+<li>Create a new RMarkdown file <strong>and name it <code>index.Rmd</code></strong>. Choose HTML as the output format. This will become the home page for your website</li>
+<li>Change the title inside the Rmd, call it “My Collaborative Website”</li>
+<li>Knit</li>
+<li>Save and sync your .Rmd and your .html files
+<ul>
+<li>(pull, stage, commit, push)</li>
+</ul></li>
+</ol>
+<p><br></p>
+</div>
+<div id="launch-the-website-partner-1" class="section level2">
+<h2>Launch the website (Partner 1)</h2>
+<ol style="list-style-type: decimal">
+<li><p>Go to Partner 1’s repo, mine is <a href="https://github.com/makopyan/r-collab" class="uri">https://github.com/makopyan/r-collab</a></p></li>
+<li>GitHub also supports this as a website (because we set up our gh-pages branch) Where is it? Figure out your website’s url from your github repo’s url — pay attention to urls. - note that the url starts with my <strong>username.github.io</strong>
+<ul>
+<li>my github repo: <a href="https://github.com/jules32/r-collab/" class="uri">https://github.com/jules32/r-collab/</a></li>
+<li>my website url: <a href="https://jules32.github.io/r-collab/" class="uri">https://jules32.github.io/r-collab/</a></li>
+<li>right now this displays the README as the “home page” for our website.</li>
+</ul></li>
+<li>Now navigate to your web page! For example:
+<ul>
+<li>my github repo: <a href="https://github.com/jules32/r-collab/julie_fisheries" class="uri">https://github.com/jules32/r-collab/julie_fisheries</a></li>
+<li>my website url: <a href="https://jules32.github.io/r-collab/julie_fisheries" class="uri">https://jules32.github.io/r-collab/julie_fisheries</a></li>
+</ul></li>
+</ol>
+<blockquote>
+<p><strong><em>ProTip</em></strong> Pay attention to URLs. An unsung skill of the modern analyst is to be able to navigate the internet by keeping an eye on patterns.</p>
+</blockquote>
+<p>So cool!</p>
+<p>You and your partner have created individual webpages here, but they do not talk to each other (i.e. you can’t navigate between them or even know that one exists from the other). We will not organize these pages into a website today, but you can practice this on your own with this hour-long tutorial: <a href="https://jules32.github.io/rmarkdown-website-tutorial/">Making free websites with RStudio’s R Markdown</a>.</p>
+<blockquote>
+<p><strong>Aside:</strong> On websites, if something is called <code>index.html</code>, that defaults to the home page. So <a href="https://jules32.github.io/r-collab/" class="uri">https://jules32.github.io/r-collab/</a> is the same as <a href="https://jules32.github.io/r-collab/index.html" class="uri">https://jules32.github.io/r-collab/index.html</a>. So as you think about building websites you can develop your index.Rmd file rather than your README.md as your homepage. #### Troubleshooting</p>
+</blockquote>
+<ul>
+<li>404 error? Remove trailing / from the url</li>
+<li>Wants you to download? Remove trailing .Rmd from the url</li>
+</ul>
+<p><br></p>
+</div>
+<div id="merge-conflicts" class="section level2">
+<h2>Merge conflicts</h2>
+<p>What kind of heartache are we talking about? Merge conflicts.</p>
+<p>Within a file, GitHub tracks changes line-by-line. So you can also have collaborators working on different lines within the same file and GitHub will be able to weave those changes into each other – that’s it’s job!</p>
+<p>It’s when you have collaborators working on <em>the same lines within the same file</em> that you can have <strong>merge conflicts</strong>. This is when there is a conflict within the same line so that GitHub can’t merge automatically. They need a human to help decide what information to keep (which is good because you don’t want GitHub to decide for you). Merge conflicts can be frustrating, but like R’s error messages, they are actually trying to help you.</p>
+<p>So let’s experience this together: we will create and solve a merge conflict. <strong>Stop and watch me demo how to create and solve a merge conflict with my Partner 2, and then you will do the same with your partner.</strong> Here’s what I am going to do:</p>
+<div id="pull-partners-1-and-2" class="section level3">
+<h3>Pull (Partners 1 and 2)</h3>
+<p>Both partners go to RStudio and pull so you have the most recent versions of all your files.</p>
+</div>
+<div id="create-a-conflict-partners-1-and-2" class="section level3">
+<h3>Create a conflict (Partners 1 and 2)</h3>
+<p>Now, Partners 1 and 2, both go to the README.md, and on Line 4, write something, anything. Save the README.</p>
+<p>I’m not going to give any examples because when you do this I want to be sure that both Partners to write something different. Save the README.</p>
+</div>
+<div id="sync-partner-2" class="section level3">
+<h3>Sync (Partner 2)</h3>
+<p>OK. Now, let’s have Partner 2 sync: pull, stage, commit, push. Just like normal.</p>
+<p>Great.</p>
+</div>
+<div id="sync-attempts-fixes-partner-1" class="section level3">
+<h3>Sync attempts &amp; fixes (Partner 1)</h3>
+<p>Now, let’s have Partner 1 (me) try.</p>
+<p>When I try to Pull, I get the first error we will see today: “Your local changes to README.md would be overwritten by merge”. GitHub is telling me that it knows I’ve modified my README, but since I haven’t staged and committed them, it can’t do its job and merge my conflicts with whatever is different about the version from GitHub.com.</p>
+<p>This is good: the alternative would be GitHub deciding which one to keep and it’s better that we have that kind of control and decision making.</p>
+<p><br></p>
+<p><img src="img/github_mergeconflict.png" width="80%" /></p>
+<p><br></p>
+<p>GitHub provides some guidance: either commit this work first, or “stash it”, which you can interpret that as moving the README temporarily to another folder somewhere outside of this GitHub repository so that you can successfully pull and then decide your next steps.</p>
+<p>Let’s follow their advice and have Partner 1 commit. Great. Now let’s try pulling again.</p>
+<p>New error: “Merge conflict in README…fix conflicts and then commit the result”.</p>
+<p>So this error is different from the previous: GitHub knows what has changed line-by-line in my file here, and it knows what has changed line-by-line in the version on GitHub.com. And it knows there is a conflict between them. So it’s asking me to now compare these changes, choose a preference, and commit.</p>
+<p><strong>Note:</strong> if Partner 2 and I were not intentionally in this demo editing exactly the same lines, GitHub likely could have done its job and merged this file successfully after our first error fix above.</p>
+<p><br></p>
+<p><img src="img/gh_mergeconflict2.png" width="80%" /></p>
+<p><br></p>
+<p>We will again follow GitHub’s advice to fix the conflicts. Let’s close this window and inspect. Did you notice two other things that happened along with this message?</p>
+<p>First&lt; in the Git tab, next to the README listing there are orange <code>U</code>s; this means that there is an unresolved conflict. It means my file is not staged with a check anymore because modifications have occurred to the file since it has been staged.</p>
+<p>Second, the README file itself changed; there is new text and symbols. (We got a preview in the diff pane also).</p>
+<pre class="r"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Julie is collaborating on this README.
+=======
+**Allison is adding text here.**
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 05a189b23372f0bdb5b42630f8cb318003cee19b</code></pre>
+<p>In this example, Partner 1 is Julie and Partner 2 is Allison. GitHub is displaying the line that Julie wrote and the line Allison. wrote separated by <code>=======</code>. These are the two choices that I (Partner 1) has to decide between, which one do you want to keep? Where where does this decision start and end? The lines are bounded by <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;HEAD</code> and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;long commit identifier</code>.</p>
+<p>So, to resolve this merge conflict, Partner 1 has to chose which one to keep. And I tell GitHub my choice by deleting everything in this bundle of tex except the line they want. So, Partner 1 will delete the <code>&lt;&lt;&lt;&lt;&lt;&lt;HEAD</code>, <code>=====</code>, <code>&gt;&gt;&gt;&gt;long commit identifier</code> and either Julie or Allison’s line that I don’t want to keep.</p>
+<p>I’ll do this, and then commit again. In this example, we’ve kept Allison’s line:</p>
+<p><br></p>
+<p><img src="img/gh_mergeconflict3.png" width="80%" /></p>
+<p><br></p>
+<p>Then I’ll stage, and write a commit message. I often write “resolving merge conflict” or something similar. When I stage the file, notice how now my edits look like a simple line replacement (compare with the image above before it was re-staged):</p>
+<p><br></p>
+<p><img src="img/github_mergeconflict4.png" width="80%" /></p>
+<p><br></p>
+<p>And we’re done! We can inspect on GitHub.com that I am the most recent contributor to this repository. And if we look in the commit history we will see both Allison and my original commits, along with our merge conflict fix.</p>
+</div>
+<div id="activity" class="section level3">
+<h3>Activity</h3>
+<p>Create a merge conflict with your partner, following the steps that we just did in the demo above. Practice different approaches to solving errors: for example, try stashing instead of committing.</p>
+</div>
+<div id="how-do-you-avoid-merge-conflicts" class="section level3">
+<h3>How do you avoid merge conflicts?</h3>
+<p>Merge conflicts can occur when you collaborate with others — I find most often it is collaborating with ME from a different computer. They will happen, but you can minimize them by getting into good habits.</p>
+<p>To minimize merge conflicts, pull often so that you are aware of anything that is different, and deal with it early. Similarly, commit and push often so that your contributions do not become too unweildly for yourself or others later on.</p>
+<p>Also, talk with your collaborators. Are they working on the exact same file right now that you need to be? If so, coordinate with them (in person, GChat, Slack, email). For example: “I’m working on X part and will push my changes before my meeting — then you can work on it and I’ll pull when I’m back”. Also, if you find yourself always working on the exact same file, you could consider breaking it into different files to minimize problems.</p>
+<p>But merge conflicts will occur and some of them will be heartbreaking and demoralizing. They happen to me when I collaborate with myself between my work computer and laptop. We demoed small conflicts with just one file, but they can occur across many files, particularly when your code is generating figures, scripts, or HTML files. Sometimes the best approach is the <a href="https://happygitwithr.com/burn.html">burn it all down method</a>, where you delete your local copy of the repo and re-clone.</p>
+<p>Protect yourself by pulling and syncing often!</p>
+</div>
+<div id="end-collaborating-session" class="section level3">
+<h3>END <strong>collaborating</strong> session!</h3>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

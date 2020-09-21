@@ -472,8 +472,8 @@ div.tocify {
 </ul>
 <p><br></p>
 </div>
-<div id="say-hello-to-your-course-repo-on-github" class="section level3">
-<h3>Say hello to your course repo on GitHub</h3>
+<div id="reconnecting-with-your-course-repo-on-github" class="section level3">
+<h3>Reconnecting with your course repo on GitHub</h3>
 <p>As we discussed at the end of last class, we have created a GitHub Classroom organization for the class. You should all have accessed your personal course repo through which you will be submitting your assignments and communicating with us. If not, click <a href="https://classroom.github.com/a/SA7QIA7g">here</a> and select your name from the list (or just click continue if you don’t see your name there).</p>
 <p>Once you land on your repo page, notice that it is hosted within our course organizational account <code>therkildsen-class</code>, not your personal account (see the path in the top left corner). To make this repo also show up on your personal account page, click the “Star” button on the top right of the page. Now if you click on the profile information in the very top right corner, and select the “Your stars” option, you’ll be taken to a list of all the repos you have starred and your course repo should show up here (it should be named something like <code>therkildsen-class/ntres-6940-YOUR_USER_NAME</code>). Click on the repo name to return to your course repo.</p>
 <p><br></p>
@@ -527,6 +527,7 @@ div.tocify {
 <li>View the repository from a while back with the &lt;&gt; button.</li>
 <li>View the history of a file by clicking on the file, then clicking “History”.</li>
 </ul>
+<p><br></p>
 </div>
 <div id="why-version-control" class="section level3">
 <h3>Why version control?</h3>
@@ -586,10 +587,10 @@ div.tocify {
 <p>Finally, click Create Project.</p>
 <p><br></p>
 <p><img src="assets/new_project4.png" width="80%" /></p>
-<p><br></p>
+<p><br> <br></p>
 </div>
-<div id="admire-your-local-repo" class="section level3">
-<h3>Admire your local repo</h3>
+<div id="admire-and-inspect-your-local-repo" class="section level3">
+<h3>Admire and inspect your local repo</h3>
 <p>If everything went well, the repository will show up in RStudio!</p>
 <p><br></p>
 <p><img src="assets/new_project5.png" width="100%" /></p>
@@ -598,10 +599,8 @@ div.tocify {
 <p><br></p>
 <p><img src="assets/new_project6.png" width="80%" /></p>
 <p><br></p>
-<p>Hooray!</p>
-</div>
-<div id="inspect-your-local-repo" class="section level3">
-<h3>Inspect your local repo</h3>
+<p><strong>Hooray!</strong></p>
+<p><br></p>
 <p>Let’s notice a few things:</p>
 <p>First, our working directory is set to <code>~/github/r-workshop</code>, and <code>r-workshop</code> is also named in the top right hand corner.</p>
 <p>Second, we have a Git tab in the top right pane! Let’s click on it.</p>
@@ -616,16 +615,18 @@ div.tocify {
 <p>These have been added to our repo by RStudio — we can also see them in the File pane in the bottom right of RStudio. These are helper files that RStudio has added to streamline our workflow with GitHub and R. We will talk about these a bit more soon. One thing to note about these files is that they begin with a period (<code>.</code>) which means they are hidden files: they show up in the Files pane of RStudio but won’t show up in your Finder or Windows Explorer.</p>
 <p>Going back to the Git tab, both these files have little yellow icons with question marks <code>?</code>. This is GitHub’s way of saying: “I am responsible for tracking everything that happens in this repo, but I’m not sure what is going on with these files yet. Do you want me to track them too?”</p>
 <p>We will handle this in a moment; first let’s look at the README.md file.</p>
+<p><br></p>
 </div>
 <div id="edit-your-readme-file" class="section level3">
 <h3>Edit your README file</h3>
 <p>Let’s also open up the README.md. This is a Markdown file, which is the same language we just learned with R Markdown. It’s like an R Markdown file without the abilities to run R code.</p>
 <p>We will edit the file and illustrate how GitHub tracks files that have been modified (to complement seeing how it tracks files that have been added.</p>
-<p>README files are common in programming; they are the first place that someone will look to see why code exists and how to run it.</p>
+<p>README files are common in programming; they are the first place that someone will look to see <strong>why code exists and how to run it</strong>.</p>
 <p>In my README, I’ll write:</p>
-<pre><code>This repo is for my analyses at RStudio::conf(2020). </code></pre>
+<pre><code>This repo is for my coursework for NTRES 6940. </code></pre>
 <p>When I save this, notice how it shows up in my Git tab. It has a blue “M”: GitHub is already tracking this file, and tracking it line-by-line, so it knows that something is different: it’s Modified with an M.</p>
 <p>Great. Now let’s sync back to GitHub in 4 steps.</p>
+<p><br></p>
 </div>
 </div>
 <div id="sync-from-rstudio-local-to-github-remote" class="section level2">
@@ -693,16 +694,18 @@ div.tocify {
 <p><img src="assets/commit_push.png" width="100%" /></p>
 <p><br></p>
 <p>Awesome! We’re done here in RStudio for the moment, let’s check out the remote on GitHub.com.</p>
+<p><br></p>
 </div>
 </div>
 <div id="commit-history" class="section level2">
 <h2>Commit history</h2>
-<p>The files you added should be on github.com.</p>
+<p>The files you added should now be on github.com.</p>
 <p>Notice how the README.md file we created is automatically displayed at the bottom. Since it is good practice to have a README file that identifies what code does (i.e. why it exists), GitHub will display a Markdown file called README nicely formatted.</p>
 <p><br></p>
 <p><img src="assets/gh_repo_view.png" width="100%" /></p>
 <p><br></p>
 <p>Let’s also explore the commit history. The 2 commits we’ve made (the first was when we originally initiated the repo from GitHub.com) are there!</p>
+<p><br></p>
 </div>
 <div id="project-oriented-workflows" class="section level2">
 <h2>Project-oriented workflows</h2>
@@ -710,42 +713,47 @@ div.tocify {
 <p>This GitHub repository is now also an RStudio Project (capital P Project). This just means that RStudio has saved this additional file with extension <code>.Rproj</code> (ours is <code>r-workshop.Rproj</code>) to store specific settings for this project. It’s a bit of technology to help us get into the good habit of having a project-oriented workflow.</p>
 <p>A <a href="https://rstats.wtf/project-oriented-workflow.html">project-oriented workflow</a> means that we are going to organize all of the relevant things we need for our analyses in the same place. That means that this is the place where we keep all of our data, code, figures, notes, etc.</p>
 <p>R Projects are great for reproducibility, because our self-contained working directory will be the <strong>first</strong> place R looks for files.</p>
-<!---
-Why does this matter? It's convenient for us to have everything associated with our analyses close at-hand.  When we work with different files in R (like data or saved graphs) we always need to tell R where things "live" by identifying its file path. If files are scattered across your computer, we would have to keep track of many different filepaths. So using RStudio Projects and having a project-oriented workflow and mindset makes our analysis less brittle and more portable — across people, time, and computers.  
---->
+<p>Why does this matter? It’s convenient for us to have everything associated with our analyses close at-hand. When we work with different files in R (like data or saved graphs) we always need to tell R where things “live” by identifying its file path. If files are scattered across your computer, we would have to keep track of many different filepaths. So using RStudio Projects and having a project-oriented workflow and mindset makes our analysis less brittle and more portable — across people, time, and computers. If you’re not convinced, please check Jenny Bryan’s arguments <a href="https://rstats.wtf/project-oriented-workflow.html">here</a>.</p>
+<p><br></p>
 <div id="working-directory" class="section level3">
 <h3>Working directory</h3>
-<p>Now that we have our Project, let’s revisit this important question: where are we? Now we are in our Project. Everything we do will by default be saved here so we can be nice and organized.</p>
-<p>And this is important because if our friend Allison clones this repository that you just made and saves it in <code>Allison/my/projects/way/over/here</code>, she will still be able to interact with your files as you are here.</p>
+<p>Now that we have our Project, let’s revisit this important question: where are we? Now we are in our Project. Everything we do will by default be saved here so all our files can be nicely organized.</p>
+<p>And this is important because if our friend Maria clones this repository that you just made and saves it in <code>Maria/my/projects/way/over/here</code>, she will still be able to interact with your files as you are here.</p>
 <p><img src="assets/RStudio_IDE_projdir.png" width="100%" /></p>
+<p><br></p>
 </div>
 </div>
 <div id="project-oriented-workflows-in-action-aka-our-analytical-setup" class="section level2">
 <h2>Project-oriented workflows in action (aka our analytical setup)</h2>
-<p>Let’s get a bit organized. First, let’s create our a new R Markdown file where we will do our analyses. This will be nice because you can also write notes to yourself in this document.</p>
+<p>Let’s get a bit organized. First, let’s create a new R Markdown file for notes that you want to take as we work through the different modules of this course.</p>
+<p><br></p>
 <div id="create-a-new-rmd-file" class="section level3">
 <h3>Create a new Rmd file</h3>
 <p>So let’s do this (again):</p>
 <p>File &gt; New File &gt; R Markdown … (or click the green plus in the top left corner).</p>
-<p>Let’s set up this file so we can use it for next class. I’m going to update the header with a new title and add my name, and then I’m going to delete the rest of the document so that we have a clean start.</p>
+<p>Let’s set up this file so it’s ready for us to enter notes into. I’m going to update the header with a new title and add my name, and then I’m going to delete the rest of the document so that we have a clean start.</p>
 <blockquote>
 <p><strong>Efficiency Tip</strong>: I use Shift - Command - Down Arrow to highlight text from my cursor to the end of the document</p>
 </blockquote>
 <pre><code>---
-title: &quot;Creating graphs in R with `ggplot2`&quot;
-author: &quot;Julie Lowndes&quot;
-date: &quot;01/27/2020&quot;
+title: &quot;Notes for NTRES 6940 lectures&quot;
+author: &quot;Nina Overgaard Therkildsen&quot;
+date: &quot;09/21/2020&quot;
 output: html_document
 ---
-# Plots with ggplot2
-We are going to make plots in R and it&#39;s going to be amazing.</code></pre>
-<p>Now, let’s save it. I’m going to call my file <code>plots-ggplot.Rmd</code>.</p>
+# Course notes
+We&#39;re going to learn a lot about GitHub and the tidyverse and it&#39;s going to be fun.</code></pre>
+<p>Now, let’s save it. I’m going to call my file <code>course-notes.Rmd</code>.</p>
 <p>Notice that when we save this file, it pops up in our Git tab. Git knows that there is something new in our repo.</p>
 <p>Let’s also knit this file. And look: Git also sees the knitted .html.</p>
 <p>And let’s practice syncing our file to to GitHub: pull, stage, commit, push</p>
 <blockquote>
-<p><strong>Troubleshooting:</strong> What if a file doesn’t show up in the Git tab and you expect that it should? Check to make sure you’ve saved the file. If the filename is red with an asterix, there have been changes since it was saved. Remember to save before syncing to GitHub! ### Create data and figures folders</p>
+<p><strong>Troubleshooting:</strong> What if a file doesn’t show up in the Git tab and you expect that it should? Check to make sure you’ve saved the file. If the filename is red with an asterix, there have been changes since it was saved. Remember to save before syncing to GitHub!</p>
 </blockquote>
+<p><br></p>
+</div>
+<div id="create-data-and-figures-folders" class="section level3">
+<h3>Create data and figures folders</h3>
 <p>Let’s create a few folders to be organized. Let’s have one for our the raw data, and one for the figures we will output. We can do this in RStudio, in the bottom right pane Files pane by clicking the New Folder button:</p>
 <ul>
 <li>folder called “data”</li>
@@ -753,15 +761,18 @@ We are going to make plots in R and it&#39;s going to be amazing.</code></pre>
 </ul>
 <p>We can press the refresh button in the top-right of this pane (next to the “More” button) to have these show up in alphabetical order.</p>
 <p>Now let’s go to our Finder or Windows Explorer: our new folders are there as well!</p>
+<p><br></p>
 </div>
 <div id="output-formats-for-rmarkdown" class="section level3">
 <h3>Output formats for RMarkdown</h3>
-<p>After pushing, the rendered html of <code>plots-ggplot</code> file should show up in our GitHub repo after we push it. But how does it look? GitHub just displays the raw html text file, not the nice-looking rendered version we’ll see in a browser.</p>
+<p>After pushing, the rendered html of <code>course-notes.Rmd</code> file should show up in our GitHub repo after we push it. But how does it look? GitHub just displays the raw html text file, not the nice-looking rendered version we’ll see in a browser.</p>
 <p>The nicely formatted files you see on GitHub (e.g. typical README pages) are markdown files (.md in contrast to .Rmd). Fortunately, RMarkdown can output to this format, along with several others including pdf and word documents. We can change the output format by changing the settings in the YAML header of our RMarkdown document. We can change to GitHub flavored markdown by doing one of the following:</p>
 <ul>
 <li>When creating your RMarkdown file, click “From template”, and then select “GitHub Document (Markdown)”</li>
 </ul>
+<p><br></p>
 <p><img src="https://camo.githubusercontent.com/a10832533c888e1af7f9a110dfb635e507951151/687474703a2f2f6161726f6e626167676574742e636f6d2f696d616765732f66726f6d5f74656d706c6174652e706e67" /></p>
+<p><br></p>
 <ul>
 <li>At the top of an RMarkdown file, manually edit the output of the GitHub document using the following syntax</li>
 </ul>
@@ -773,13 +784,15 @@ output:
 ---</code></pre>
 <p>Note: <code>toc: true</code> is optional, but it can automatically set up a table of content for you.</p>
 <p>You can find much more information about RMarkdown output formats <a href="https://r4ds.had.co.nz/r-markdown-formats.html">here</a>. For most of our work in this course, we will want to use the github_document output type because this displays nicely on the GitHub website.</p>
+<p><br></p>
 </div>
 <div id="move-files-to-data-folder" class="section level3">
 <h3>Move files to data folder</h3>
 <p>Now let’s try adding a file to our local RStudio project folder so we can push it to GitHub. One of the data files you will need for your next problem set is located <a href="https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/EconomistData.csv">here</a>. Save this file (using File -&gt; Save Page As in your internet browser) into the ‘data’ subfolder of your R project.</p>
 <p>Now let’s go back to RStudio. We can click on the data folder in the Files tab and now see this new file.</p>
 <p>The data folder also shows up in your Git tab. But the figures folder does not. That is because GitHub cannot track an empty folder, it can only track files within a folder.</p>
-<p>Let’s sync the data file (we will be able to sync the figures folder after we’ve generated some plots in our next class). We can stage multiple files at once by typing Command - A and clicking “Stage” (or using the space bar). To Sync: pull - stage - commit - push!</p>
+<p>Let’s sync the data file (we will be able to sync the figures folder after we’ve generated some plots later in the course). We can stage multiple files at once by typing Command - A and clicking “Stage” (or using the space bar). To Sync: pull - stage - commit - push!</p>
+<p><br></p>
 </div>
 <div id="activity" class="section level3">
 <h3>Activity</h3>
@@ -788,43 +801,22 @@ output:
 <li>Indicate whether you’re taking the course for credit</li>
 <li>Add a fun fact about yourself</li>
 <li>Add another line of text</li>
+<li>Add a picture of yourself (see instructions from last class <a href="https://nt246.github.io/NTRES6940-data-science/lesson2-rmarkdown-github.html#activity">here</a>)</li>
 </ul>
-<p>Explore your Commit History, and discuss with your neighbor.</p>
+<p>Explore your Commit History.</p>
+<p><br></p>
 </div>
 </div>
 <div id="committing---how-often-tracking-changes-in-your-files" class="section level2">
 <h2>Committing - how often? Tracking changes in your files</h2>
 <p>Whenever you make changes to the files in Github, you will walk through the Pull -&gt; Stage -&gt; Commit -&gt; Push steps.</p>
 <p>I tend to do this every time I finish a task (basically when I start getting nervous that I will lose my work). Once something is committed, it is very difficult to lose it.</p>
+<p><br></p>
 </div>
 <div id="adding-version-control-to-a-pre-existing-r-project" class="section level2">
 <h2>Adding version control to a pre-existing R-project</h2>
 <p>You may have been working on an RStudio project earlier and now you want to add version control through GitHub. You can easily set that up with <a href="https://happygitwithr.com/new-github-first.html">these instructions</a> by from Happy Git with R by Jenny Bryan.</p>
-<p><br></p>
-</div>
-<div id="issues" class="section level2">
-<h2>Issues</h2>
-<p>Let’s go back to our repo on GitHub.com, and talk about Issues.</p>
-<p>Issues “track ideas, enhancements, tasks, or bugs for work on GitHub.” - <a href="https://help.github.com/en/articles/about-issues">GitHub help article</a>.</p>
-<p>You can create an issue for a topic, track progress, others ask questions, provide links and updates, close issue when completed.</p>
-<p>In a public repo, anyone with a username can create and comment on issues. In a private repo, only users with permission can create and comment on issues, or see them at all.</p>
-<p>GitHub search is awesome – will search code and issues!</p>
-<div id="issues-in-the-wild" class="section level3">
-<h3>Issues in the wild!</h3>
-<p>Here are some examples of “traditional” and “less traditional” Issues:</p>
-<p>Bug reports, code, feature, &amp; help requests: <a href="https://github.com/tidyverse/ggplot2/issues">ggplot2</a></p>
-<p><br></p>
-<p><img src="assets/issues_ggplot2.png" width="100%" /></p>
-<p><br></p>
-<p>Project submissions and progress tracking: <a href="https://github.com/MozillaFestival/mozfest-program-2018/issues">MozillaFestival</a></p>
-<p><br></p>
-<p><img src="assets/issues_MozillaFestival.png" width="100%" /></p>
-<p><br></p>
-<p>Private conversations and archiving: <a href="https://github.com/OHI-Science/globalfellows-issues/issues/">OHI Fellows (private)</a></p>
-<p><br></p>
-<p><img src="assets/issues_globalfellows.png" width="100%" /></p>
-<p><br></p>
-</div>
+<p><br> <br></p>
 <div id="end-github-session" class="section level3">
 <h3>END <strong>GitHub</strong> session!</h3>
 </div>
