@@ -71,6 +71,8 @@ GitHub also supercharges you as a collaborator. First and foremost with Future Y
 
 GitHub, especially in combination with RStudio, is also game-changing for publishing and distributing. You can — and we will — publish and share files openly on the internet. 
 
+<br>
+
 ### What is GitHub? And Git?
 
 OK so what is GitHub? And Git? 
@@ -81,6 +83,7 @@ OK so what is GitHub? And Git?
 
 GitHub was developed for software development, so much of the functionality and terminology that is exciting for professional programmers (e.g., branches and pull requests) isn't necessarily the right place for us as new R users to get started. We'll get there soon, but for now, we will be learning and practicing GitHub's features and terminology on a "need to know basis" as we start managing our projects with GitHub.
 
+<br>
 
 ### Account types
 
@@ -97,24 +100,29 @@ Examples:
 * The [ggplot2 repo](https://github.com/tidyverse/ggplot2), within its corresponding `tidyverse Org`
 * Our [class website](https://github.com/nt246/NTRES6940-data-science) within Nina's user account `nt246`
 
-
+<br>
 
 ### Say hello to your course repo on GitHub
-We have created a GitHub Classroom organization for the class. To access your personal course repo through which you will be submitting your assignments and communicating with us, click [here](https://classroom.github.com/a/SA7QIA7g) and select your name from the list (or just click continue if you don't see your name there).
+As we discussed at the end of last class, we have created a GitHub Classroom organization for the class. You should all have accessed your personal course repo through which you will be submitting your assignments and communicating with us. If not, click [here](https://classroom.github.com/a/SA7QIA7g) and select your name from the list (or just click continue if you don't see your name there).
 
-Once you land on your repo page, notice that it is hosted within our course organizational account `therkildsen-class`, not your personal account (see the path in the top left corner). To make this repo also show up on your personal account page, click the "Star" bottom on the top right of the page. Now if you click on the profile information in the very top right corner, and select the "Your profile" option, you'll be taken to your personal account page. Under the "Stars" category, your course repo should show up (it should be named something like `therkildsen-class / ntres-6940-YOUR_USER_NAME`). Click on the repo name to return to your course repo.
+Once you land on your repo page, notice that it is hosted within our course organizational account `therkildsen-class`, not your personal account (see the path in the top left corner). To make this repo also show up on your personal account page, click the "Star" button on the top right of the page. Now if you click on the profile information in the very top right corner, and select the "Your stars" option, you'll be taken to a list of all the repos you have starred and your course repo should show up here (it should be named something like `therkildsen-class/ntres-6940-YOUR_USER_NAME`). Click on the repo name to return to your course repo.
 
+<br>
 
 ## Navigating GitHub
 
 ### Make a new file on your course repo
 
+<br>
+
 #### Together:
 * Click on the “Create New File” button on your repository’s home page.
 * Call it `navigating_github.md`
 * Leave it blank, and commit (“save”) the file by clicking on green “commit new file” button at the bottom of the page.
-* Together: Add the URL for our [course homepage](https://github.com/nt246/NTRES6940-data-science) to your `navigating_github.md` file (click on the pen button to edit), together with some commentary
+* Together: Add the URL for our [course homepage](https://nt246.github.io/NTRES6940-data-science/index.html) to your `navigating_github.md` file (click on the pen button to edit), together with some commentary
 * Commit the changes
+
+<br>
 
 #### Your turn:
 * Now add the URL’s (with commentary) to 
@@ -124,9 +132,10 @@ Once you land on your repo page, notice that it is hosted within our course orga
 
 * Now create a new subdirectory for course notes (remember to not use spaces in names, so you can call it something like course-notes)
 
+
 If you can't figure out how to add a subdirectory, you're not the first to wonder. Let's [ask the internet](https://github.com/KirstieJane/STEMMRoleModels/wiki/Creating-new-folders-in-GitHub-repository-via-the-browser)
 
-
+<br>
 
 ### Exploring the commit history of a repo
 We'll go through this together.
@@ -159,23 +168,26 @@ Demostration:
 
 ## Interfacing with GitHub from our local computers using RStudio
 
-We should all have set up git on our local computers by now and have it connected to RStudio. If you don't, follow the instructions [here](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson2-rmarkdown-github.md#configure-github)
+We should all have set up git on our local computers by now and have it connected to RStudio. If you don't, follow the instructions [here](https://nt246.github.io/NTRES6940-data-science/lesson2-rmarkdown-github.html#github_brief_intro__config)
 
+<br>
 
 ## Clone your repository using RStudio
 
-We have all identified our course repo on GitHub, i.e. in the cloud. Now, let's get it established locally on our computers: that is called "cloning". 
+Let's recap on the setup we rushed through at the end of last class. We have all identified our course repo on GitHub, i.e. in the cloud. Now, let's get it established locally on our computers: that is called "cloning". 
 
 Let's clone this repo to our local computer using RStudio. Unlike downloading, cloning keeps all the version control and user information bundled with the files. 
 
+<br>
+
 ### Copy the repo address 
 
-First, copy the web address of the repository you want to clone. We will use HTTPS. 
+First, click the green "Code" button, then copy the web address of the repository you want to clone. We will use HTTPS. 
 
 > **Aside**: HTTPS is default, but you could alternatively set up with SSH. This is more advanced than we will get into here, but allows 2-factor authentication. See [Happy Git with R](https://happygitwithr.com/credential-caching.html#special-consideration-re-two-factor-authentication) for more information.
 <br>
 
-<img src="assets/gh_repo_clone1.png" width="100%" />
+<img src="assets/github-clone-sept20.png" width="100%" />
 
 <br>
 
