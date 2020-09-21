@@ -251,9 +251,9 @@ knitr::include_graphics("assets/new_project4.png")
 ```
 
 <br>
+<br>
 
-
-### Admire your local repo
+### Admire and inspect your local repo
 
 If everything went well, the repository will show up in RStudio!
 
@@ -275,9 +275,10 @@ knitr::include_graphics("assets/new_project6.png")
 
 <br>
 
-Hooray!
+**Hooray!**
 
-### Inspect your local repo
+<br>
+
 
 Let's notice a few things: 
 
@@ -304,24 +305,26 @@ Going back to the Git tab, both these files have little yellow icons with questi
 
 We will handle this in a moment; first let's look at the README.md file.
 
+<br>
+
 ### Edit your README file
 
 Let's also open up the README.md. This is a Markdown file, which is the same language we just learned with R Markdown. It's like an R Markdown file without the abilities to run R code. 
 
 We will edit the file and illustrate how GitHub tracks files that have been modified (to complement seeing how it tracks files that have been added. 
 
-README files are common in programming; they are the first place that someone will look to see why code exists and how to run it. 
+README files are common in programming; they are the first place that someone will look to see **why code exists and how to run it**. 
 
 In my README, I'll write: 
 
 ```
-This repo is for my analyses at RStudio::conf(2020). 
+This repo is for my coursework for NTRES 6940. 
 ```
 
 When I save this, notice how it shows up in my Git tab. It has a blue "M": GitHub is already tracking this file, and tracking it line-by-line, so it knows that something is different: it's Modified with an M. 
 
-Great. Now let's sync back to GitHub in 4 steps. 
-
+Great. Now let's sync back to GitHub in 4 steps.  
+ 
 
 ## Sync from RStudio (local) to GitHub (remote)
 
