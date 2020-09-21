@@ -134,11 +134,13 @@ I recommend pulling every time you come back to a collaborative repository. Whet
 
 <br>
 
-## Create your website homepage (Parter 2)
+## Create your collaborative website
+
+### Create your website homepage (Parter 2)
 
 Create a new RMarkdown file and name it `index.Rmd`. Here's what you will do: 
 
-1. Pull
+1. Pull (in case Partner 1 has pushed something in the meantime)
 2. Create a new RMarkdown file **and name it `index.Rmd`**. Choose HTML as the output format. This will become the home page for your website
 3. Change the title inside the Rmd, call it "My Collaborative Website"
 4. Knit
@@ -147,35 +149,33 @@ Create a new RMarkdown file and name it `index.Rmd`. Here's what you will do:
     
 <br>
 
-## Launch the website (Partner 1)
+### Launch the website (Partner 1)
 
-1. Go to Partner 1's repo, mine is <https://github.com/makopyan/r-collab>
+1. Go to your `r-collab` repo
+2. Navigate to the repo settings
 
+<img src="assets/gh_repo_settings.png" width="450px"> 
 
+<br>
 
-1. GitHub also supports this as a website (because we set up our gh-pages branch)
-Where is it? Figure out your website's url from your github repo's url — pay attention to urls.    - note that the url starts with my **username.github.io**   
-   - my github repo: <https://github.com/jules32/r-collab/>
-   - my website url: <https://jules32.github.io/r-collab/>
-   - right now this displays the README as the "home page" for our website. 
-1. Now navigate to your web page! For example: 
-    - my github repo: <https://github.com/jules32/r-collab/julie_fisheries>
-    - my website url: <https://jules32.github.io/r-collab/julie_fisheries>
-    
+3. Scroll to the Github Pages section and build your site by sourcing from the master branch and root directory
+
+<img src="assets/gh_pages.png" width="450px"> 
+<br>
+
+Your repo is now a website!  
+
+Where is it? Figure out your website's url from your github repo's url — pay attention to urls.    
+
+- note that the url starts with my **username.github.io**   
+- my github repo: <https://github.com/makopyan/r-collab/>
+- my website url: <https://makopyan.github.io/r-collab/>
+
     
 > ***ProTip*** Pay attention to URLs. An unsung skill of the modern analyst is to be able to navigate the internet by keeping an eye on patterns.
     
 So cool!     
 
-You and your partner have created individual webpages here, but they do not talk to each other (i.e. you can't navigate between them or even know that one exists from the other). We will not organize these pages into a website today, but you can practice this on your own with this hour-long tutorial: [Making free websites with RStudio’s R Markdown](https://jules32.github.io/rmarkdown-website-tutorial/). 
-
-> **Aside:** On websites, if something is called `index.html`, that defaults to the home page. So <https://jules32.github.io/r-collab/> is the same as <https://jules32.github.io/r-collab/index.html>. So as you think about building websites you can develop your index.Rmd file rather than your README.md as your homepage.
-#### Troubleshooting
-
-- 404 error? Remove trailing / from the url 
-- Wants you to download? Remove trailing .Rmd from the url
-
-<br>
 
 ## Merge conflicts
 
@@ -214,7 +214,7 @@ This is good: the alternative would be GitHub deciding which one to keep and it'
 <br>
 
 
-<img src="img/github_mergeconflict.png" width="80%" />
+<img src="assets/github_mergeconflict.png" width="80%" />
 
 <br>
 
@@ -230,7 +230,7 @@ So this error is different from the previous: GitHub knows what has changed line
 
 <br>
 
-<img src="img/gh_mergeconflict2.png" width="80%" />
+<img src="assets/gh_mergeconflict2.png" width="80%" />
 
 <br>
 
@@ -258,7 +258,7 @@ I'll do this, and then commit again. In this example, we've kept Allison's line:
 
 <br>
 
-<img src="img/gh_mergeconflict3.png" width="80%" />
+<img src="assets/gh_mergeconflict3.png" width="80%" />
 
 <br>
 
@@ -266,7 +266,7 @@ Then I'll stage, and write a commit message. I often write "resolving merge conf
 
 <br>
 
-<img src="img/github_mergeconflict4.png" width="80%" />
+<img src="assets/github_mergeconflict4.png" width="80%" />
 
 <br>
 

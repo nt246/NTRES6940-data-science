@@ -477,11 +477,13 @@ div.tocify {
 <p><br></p>
 </div>
 </div>
-<div id="create-your-website-homepage-parter-2" class="section level2">
-<h2>Create your website homepage (Parter 2)</h2>
+<div id="create-your-collaborative-website" class="section level2">
+<h2>Create your collaborative website</h2>
+<div id="create-your-website-homepage-parter-2" class="section level3">
+<h3>Create your website homepage (Parter 2)</h3>
 <p>Create a new RMarkdown file and name it <code>index.Rmd</code>. Here’s what you will do:</p>
 <ol style="list-style-type: decimal">
-<li>Pull</li>
+<li>Pull (in case Partner 1 has pushed something in the meantime)</li>
 <li>Create a new RMarkdown file <strong>and name it <code>index.Rmd</code></strong>. Choose HTML as the output format. This will become the home page for your website</li>
 <li>Change the title inside the Rmd, call it “My Collaborative Website”</li>
 <li>Knit</li>
@@ -492,35 +494,31 @@ div.tocify {
 </ol>
 <p><br></p>
 </div>
-<div id="launch-the-website-partner-1" class="section level2">
-<h2>Launch the website (Partner 1)</h2>
+<div id="launch-the-website-partner-1" class="section level3">
+<h3>Launch the website (Partner 1)</h3>
 <ol style="list-style-type: decimal">
-<li><p>Go to Partner 1’s repo, mine is <a href="https://github.com/makopyan/r-collab" class="uri">https://github.com/makopyan/r-collab</a></p></li>
-<li>GitHub also supports this as a website (because we set up our gh-pages branch) Where is it? Figure out your website’s url from your github repo’s url — pay attention to urls. - note that the url starts with my <strong>username.github.io</strong>
-<ul>
-<li>my github repo: <a href="https://github.com/jules32/r-collab/" class="uri">https://github.com/jules32/r-collab/</a></li>
-<li>my website url: <a href="https://jules32.github.io/r-collab/" class="uri">https://jules32.github.io/r-collab/</a></li>
-<li>right now this displays the README as the “home page” for our website.</li>
-</ul></li>
-<li>Now navigate to your web page! For example:
-<ul>
-<li>my github repo: <a href="https://github.com/jules32/r-collab/julie_fisheries" class="uri">https://github.com/jules32/r-collab/julie_fisheries</a></li>
-<li>my website url: <a href="https://jules32.github.io/r-collab/julie_fisheries" class="uri">https://jules32.github.io/r-collab/julie_fisheries</a></li>
-</ul></li>
+<li>Go to your <code>r-collab</code> repo</li>
+<li>Navigate to the repo settings</li>
 </ol>
+<p><img src="assets/gh_repo_settings.png" width="450px"></p>
+<p><br></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Scroll to the Github Pages section and build your site by sourcing from the master branch and root directory</li>
+</ol>
+<p><img src="assets/gh_pages.png" width="450px"> <br></p>
+<p>Your repo is now a website!</p>
+<p>Where is it? Figure out your website’s url from your github repo’s url — pay attention to urls.</p>
+<ul>
+<li>note that the url starts with my <strong>username.github.io</strong><br />
+</li>
+<li>my github repo: <a href="https://github.com/makopyan/r-collab/" class="uri">https://github.com/makopyan/r-collab/</a></li>
+<li>my website url: <a href="https://makopyan.github.io/r-collab/" class="uri">https://makopyan.github.io/r-collab/</a></li>
+</ul>
 <blockquote>
 <p><strong><em>ProTip</em></strong> Pay attention to URLs. An unsung skill of the modern analyst is to be able to navigate the internet by keeping an eye on patterns.</p>
 </blockquote>
 <p>So cool!</p>
-<p>You and your partner have created individual webpages here, but they do not talk to each other (i.e. you can’t navigate between them or even know that one exists from the other). We will not organize these pages into a website today, but you can practice this on your own with this hour-long tutorial: <a href="https://jules32.github.io/rmarkdown-website-tutorial/">Making free websites with RStudio’s R Markdown</a>.</p>
-<blockquote>
-<p><strong>Aside:</strong> On websites, if something is called <code>index.html</code>, that defaults to the home page. So <a href="https://jules32.github.io/r-collab/" class="uri">https://jules32.github.io/r-collab/</a> is the same as <a href="https://jules32.github.io/r-collab/index.html" class="uri">https://jules32.github.io/r-collab/index.html</a>. So as you think about building websites you can develop your index.Rmd file rather than your README.md as your homepage. #### Troubleshooting</p>
-</blockquote>
-<ul>
-<li>404 error? Remove trailing / from the url</li>
-<li>Wants you to download? Remove trailing .Rmd from the url</li>
-</ul>
-<p><br></p>
+</div>
 </div>
 <div id="merge-conflicts" class="section level2">
 <h2>Merge conflicts</h2>
@@ -548,7 +546,7 @@ div.tocify {
 <p>When I try to Pull, I get the first error we will see today: “Your local changes to README.md would be overwritten by merge”. GitHub is telling me that it knows I’ve modified my README, but since I haven’t staged and committed them, it can’t do its job and merge my conflicts with whatever is different about the version from GitHub.com.</p>
 <p>This is good: the alternative would be GitHub deciding which one to keep and it’s better that we have that kind of control and decision making.</p>
 <p><br></p>
-<p><img src="img/github_mergeconflict.png" width="80%" /></p>
+<p><img src="assets/github_mergeconflict.png" width="80%" /></p>
 <p><br></p>
 <p>GitHub provides some guidance: either commit this work first, or “stash it”, which you can interpret that as moving the README temporarily to another folder somewhere outside of this GitHub repository so that you can successfully pull and then decide your next steps.</p>
 <p>Let’s follow their advice and have Partner 1 commit. Great. Now let’s try pulling again.</p>
@@ -556,7 +554,7 @@ div.tocify {
 <p>So this error is different from the previous: GitHub knows what has changed line-by-line in my file here, and it knows what has changed line-by-line in the version on GitHub.com. And it knows there is a conflict between them. So it’s asking me to now compare these changes, choose a preference, and commit.</p>
 <p><strong>Note:</strong> if Partner 2 and I were not intentionally in this demo editing exactly the same lines, GitHub likely could have done its job and merged this file successfully after our first error fix above.</p>
 <p><br></p>
-<p><img src="img/gh_mergeconflict2.png" width="80%" /></p>
+<p><img src="assets/gh_mergeconflict2.png" width="80%" /></p>
 <p><br></p>
 <p>We will again follow GitHub’s advice to fix the conflicts. Let’s close this window and inspect. Did you notice two other things that happened along with this message?</p>
 <p>First&lt; in the Git tab, next to the README listing there are orange <code>U</code>s; this means that there is an unresolved conflict. It means my file is not staged with a check anymore because modifications have occurred to the file since it has been staged.</p>
@@ -570,11 +568,11 @@ Julie is collaborating on this README.
 <p>So, to resolve this merge conflict, Partner 1 has to chose which one to keep. And I tell GitHub my choice by deleting everything in this bundle of tex except the line they want. So, Partner 1 will delete the <code>&lt;&lt;&lt;&lt;&lt;&lt;HEAD</code>, <code>=====</code>, <code>&gt;&gt;&gt;&gt;long commit identifier</code> and either Julie or Allison’s line that I don’t want to keep.</p>
 <p>I’ll do this, and then commit again. In this example, we’ve kept Allison’s line:</p>
 <p><br></p>
-<p><img src="img/gh_mergeconflict3.png" width="80%" /></p>
+<p><img src="assets/gh_mergeconflict3.png" width="80%" /></p>
 <p><br></p>
 <p>Then I’ll stage, and write a commit message. I often write “resolving merge conflict” or something similar. When I stage the file, notice how now my edits look like a simple line replacement (compare with the image above before it was re-staged):</p>
 <p><br></p>
-<p><img src="img/github_mergeconflict4.png" width="80%" /></p>
+<p><img src="assets/github_mergeconflict4.png" width="80%" /></p>
 <p><br></p>
 <p>And we’re done! We can inspect on GitHub.com that I am the most recent contributor to this repository. And if we look in the commit history we will see both Allison and my original commits, along with our merge conflict fix.</p>
 </div>
