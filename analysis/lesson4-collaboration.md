@@ -27,13 +27,14 @@ By the end of this class you will be able to:
 * Create a new repository in your personal Github account
 * Give repo privileges to a collaborator
 * Collaborate on a repo with your partner
-* Set up a free website through GitHub Pages
+* Describe how to avoid merge conflicts  
+* Resolve merge conflicts when they arise  
 
 <br>
 
 ## Collaborating with GitHub
 
-We're going to collaborate with a partner to set up a website, which will tie together everything we've been learning.
+We're going to collaborate with a partner to set up a new repository.
 
 <br>
 
@@ -108,7 +109,7 @@ README files are common in programming; they are the first place that someone wi
 
 In my README, I’ll write: 
 
-`This repo is for my collaborative website.` 
+`This repo is for my collaborative project` 
 
 When I save this, notice how it shows up in my Git tab. It has a blue “M”: GitHub is already tracking this file, and tracking it line-by-line, so it knows that something is different: it’s Modified with an M.
 
@@ -117,6 +118,8 @@ And now let's sync back to GitHub: Pull, Stage, Commit, Push
 When we inspect on GitHub.com, click to view all the commits, you'll see commits logged from both Partner 1 and 2!
 
 > Question: Would you still be able clone a repository that you are not a collaborator on? What do you think would happen? Try it! Can you sync back? 
+
+<br>
 
 ### State of the Repository
 
@@ -134,49 +137,6 @@ I recommend pulling every time you come back to a collaborative repository. Whet
 
 <br>
 
-## Create your collaborative website
-
-### Create your website homepage (Parter 2)
-
-Create a new RMarkdown file and name it `index.Rmd`. Here's what you will do: 
-
-1. Pull (in case Partner 1 has pushed something in the meantime)
-2. Create a new RMarkdown file **and name it `index.Rmd`**. Choose HTML as the output format. This will become the home page for your website
-3. Change the title inside the Rmd, call it "My Collaborative Website"
-4. Knit
-5. Save and sync your .Rmd and your .html files 
-    - (pull, stage, commit, push)
-    
-<br>
-
-### Launch the website (Partner 1)
-
-1. Go to your `r-collab` repo
-2. Navigate to the repo settings
-
-<img src="assets/gh_repo_settings.png" width="450px"> 
-
-<br>
-
-3. Scroll to the Github Pages section and build your site by sourcing from the master branch and root directory
-
-<img src="assets/gh_pages.png" width="450px"> 
-<br>
-
-Your repo is now a website!  
-
-Where is it? Figure out your website's url from your github repo's url — pay attention to urls.    
-
-- note that the url starts with my **username.github.io**   
-- my github repo: <https://github.com/makopyan/r-collab/>
-- my website url: <https://makopyan.github.io/r-collab/>
-
-    
-> ***ProTip*** Pay attention to URLs. An unsung skill of the modern analyst is to be able to navigate the internet by keeping an eye on patterns.
-    
-So cool!     
-
-
 ## Merge conflicts
 
 What kind of heartache are we talking about? Merge conflicts. 
@@ -187,9 +147,13 @@ It's when you have collaborators working on *the same lines within the same file
 
 So let's experience this together: we will create and solve a merge conflict. **Stop and watch me demo how to create and solve a merge conflict with my Partner 2, and then you will do the same with your partner.** Here's what I am going to do:
 
+<br>
+
 ### Pull (Partners 1 and 2)
 
 Both partners go to RStudio and pull so you have the most recent versions of all your files. 
+
+<br>
 
 ### Create a conflict (Partners 1 and 2)
 
@@ -197,11 +161,13 @@ Now, Partners 1 and 2, both go to the README.md, and on Line 4, write something,
 
 I'm not going to give any examples because when you do this I want to be sure that both Partners to write something different. Save the README. 
 
+<br>
+
 ### Sync (Partner 2)
 
 OK. Now, let's have Partner 2 sync: pull, stage, commit, push. Just like normal. 
 
-Great. 
+<br>
 
 ### Sync attempts & fixes (Partner 1)
 
@@ -241,6 +207,8 @@ First< in the Git tab, next to the README listing there are orange `U`s; this me
 
 Second, the README file itself changed; there is new text and symbols. (We got a preview in the diff pane also). 
 
+<br>
+
 ```r
 <<<<<<< HEAD
 Julie is collaborating on this README.
@@ -248,6 +216,8 @@ Julie is collaborating on this README.
 **Allison is adding text here.**
 >>>>>>> 05a189b23372f0bdb5b42630f8cb318003cee19b
 ```
+
+<br>
 
 In this example, Partner 1 is Julie and Partner 2 is Allison. GitHub is displaying the line that Julie wrote and the line Allison. wrote separated by `=======`. These are the two choices that I (Partner 1) has to decide between, which one do you want to keep? Where where does this decision start and end? The lines are bounded by `<<<<<<<HEAD` and `>>>>>>>long commit identifier`. 
 
@@ -272,9 +242,13 @@ Then I'll stage, and write a commit message. I often write "resolving merge conf
 
 And we're done! We can inspect on GitHub.com that I am the most recent contributor to this repository. And if we look in the commit history we will see both Allison and my original commits, along with our merge conflict fix. 
 
+<br>
+
 ### Activity
 
 Create a merge conflict with your partner, following the steps that we just did in the demo above. Practice different approaches to solving errors: for example, try stashing instead of committing. 
+
+<br>
 
 ### How do you avoid merge conflicts?
 
@@ -287,5 +261,7 @@ Also, talk with your collaborators. Are they working on the exact same file righ
 But merge conflicts will occur and some of them will be heartbreaking and demoralizing. They happen to me when I collaborate with myself between my work computer and laptop. We demoed small conflicts with just one file, but they can occur across many files, particularly when your code is generating figures, scripts, or HTML files. Sometimes the best approach is the [burn it all down method](https://happygitwithr.com/burn.html), where you delete your local copy of the repo and re-clone. 
 
 Protect yourself by pulling and syncing often! 
+
+<br>
 
 ### END **collaborating** session!
