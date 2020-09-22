@@ -1,5 +1,5 @@
 ---
-title: "Lesson 10: Collaborating with GitHub"
+title: "Lesson 4: Collaborating with GitHub"
 output: 
   html_document:
     keep_md: yes 
