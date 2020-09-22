@@ -105,7 +105,14 @@ Examples:
 ### Reconnecting with your course repo on GitHub
 As we discussed at the end of last class, we have created a GitHub Classroom organization for the class. You should all have accessed your personal course repo through which you will be submitting your assignments and communicating with us. If not, click [here](https://classroom.github.com/a/SA7QIA7g) and select your name from the list (or just click continue if you don't see your name there).
 
-Once you land on your repo page, notice that it is hosted within our course organizational account `therkildsen-class`, not your personal account (see the path in the top left corner). To make this repo also show up on your personal account page, click the "Star" button on the top right of the page. Now if you click on the profile information in the very top right corner, and select the "Your stars" option, you'll be taken to a list of all the repos you have starred and your course repo should show up here (it should be named something like `therkildsen-class/ntres-6940-YOUR_USER_NAME`). Click on the repo name to return to your course repo.
+Once you land on your repo page, notice that it is hosted within our course organizational account `therkildsen-class`, not your personal account (see the path in the top left corner). To make this repo also show up on your personal account page, click the "Star" button on the top right of the page. 
+
+<img src="assets/star_repo.png" width="80%" />
+
+Now if you click on the profile information in the very top right corner, and select the "Your stars" option, you'll be taken to a list of all the repos you have starred and your course repo should show up here (it should be named something like `therkildsen-class/ntres-6940-YOUR_USER_NAME`). Click on the repo name to return to your course repo.
+
+<img src="assets/finding_starred_repos.png" width="80%" />
+
 
 <br>
 
@@ -437,7 +444,7 @@ A [project-oriented workflow](https://rstats.wtf/project-oriented-workflow.html)
 
 R Projects are great for reproducibility, because our self-contained working directory will be the **first** place R looks for files. 
 
-Why does this matter? It's convenient for us to have everything associated with our analyses close at-hand.  When we work with different files in R (like data or saved graphs) we always need to tell R where things "live" by identifying its file path. If files are scattered across your computer, we would have to keep track of many different filepaths. So using RStudio Projects and having a project-oriented workflow and mindset makes our analysis less brittle and more portable — across people, time, and computers. If you're not convinced, please check Jenny Bryan's arguments [here](https://rstats.wtf/project-oriented-workflow.html). 
+Why does this matter? It's convenient for us to have everything associated with our analyses close at-hand.  When we work with different files in R (like data or saved graphs) we always need to tell R where things "live" by identifying its file path. If files are scattered across your computer, we would have to keep track of many different filepaths. So using RStudio Projects and having a project-oriented workflow and mindset makes our analysis less brittle and more portable — across people, time, and computers. If you're not convinced, please check Jenny Bryan's arguments [here](https://rstats.wtf/project-oriented-workflow.html) or [here](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/) and [Chapter 8 in Grolemund and Wickham's R4DS](https://r4ds.had.co.nz/workflow-projects.html). 
 
 <br>
 
