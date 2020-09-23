@@ -248,7 +248,7 @@ knitr::include_graphics("assets/gh_mergeconflict2.png")
 We will again follow GitHub's advice to fix the conflicts. Let's close this window and inspect. 
 Did you notice two other things that happened along with this message? 
 
-First< in the Git tab, next to the README listing there are orange `U`s; this means that there is an unresolved conflict. It means my file is not staged with a check anymore because modifications have occurred to the file since it has been staged. 
+First, in the Git tab, next to the README listing there are orange `U`s; this means that there is an unresolved conflict. It means my file is not staged with a check anymore because modifications have occurred to the file since it has been staged. 
 
 Second, the README file itself changed; there is new text and symbols. (We got a preview in the diff pane also). 
 

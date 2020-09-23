@@ -16,16 +16,14 @@ There are no required readings for today's lesson.
 
 <br>
 
-**Acknowledgements**: Today's lecture is adapted from the excellent [R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julia Stewart Lowndes and Allison Horst.
-
-<br>
 
 ## Announcements
 
-* Homework 1 is due at 10pm tonight (push it to your course GitHub repo)
-* Future homework assignments will be due on Mondays (i.e. the next homework will be due Monday 10/5)
-* During lecture, please use Slack instead of the Zoom chat to make comments or ask questions. It's wonderful to see you helping to answer each others' questions. To keep things organized, let's try to use threads for replies
+* **Homework 1** is due at 10pm tonight (push it to your course GitHub repo)
+* Future homework assignments will be due on Mondays (i.e. the **next homework will be due Monday 10/5**)
+* During lecture, please use **Slack** instead of the Zoom chat to make comments or ask questions. It's wonderful to see you helping to answer each others' questions. To keep things organized, let's try to use **threads** for replies
 * We will send out a short evaluation form after today's class to briefly check in on how the course is going for you and whether we should make any adjustments
+* Reminder: hacky hours 12:20-2:15pm on Fridays
 
 <br>
 
@@ -41,6 +39,10 @@ By the end of this class you will be able to:
 
 <br>
 
+**Acknowledgements**: Today's lecture is adapted from the excellent [R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julia Stewart Lowndes and Allison Horst.
+
+<br>
+
 ## Collaborating with GitHub
 
 We're going to collaborate with a partner to set up a new repository.
@@ -51,26 +53,12 @@ We're going to collaborate with a partner to set up a new repository.
 
 > Partner 1
 
-Team up with a partner. Decide who will be Partner 1 and who will be Partner 2. Partner 1 will create a new repository in their personal Github account.
-
-[Click here to create a new repo.](https://github.com/new)
+You will get sent to a breakout room with a partner. Decide who will be Partner 1 and who will be Partner 2. Partner 1 will create a new repository in their personal Github account.
 
 Let's name it `r-collab`. 
 
-<img src="assets/gh_create_repo.png" width="80%" />
+<img src="assets/create_repo.png" width="80%" />
 
-
-<br>
-
-### Give your collaborator privileges
-
-> Partner 1 and 2
-
-Now, Partner 1, go into Settings > Collaborators > enter Partner 2's (your collaborator's) username. 
-
-Partner 2 then needs to check their email and accept as a collaborator. Notice that your collaborator has "Push access to the repository" (highlighted below):
-
-<img src="assets/gh_collab.png" width="80%" />
 
 <br>
 
@@ -78,7 +66,7 @@ Partner 2 then needs to check their email and accept as a collaborator. Notice t
 
 > Partner 1
 
-Now let's have Partner 1 clone the repository to their local computer. We'll do this through RStudio like we did before, making sure to select "Open in a new Session".
+Now let's have Partner 1 clone their new repository to their local computer. We'll do this through RStudio like we did before, making sure to select "Open in a new Session".
 
 <br>
 
@@ -108,35 +96,55 @@ Let's confirm that this was synced by looking at GitHub.com again. You may have 
 
 <br>
 
-### Clone to a new R Project 
 
-> Partner 2
+### DEMO: Let's get Partner 2 involved [you can skip this step when working by yourselves in breakout rooms]
 
-Now it's Partner 2's turn! Partner 2, clone this repository following the same steps that Partner 1 just did. When you clone it, RStudio should not create any new files — why? Partner 1 already created and pushed the `.Rproj` and `.gitignore` files so they already exist in the repo.  
+> Question: Can Partner 2 clone Partner 1's repo? Let's try!
 
-<br>
+Now it's Partner 2's turn! Partner 2, clone this repository following the same steps that Partner 1 just performed. When you clone it, RStudio should not create any new files — why? Partner 1 already created and pushed the `.Rproj` and `.gitignore` files so they already exist in the repo.  
 
-### Edit the README file 
+So Partner 2 can clone someone else's repo. But can they push changes? 
 
-> Partner 2
+Let's have Partner 2 make some edits to the README file. We will edit this file and illustrate how GitHub tracks files that have been modified (to complement seeing how it tracks files that have been added).
 
-Let’s also open up the README.md. This is a Markdown file, which is the same language we just learned with R Markdown. It’s like an R Markdown file without the abilities to run R code.
+In the README, you can write something like: 
 
-We will edit the file and illustrate how GitHub tracks files that have been modified (to complement seeing how it tracks files that have been added.
-
-README files are common in programming; they are the first place that someone will look to see why code exists and how to run it.
-
-In my README, I’ll write: 
-
-`This repo is for my collaborative project` 
+`This repo is for our collaborative project` 
 
 When I save this, notice how it shows up in my Git tab. It has a blue “M”: GitHub is already tracking this file, and tracking it line-by-line, so it knows that something is different: it’s Modified with an M.
 
 And now let's sync back to GitHub: Pull, Stage, Commit, Push
 
-When we inspect on GitHub.com, click to view all the commits, you'll see commits logged from both Partner 1 and 2!
+ERROR! We can't push changes to a repo we're not a collaborator on. That makes good sense - we don't want random people to be able to make changes to our files!
 
-> Question: Would you still be able clone a repository that you are not a collaborator on? What do you think would happen? Try it! Can you sync back? 
+<br>
+
+### Give your collaborator (Partner 2) privileges
+
+> Partner 1 and 2
+
+Now, Partner 1, go into Settings > Collaborators > enter Partner 2's (your collaborator's) username. 
+
+<img src="assets/invite_collaborator.png" width="80%" />
+
+<br>
+
+Partner 2 then needs to check their email and accept as a collaborator. Notice that your collaborator has Push access to the repository:
+
+<img src="assets/invite_email.png" width="80%" />
+
+
+<br>
+
+### Edit the README file again and push changes
+
+> Partner 2
+
+Now that Partner 2 has been added as a collaborator, try pushing your changes to the README.md file again. You may have to make another edit to the README.md file and save before it shows up in the Git tab for staging.
+
+Then Pull, Stage, Commit, Push
+
+Now we should be able to push changes. We can see the changes on GitHub.com, where we can also click to view all the commits and see commits logged from both Partner 1 and 2!
 
 <br>
 
@@ -219,8 +227,6 @@ New error: "Merge conflict in README...fix conflicts and then commit the result"
 
 So this error is different from the previous: GitHub knows what has changed line-by-line in my file here, and it knows what has changed line-by-line in the version on GitHub.com. And it knows there is a conflict between them. So it's asking me to now compare these changes, choose a preference, and commit. 
 
-**Note:** if Partner 2 and I were not intentionally in this demo editing exactly the same lines, GitHub likely could have done its job and merged this file successfully after our first error fix above.
-
 <br>
 
 <img src="assets/gh_mergeconflict2.png" width="80%" />
@@ -293,44 +299,22 @@ Protect yourself by pulling and syncing often!
 
 ## Merging changes
 
-We will now demo a series of different outcomes we can experience when two people are working on the same repo and end up making changes in parallel without pushing in sequence (i.e. partners end up with different versions on their local computers that need to be reconciled in the remote repo). We will show this as part of the process of setting up our collaborative website. 
+Merge conflicts only happen when changes have been made to the **same line in the same file**. To clearly illustrate this, we will now demo a series of different outcomes we can experience when two people are working on the same repo and end up making changes in parallel without pushing in sequence (i.e. partners end up with different versions on their local computers that need to be reconciled in the remote repo).  
 
 Watch first, then you'll get a chance to work through the steps for yourselves.
 
 <br>
 
 
-> This section is borrowed from [HappyGitwithR](https://happygitwithr.com/push-rejected.html)
+### When you and your collaborator have worked on separate files 
 
-You want to pull changes from upstream, but you have done some new work locally since the last time you pulled. This often comes up because what you actually want to do is push, but Git won’t let you until you first incorporate the upstream changes.
-
-State of repo on GitHub
-
-```r
-A--B--C
-```
-
-State of repo on your local computer
-
-```r
-A--B--D
-```
-
-You can’t cause some sort of merge to happen to the GitHub copy when you push.
-
-Instead, you’ve got pull the commit C and somehow integrate it into your D-containing history. Then you will be able to push again.
-
-<br>
-
-### When you have worked on separate files 
-
-Let's have Partner 2 create a new RMarkdown file and name it `index.Rmd`. Here's what you will do: 
+Let's have Partner 2 create a new RMarkdown file and name it `analysis.Rmd`. Here's what you will do: 
 
 1. Pull! (in case Partner 1 has pushed something in the meantime)
-2. Create a new RMarkdown file **and name it `index.Rmd`**. Choose HTML as the output format. This will become the home page for your website, which will be covered next week.
-3. Change the title inside the Rmd, call it "My Collaborative Website"
+2. Create a new RMarkdown file and name it `analysis.Rmd`. Choose Github Document as the output format (find it under the "From Template" option on the left). 
+3. Change the title inside the Rmd, call it "Our Collaborative Analysis"
 4. Knit
-5. Save and sync your .Rmd and your .html files 
+5. Save and sync your .Rmd and your .md files 
     - (pull, stage, commit, push)
     
 <br>
@@ -352,7 +336,7 @@ Local after 'git pull':   A--B--C--(uncommitted changes)
 
 ### When you have worked in different parts of the same file 
 
-Now you both have a copy of the `index.Rmd` file. Partner 2 can add a new header just under the setup code chunk (e.g. line 12), then pull, stage, commit, push.
+Now you both have a copy of the `analysis.Rmd` file. Partner 2 can add a new header just under the setup code chunk (e.g. line 12), then pull, stage, commit, push.
 
 Now Partner 1 can add a note under the `## Including Plots` header around line 22. Then try to pull. Then commit, and pull, stage, push.
 
@@ -362,14 +346,79 @@ Again, this time the versions should merge smoothly because we were working in d
 
 ### When you have worked on the same part of a file
 
-Now Partner 2 makes a change to the first code chunk. Change `summary(cars)` to a different function, e.g. `dim(cars)`. Then pull, stage, commit, push
+This is where problems arise. Now Partner 2 makes a change to the first code chunk. Change `summary(cars)` to a different function, e.g. `dim(cars)`. Then pull, stage, commit, push
 
 Partner 1 should not pull yet, but instead also make a change to that first code chunk, so change `summary(cars)`, e.g. to `nrow(cars)`. Then try to pull (will be rejected). Then stage, commit and pull. 
 
-This will result in a merge conflict. Resolve as described in the [Merge Conflicts Section](https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html#merge_conflicts).
+As we have seen earlier, this will result in a merge conflict. Resolve as described in the [Merge Conflicts Section](https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html#merge_conflicts).
 
 <br>
 
 <img src="assets/merge_conflict.png" width="350px">
 
-### END **collaborating** session!
+<br>
+
+
+Let's look further into what happens during merge conflicts.
+
+> This section is borrowed from [HappyGitwithR](https://happygitwithr.com/push-rejected.html). Check out this awesome resource for more details.
+
+<br>
+
+You want to pull changes from upstream, but you have done some new work locally since the last time you pulled (and someone else has pushed changes to the remote repo since then). This often comes up because what you actually want to do is push, but Git won’t let you until you first incorporate the upstream changes.
+
+State of repo on GitHub:
+
+```r
+A--B--C
+```
+
+State of repo on your local computer:
+
+```r
+A--B--D
+```
+
+You can’t cause some sort of merge to happen to the GitHub copy when you push.
+
+Instead, you’ve got pull the commit C and somehow integrate it into your D-containing history. Then you will be able to push again.
+
+
+What can we learn from this?
+
+<br>
+
+#### 1. She who pushes first wins!
+
+You may have noticed that you – the author of D – are faffing around with Git more than the person who committed and pushed C, i.e. your collaborator.
+
+There is a lesson to be learned here!
+
+If you had pushed D first, you’d be relaxing and they’d be figuring out how to integrate C into their history in order to push. So push your work often. Don’t go dark and work “offline” for long stretches of time.
+
+Obviously, you should push work to master because it’s “ready” to share (or at least “ready enough”), not to avoid Git merges.
+
+There is a truly legitimate point here: It is better for the overall health of a project to be committing, pushing, and integrating more often, not less. This does not eliminate the need to integrate different lines of work, but it makes each integration smaller, less burdensome, and less prone to error.
+
+<br>
+
+#### 2. Stay in touch
+Another take away is this: the sooner you know about C, the better. Pull (or fetch) often.
+
+Consider that it might be easier to integrate C into your work D sooner rather than later. Sometimes this is not true, but more often it is.
+
+In general, it pays off to be proactively aware of what others are doing (e.g. to pull or fetch often) than to always be in reactive mode, learning about your collaborator’s work only when your push is rejected.
+
+<br> 
+
+#### 3. When you get more experienced, you may want to use branches
+Your early experiences collaborating with others and yourself in master will give you a visceral understanding of why most Git users eventually start to use branches.
+
+Branches afford explicit workflows for integrating different lines of work on your own terms. This is much nicer than trying to do a tricky merge or rebase in a frustrated panic, because you need to push your work to GitHub at the end of the day. But for now, we will focus on more basic GitHub usage and you can learn about branches later on.
+
+<br>
+<br>
+
+
+
+### END **collaborating on GitHub** session!
