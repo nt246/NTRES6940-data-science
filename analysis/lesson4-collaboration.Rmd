@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Readings
 
-There are no required readings for today's lesson.
+There are no required readings for today's lesson, but if you're keen to learn more, check out the other resources listed under [Lesson 3](https://nt246.github.io/NTRES6940-data-science/lesson3-version-control.html)
 
 <br>
 
@@ -44,10 +44,11 @@ By the end of this class you will be able to:
 **Acknowledgements**: Today's lecture is adapted from the excellent [R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julia Stewart Lowndes and Allison Horst.
 
 <br>
+<br>
 
 ## Collaborating with GitHub
 
-We're going to collaborate with a partner to set up a new repository.
+We're going to collaborate with a partner to set up a new repository. First sit back and watch as we demo, then you will get sent to a breakout room with a partner and get to practice.
 
 <br>
 
@@ -55,7 +56,7 @@ We're going to collaborate with a partner to set up a new repository.
 
 > Partner 1
 
-You will get sent to a breakout room with a partner. Decide who will be Partner 1 and who will be Partner 2. Partner 1 will create a new repository in their personal Github account.
+Decide who will be Partner 1 and who will be Partner 2. Partner 1 will create a new repository in their personal Github account.
 
 Let's name it `r-collab`. 
 
@@ -127,7 +128,7 @@ ERROR! We can't push changes to a repo we're not a collaborator on. That makes g
 
 > Partner 1 and 2
 
-Now, Partner 1, go into Settings > Collaborators > enter Partner 2's (your collaborator's) username. 
+Now back on GitHub.com, Partner 1, go into Settings > Collaborators > enter Partner 2's (your collaborator's) username. 
 
 ```{r, echo=FALSE, out.width="80%"}
 knitr::include_graphics("assets/invite_collaborator.png")  
@@ -143,6 +144,7 @@ knitr::include_graphics("assets/invite_email.png")
 
 
 <br>
+<br>
 
 ### Edit the README file again and push changes
 
@@ -154,6 +156,12 @@ Then Pull, Stage, Commit, Push
 
 Now we should be able to push changes. We can see the changes on GitHub.com, where we can also click to view all the commits and see commits logged from both Partner 1 and 2!
 
+<br>
+
+## Activity
+Work through the steps in the demo above with your partner to create a collaborative repo, clone it to both of your local machines, and make sure you both can push changes.
+
+<br>
 <br>
 
 ### State of the Repository
