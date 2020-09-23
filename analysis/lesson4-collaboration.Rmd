@@ -432,6 +432,20 @@ Branches afford explicit workflows for integrating different lines of work on yo
 <br>
 <br>
 
+<br>
 
+## Examining the history of a repo
+
+### Commit History
+
+Go back to Github.com and have a look at the commit history of your collaborative repo. You’ll see that the number of commits for the repo has increased, let’s have a look. You can see the history of what both Partner 1 and 2 have done.
+
+
+### Blame
+
+Now let’s look at a single file, starting with the README file. We’ve explored the “History” option in the top-right of the file, but there is also a “Blame” option. Let’s look now. Blame shows you line-by-line who authored the most recent version of the file you see. Despite the negative-sounding name of this function, this is actually super useful if you’re trying to understand the logic of any section in your document; you know who to ask for questions or attribute credit to.
+
+<br>
+<br>
 
 ### END **collaborating on GitHub** session!
