@@ -16,6 +16,10 @@ navbar:
       href: lesson2-rmarkdown-github.html
     - text: "Lesson 3: Version Control"
       href: lesson3-version-control.html
+    - text: "Lesson 4: Collaborating with GitHub"
+      href: lesson4-collaboration.html
+    - text: "Lesson 5: Collaborating and Making Websites"
+      href: lesson5-collaboration-part2.html
   - text: Assignments
     href: assignments.html    
 output: 

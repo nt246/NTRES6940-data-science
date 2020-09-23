@@ -61,7 +61,7 @@ By the end of today's class, you should be able to:
 Because everyone will have a new partner today, we'll practice one more time how to
 
 * Create a new repo
-* Invite a collaborator and have both of you clone the collaborative repo to your local machines following the [collaborating with github section from Lesson 4] ](https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html#collaborating_with_github).
+* Invite a collaborator and have both of you clone the collaborative repo to your local machines following the [collaborating with github section from Lesson 4](https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html#collaborating_with_github).
 
 **NOTE:** Make sure Partner 2 doesn't clone the repo until Partner 1 has pushed their `.RProj` file to avoid merge conflicts here.
 
