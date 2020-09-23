@@ -12,7 +12,7 @@ output:
 
 ## Readings
 
-There are no required readings for today's lesson.
+There are no required readings for today's lesson, but if you're keen to learn more, check out the other resources listed under [Lesson 3](https://nt246.github.io/NTRES6940-data-science/lesson3-version-control.html)
 
 <br>
 
@@ -42,10 +42,11 @@ By the end of this class you will be able to:
 **Acknowledgements**: Today's lecture is adapted from the excellent [R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julia Stewart Lowndes and Allison Horst.
 
 <br>
+<br>
 
 ## Collaborating with GitHub
 
-We're going to collaborate with a partner to set up a new repository.
+We're going to collaborate with a partner to set up a new repository. First sit back and watch as we demo, then you will get sent to a breakout room with a partner and get to practice.
 
 <br>
 
@@ -53,7 +54,7 @@ We're going to collaborate with a partner to set up a new repository.
 
 > Partner 1
 
-You will get sent to a breakout room with a partner. Decide who will be Partner 1 and who will be Partner 2. Partner 1 will create a new repository in their personal Github account.
+Decide who will be Partner 1 and who will be Partner 2. Partner 1 will create a new repository in their personal Github account.
 
 Let's name it `r-collab`. 
 
@@ -123,7 +124,7 @@ ERROR! We can't push changes to a repo we're not a collaborator on. That makes g
 
 > Partner 1 and 2
 
-Now, Partner 1, go into Settings > Collaborators > enter Partner 2's (your collaborator's) username. 
+Now back on GitHub.com, Partner 1, go into Settings > Collaborators > enter Partner 2's (your collaborator's) username. 
 
 <img src="assets/invite_collaborator.png" width="80%" />
 
@@ -134,6 +135,7 @@ Partner 2 then needs to check their email and accept as a collaborator. Notice t
 <img src="assets/invite_email.png" width="80%" />
 
 
+<br>
 <br>
 
 ### Edit the README file again and push changes
@@ -146,6 +148,12 @@ Then Pull, Stage, Commit, Push
 
 Now we should be able to push changes. We can see the changes on GitHub.com, where we can also click to view all the commits and see commits logged from both Partner 1 and 2!
 
+<br>
+
+## Activity
+Work through the steps in the demo above with your partner to create a collaborative repo, clone it to both of your local machines, and make sure you both can push changes.
+
+<br>
 <br>
 
 ### State of the Repository
@@ -236,7 +244,7 @@ So this error is different from the previous: GitHub knows what has changed line
 We will again follow GitHub's advice to fix the conflicts. Let's close this window and inspect. 
 Did you notice two other things that happened along with this message? 
 
-First< in the Git tab, next to the README listing there are orange `U`s; this means that there is an unresolved conflict. It means my file is not staged with a check anymore because modifications have occurred to the file since it has been staged. 
+First, in the Git tab, next to the README listing there are orange `U`s; this means that there is an unresolved conflict. It means my file is not staged with a check anymore because modifications have occurred to the file since it has been staged. 
 
 Second, the README file itself changed; there is new text and symbols. (We got a preview in the diff pane also). 
 
@@ -419,6 +427,20 @@ Branches afford explicit workflows for integrating different lines of work on yo
 <br>
 <br>
 
+<br>
 
+## Examining the history of a repo
+
+### Commit History
+
+Go back to Github.com and have a look at the commit history of your collaborative repo. You’ll see that the number of commits for the repo has increased, let’s have a look. You can see the history of what both Partner 1 and 2 have done.
+
+
+### Blame
+
+Now let’s look at a single file, starting with the README file. We’ve explored the “History” option in the top-right of the file, but there is also a “Blame” option. Let’s look now. Blame shows you line-by-line who authored the most recent version of the file you see. Despite the negative-sounding name of this function, this is actually super useful if you’re trying to understand the logic of any section in your document; you know who to ask for questions or attribute credit to.
+
+<br>
+<br>
 
 ### END **collaborating on GitHub** session!
