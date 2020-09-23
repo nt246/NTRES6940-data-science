@@ -3,6 +3,7 @@ title: "Lesson 5: Collaborating with GitHub and making websites with GitHub Page
 output: 
   html_document:
     keep_md: yes 
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
@@ -13,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Readings
 
-There are no required readings for today, but if you did not join our Zoom call last Wednesday, please read through the [lecture notes](https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html) and watch the recording posted on Canvas
+There are no required readings for today, but if you did not join our Zoom call last Wednesday, please read through the [lecture notes](https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html) and watch the recording posted on [Canvas](https://canvas.cornell.edu/courses/21578)
 
 <br>
 
@@ -56,95 +57,17 @@ By the end of today's class, you should be able to:
 <br>
 
 ## Getting set up
+
 Because everyone will have a new partner today, we'll practice one more time how to
 
 * Create a new repo
-* Invite a collaborator and have both of you clone the collaborative repo to your local machines following sections 9.2 through 9.6 in the [Ocean Health Index Data Science Training Tutorial](http://ohi-science.org/data-science-training/collaborating.html#create-repo-partner-1).
+* Invite a collaborator and have both of you clone the collaborative repo to your local machines following the [collaborating with github section from Lesson 4] ](https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html#collaborating_with_github).
 
 **NOTE:** Make sure Partner 2 doesn't clone the repo until Partner 1 has pushed their `.RProj` file to avoid merge conflicts here.
 
 <br>
 
-
-## Merging changes that each partner makes to your repo
-
-We will now demo a series of different outcomes we can experience when two people are working on the same repo and end up making changes in parallel without pushing in sequence (i.e. partners end up with different versions on their local computers that need to be reconciled in the remote repo). We will show this as part of the process of setting up our collaborative website. 
-
-Watch first, then you'll get a chance to work through the steps for yourselves.
-
-<br>
-
-#### Scenario 
-
-> This section is borrowed from [HappyGitwithR](https://happygitwithr.com/push-rejected.html)
-
-You want to pull changes from upstream, but you have done some new work locally since the last time you pulled. This often comes up because what you actually want to do is push, but Git won’t let you until you first incorporate the upstream changes.
-
-State of repo on GitHub
-```{r, eval = FALSE}
-A--B--C
-```
-
-State of repo on your local computer
-```{r, eval = FALSE}
-A--B--D
-```
-
-You can’t cause some sort of merge to happen to the GitHub copy when you push.
-
-Instead, you’ve got pull the commit C and somehow integrate it into your D-containing history. Then you will be able to push again.
-
-<br>
-
-#### When you have worked on separate files 
-
-Let's have Partner 2 create a new RMarkdown file and name it `index.Rmd`. Here's what you will do: 
-
-1. Pull! (in case Partner 1 has pushed something in the meantime)
-2. Create a new RMarkdown file **and name it `index.Rmd`**. Choose HTML as the output format. This will become the home page for your website
-3. Change the title inside the Rmd, call it "My Collaborative Website"
-4. Knit
-5. Save and sync your .Rmd and your .html files 
-    - (pull, stage, commit, push)
-    
-<br>
-
-Now, let's have Partner 1 edit the README file. Then try to pull. Then stage, commit, push.
-
-The versions should merge smoothly because there is no overlap between the changes made by Partner 1 and 2.
-
-Summary:
-```{r, eval = FALSE}
-                 Remote: A--B--C
-
-Local before 'git pull':  A--B--(uncommitted changes)
-Local after 'git pull':   A--B--C--(uncommitted changes)
-```
-
-<br>
-
-#### When you have worked in different parts of the same file 
-
-Now you both have a copy of the `index.Rmd` file. Partner 2 can add a new header just under the setup code chunk (e.g. line 12), then pull, stage, commit, push.
-Now Partner 1 can add a note under the `## Including Plots` header around line 22. Then try to pull. Then commit, and pull, stage, push.
-
-Again, this time the versions should merge smoothly because we were working in different parts of the document.
-
-<br>
-
-#### When you have worked on the same part of a file
-
-Now Partner 2 makes a change to the first code chunk. Change `summary(cars)` to a different function, e.g. `dim(cars)`. Then pull, stage, commit, push
-
-Partner 1 should not pull yet, but instead also make a change to that first code chunk, so change `summary(cars)`, e.g. to `nrow(cars)`. Then try to pull (will be rejected). Then stage, commit and pull. 
-
-This will result in a merge conflict. Resolve as described in Section 9.9 [here](http://ohi-science.org/data-science-training/collaborating.html#merge-conflicts).
-
-<br>
-
-## Your turn
-
-### Setting up your collaborative website
+## Setting up your collaborative website
 
 Have Partner 2 create and knit the `index.Rmd` file as described above, and push it to GitHub (pull, stage, commit, push)
 
@@ -175,7 +98,7 @@ Where is it? Figure out your website's url from your github repo's url — pay a
     
 So cool!     
 
-### Collaborate to build your website
+## Collaborate to build your website
 
 1. Check that your website is working
 2. Partner 1 should pull to make sure they get a local copy of the `index.Rmd` file
@@ -325,4 +248,4 @@ Get creative! You can find some ideas for things to try in [this tutorial](https
 Remember to coordinate with your partner. Work on different things in parallel, but keep going back and forth pushing and pulling and resolving any merge conflicts that arise.
 
 
-
+### END session!

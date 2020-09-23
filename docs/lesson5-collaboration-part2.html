@@ -19,6 +19,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -248,6 +251,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -255,6 +321,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -319,7 +395,7 @@ $(document).ready(function () {
 <p><br></p>
 <div id="readings" class="section level2">
 <h2>Readings</h2>
-<p>There are no required readings for today, but if you did not join our Zoom call last Wednesday, please read through the <a href="https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html">lecture notes</a> and watch the recording posted on Canvas</p>
+<p>There are no required readings for today, but if you did not join our Zoom call last Wednesday, please read through the <a href="https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html">lecture notes</a> and watch the recording posted on <a href="https://canvas.cornell.edu/courses/21578">Canvas</a></p>
 <p><br></p>
 </div>
 <div id="other-resources" class="section level2">
@@ -364,71 +440,13 @@ $(document).ready(function () {
 <p>Because everyone will have a new partner today, we’ll practice one more time how to</p>
 <ul>
 <li>Create a new repo</li>
-<li>Invite a collaborator and have both of you clone the collaborative repo to your local machines following sections 9.2 through 9.6 in the <a href="http://ohi-science.org/data-science-training/collaborating.html#create-repo-partner-1">Ocean Health Index Data Science Training Tutorial</a>.</li>
+<li>Invite a collaborator and have both of you clone the collaborative repo to your local machines following the [collaborating with github section from Lesson 4] ](<a href="https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html#collaborating_with_github" class="uri">https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html#collaborating_with_github</a>).</li>
 </ul>
 <p><strong>NOTE:</strong> Make sure Partner 2 doesn’t clone the repo until Partner 1 has pushed their <code>.RProj</code> file to avoid merge conflicts here.</p>
 <p><br></p>
 </div>
-<div id="merging-changes-that-each-partner-makes-to-your-repo" class="section level2">
-<h2>Merging changes that each partner makes to your repo</h2>
-<p>We will now demo a series of different outcomes we can experience when two people are working on the same repo and end up making changes in parallel without pushing in sequence (i.e. partners end up with different versions on their local computers that need to be reconciled in the remote repo). We will show this as part of the process of setting up our collaborative website.</p>
-<p>Watch first, then you’ll get a chance to work through the steps for yourselves.</p>
-<p><br></p>
-<div id="scenario" class="section level4">
-<h4>Scenario</h4>
-<blockquote>
-<p>This section is borrowed from <a href="https://happygitwithr.com/push-rejected.html">HappyGitwithR</a></p>
-</blockquote>
-<p>You want to pull changes from upstream, but you have done some new work locally since the last time you pulled. This often comes up because what you actually want to do is push, but Git won’t let you until you first incorporate the upstream changes.</p>
-<p>State of repo on GitHub</p>
-<pre class="r"><code>A--B--C</code></pre>
-<p>State of repo on your local computer</p>
-<pre class="r"><code>A--B--D</code></pre>
-<p>You can’t cause some sort of merge to happen to the GitHub copy when you push.</p>
-<p>Instead, you’ve got pull the commit C and somehow integrate it into your D-containing history. Then you will be able to push again.</p>
-<p><br></p>
-</div>
-<div id="when-you-have-worked-on-separate-files" class="section level4">
-<h4>When you have worked on separate files</h4>
-<p>Let’s have Partner 2 create a new RMarkdown file and name it <code>index.Rmd</code>. Here’s what you will do:</p>
-<ol style="list-style-type: decimal">
-<li>Pull! (in case Partner 1 has pushed something in the meantime)</li>
-<li>Create a new RMarkdown file <strong>and name it <code>index.Rmd</code></strong>. Choose HTML as the output format. This will become the home page for your website</li>
-<li>Change the title inside the Rmd, call it “My Collaborative Website”</li>
-<li>Knit</li>
-<li>Save and sync your .Rmd and your .html files
-<ul>
-<li>(pull, stage, commit, push)</li>
-</ul></li>
-</ol>
-<p><br></p>
-<p>Now, let’s have Partner 1 edit the README file. Then try to pull. Then stage, commit, push.</p>
-<p>The versions should merge smoothly because there is no overlap between the changes made by Partner 1 and 2.</p>
-<p>Summary:</p>
-<pre class="r"><code>                 Remote: A--B--C
-
-Local before &#39;git pull&#39;:  A--B--(uncommitted changes)
-Local after &#39;git pull&#39;:   A--B--C--(uncommitted changes)</code></pre>
-<p><br></p>
-</div>
-<div id="when-you-have-worked-in-different-parts-of-the-same-file" class="section level4">
-<h4>When you have worked in different parts of the same file</h4>
-<p>Now you both have a copy of the <code>index.Rmd</code> file. Partner 2 can add a new header just under the setup code chunk (e.g. line 12), then pull, stage, commit, push. Now Partner 1 can add a note under the <code>## Including Plots</code> header around line 22. Then try to pull. Then commit, and pull, stage, push.</p>
-<p>Again, this time the versions should merge smoothly because we were working in different parts of the document.</p>
-<p><br></p>
-</div>
-<div id="when-you-have-worked-on-the-same-part-of-a-file" class="section level4">
-<h4>When you have worked on the same part of a file</h4>
-<p>Now Partner 2 makes a change to the first code chunk. Change <code>summary(cars)</code> to a different function, e.g. <code>dim(cars)</code>. Then pull, stage, commit, push</p>
-<p>Partner 1 should not pull yet, but instead also make a change to that first code chunk, so change <code>summary(cars)</code>, e.g. to <code>nrow(cars)</code>. Then try to pull (will be rejected). Then stage, commit and pull.</p>
-<p>This will result in a merge conflict. Resolve as described in Section 9.9 <a href="http://ohi-science.org/data-science-training/collaborating.html#merge-conflicts">here</a>.</p>
-<p><br></p>
-</div>
-</div>
-<div id="your-turn" class="section level2">
-<h2>Your turn</h2>
-<div id="setting-up-your-collaborative-website" class="section level3">
-<h3>Setting up your collaborative website</h3>
+<div id="setting-up-your-collaborative-website" class="section level2">
+<h2>Setting up your collaborative website</h2>
 <p>Have Partner 2 create and knit the <code>index.Rmd</code> file as described above, and push it to GitHub (pull, stage, commit, push)</p>
 <p>Next, have Partner 1 launch the website.</p>
 <ol style="list-style-type: decimal">
@@ -454,8 +472,8 @@ Local after &#39;git pull&#39;:   A--B--C--(uncommitted changes)</code></pre>
 </blockquote>
 <p>So cool!</p>
 </div>
-<div id="collaborate-to-build-your-website" class="section level3">
-<h3>Collaborate to build your website</h3>
+<div id="collaborate-to-build-your-website" class="section level2">
+<h2>Collaborate to build your website</h2>
 <ol style="list-style-type: decimal">
 <li>Check that your website is working</li>
 <li>Partner 1 should pull to make sure they get a local copy of the <code>index.Rmd</code> file</li>
@@ -466,7 +484,6 @@ Local after &#39;git pull&#39;:   A--B--C--(uncommitted changes)</code></pre>
 <li>If you have time, make additional coordinated edits, so the other Partner gets the opportunity to resolve a merge conflict as well</li>
 </ol>
 <p><br></p>
-</div>
 </div>
 <div id="jazzing-up-your-website" class="section level2">
 <h2>Jazzing up your website</h2>
@@ -564,17 +581,22 @@ output:
 <p>Then I re-build the website with <code>rmarkdown::render_site()</code> and push the changes to GitHub.</p>
 <p><br></p>
 </div>
-<div id="your-turn-1" class="section level2">
+<div id="your-turn" class="section level2">
 <h2>Your turn</h2>
 <p>Get creative! You can find some ideas for things to try in <a href="https://jules32.github.io/rmarkdown-website-tutorial/getting_sophisticated.html">this tutorial</a>, or you can just try things out.</p>
 <p><br></p>
 <p><img src="https://pbs.twimg.com/media/Cf7eHZ1W4AEeZJA.jpg" height="400px" width="300px" /></p>
 <p><br></p>
 <p>Remember to coordinate with your partner. Work on different things in parallel, but keep going back and forth pushing and pulling and resolving any merge conflicts that arise.</p>
+<div id="end-session" class="section level3">
+<h3>END session!</h3>
+</div>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -607,6 +629,32 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
