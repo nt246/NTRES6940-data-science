@@ -69,7 +69,7 @@ A basic working knowledge of R will be helpful, but no prior experience with the
 <br>
 
 ### Course format
-The two weekly lectures will introduce new concepts and provide opportunities to practice through hands-on exercises. To participate effectively, you must have completed the assigned readings prior to class. Each Wednesday, we will assign a problem set that applies the concepts covered in class in a new context to reinforce your learning. We offer an optional Friday afternoon "hacky hour" session for working on these problem sets in groups and with TA support. The problem sets are due the following Wednesday at 10pm. 
+The two weekly lectures will introduce new concepts and provide opportunities to practice through hands-on exercises. To participate effectively, you must have completed the assigned readings prior to class. Each week, we will assign a problem set that applies the concepts covered in class in a new context to reinforce your learning. We offer an optional Friday afternoon "hacky hour" session for working on these problem sets in groups and with TA support. The problem sets are due the following week at 10pm. 
 
 <br>
 
@@ -105,22 +105,22 @@ In compliance with the Cornell University policy and equal access laws, we are a
 ### Tentative schedule (subject to adjustment) 
 
 Class# | Date | Topic | Assignments
----|-----|------------------|-------
-1 | Mon 9/14 | Intro to the course and R/RStudio | 
-2 | Wed 9/16 | Markdown and GitHub | 
-3 | Mon 9/21 | The Git workflow (version control) | 
+---|----|-----------------|-------
+1 | Mon 9/14 | [Intro to the course and R/RStudio](https://nt246.github.io/NTRES6940-data-science/lesson1-rstudio.html) | 
+2 | Wed 9/16 | [Markdown and GitHub](https://nt246.github.io/NTRES6940-data-science/lesson2-rmarkdown-github.html) | 
+3 | Mon 9/21 | [The Git workflow (version control)](https://nt246.github.io/NTRES6940-data-science/lesson3-version-control.html) | 
 4 | Wed 9/23 | Collaborating with GitHub Part 1 | Assignment 1 due
 5 | Mon 9/28 | Collaborating with GitHub Part 2 | 
-6 | Wed 9/30 | Plotting with ggplot part 1 |  Assignment 2 due
-7 | Mon 10/5 | Data wrangling part 1 (dplyr::filter, mutate, select, arrange) | 
-8 | Wed 10/7 | Data wrangling part 2 (dplyr::summarize, group_by) |  Assignment 3 due
-9 | Mon 10/12 | Plotting with ggplot part 2 + good coding practices | 
-10 | Wed 10/14 | Tidy data (what is tidy data and how to handle untidy data) and file input/output | Assignment 4 due
-11 | Mon 10/19 | Good coding practices, debugging strategies, and getting help | 
-12 | Wed 10/21 | Factors, basic string manipulation, dates and times | Assignment 5 due
-13 | Mon 10/26 | Relational data (join functions) | 
-14 | Wed 10/28 | Functions part 1 | Assignment 6 due
-15 | Mon 11/2 | Functions part 2 | 
-16 | Wed 11/4 | Iteration (for loops) and conditional execution | Assignment 7 due 
-17 | Mon 11/9 | Student presentations | 
+6 | Wed 9/30 | Plotting with ggplot part 1 |
+7 | Mon 10/5 | Data wrangling part 1 (dplyr::filter, mutate, select, arrange) | Assignment 2 due
+8 | Wed 10/7 | Data wrangling part 2 (dplyr::summarize, group_by) |
+9 | Mon 10/12 | Plotting with ggplot part 2 + good coding practices |  Assignment 3 due 
+10 | Wed 10/14 | Tidy data (what is tidy data and how to handle untidy data) and file input/output |
+11 | Mon 10/19 | Good coding practices, debugging strategies, and getting help | Assignment 4 due
+12 | Wed 10/21 | Factors, basic string manipulation, dates and times |
+13 | Mon 10/26 | Relational data (join functions) | Assignment 5 due
+14 | Wed 10/28 | Functions part 1 |
+15 | Mon 11/2 | Functions part 2 | Assignment 6 due
+16 | Wed 11/4 | Iteration (for loops) and conditional execution | 
+17 | Mon 11/9 | Student presentations | Assignment 7 due
 18 | Wed 11/11 | Wrapping up and looking ahead | 
