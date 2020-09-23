@@ -22,6 +22,15 @@ There are no required readings for today's lesson.
 
 <br>
 
+## Announcements
+
+* Homework 1 is due at 10pm tonight (push it to your course GitHub repo)
+* Future homework assignments will be due on Mondays (i.e. the next homework will be due Monday 10/5)
+* During lecture, please use Slack instead of the Zoom chat to make comments or ask questions. It's wonderful to see you helping to answer each others' questions. To keep things organized, let's try to use threads for replies
+* We will send out a short evaluation form after today's class to briefly check in on how the course is going for you and whether we should make any adjustments
+
+<br>
+
 ## Learning objectives
 
 By the end of this class you will be able to:  
@@ -44,7 +53,7 @@ We're going to collaborate with a partner to set up a new repository.
 
 > Partner 1
 
-Team up with a partner. Partner 1 will create a new repository in their personal Github account.
+Team up with a partner. Decide who will be Partner 1 and who will be Partner 2. Partner 1 will create a new repository in their personal Github account.
 
 [Click here to create a new repo.](https://github.com/new)
 
