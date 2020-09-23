@@ -401,7 +401,7 @@ div.tocify {
 <p><br></p>
 <div id="readings" class="section level2">
 <h2>Readings</h2>
-<p>There are no required readings for today’s lesson.</p>
+<p>There are no required readings for today’s lesson, but if you’re keen to learn more, check out the other resources listed under <a href="https://nt246.github.io/NTRES6940-data-science/lesson3-version-control.html">Lesson 3</a></p>
 <p><br></p>
 </div>
 <div id="announcements" class="section level2">
@@ -428,18 +428,18 @@ div.tocify {
 </ul>
 <p><br></p>
 <p><strong>Acknowledgements</strong>: Today’s lecture is adapted from the excellent <a href="https://rstudio-conf-2020.github.io/r-for-excel/">R for Excel users</a> course by Julia Stewart Lowndes and Allison Horst.</p>
-<p><br></p>
+<p><br> <br></p>
 </div>
 <div id="collaborating-with-github" class="section level2">
 <h2>Collaborating with GitHub</h2>
-<p>We’re going to collaborate with a partner to set up a new repository.</p>
+<p>We’re going to collaborate with a partner to set up a new repository. First sit back and watch as we demo, then you will get sent to a breakout room with a partner and get to practice.</p>
 <p><br></p>
 <div id="create-repo" class="section level3">
 <h3>Create repo</h3>
 <blockquote>
 <p>Partner 1</p>
 </blockquote>
-<p>You will get sent to a breakout room with a partner. Decide who will be Partner 1 and who will be Partner 2. Partner 1 will create a new repository in their personal Github account.</p>
+<p>Decide who will be Partner 1 and who will be Partner 2. Partner 1 will create a new repository in their personal Github account.</p>
 <p>Let’s name it <code>r-collab</code>.</p>
 <p><img src="assets/create_repo.png" width="80%" /></p>
 <p><br></p>
@@ -484,12 +484,12 @@ div.tocify {
 <blockquote>
 <p>Partner 1 and 2</p>
 </blockquote>
-<p>Now, Partner 1, go into Settings &gt; Collaborators &gt; enter Partner 2’s (your collaborator’s) username.</p>
+<p>Now back on GitHub.com, Partner 1, go into Settings &gt; Collaborators &gt; enter Partner 2’s (your collaborator’s) username.</p>
 <p><img src="assets/invite_collaborator.png" width="80%" /></p>
 <p><br></p>
 <p>Partner 2 then needs to check their email and accept as a collaborator. Notice that your collaborator has Push access to the repository:</p>
 <p><img src="assets/invite_email.png" width="80%" /></p>
-<p><br></p>
+<p><br> <br></p>
 </div>
 <div id="edit-the-readme-file-again-and-push-changes" class="section level3">
 <h3>Edit the README file again and push changes</h3>
@@ -501,6 +501,11 @@ div.tocify {
 <p>Now we should be able to push changes. We can see the changes on GitHub.com, where we can also click to view all the commits and see commits logged from both Partner 1 and 2!</p>
 <p><br></p>
 </div>
+</div>
+<div id="activity" class="section level2">
+<h2>Activity</h2>
+<p>Work through the steps in the demo above with your partner to create a collaborative repo, clone it to both of your local machines, and make sure you both can push changes.</p>
+<p><br> <br></p>
 <div id="state-of-the-repository" class="section level3">
 <h3>State of the Repository</h3>
 <p>OK, so where do things stand right now? GitHub.com has the most recent versions of all the repository’s files. Partner 2 also has these most recent versions locally. How about Partner 1?</p>
@@ -563,7 +568,7 @@ div.tocify {
 <p><img src="assets/gh_mergeconflict2.png" width="80%" /></p>
 <p><br></p>
 <p>We will again follow GitHub’s advice to fix the conflicts. Let’s close this window and inspect. Did you notice two other things that happened along with this message?</p>
-<p>First&lt; in the Git tab, next to the README listing there are orange <code>U</code>s; this means that there is an unresolved conflict. It means my file is not staged with a check anymore because modifications have occurred to the file since it has been staged.</p>
+<p>First, in the Git tab, next to the README listing there are orange <code>U</code>s; this means that there is an unresolved conflict. It means my file is not staged with a check anymore because modifications have occurred to the file since it has been staged.</p>
 <p>Second, the README file itself changed; there is new text and symbols. (We got a preview in the diff pane also).</p>
 <p><br></p>
 <pre class="r"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
@@ -585,7 +590,7 @@ Julie is collaborating on this README.
 <p>And we’re done! We can inspect on GitHub.com that I am the most recent contributor to this repository. And if we look in the commit history we will see both Allison and my original commits, along with our merge conflict fix.</p>
 <p><br></p>
 </div>
-<div id="activity" class="section level3">
+<div id="activity-1" class="section level3">
 <h3>Activity</h3>
 <p>Create a merge conflict with your partner, following the steps that we just did in the demo above. Practice different approaches to solving errors: for example, try stashing instead of committing.</p>
 <p><br></p>
@@ -678,7 +683,20 @@ Local after &#39;git pull&#39;:   A--B--C--(uncommitted changes)</code></pre>
 <p>Your early experiences collaborating with others and yourself in master will give you a visceral understanding of why most Git users eventually start to use branches.</p>
 <p>Branches afford explicit workflows for integrating different lines of work on your own terms. This is much nicer than trying to do a tricky merge or rebase in a frustrated panic, because you need to push your work to GitHub at the end of the day. But for now, we will focus on more basic GitHub usage and you can learn about branches later on.</p>
 <p><br> <br></p>
+<p><br></p>
 </div>
+</div>
+</div>
+<div id="examining-the-history-of-a-repo" class="section level2">
+<h2>Examining the history of a repo</h2>
+<div id="commit-history" class="section level3">
+<h3>Commit History</h3>
+<p>Go back to Github.com and have a look at the commit history of your collaborative repo. You’ll see that the number of commits for the repo has increased, let’s have a look. You can see the history of what both Partner 1 and 2 have done.</p>
+</div>
+<div id="blame" class="section level3">
+<h3>Blame</h3>
+<p>Now let’s look at a single file, starting with the README file. We’ve explored the “History” option in the top-right of the file, but there is also a “Blame” option. Let’s look now. Blame shows you line-by-line who authored the most recent version of the file you see. Despite the negative-sounding name of this function, this is actually super useful if you’re trying to understand the logic of any section in your document; you know who to ask for questions or attribute credit to.</p>
+<p><br> <br></p>
 </div>
 <div id="end-collaborating-on-github-session" class="section level3">
 <h3>END <strong>collaborating on GitHub</strong> session!</h3>
