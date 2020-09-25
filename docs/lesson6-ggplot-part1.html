@@ -11,7 +11,7 @@
 
 
 
-<title>Lesson 6: Data visualization with ggplot, part 1</title>
+<title>Lesson 6: Plotting with ggplot, part 1</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -393,7 +393,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Lesson 6: Data visualization with ggplot, part 1</h1>
+<h1 class="title toc-ignore">Lesson 6: Plotting with ggplot, part 1</h1>
 
 </div>
 
@@ -432,23 +432,26 @@ div.tocify {
 <p><strong>Acknowledgements</strong>: Some content from today’s lecture is adapted from the excellent <a href="https://rstudio-conf-2020.github.io/r-for-excel/">R for Excel users</a> course by Julia Stewart Lowndes and Allison Horst and the <a href="https://r4ds.had.co.nz/data-visualisation.html">R for Data Science</a> book by Garrett Grolemund and Hadley Wickham.</p>
 <p><br></p>
 </div>
-<div id="a-note-on-weekly-assignments" class="section level2">
-<h2>A note on weekly assignments</h2>
+<div id="announcements" class="section level2">
+<h2>Announcements</h2>
 <p>Each week’s assignment will be finalized before Monday’s lecture that week. <a href="https://nt246.github.io/NTRES6940-data-science/assignments.html#assignment_2">Assignment 2</a> is now finalized and is due by 10pm next Monday.</p>
 <p><br></p>
 </div>
-<div id="create-an-rmarkdown-file-for-note-taking-in-this-lecture" class="section level2">
-<h2>Create an RMarkdown file for note taking in this lecture</h2>
+<div id="taking-notes" class="section level2">
+<h2>Taking notes</h2>
+<div id="create-an-rmarkdown-file-for-note-taking-in-this-lecture" class="section level3">
+<h3>Create an RMarkdown file for note taking in this lecture</h3>
 <p>Before we start, please open the R Project that you created in our last lecture that is associated with your personal GitHub repository. Then create a new RMarkdown file, select <code>github_document</code> output format, and save it to your lecture note folder. You will use this RMarkdown file to take notes and work on exercises, and to share your work with the class.</p>
 <p><br></p>
+</div>
 </div>
 <div id="load-packages" class="section level2">
 <h2>Load packages</h2>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <p><br></p>
 </div>
-<div id="the-grammar-of-graphics-in-ggplot2" class="section level2">
-<h2>The grammar of graphics in <code>ggplot2</code></h2>
+<div id="grammar-of-graphics-in-ggplot2" class="section level2">
+<h2>Grammar of graphics in <code>ggplot2</code></h2>
 <p>In this class, we will write reproducible code to build graphs piece-by-piece. In Excel, graphs are made by manually selecting options, which may not be the best option for keeping track of our work. Also, if we haven’t built a graph with reproducible code, we might not be able to easily recreate a graph or use that code again to make the same style graph with different data.</p>
 <p>Using <code>ggplot2</code>, the graphics package within the <code>tidyverse</code>, we will write reproducible code to manually and thoughtfully build our graphs.</p>
 <blockquote>
@@ -487,8 +490,10 @@ div.tocify {
 </ul>
 <p><br></p>
 </div>
-<div id="activity-break-down-the-following-graphs-into-basic-ggplot2-components" class="section level2">
-<h2>Activity: break down the following graphs into basic <code>ggplot2</code> components</h2>
+<div id="activity" class="section level2">
+<h2>Activity</h2>
+<div id="break-down-the-following-graphs-into-basic-ggplot2-components" class="section level3">
+<h3>Break down the following graphs into basic <code>ggplot2</code> components</h3>
 <ul>
 <li>Manhattan plot</li>
 </ul>
@@ -506,6 +511,7 @@ div.tocify {
 </ul>
 <p><img src="https://github.com/nt246/NTRES6940-data-science/raw/master/misc/pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-9-1.png" /></p>
 <p><br></p>
+</div>
 </div>
 <div id="create-our-first-ggplot2-graph" class="section level2">
 <h2>Create our first <code>ggplot2</code> graph</h2>
@@ -743,8 +749,8 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 <p><br></p>
 </div>
 </div>
-<div id="most-important-argumentsfunctions-to-know" class="section level2">
-<h2>Most important arguments/functions to know</h2>
+<div id="arguments-and-functions-ysk" class="section level2">
+<h2>Arguments and functions YSK</h2>
 <p>Now, you’ve learned the central ideas behind <code>ggplot2</code>. In the next <code>ggplot2</code> lecture, we will go over some more advanced ggplot2 functionalities (e.g. statistical transformation, position adjustment, coordinate setting, color scaling, theme), but after that, the best way to learn more about <code>ggplot2</code> is often through practice and Google, since the possibilities that you can have with <code>ggplot2</code> are quite limitless, and what you want to achieve with <code>ggplot2</code> often vary among individuals.</p>
 <p>With that being said, there are some geometries, aesthetics, and facet functions that are most commonly used and these often serve as the building blocks for more advance usage. Let’s now go through some of these together in class.</p>
 <div id="geometries" class="section level4">
