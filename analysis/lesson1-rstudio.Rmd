@@ -185,7 +185,7 @@ And there's also help for when you only sort of remember the function name: doub
 
 
 Not all functions have (or require) arguments:
-```{r, cache = TRUE}
+```{r}
 date()
 ```
 
@@ -210,7 +210,7 @@ Now we've installed the package, but we need to tell R that we are going to use 
 
 Please don’t get confused: `library()` is the command used to load a package, and it refers to the place where the package is contained, usually a folder on your computer, while a package is the collection of functions bundled conveniently.
 
-```{r, cache=TRUE}
+```{r}
 library(praise)
 ```
 
