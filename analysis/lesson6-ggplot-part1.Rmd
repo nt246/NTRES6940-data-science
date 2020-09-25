@@ -40,12 +40,6 @@ By the end of this class you will be able to:
 
 <br>  
 
-## Announcements
-
-Each week's assignment will be finalized before Monday's lecture that week. [Assignment 2](https://nt246.github.io/NTRES6940-data-science/assignments.html#assignment_2) is now finalized and is due by 10pm next Monday. 
-
-<br>  
-
 ## Taking notes
 
 ### Create an RMarkdown file for note taking in this lecture
