@@ -1,5 +1,5 @@
 ---
-title: "Lesson 6: Data visualization with ggplot, part 1"
+title: "Lesson 6: Plotting with ggplot, part 1"
 output: 
   html_document:
     keep_md: yes 
@@ -40,13 +40,15 @@ By the end of this class you will be able to:
 
 <br>  
 
-## A note on weekly assignments
+## Announcements
 
 Each week's assignment will be finalized before Monday's lecture that week. [Assignment 2](https://nt246.github.io/NTRES6940-data-science/assignments.html#assignment_2) is now finalized and is due by 10pm next Monday. 
 
 <br>  
 
-## Create an RMarkdown file for note taking in this lecture
+## Taking notes
+
+### Create an RMarkdown file for note taking in this lecture
 
 Before we start, please open the R Project that you created in our last lecture that is associated with your personal GitHub repository. Then create a new RMarkdown file, select `github_document` output format, and save it to your lecture note folder. You will use this RMarkdown file to take notes and work on exercises, and to share your work with the class. 
 
@@ -60,7 +62,7 @@ library(tidyverse)
 
 <br>  
 
-## The grammar of graphics in `ggplot2`
+## Grammar of graphics in `ggplot2`
 
 In this class, we will write reproducible code to build graphs piece-by-piece. In Excel, graphs are made by manually selecting options, which may not be the best option for keeping track of our work. Also, if we haven't built a graph with reproducible code, we might not be able to easily recreate a graph or use that code again to make the same style graph with different data.
 
@@ -108,7 +110,9 @@ Breaking that down:
 
 <br>  
 
-## Activity: break down the following graphs into basic `ggplot2` components
+## Activity
+
+### Break down the following graphs into basic `ggplot2` components
 
 * Manhattan plot
 
@@ -281,7 +285,7 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 
 <br>  
 
-## Most important arguments/functions to know
+## Arguments and functions YSK
 
 Now, you've learned the central ideas behind `ggplot2`. In the next `ggplot2` lecture, we will go over some more advanced ggplot2 functionalities (e.g. statistical transformation, position adjustment, coordinate setting, color scaling, theme), but after that, the best way to learn more about `ggplot2` is often through practice and Google, since the possibilities that you can have with `ggplot2` are quite limitless, and what you want to achieve with `ggplot2` often vary among individuals. 
 
