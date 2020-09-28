@@ -18,6 +18,8 @@ Each week, we will assign a problem set that applies the concepts covered in cla
 ***
 
 ### Assignment 2  
+#### [Building a website](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_2.md)
+
 >Due Mon 10/5 by 10pm EDT
 
 ***
