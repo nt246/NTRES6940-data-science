@@ -315,10 +315,11 @@ Here are a few examples:
 
 Another few examples of class websites built with GitHub pages
 
-https://pjbartlein.github.io/REarthSysSci/index.html
-https://p8105.com/index.html
+https://pjbartlein.github.io/REarthSysSci/index.html  
+https://p8105.com/index.html  
 
 And some personal websites:
+
 https://p8105.com/index.html  
 http://www.emilyzabor.com/
 
