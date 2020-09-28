@@ -330,9 +330,13 @@ https://p8105.com/index.html
 
 
 And some personal websites:
+<<<<<<< HEAD
 
 https://p8105.com/index.html
 
+=======
+https://p8105.com/index.html  
+>>>>>>> 316e5d444db7fc2e69f9f2108fa6607f4ad07266
 http://www.emilyzabor.com/
 
 
