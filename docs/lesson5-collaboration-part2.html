@@ -422,6 +422,27 @@ div.tocify {
 </ul>
 <p><br></p>
 </div>
+<div id="feedback-from-2-week-check-in-survey" class="section level2">
+<h2>Feedback from 2-week check-in survey</h2>
+<div id="we-got-21-responses---thank-you-for-sharing-your-thoughts" class="section level3">
+<h3>We got 21 responses - thank you for sharing your thoughts!</h3>
+<p>It seems that the course generally is working well for people.</p>
+<p><strong>Comments and suggested changes:</strong></p>
+<ul>
+<li>Request to post Zoom recordings earlier</li>
+<li>Request to use Zoom chat instead of Slack during lecture (difficult to manage all the windows)</li>
+<li>In-class demos too fast OR in-class demos too slow</li>
+<li>Request for more time in breakout rooms OR request for less time in breakout rooms</li>
+<li>Request for a more flipped classroom format (pre-recorded lectures to watch before class and use classtime for exercises)</li>
+<li>Request for lecture notes before class - they are always posted at least a few days before on the <a href="https://nt246.github.io/NTRES6940-data-science/index.html">class website</a>. You can print them to pdf (or clone a copy of the <a href="https://github.com/nt246/NTRES6940-data-science/tree/master/analysis">class GitHub repo</a> and render to pdf from the <code>.Rmd</code> file, if desired</li>
+<li>Request for larger curser size</li>
+<li>Request for information on midterm and final - there will not be any (see the <a href="https://nt246.github.io/NTRES6940-data-science/syllabus.html">syllabus</a>)</li>
+</ul>
+<p><br></p>
+<p>We will check back in around the middle of the semester. In the meantime, let us know if you have any feedback or suggestions for things we can improve.</p>
+<p><br></p>
+</div>
+</div>
 <div id="plan-for-today" class="section level2">
 <h2>Plan for today</h2>
 <p>We will continue working through the tutorial we started on last time, practicing how to collaborate on a GitHub repo while setting up a free website through GitHub Pages. Because we may not have both partners from all the pairs we formed last week with us today, we will form new pairs and start over with setting up a new shared repo that both partners will each clone to their local computers. It’s good to keep practicing that setup, and we’ll quickly get back to where we left off.</p>
@@ -444,22 +465,35 @@ div.tocify {
 </ul>
 <p><br></p>
 </div>
-<div id="getting-set-up" class="section level2">
-<h2>Getting set up</h2>
+<div id="first-a-recap-on-common-issues-experienced-so-far-and-how-to-deal-with-them" class="section level2">
+<h2>First, a recap on common issues experienced so far and how to deal with them</h2>
+<p>Problems:</p>
+<ul>
+<li>Not being in the R Project you think you’re in (i.e. not pushing changes to the GitHub repo you think you’re pushing changes to) <br></li>
+<li>Committing and pushing before you have saved your most recent changes (Git will work with your most recently saved version, and not include any unsaved changes you have made in RStudio) <br></li>
+<li>Getting overwhelmed by the Git error messages and feeling like the program is not letting you do any of the steps (pull, stage, commit, push). The error messages are your friend. Take a pause and read the message - it should indicate what the problem is. <br></li>
+<li>Not knowing how to get non-RStudio files onto GitHub (just add them to your GitHub link folder in Finder/Windows Explorer. These are just like any other folder on your computer; they have some added functionality, but don’t need special handling)</li>
+</ul>
+<p><br> <br></p>
+</div>
+<div id="now-lets-get-set-up-for-todays-exercise" class="section level2">
+<h2>Now, let’s get set up for today’s exercise</h2>
 <p>Because everyone will have a new partner today, we’ll practice one more time how to</p>
 <ul>
 <li>Create a new repo</li>
-<li>Invite a collaborator and have both of you clone the collaborative repo to your local machines following the <a href="https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html#collaborating_with_github">collaborating with github section from Lesson 4</a>.</li>
+<li>Invite a collaborator</li>
 </ul>
+<p>When you get to your breakout rooms, decide who will be Partner 1 and Partner 2. Partner 1 starts by creating a repo. You can call it <code>collab-website</code>. Add Partner 2 as a collaborator, as described in <a href="https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html#give_your_collaborator_(partner_2)_privileges">giving your partner privileges section from Lesson 4</a>.</p>
+<p>Now, both of you should clone the collaborative repo to your local machines (check <a href="https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html#collaborating_with_github">Lesson 4</a> if you need a reminder of how to do this).</p>
 <p><strong>NOTE:</strong> Make sure Partner 2 doesn’t clone the repo until Partner 1 has pushed their <code>.RProj</code> file to avoid merge conflicts here.</p>
 <p><br></p>
 </div>
 <div id="setting-up-your-collaborative-website" class="section level2">
 <h2>Setting up your collaborative website</h2>
-<p>First, let’s have Partner 2 create a new RMarkdown file. Here’s what they will do:</p>
+<p>Now it’s going to get fun. Let’s start by making a super simple website. First, we’ll have Partner 2 create a new RMarkdown file. Here’s what they will do:</p>
 <ol style="list-style-type: decimal">
 <li>Pull!</li>
-<li>Create a new RMarkdown file, just keep all the boilerplate text, select the html output format <strong>and save it as <code>index.Rmd</code></strong>. Make sure it’s all lowercase, and named <code>index.Rmd</code>. This will be the homepage for our website!</li>
+<li>Create a new RMarkdown file, just keep all the boilerplate text, select the html output format <strong>and save it as <code>index.Rmd</code></strong>. Make sure it’s all lowercase, and named <code>index.Rmd</code> (it is important that you give the file exactly this name). This will be the homepage for our website!</li>
 <li>Maybe change the title inside the Rmd, call it “Our website”</li>
 <li>Knit!</li>
 <li>Save and sync your .Rmd and your .html files
@@ -490,15 +524,15 @@ div.tocify {
 <blockquote>
 <p><strong><em>ProTip</em></strong> Pay attention to URLs. An unsung skill of the modern analyst is to be able to navigate the internet by keeping an eye on patterns.</p>
 </blockquote>
-<div id="so-cool" class="section level3">
-<h3>So cool!!!</h3>
+<div id="so-cool-youve-just-set-up-an-actual-website-in-just-a-couple-of-minutes" class="section level3">
+<h3>So cool!! You’ve just set up an actual website in just a couple of minutes!</h3>
 <p><br> <br></p>
 </div>
 </div>
 <div id="collaborate-to-build-your-website" class="section level2">
 <h2>Collaborate to build your website</h2>
 <ol style="list-style-type: decimal">
-<li>Check that your website is working</li>
+<li>Check that your website is working. Then let’s add some more content!</li>
 <li>Partner 1 should pull to make sure they get a local copy of the <code>index.Rmd</code> file</li>
 <li>Now each of you find an image online that you’d like to add (maybe a picture of a car?). Right click on it and select “copy image address”. The add it to the top of the <code>index.Rmd</code> with <code>![](url-to-image)</code>. Then knit the file.</li>
 <li>First Partner 1 should now push their changes to GitHub (pull, stage, commit, push)</li>
@@ -611,6 +645,17 @@ output:
 <p><img src="https://pbs.twimg.com/media/Cf7eHZ1W4AEeZJA.jpg" height="400px" width="300px" /></p>
 <p><br></p>
 <p>Remember to coordinate with your partner. Work on different things in parallel, but keep going back and forth pushing and pulling and resolving any merge conflicts that arise.</p>
+<p><br></p>
+</div>
+<div id="inspiration" class="section level2">
+<h2>Inspiration</h2>
+<p>Today, we’ll just explore the basics, but GitHub pages is a tremendously powerful platform for building beautiful websites with advanced graphic layout and lots of different kinds of functionality.</p>
+<p>Here are a few examples:</p>
+<p><a href="https://nt246.github.io/NTRES6940-data-science/index.html">Our class website</a></p>
+<p>Another few examples of class websites built with GitHub pages</p>
+<p><a href="https://pjbartlein.github.io/REarthSysSci/index.html" class="uri">https://pjbartlein.github.io/REarthSysSci/index.html</a> <a href="https://p8105.com/index.html" class="uri">https://p8105.com/index.html</a></p>
+<p>And some personal websites: <a href="https://p8105.com/index.html" class="uri">https://p8105.com/index.html</a> <a href="http://www.emilyzabor.com/" class="uri">http://www.emilyzabor.com/</a></p>
+<p><br> <br></p>
 <div id="end-session" class="section level3">
 <h3>END session!</h3>
 </div>
