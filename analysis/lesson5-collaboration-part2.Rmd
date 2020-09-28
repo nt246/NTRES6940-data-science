@@ -38,7 +38,9 @@ There are no required readings for today, but if you did not join our Zoom call 
 
 ## Feedback from 2-week check-in survey
 
-### We got 21 responses - thank you for sharing your thoughts!
+#### We got 21 responses - thank you for sharing your thoughts!
+
+<br>
 
 It seems that the course generally is working well for people.
 
@@ -79,16 +81,24 @@ By the end of today's class, you should be able to:
 
 <br>
 
-## First, a recap on common issues experienced so far and how to deal with them
+## A recap on common issues experienced so far and how to deal with them
 
-Problems:
+<br>
+
+**Problems:**
 
 * Not being in the R Project you think you're in (i.e. not pushing changes to the GitHub repo you think you're pushing changes to)
+
 <br>
+
 * Committing and pushing before you have saved your most recent changes (Git will work with your most recently saved version, and not include any unsaved changes you have made in RStudio)
+
 <br>
+
 * Getting overwhelmed by the Git error messages and feeling like the program is not letting you do any of the steps (pull, stage, commit, push). The error messages are your friend. Take a pause and read the message - it should indicate what the problem is.
+
 <br>
+
 * Not knowing how to get non-RStudio files onto GitHub (just add them to your GitHub link folder in Finder/Windows Explorer. These are just like any other folder on your computer; they have some added functionality, but don't need special handling) 
 
 <br>
@@ -148,7 +158,7 @@ Where is it? Figure out your website's url from your github repo's url — pay a
     
 > ***ProTip*** Pay attention to URLs. An unsung skill of the modern analyst is to be able to navigate the internet by keeping an eye on patterns.
     
-### So cool!! You've just set up an actual website in just a couple of minutes!    
+### So cool!! You've just set up an actual website in just a few minutes!    
 
 <br>
 <br>
@@ -315,13 +325,18 @@ Here are a few examples:
 Another few examples of class websites built with GitHub pages
 
 https://pjbartlein.github.io/REarthSysSci/index.html
+
 https://p8105.com/index.html
 
+
 And some personal websites:
+
 https://p8105.com/index.html
+
 http://www.emilyzabor.com/
 
 
+And of course the [GitHub Pages site](https://pages.github.com/) itself
 <br>
 <br>
 
