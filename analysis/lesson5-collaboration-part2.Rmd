@@ -69,7 +69,16 @@ Because everyone will have a new partner today, we'll practice one more time how
 
 ## Setting up your collaborative website
 
-Have Partner 2 create and knit the `index.Rmd` file as described above, and push it to GitHub (pull, stage, commit, push)
+First, let's have Partner 2 create a new RMarkdown file. Here's what they will do: 
+
+1. Pull!
+1. Create a new RMarkdown file, just keep all the boilerplate text, select the html output format **and save it as `index.Rmd`**. Make sure it's all lowercase, and named `index.Rmd`. This will be the homepage for our website! 
+1. Maybe change the title inside the Rmd, call it "Our website"
+1. Knit!
+1. Save and sync your .Rmd and your .html files 
+    - (pull, stage, commit, push)
+
+<br>
 
 Next, have Partner 1 launch the website.
 
@@ -80,7 +89,7 @@ Next, have Partner 1 launch the website.
 
 <br>
 
-3. Scroll to the Github Pages section and build your site by sourcing from the master branch and root directory
+3. Scroll to the Github Pages section (still under "options" in the left-hand pane) and build your site by sourcing from the master branch and root directory. Remember to click "save" (on the same line as you chose the master branch as the source).
 
 <img src="assets/gh_pages.png" width="450px"> 
 <br>
@@ -96,7 +105,10 @@ Where is it? Figure out your website's url from your github repo's url — pay a
     
 > ***ProTip*** Pay attention to URLs. An unsung skill of the modern analyst is to be able to navigate the internet by keeping an eye on patterns.
     
-So cool!     
+### So cool!!!     
+
+<br>
+<br>
 
 ## Collaborate to build your website
 
@@ -163,7 +175,7 @@ Remember the format of the URL. For example:
 * my website url: <https://jules32.github.io/collab-research/>
 * note that the url starts with my **username.github.io**
 
-Note that it may take a few minutes before your changes become active. In the meantime, you can explore your current website content and design in RStudio's Viewer in the bottom left pane. 
+**Note that it may take a few minutes before your changes become active.** In the meantime, you can explore your current website content and design in RStudio's Viewer in the bottom left pane. 
 
 Make sure that the Partner who didn't render the website locally pulls the updated version from GitHub.
 
@@ -195,7 +207,7 @@ output:
 
 Note that we have changed the output theme and added a table of contents.
 
-Again, it will probably take a few minutes for your changes to become active on your github.io page. We can inspect our changes in RStudio's Viewer in the bottom left pane in the meantime. 
+Again, **it will probably take a few minutes for your changes to become active on your github.io page**, so don't despair if you don't see anything different right away. We can inspect our changes in RStudio's Viewer in the bottom left pane in the meantime. 
 
 Make sure that the Partner who didn't change the `_site.yml` file pulls the updated version from GitHub.
 
