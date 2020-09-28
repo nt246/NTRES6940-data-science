@@ -330,7 +330,7 @@ https://p8105.com/index.html
 
 And some personal websites:
 
-https://p8105.com/index.html  
+https://emitanaka.org/  
 http://www.emilyzabor.com/
 
 And of course the [GitHub Pages site](https://pages.github.com/) itself
