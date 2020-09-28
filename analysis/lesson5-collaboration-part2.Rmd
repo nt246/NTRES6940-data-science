@@ -81,11 +81,19 @@ By the end of today's class, you should be able to:
 
 <br>
 
+## Assignment 2 is now posted (due Mon 10/5 by 10pm EDT)
+
+This exercise will give you another opportunity to practice what we cover today.
+
+<br>
+
 ## A recap on common issues experienced so far and how to deal with them
 
 <br>
 
-**Problems:**
+#### Problems:
+
+<br>
 
 * Not being in the R Project you think you're in (i.e. not pushing changes to the GitHub repo you think you're pushing changes to)
 
@@ -260,7 +268,7 @@ output:
 
 Note that we have changed the output theme and added a table of contents.
 
-Again, **it will probably take a few minutes for your changes to become active on your github.io page**, so don't despair if you don't see anything different right away. We can inspect our changes in RStudio's Viewer in the bottom left pane in the meantime. 
+Again, **it will probably take a few minutes for your changes to become active on your github.io page**, so don't despair if you don't see anything different online right away. We can inspect our changes in RStudio's Viewer in the bottom left pane in the meantime. 
 
 Make sure that the Partner who didn't change the `_site.yml` file pulls the updated version from GitHub.
 
@@ -318,19 +326,25 @@ Remember to coordinate with your partner. Work on different things in parallel, 
 
 Today, we'll just explore the basics, but GitHub pages is a tremendously powerful platform for building beautiful websites with advanced graphic layout and lots of different kinds of functionality. 
 
-Here are a few examples:
+**Here are a few examples:**
 
 [Our class website](https://nt246.github.io/NTRES6940-data-science/index.html)
+
+<br>
 
 Another few examples of class websites built with GitHub pages:
 
 https://pjbartlein.github.io/REarthSysSci/index.html  
 https://p8105.com/index.html  
 
+<br>
+
 And some personal websites:
 
 https://emitanaka.org/  
 http://www.emilyzabor.com/
+
+<br>
 
 And of course the [GitHub Pages site](https://pages.github.com/) itself
 
