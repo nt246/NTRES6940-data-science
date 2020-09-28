@@ -34,6 +34,29 @@ There are no required readings for today, but if you did not join our Zoom call 
 
 <br>
 
+## Feedback from 2-week check-in survey
+
+### We got 21 responses - thank you for sharing your thoughts!
+
+It seems that the course generally is working well for people.
+
+**Comments and suggested changes:**
+
+* Request to post Zoom recordings earlier
+* Request to use Zoom chat instead of Slack during lecture (difficult to manage all the windows)
+* In-class demos too fast OR in-class demos too slow
+* Request for more time in breakout rooms OR request for less time in breakout rooms
+* Request for a more flipped classroom format (pre-recorded lectures to watch before class and use classtime for exercises)
+* Request for lecture notes before class - they are always posted at least a few days before on the [class website](https://nt246.github.io/NTRES6940-data-science/index.html). You can print them to pdf (or clone a copy of the [class GitHub repo](https://github.com/nt246/NTRES6940-data-science/tree/master/analysis) and render to pdf from the `.Rmd` file, if desired
+* Request for larger curser size
+* Request for information on midterm and final - there will not be any (see the [syllabus](https://nt246.github.io/NTRES6940-data-science/syllabus.html))
+
+<br>
+
+We will check back in around the middle of the semester. In the meantime, let us know if you have any feedback or suggestions for things we can improve.
+
+<br>
+
 ## Plan for today
 
 We will continue working through the tutorial we started on last time, practicing how to collaborate on a GitHub repo while setting up a free website through GitHub Pages. Because we may not have both partners from all the pairs we formed last week with us today, we will form new pairs and start over with setting up a new shared repo that both partners will each clone to their local computers. It's good to keep practicing that setup, and we'll quickly get back to where we left off.
@@ -54,12 +77,32 @@ By the end of today's class, you should be able to:
 
 <br>
 
-## Getting set up
+## First, a recap on common issues experienced so far and how to deal with them
+
+Problems:
+
+* Not being in the R Project you think you're in (i.e. not pushing changes to the GitHub repo you think you're pushing changes to)
+<br>
+* Committing and pushing before you have saved your most recent changes (Git will work with your most recently saved version, and not include any unsaved changes you have made in RStudio)
+<br>
+* Getting overwhelmed by the Git error messages and feeling like the program is not letting you do any of the steps (pull, stage, commit, push). The error messages are your friend. Take a pause and read the message - it should indicate what the problem is.
+<br>
+* Not knowing how to get non-RStudio files onto GitHub (just add them to your GitHub link folder in Finder/Windows Explorer. These are just like any other folder on your computer; they have some added functionality, but don't need special handling) 
+
+<br>
+<br>
+
+## Now, let's get set up for today's exercise
 
 Because everyone will have a new partner today, we'll practice one more time how to
 
 * Create a new repo
-* Invite a collaborator and have both of you clone the collaborative repo to your local machines following the [collaborating with github section from Lesson 4](https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html#collaborating_with_github).
+* Invite a collaborator
+
+When you get to your breakout rooms, decide who will be Partner 1 and Partner 2. 
+Partner 1 starts by creating a repo. You can call it `collab-website`. Add Partner 2 as a collaborator, as described in [giving your partner privileges section from Lesson 4](https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html#give_your_collaborator_(partner_2)_privileges).
+
+Now, both of you should clone the collaborative repo to your local machines (check [Lesson 4](https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html#collaborating_with_github) if you need a reminder of how to do this).
 
 **NOTE:** Make sure Partner 2 doesn't clone the repo until Partner 1 has pushed their `.RProj` file to avoid merge conflicts here.
 
@@ -67,10 +110,10 @@ Because everyone will have a new partner today, we'll practice one more time how
 
 ## Setting up your collaborative website
 
-First, let's have Partner 2 create a new RMarkdown file. Here's what they will do: 
+Now it's going to get fun. Let's start by making a super simple website. First, we'll have Partner 2 create a new RMarkdown file. Here's what they will do: 
 
 1. Pull!
-1. Create a new RMarkdown file, just keep all the boilerplate text, select the html output format **and save it as `index.Rmd`**. Make sure it's all lowercase, and named `index.Rmd`. This will be the homepage for our website! 
+1. Create a new RMarkdown file, just keep all the boilerplate text, select the html output format **and save it as `index.Rmd`**. Make sure it's all lowercase, and named `index.Rmd` (it is important that you give the file exactly this name). This will be the homepage for our website! 
 1. Maybe change the title inside the Rmd, call it "Our website"
 1. Knit!
 1. Save and sync your .Rmd and your .html files 
@@ -103,14 +146,14 @@ Where is it? Figure out your website's url from your github repo's url — pay a
     
 > ***ProTip*** Pay attention to URLs. An unsung skill of the modern analyst is to be able to navigate the internet by keeping an eye on patterns.
     
-### So cool!!!     
+### So cool!! You've just set up an actual website in just a couple of minutes!    
 
 <br>
 <br>
 
 ## Collaborate to build your website
 
-1. Check that your website is working
+1. Check that your website is working. Then let's add some more content!
 2. Partner 1 should pull to make sure they get a local copy of the `index.Rmd` file
 3. Now each of you find an image online that you'd like to add (maybe a picture of a car?). Right click on it and select "copy image address". The add it to the top of the `index.Rmd` with 
 `![](url-to-image)`. Then knit the file.
@@ -259,6 +302,29 @@ Get creative! You can find some ideas for things to try in [this tutorial](https
 <br>
 
 Remember to coordinate with your partner. Work on different things in parallel, but keep going back and forth pushing and pulling and resolving any merge conflicts that arise.
+
+<br>
+
+## Inspiration
+
+Today, we'll just explore the basics, but GitHub pages is a tremendously powerful platform for building beautiful websites with advanced graphic layout and lots of different kinds of functionality. 
+
+Here are a few examples:
+
+[Our class website](https://nt246.github.io/NTRES6940-data-science/index.html)
+
+Another few examples of class websites built with GitHub pages
+
+https://pjbartlein.github.io/REarthSysSci/index.html
+https://p8105.com/index.html
+
+And some personal websites:
+https://p8105.com/index.html
+http://www.emilyzabor.com/
+
+
+<br>
+<br>
 
 
 ### END session!
