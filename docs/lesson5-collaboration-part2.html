@@ -456,7 +456,18 @@ div.tocify {
 </div>
 <div id="setting-up-your-collaborative-website" class="section level2">
 <h2>Setting up your collaborative website</h2>
-<p>Have Partner 2 create and knit the <code>index.Rmd</code> file as described above, and push it to GitHub (pull, stage, commit, push)</p>
+<p>First, let’s have Partner 2 create a new RMarkdown file. Here’s what they will do:</p>
+<ol style="list-style-type: decimal">
+<li>Pull!</li>
+<li>Create a new RMarkdown file, just keep all the boilerplate text, select the html output format <strong>and save it as <code>index.Rmd</code></strong>. Make sure it’s all lowercase, and named <code>index.Rmd</code>. This will be the homepage for our website!</li>
+<li>Maybe change the title inside the Rmd, call it “Our website”</li>
+<li>Knit!</li>
+<li>Save and sync your .Rmd and your .html files
+<ul>
+<li>(pull, stage, commit, push)</li>
+</ul></li>
+</ol>
+<p><br></p>
 <p>Next, have Partner 1 launch the website.</p>
 <ol style="list-style-type: decimal">
 <li>Go to your new collaborative repo on Github</li>
@@ -465,7 +476,7 @@ div.tocify {
 <p><img src="assets/gh_repo_settings.png" width="450px"></p>
 <p><br></p>
 <ol start="3" style="list-style-type: decimal">
-<li>Scroll to the Github Pages section and build your site by sourcing from the master branch and root directory</li>
+<li>Scroll to the Github Pages section (still under “options” in the left-hand pane) and build your site by sourcing from the master branch and root directory. Remember to click “save” (on the same line as you chose the master branch as the source).</li>
 </ol>
 <p><img src="assets/gh_pages.png" width="450px"> <br></p>
 <p>Your repo is now a website!</p>
@@ -479,7 +490,10 @@ div.tocify {
 <blockquote>
 <p><strong><em>ProTip</em></strong> Pay attention to URLs. An unsung skill of the modern analyst is to be able to navigate the internet by keeping an eye on patterns.</p>
 </blockquote>
-<p>So cool!</p>
+<div id="so-cool" class="section level3">
+<h3>So cool!!!</h3>
+<p><br> <br></p>
+</div>
 </div>
 <div id="collaborate-to-build-your-website" class="section level2">
 <h2>Collaborate to build your website</h2>
@@ -536,7 +550,7 @@ output_dir: &quot;.&quot;</code></pre>
 <li>my website url: <a href="https://jules32.github.io/collab-research/" class="uri">https://jules32.github.io/collab-research/</a></li>
 <li>note that the url starts with my <strong>username.github.io</strong></li>
 </ul>
-<p>Note that it may take a few minutes before your changes become active. In the meantime, you can explore your current website content and design in RStudio’s Viewer in the bottom left pane.</p>
+<p><strong>Note that it may take a few minutes before your changes become active.</strong> In the meantime, you can explore your current website content and design in RStudio’s Viewer in the bottom left pane.</p>
 <p>Make sure that the Partner who didn’t render the website locally pulls the updated version from GitHub.</p>
 <p><br></p>
 </div>
@@ -560,7 +574,7 @@ output:
     toc: true 
     toc_float: true </code></pre>
 <p>Note that we have changed the output theme and added a table of contents.</p>
-<p>Again, it will probably take a few minutes for your changes to become active on your github.io page. We can inspect our changes in RStudio’s Viewer in the bottom left pane in the meantime.</p>
+<p>Again, <strong>it will probably take a few minutes for your changes to become active on your github.io page</strong>, so don’t despair if you don’t see anything different right away. We can inspect our changes in RStudio’s Viewer in the bottom left pane in the meantime.</p>
 <p>Make sure that the Partner who didn’t change the <code>_site.yml</code> file pulls the updated version from GitHub.</p>
 <p>Now play around with making additional changes to your website. You can change the theme.</p>
 <blockquote>
