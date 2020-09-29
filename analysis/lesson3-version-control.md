@@ -575,7 +575,7 @@ I tend to do this every time I finish a task (basically when I start getting ner
 <br>
 
 ## Adding version control to a pre-existing R-project
-You may have been working on an RStudio project earlier and now you want to add version control through GitHub. You can easily set that up with [these instructions](https://happygitwithr.com/new-github-first.html) by from Happy Git with R by Jenny Bryan.
+You may have been working on an RStudio project earlier and now you want to add version control through GitHub. You can easily set that up with [these instructions](https://happygitwithr.com/existing-github-first.html) by from Happy Git with R by Jenny Bryan.
 
 <br>
 <br>
