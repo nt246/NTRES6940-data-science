@@ -1,6 +1,9 @@
 ---
-title: "Lesson 6: Data Wrangling Part 2"
-output: github_document
+title: "Lesson 8: Data Wrangling Part 2"
+output: 
+  html_document:
+    keep_md: yes 
+    toc: true
 ---
 
 ```{r setup, include=FALSE}
@@ -27,9 +30,6 @@ knitr::opts_chunk$set(echo = TRUE)
 <br>
 
 ## Class announcements
-
-* Problem Set 2 is due at 10pm tonight. Problem set 3 due next Wednesday
-* We will probably have a longer Zoom session next week, starting at 4.50 or 5pm - check for updates on Slack
 
 <br>
 
@@ -232,7 +232,7 @@ Besides selecting sets of existing columns, it’s often useful to add new colum
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
 
-![](../img/rstudio-cheatsheet-mutate.png)
+![](assets/rstudio-cheatsheet-mutate.png)
 
 The current variables in the coronavirus dataset don't lend themselves well to cross-computation, so to illustrate the power of the `mutate()` function, let's reformat the dataset so that we get the counts of confirmed cases, deaths and recovered for each date and country in separate columns. The tidyverse has a very convenient function for making that kind of transformation. Don't worry about how it works right now, we'll get an opportunity to explore it next week.
 
@@ -351,7 +351,7 @@ coronavirus %>%
 
 The last key `dplyr` verb is `summarize()`. It collapses a data frame to a single row. Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
  
-![](../img/rstudio-cheatsheet-summarise.png)
+![](assets/rstudio-cheatsheet-summarise.png)
 
 We can use it to calculate the total number of confirmed cases detected globally since 1-20-2020 (the beginning of this dataset)
 ```{r, eval = FALSE}

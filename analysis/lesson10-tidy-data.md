@@ -1,5 +1,5 @@
 ---
-title: "Lesson 8: tidy data"
+title: "Lesson 10: Tidy Data"
 output: 
   html_document:
     keep_md: yes 
@@ -450,7 +450,7 @@ coronavirus %>%
   geom_col(aes(x=date, y = cases, fill = type))
 ```
 
-![](lesson8-tidy-data_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](lesson10-tidy-data_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
 
 Let's see how we would do that if the data had been in a wider format.
 
@@ -478,7 +478,7 @@ coronavirus %>%
   geom_line(aes(x = date, y = cases, color = type))
 ```
 
-![](lesson8-tidy-data_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+![](lesson10-tidy-data_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
 How would we do this with the `coronavirus_wide` format? That would be much more difficult
 
@@ -496,7 +496,7 @@ ggplot(coronavirus_ttd) +
   geom_label(mapping = aes(x = confirmed, y = death, label = Country.Region))
 ```
 
-![](lesson8-tidy-data_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+![](lesson10-tidy-data_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
 
 This case highlights how the definition of what a variable and an observation is context-dependent so different formats of the same data can be considered tidy based on how we are thinking about the data and we may need to switch back and forth between long and wide formats to explore different levels of a dataset.
 

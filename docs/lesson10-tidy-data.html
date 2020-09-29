@@ -11,7 +11,7 @@
 
 
 
-<title>Lesson 8: tidy data</title>
+<title>Lesson 10: Tidy Data</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -402,7 +402,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Lesson 8: tidy data</h1>
+<h1 class="title toc-ignore">Lesson 10: Tidy Data</h1>
 
 </div>
 
@@ -726,7 +726,7 @@ coronavirus</code></pre>
   summarize(cases=sum(cases)) %&gt;%
   ggplot() +
   geom_col(aes(x=date, y = cases, fill = type))</code></pre>
-<p><img src="lesson8-tidy-data_files/figure-html/unnamed-chunk-9-1.png" /><!-- --></p>
+<p><img src="lesson10-tidy-data_files/figure-html/unnamed-chunk-9-1.png" /><!-- --></p>
 <p>Let’s see how we would do that if the data had been in a wider format.</p>
 <div id="your-turn-1" class="section level4">
 <h4>Your turn</h4>
@@ -742,7 +742,7 @@ coronavirus</code></pre>
   filter(Country.Region == &quot;US&quot;) %&gt;% 
   ggplot() +
   geom_line(aes(x = date, y = cases, color = type))</code></pre>
-<p><img src="lesson8-tidy-data_files/figure-html/unnamed-chunk-11-1.png" /><!-- --></p>
+<p><img src="lesson10-tidy-data_files/figure-html/unnamed-chunk-11-1.png" /><!-- --></p>
 <p>How would we do this with the <code>coronavirus_wide</code> format? That would be much more difficult</p>
 <p>As mentioned above, however, there are plot types where the wide format provides the best input. For example, in Slack, I showed the example of plotting the total death count per country against the total count of confirmed cases. It would be cumbersome to pull these out of the long format because in <code>ggplot</code> we are mapping <em>variables</em> to <em>aesthetics</em> and now we want to map different levels of a variable to different aesthetics. So let’s make those different levels separate variables by widening the data.</p>
 <pre class="r"><code>coronavirus_ttd &lt;- coronavirus %&gt;% 
@@ -753,7 +753,7 @@ coronavirus</code></pre>
 # Now we can plot this easily
 ggplot(coronavirus_ttd) +
   geom_label(mapping = aes(x = confirmed, y = death, label = Country.Region))</code></pre>
-<p><img src="lesson8-tidy-data_files/figure-html/unnamed-chunk-12-1.png" /><!-- --></p>
+<p><img src="lesson10-tidy-data_files/figure-html/unnamed-chunk-12-1.png" /><!-- --></p>
 <p>This case highlights how the definition of what a variable and an observation is context-dependent so different formats of the same data can be considered tidy based on how we are thinking about the data and we may need to switch back and forth between long and wide formats to explore different levels of a dataset.</p>
 <p><br></p>
 </div>

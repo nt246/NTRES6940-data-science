@@ -1,11 +1,12 @@
 ---
-title: "Lesson 5: Data Wrangling Part 1"
-output: github_document
+title: "Lesson 7: Data Wrangling Part 1"
+output: 
+  html_document:
+    keep_md: yes 
+    toc: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 <br>
 
@@ -87,9 +88,7 @@ Then
 ## Sync to GitHub
  If you forgot the workflow, review [lesson 3](https://github.com/nt246/NTRES6940-data-science/blob/master/lecture_notes/lesson3-version-control.md#sync-from-rstudio-local-to-github-remote).
 
-```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("../img/commit_steps.png")  
-```
+<img src="assets/commit_steps.png" width="100%" />
 
 <br>
 
@@ -97,7 +96,8 @@ knitr::include_graphics("../img/commit_steps.png")
 
 In your R Markdown file, let's make sure we've got our libraries loaded. Write the following: 
 
-```{r, eval=FALSE}
+
+```r
 library(tidyverse)     ## install.packages("tidyverse")
 ```
 
@@ -121,7 +121,8 @@ https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus
 
 Now, let's go back to RStudio. In our R Markdown, let's read this csv file and name the variable "coronavirus". We will use the `read_csv()` function from the `readr` package (part of the tidyverse, so it's already installed!). 
 
-```{r, eval=FALSE}
+
+```r
 # read in corona .csv
 coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv', col_types = cols(Province.State = col_character()))
 ```
@@ -131,13 +132,15 @@ For today, don't worry about why we need to specify the `col_types` argument - w
 Once we have the data loaded, let's start getting familiar with its content and format.
 
 Let's inspect: 
-```{r, eval=FALSE}
+
+```r
 ## explore the coronavirus dataset
 coronavirus # this is super long! Let's inspect in different ways
 ```
 
 Let's use `head` and `tail`: 
-```{r head, eval=FALSE}
+
+```r
 head(coronavirus) # shows first 6
 tail(coronavirus) # shows last 6
 head(coronavirus, 10) # shows first X that you indicate
@@ -147,7 +150,8 @@ tail(coronavirus, 12) # guess what this does!
 We can also see the `coronavirus` variable in RStudio's Environment pane (top right)
 
 More ways to learn basic info on a data.frame. 
-```{r names, eval=FALSE}
+
+```r
 names(coronavirus)
 dim(coronavirus)    # ?dim dimension
 ncol(coronavirus)   # ?ncol number of columns
@@ -155,7 +159,8 @@ nrow(coronavirus)   # ?nrow number of rows
 ```
 
 A statistical overview can be obtained with `summary()`, or with `skimr::skim()`
-```{r summary, eval=FALSE}
+
+```r
 summary(coronavirus)
 
 # If we don't already have skimr installed, we will need to install it
@@ -170,7 +175,8 @@ skim(coronavirus)
 
 To specify a single variable from a data.frame, use the dollar sign `$`. The `$` operator is a way to extract of replace parts of an object — check out the help menu for `$`. It's a common operator you'll see in R. 
 
-```{r $, eval=FALSE}
+
+```r
 coronavirus$cases # very long! hard to make sense of...
 head(coronavirus$cases) # can do the same tests we tried before
 str(coronavirus$cases) # it is a single numeric vector
@@ -187,21 +193,21 @@ There are five `dplyr` functions that you will use to do the vast majority of da
 
 - **`filter()`**: pick observations by their values
 
-  `r htmltools::img(src='../img/rstudio-cheatsheet-filter.png', width=300)` 
+  <!--html_preserve--><img src="assets/rstudio-cheatsheet-filter.png" width="300"/><!--/html_preserve--> 
     
 - **`select()`**: pick variables by their names
 
-  `r htmltools::img(src='../img/rstudio-cheatsheet-select.png', width=300)`
+  <!--html_preserve--><img src="assets/rstudio-cheatsheet-select.png" width="300"/><!--/html_preserve-->
     
 - **`mutate()`**: create new variables with functions of existing variables 
 
-  `r htmltools::img(src='../img/rstudio-cheatsheet-mutate.png', width=300)`
+  <!--html_preserve--><img src="assets/rstudio-cheatsheet-mutate.png" width="300"/><!--/html_preserve-->
   
 - **`arrange()`**: reorder the rows
 
 - **`summarise()`**: collapse many values down to a single summary 
 
-  `r htmltools::img(src='../img/rstudio-cheatsheet-summarise.png', width=300)`
+  <!--html_preserve--><img src="assets/rstudio-cheatsheet-summarise.png" width="300"/><!--/html_preserve-->
   
   
 These can all be used in conjunction with `group_by()` which changes the scope of each function from operating on the entire dataset to operating on it group-by-group. These six functions provide the verbs for a language of data manipulation. **We will cover the first four today and `summarise()` and `group_by()` on Wednesday.**
@@ -224,10 +230,11 @@ You will want to isolate bits of your data; maybe you want to only look at a sin
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
 
-![](../img/rstudio-cheatsheet-filter.png)
+![](assets/rstudio-cheatsheet-filter.png)
 Remember your logical expressions? If not, here is a reminder [here](https://www.statmethods.net/management/operators.html#Logical). We’ll use `>` and `==` here. 
 
-```{r, eval=FALSE}
+
+```r
 filter(coronavirus, cases > 0)
 ```
 
@@ -235,32 +242,37 @@ You can say this out loud: "Filter the coronavirus data for cases greater than 0
 
 Let's try another: "Filter the coronavirus data for the country US".
 
-```{r, eval=FALSE}
+
+```r
 filter(coronavirus, Country.Region == "US")
 ```
 
 Note that when you run that line of code, `dplyr` executes the filtering operation and returns a new data frame. `dplyr` functions never modify their inputs, so if you want to save the result, you’ll need to use the assignment operator, `<-`:
 
-```{r, eval=FALSE}
+
+```r
 coronavirus_us <- filter(coronavirus, Country.Region == "US")
 ```
 
 
 How about if we want two country names? We can't use a single instance of the `==` operator here, because it can only operate on one thing at a time. We can use [Boolean operators](https://r4ds.had.co.nz/transform.html#logical-operators) for this: `&` is “and”, `|` is “or”, and `!` is “not”. So if we want records from both the US and Canada, we can type
 
-```{r, eval=FALSE}
+
+```r
 filter(coronavirus, Country.Region == "US" | Country.Region == "Canada")
 ```
 
 A useful short-hand for this problem is `x %in% y`. This will select every row where `x` is one of the values in `y`. We could use it to rewrite the code above:
 
-```{r, eval=FALSE}
+
+```r
 filter(coronavirus, Country.Region %in% c("US", "Canada"))
 ```
 
 How about if we want only the death counts in the US? You can pass filter different criteria:
 
-```{r, eval=FALSE}
+
+```r
 # We can use either of these notations:
 filter(coronavirus, Country.Region == "US", type == "death")
 filter(coronavirus, Country.Region == "US" & type == "death")
@@ -280,7 +292,8 @@ filter(coronavirus, Country.Region == "US" & type == "death")
 
 This is one way to do it based on what we have learned so far:
 
-```{r, eval=FALSE}
+
+```r
 x <- filter(coronavirus, Country.Region == "US", type == "death")  
 sum(x$cases)  
 ```
@@ -293,11 +306,12 @@ We use `select()` to subset the data on variables or columns.
 
 Visually, we are doing this (thanks RStudio for your [cheatsheet](http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)): 
 
-![](../img/rstudio-cheatsheet-select.png)
+![](assets/rstudio-cheatsheet-select.png)
 
 We can select multiple columns with a comma, after we specify the data frame (coronavirus). 
 
-```{r, eval=FALSE}
+
+```r
 select(coronavirus, date, Country.Region, type, cases) 
 ```
 
@@ -305,7 +319,8 @@ Note how the order of the columns also have been rearranged to match the order t
 
 We can also use `-` to deselect columns
 
-```{r, eval=FALSE}
+
+```r
 select(coronavirus, -Lat, -Long) # you can use - to deselect columns
 ```
 

@@ -1,5 +1,5 @@
 ---
-title: "Lesson 8: tidy data"
+title: "Lesson 10: Tidy Data"
 output: 
   html_document:
     keep_md: yes 
