@@ -79,11 +79,19 @@ By the end of today's class, you should be able to:
 
 <br>
 
+## Assignment 2 is now posted (due Mon 10/5 by 10pm EDT)
+
+This exercise will give you another opportunity to practice what we cover today.
+
+<br>
+
 ## A recap on common issues experienced so far and how to deal with them
 
 <br>
 
-**Problems:**
+#### Problems:
+
+<br>
 
 * Not being in the R Project you think you're in (i.e. not pushing changes to the GitHub repo you think you're pushing changes to)
 
@@ -260,7 +268,7 @@ output:
 
 Note that we have changed the output theme and added a table of contents.
 
-Again, **it will probably take a few minutes for your changes to become active on your github.io page**, so don't despair if you don't see anything different right away. We can inspect our changes in RStudio's Viewer in the bottom left pane in the meantime. 
+Again, **it will probably take a few minutes for your changes to become active on your github.io page**, so don't despair if you don't see anything different online right away. We can inspect our changes in RStudio's Viewer in the bottom left pane in the meantime. 
 
 Make sure that the Partner who didn't change the `_site.yml` file pulls the updated version from GitHub.
 
@@ -319,24 +327,55 @@ Remember to coordinate with your partner. Work on different things in parallel, 
 
 Today, we'll just explore the basics, but GitHub pages is a tremendously powerful platform for building beautiful websites with advanced graphic layout and lots of different kinds of functionality. 
 
-Here are a few examples:
+**Here are a few examples:**
 
 [Our class website](https://nt246.github.io/NTRES6940-data-science/index.html)
+
+<br>
 
 Another few examples of class websites built with GitHub pages:
 
 https://pjbartlein.github.io/REarthSysSci/index.html  
 https://p8105.com/index.html  
 
+<br>
+
 And some personal websites:
 
 https://emitanaka.org/  
 http://www.emilyzabor.com/
+
+<br>
 
 And of course the [GitHub Pages site](https://pages.github.com/) itself
 
 <br>
 <br>
 
+## Learning more
+
+We are now at the end of the GitHub-focused section of the course. You should now be comfortable with using some of the basic functionality of Git and version control and the skills that you have learned - and that we will continue to practice through the rest of the course - may serve all your version control needs for a long time to come.
+
+We have focused on the simplest way to start using GitHub here. Once you really integrate GitHub into your workflow, you may want to learn about more advanced options or special use scenarios. Here, Google is going to be your best friend. You may want to learn about topics like:
+
+* Forking vs. cloning a repo
+* Branches
+* Pull requests
+* How to "check out" older versions of your repo
+* GitHub Projects
+* Using Issues on GitHub
+
+One important thing to note is that we have exclusively interacted with Git through RStudio because that provides a really nice interface and integrates well with RMarkdown and other work in R. However, there are some limits to the functionality, so for more advanced usage you will probably have to either use the [GitHub Desktop program](https://desktop.github.com/) or interact with Git and GitHub through the command line.
+
+A few good resources for learning about interacting with Git through the command line are:
+
+[Software Carpentry Version Control with Git](https://swcarpentry.github.io/git-novice/)
+
+[Chapter 4 Git, GitHub and RMarkdown in MacLachlan and Dennett's CASA0005 Geographic Information Systems and Science handbook](https://andrewmaclachlan.github.io/CASA0005repo/git-github-and-rmarkdown.html#using-git-outside-rstudio)
+
+Have fun exploring!
+
+<br>
+<br>
 
 ### END session!
