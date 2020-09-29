@@ -16,6 +16,7 @@ output:
 
 * Chapter 5.6-5.7 in [R for Data Science](https://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) by Hadley Wickham & Garrett Grolemund
 
+<br>
 
 #### Other resources:
 

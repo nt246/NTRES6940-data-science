@@ -12,28 +12,24 @@ output:
 
 ## Readings
 
+#### Required: 
+
 Chapter 5.1-5.5 in [R for Data Science](https://r4ds.had.co.nz/transform.html) by Hadley Wickham & Garrett Grolemund
+
+<br>
+
+#### Other resources:
+
+* The [Introduction to `dplyr` vignette](https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html)
+
+* Jenny Bryan's lectures from STAT545 at UBC: [Introduction to dplyr](http://stat545.com/block009_dplyr-intro.html)
+
+* Software Carpentry's R for reproducible scientific analysis materials: [Dataframe manipulation with dplyr](https://swcarpentry.github.io/r-novice-gapminder/13-dplyr/)
 
 <br>
 
 ## Class announcements
 
-
-* **Welcome to the online format!**   
-Updated syllabus [here](https://github.com/nt246/NTRES6940-data-science)  
-Each class will be broken into two parts:
-
-  + **Part A:** Pre-recorded lecture with exercises (~50 minutes, suggested time: Mondays and Wednesdays 4.20 - 5.10pm)
-  + **Part B:** Live Zoom session for Q&A and collaborative exercises (Mondays and Wednesdays 5.10 - 5.40pm)
-<br>  
-* Videos will be available through the [course Canvas site](https://canvas.cornell.edu/courses/14389). If you don't have access let me know ASAP.
-<br>
-* Nicolas and Nina will be on Slack (`lecture-chat` channel or direct message) and on Zoom with a waiting room to address questions and help troubleshoot technical issues during the lecture period 4.20-5.10pm Mondays and Wednesdays. You will need to be signed into Canvas to access the Zoom call
-<br>  
-* Feedback on the online format welcome! Teaching online is completely new for us and we are very receptive to ideas for improvement
-  + New `feedback-online-format` channel in Slack workspace
-* **Problem set 2 due at 10pm this Wednesday (04/08/20)**
-  
 <br>
 
 ## Learning objectives for today's class
