@@ -383,7 +383,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x=displ, y=hwy)) 
 ```
 
-![](../docs/lesson6-files/unnamed-chunk-6-1.png)<!-- -->
+![](docs/lesson6-files/unnamed-chunk-6-1.png)<!-- -->
 
 #### Make the size of points corresponds to the number of cylinders (`cyl`), and the color of points corresponds to the type of car (`class`)
 
@@ -398,7 +398,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl)) 
 ```
 
-![](../docs/lesson6-files/unnamed-chunk-7-1.png)<!-- -->
+![](docs/lesson6-files/unnamed-chunk-7-1.png)<!-- -->
 
 Looks like given the same engine size, 2seaters tend to have better fuel economy than other car types. This makes sense. 
 
@@ -413,7 +413,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl), shape=1) 
 ```
 
-![](../docs/lesson6-files/unnamed-chunk-8-1.png)<!-- -->
+![](docs/lesson6-files/unnamed-chunk-8-1.png)<!-- -->
 
 #### Overlay two different geometric objects
 
@@ -431,7 +431,7 @@ ggplot(data = mpg) +
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-![](../docs/lesson6-files/unnamed-chunk-9-1.png)<!-- -->
+![](docs/lesson6-files/unnamed-chunk-9-1.png)<!-- -->
 
 Did you notice that for both geometric objects, `x` maps to `displ` and `y` maps `hwy`, so these auguments are repeated? In such cases, we can minimize the amount of repeat by defining how these aesthetics map to variables for all subsequent layers within `ggplot()`, as the following.
 
@@ -447,7 +447,7 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-![](../docs/lesson6-files/unnamed-chunk-10-1.png)<!-- -->
+![](docs/lesson6-files/unnamed-chunk-10-1.png)<!-- -->
 
 #### Display different `year` in different facets
 
@@ -466,7 +466,7 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-![](../docs/lesson6-files/unnamed-chunk-11-1.png)<!-- -->
+![](docs/lesson6-files/unnamed-chunk-11-1.png)<!-- -->
 
 #### Adjust figure size using chunk options
 
@@ -485,7 +485,7 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-![](../docs/lesson6-files/unnamed-chunk-12-1.png)<!-- -->
+![](docs/lesson6-files/unnamed-chunk-12-1.png)<!-- -->
 
 #### Change the theme of a graph
 
@@ -505,7 +505,7 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-![](../docs/lesson6-files/unnamed-chunk-13-1.png)<!-- -->
+![](docs/lesson6-files/unnamed-chunk-13-1.png)<!-- -->
 
 <br>  
 
@@ -528,7 +528,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_boxplot(mapping = aes(x=class, y=hwy))
     ```
     
-    ![](../docs/lesson6-files/unnamed-chunk-14-1.png)<!-- -->
+    ![](docs/lesson6-files/unnamed-chunk-14-1.png)<!-- -->
 
 * `geom_bar()`
 
@@ -539,7 +539,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_bar(aes(x=class))
     ```
     
-    ![](../docs/lesson6-files/unnamed-chunk-15-1.png)<!-- -->
+    ![](docs/lesson6-files/unnamed-chunk-15-1.png)<!-- -->
   
 * `geom_histogram()`
 
@@ -554,7 +554,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
     ```
     
-    ![](../docs/lesson6-files/unnamed-chunk-16-1.png)<!-- -->
+    ![](docs/lesson6-files/unnamed-chunk-16-1.png)<!-- -->
     
 * `geom_density()`
 
@@ -565,7 +565,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_density(aes(x=hwy))
     ```
     
-    ![](../docs/lesson6-files/unnamed-chunk-17-1.png)<!-- -->
+    ![](docs/lesson6-files/unnamed-chunk-17-1.png)<!-- -->
 
 * `geom_smooth()`
     
@@ -579,7 +579,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_smooth(method="lm", se=F)
     ```
     
-    ![](../docs/lesson6-files/unnamed-chunk-18-1.png)<!-- -->
+    ![](docs/lesson6-files/unnamed-chunk-18-1.png)<!-- -->
     
 * `geom_text()`
 
@@ -590,7 +590,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_text(aes(label=cyl))
     ```
     
-    ![](../docs/lesson6-files/unnamed-chunk-19-1.png)<!-- -->
+    ![](docs/lesson6-files/unnamed-chunk-19-1.png)<!-- -->
 
 * `geom_label()`
     
@@ -604,7 +604,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_label(data=filter(mpg, hwy>40), mapping = aes(label=model, y=hwy, x=displ+0.8))
     ```
     
-    ![](../docs/lesson6-files/unnamed-chunk-20-1.png)<!-- -->
+    ![](docs/lesson6-files/unnamed-chunk-20-1.png)<!-- -->
 
 * `geom_line()`
 
@@ -619,7 +619,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       facet_wrap(~manufacturer)
     ```
     
-    ![](../docs/lesson6-files/unnamed-chunk-21-1.png)<!-- -->
+    ![](docs/lesson6-files/unnamed-chunk-21-1.png)<!-- -->
     
 #### Aesthetics
 
@@ -642,7 +642,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_density(aes(color=drv, x=hwy))
     ```
     
-    ![](../docs/lesson6-files/unnamed-chunk-22-1.png)<!-- -->
+    ![](docs/lesson6-files/unnamed-chunk-22-1.png)<!-- -->
     
     ```r
     ## demo (fill by drv)
@@ -650,7 +650,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_density(aes(fill=drv, x=hwy))
     ```
     
-    ![](../docs/lesson6-files/unnamed-chunk-22-2.png)<!-- -->
+    ![](docs/lesson6-files/unnamed-chunk-22-2.png)<!-- -->
 
 * `alpha`
     
@@ -663,7 +663,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_density(aes(fill=drv, x=hwy), alpha=0.5)
     ```
     
-    ![](../docs/lesson6-files/unnamed-chunk-23-1.png)<!-- -->
+    ![](docs/lesson6-files/unnamed-chunk-23-1.png)<!-- -->
     
 * `shape`, `line_type`
 
@@ -679,7 +679,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
     ```
     
-    ![](../docs/lesson6-files/unnamed-chunk-24-1.png)<!-- -->
+    ![](docs/lesson6-files/unnamed-chunk-24-1.png)<!-- -->
 
 #### Facet
 
@@ -695,7 +695,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       facet_grid(drv~cyl)
     ```
     
-    ![](../docs/lesson6-files/unnamed-chunk-25-1.png)<!-- -->
+    ![](docs/lesson6-files/unnamed-chunk-25-1.png)<!-- -->
 
 <br>  
 

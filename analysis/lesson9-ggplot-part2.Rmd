@@ -8,7 +8,7 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_knit$set(base.dir = "/Users/mariaakopyan/Github/NTRES6940-data-science/", base.url = "/")
+knitr::opts_knit$set(base.dir = "/Users/mariaakopyan/Github/NTRES6940-data-science/")
 knitr::opts_chunk$set(echo = TRUE, fig.path="docs/lesson9-files/")
 ```
 
