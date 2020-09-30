@@ -161,7 +161,7 @@ Before making any kind of graph, we will always need to know our data first. In 
 
 <br>
 
-### Activity
+### Activity - Exercise 1
 
 Take a few minutes to look at `mtcars`, another car dataset that comes pre-installed with base R. How is this different from the `mpg` dataset, both in terms of content and structure? 
 
@@ -281,7 +281,7 @@ ggplot(data = mpg) +
 
 <br>
 
-### Your turn
+### Your turn - Exercise 2
 
 1. Run `ggplot(data = mpg)`. What do you see? Why?
 
@@ -320,7 +320,7 @@ ggplot(data = mpg) +
 <br>
 <br>
 
-### Your turn (in breakout rooms)
+### Your turn (in breakout rooms) - Exercise 3
 
 1. Return to your scatterplot of `hwy` vs `cyl`. Color the points by the year of manufacture for each car model. Why does the legend look different from when we mapped `class` to color above?
 
@@ -376,7 +376,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 
 <br>
 
-#### Your turn
+#### Your turn - Exercise 4
 
 Break this plot into subplots for each class
 
