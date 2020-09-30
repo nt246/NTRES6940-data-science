@@ -7,14 +7,13 @@ output:
 ---
   
 ```{r setup, include=FALSE}
-knitr::opts_knit$set(base.dir = "/Users/mariaakopyan/Github/NTRES6940-data-science/")
-knitr::opts_chunk$set(echo = TRUE, fig.path="docs/lesson6-files/")
+knitr::opts_knit$set(base.dir = "/Users/mariaakopyan/Github/NTRES6940-data-science/docs")
+knitr::opts_chunk$set(echo = TRUE, fig.path="lesson6-files/")
 ```
 
 <br>
 
 ## Readings  
-
 **Required**:  
 
 * [Chapter 3.1-3.6 in Grolemund and Wickham's R for Data Science](https://r4ds.had.co.nz/data-visualisation.html)  
