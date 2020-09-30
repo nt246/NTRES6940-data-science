@@ -19,11 +19,29 @@ output:
 
 **Additional resources**:  
 
+* The book [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/) by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen
+
+*[Graphs with ggplot2 - Cookbook for R](http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2)
+
 * [RStudio's ggplot2 cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)  
 
-<br>  
+<br> 
 
-## Learning objectives
+## Announcements
+
+* Assignment 2 is due on Monday. You will need a partner to complete part of the assignment. Reach out if you need a partner
+
+<br>
+
+## First, a quick wrap-up of our GitHub section
+
+GitHub has powerful infrastructure for communicating with your collaborators (and yourself!) directly in your repo. It can be very helpful to have discussions about data or analysis tasks/choices right there with the rest of your project files instead of burried away in long email chains or in unrecorded verbal converasation. We'll do a quick demo of a few of the ways you can communicate on GitHub. If you're interested, take a look at [this chapter](https://openscapes.github.io/series/github-issues.html) by Julia Lowndes on using GitHub issues, or the [GitHub Guide](https://guides.github.com/features/issues/).
+
+Now on to today's topic...
+
+<br>
+
+## Learning objectives for today's class
 
 By the end of this class you will be able to:
 
@@ -33,21 +51,38 @@ By the end of this class you will be able to:
 * Combine compatible graph types  
 * Split up data into faceted graphs  
 * Change the theme of graphs  
-* Get more comfortable with sharing your work through GitHub
 
 **Acknowledgements**: Some content from today's lecture is adapted from the excellent [R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julia Stewart Lowndes and Allison Horst and the [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) book by Garrett Grolemund and Hadley Wickham.
 
 <br>  
 
-## Taking notes
+## Taking notes - remember to save your work in a script or an RMarkdown file 
 
-### Create an RMarkdown file for note taking in this lecture
+Have a look at [Chapter 8 in R4DS](https://r4ds.had.co.nz/workflow-projects.html) and let's all go ahead and change our RStudio settings to never save our workspace upon exit, as shown there.
 
-Before we start, please open the R Project that you created in our last lecture that is associated with your personal GitHub repository. Then create a new RMarkdown file, select `github_document` output format, and save it to your lecture note folder. You will use this RMarkdown file to take notes and work on exercises, and to share your work with the class. 
+<br>
 
+### Create an R script or an RMarkdown file for working along with examples and doing exercises in this lecture
+
+As we start working in RStudio, we want to continue practicing how to sync our work to GitHub. So before we start, please open the R Project that is associated with your class repository (the name should be `ntres-6940-YOUR_USERNAME` (replace YOUR_USERNAME with your GitHub user ID). Then create a new subdirectory names `course-notes`, open an R-script or an RMarkdown file and save it in this subdirectory as `lecture6-ggplot1.R` [or whatever you want to call it].  
+ 
 <br>  
 
+## Getting started with data visualization
+
+Always plot your data!
+
+Two main goals for statistical graphics:
+
+* To facilitate comparisons
+* To identify trends
+
+There are several ways to make plots in R. We will exclusively use the `ggplot2` package here. If you want to know more about why we're using `ggplot2` instead of base plot, check out the slides from [Jenny Bryan's ggplot tutorial](https://github.com/jennybc/ggplot2-tutorial/tree/master/ggplot2-tutorial-slides)
+
+<br>
+
 ## Load packages
+Now we are ready to begin. `ggplot2` is a graphics package within the `tidyverse`. You should already have this installed, but we need to load the `tidyverse` set of packages before you can use them.
 
 
 ```r
@@ -56,94 +91,11 @@ library(tidyverse)
 
 <br>  
 
-## Grammar of graphics in `ggplot2`
-
-In this class, we will write reproducible code to build graphs piece-by-piece. In Excel, graphs are made by manually selecting options, which may not be the best option for keeping track of our work. Also, if we haven't built a graph with reproducible code, we might not be able to easily recreate a graph or use that code again to make the same style graph with different data.
-
-Using `ggplot2`, the graphics package within the `tidyverse`, we will write reproducible code to manually and thoughtfully build our graphs.
-
-> “ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs. With ggplot2, you can do more faster by learning one system and applying it in many places.” - R4DS
-
-So yeah…that `gg` is from “grammar of graphics.”
-
-![](https://rstudio-conf-2020.github.io/r-for-excel/img/rstudio-cheatsheet-ggplot.png)
-
-These "same few components" that all `ggplot2` graphs share include the followings:
-
-![](https://cxlabsblog.files.wordpress.com/2017/10/2017-10-24-14_36_29-visualization-layers-of-ggplot-google-docs.png)
-
-Of these, **data**, **aethetics**, and **geometries** are the components that must be specified when creating a graph.
-
-You can think of the grammar of graphics as a systematic approach for describing the components of a graph. It has seven components (the ones in bold are required to be specifed explicitly in `ggplot2`):
-
-<br>
-
-**Required:**
-
-<br>
-
-- __Data__
-  - Exactly as it sounds: the data that you're feeding into a plot.
-- __Aesthetic mappings__
-  - This is a specification of how you will connect variables (columns) from your data to a visual dimension. These visual dimensions are called "aesthetics", and can be (for example) horizontal positioning, vertical positioning, size, colour, shape, etc.
-- __Geometric objects__
-  - This is a specification of what object will actually be drawn on the plot. This could be a point, a line, a bar, etc. 
-
-<br>
-
-**Optional:**
-
-- Scales
-  - This is a specification of how a variable is mapped to its aesthetic. Will it be mapped linearly? On a log scale? Something else?
-- Statistical transformations
-  - This is a specification of whether and how the data are combined/transformed before being plotted. For example, in a bar chart, data are transformed into their frequencies; in a box-plot, data are transformed to a five-number summary.
-- Coordinate system
-  - This is a specification of how the position aesthetics (x and y) are depicted on the plot. For example, rectangular/cartesian, or polar coordinates.
-- Facet
-  - This is a specification of data variables that partition the data into smaller "sub plots", or panels. 
-
-These components are like parameters of statistical graphics, defining the "space" of statistical graphics. In theory, there is a one-to-one mapping between a plot and its grammar components, making this a useful way to specify graphics.
-
-<br>
-
-We will use the `ggplot2` package, but the function we use to initialize a graph will be `ggplot`, which works best for data in tidy format (i.e., a column for every variable, and a row for every observation). We will learn more about the tidy format and how to convert "untidy" datasets into tidy format later in the class. For the purpose of this class, the datasets that we will use are already in tidy format. 
-
-Graphics with `ggplot2` are built step-by-step, adding new elements as layers with a plus sign (`+`) between layers. Adding layers in this fashion allows for extensive flexibility and customization of plots. Below is a template that can be used to create almost any graph that you can imagine using `ggplot2`.
-
-```
-ggplot(data = <DATA>) + 
-  <GEOM_FUNCTION>(
-     mapping = aes(<MAPPINGS>),
-     stat = <STAT>, 
-     position = <POSITION>
-  ) +
-  <COORDINATE_FUNCTION> +
-  <FACET_FUNCTION> +
-  <THEME_FUNCTION>
-```
-
-Breaking that down:
-
-* First, tell R you are using `ggplot()`  
-* Then, tell it the object name under which your data table is stored (`data = <DATA>`)  
-* Next, add a layer for the type of geometric object with `<GEOM_FUNCTION>`. For example, geom_point() generates a scatterplot, geom_line() generates a line graph, geom_bar() generates a bar graph, etc.  
-* Then, use `mapping = aes(<MAPPINGS>)` to specify which variables you want to plot in this layer and which aesthetics they should map to.
-* (Optional) Use `stat = <STAT>` to perform statistical transformation with your variables.
-* (Optional) Use `position = <POSITION>` to perform any position adjustment with your geometric object.
-* (Optional) Use `<COORDINATE_FUNCTION>` to change the default coordinate system.
-* (Optional) Use `<FACET_FUNCTION>` to make a faceted graph.
-* (Optional) Use `<THEME_FUNCTION>` to change the default style of the graph.
-
-<br>  
-
-## Activity
-
-
-<br>  
-
-## Create our first `ggplot2` graph
+## Preparing to create our first `ggplot2` graph
 
 We will visualize some fuel economy data for 38 popular models of car using the dataset `mpg` which is included in the `ggplot2` package. 
+
+<br>
 
 #### Inspect the data frame
 
@@ -369,11 +321,113 @@ Before making any kind of graph, we will always need to know our data first. In 
     ##  3rd Qu.:27.00                                        
     ##  Max.   :44.00
     ```
-    
+
+<br>
+
+## Activity
+
+Take a few minutes to look at `mtcars`, another car dataset that comes pre-installed with base R. How is this different from the `mpg` dataset, both in terms of content and structure. 
+
+<br>
+<br>
+
+## Grammar of graphics in `ggplot2`
+
+In this class, we will write reproducible code to build graphs piece-by-piece. This contrasts with point-and-click applications like Excel where graphs are made by manually selecting options, which makes it difficult to keep track of our work. Also, if we haven't built a graph with reproducible code, we will have to repeat the entire plotting process again for every new dataset and if we make complicated graphics we might not be able to easily recreate all details of our graph.
+
+Using `ggplot2`, the graphics package within the `tidyverse`, we will write reproducible code to manually and thoughtfully build our graphs.
+
+> “ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs. With ggplot2, you can do more faster by learning one system and applying it in many places.” - R4DS
+
+So yeah... that `gg` is from “grammar of graphics.”
+
+![](https://rstudio-conf-2020.github.io/r-for-excel/img/rstudio-cheatsheet-ggplot.png)
+
+These "same few components" that all `ggplot2` graphs share include the followings:
+
+![](https://cxlabsblog.files.wordpress.com/2017/10/2017-10-24-14_36_29-visualization-layers-of-ggplot-google-docs.png)
+
+Of these, **data**, **aethetics**, and **geometries** are the components that must be specified when creating a graph.
+
+You can think of the grammar of graphics as a systematic approach for describing the components of a graph. It has seven components (the ones in bold are required to be specifed explicitly in `ggplot2`):
+
+<br>
+
+**Required:**
+
+<br>
+
+- __Data__
+  - Exactly as it sounds: the data that you're feeding into a plot.
+- __Aesthetic mappings__
+  - This is a specification of how you will connect variables (columns) from your data to a visual dimension. These visual dimensions are called "aesthetics", and can be (for example) horizontal positioning, vertical positioning, size, colour, shape, etc.
+- __Geometric objects__
+  - This is a specification of what object will actually be drawn on the plot. This could be a point, a line, a bar, etc. 
+
+<br>
+
+**Optional:**
+
+- Scales
+  - This is a specification of how a variable is mapped to its aesthetic. Will it be mapped linearly? On a log scale? Something else?
+- Statistical transformations
+  - This is a specification of whether and how the data are combined/transformed before being plotted. For example, in a bar chart, data are transformed into their frequencies; in a box-plot, data are transformed to a five-number summary.
+- Coordinate system
+  - This is a specification of how the position aesthetics (x and y) are depicted on the plot. For example, rectangular/cartesian, or polar coordinates.
+- Facet
+  - This is a specification of data variables that partition the data into smaller "sub plots", or panels. 
+
+These components are like parameters of statistical graphics, defining the "space" of statistical graphics. In theory, there is a one-to-one mapping between a plot and its grammar components, making this a useful way to specify graphics.
+
+<br>
+
+We will use the `ggplot2` package, but the function we use to initialize a graph will be `ggplot`, which works best for data in tidy format (i.e., a column for every variable, and a row for every observation). We will learn more about the tidy format and how to convert "untidy" datasets into tidy format later in the class. For the purpose of this class, the datasets that we will use are already in tidy format. 
+
+Graphics with `ggplot2` are built step-by-step, adding new elements as layers with a plus sign (`+`) between layers. Adding layers in this fashion allows for extensive flexibility and customization of plots. Below is a template that can be used to create almost any graph that you can imagine using `ggplot2`.
+
+```
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION>(
+     mapping = aes(<MAPPINGS>),
+     stat = <STAT>, 
+     position = <POSITION>
+  ) +
+  <COORDINATE_FUNCTION> +
+  <FACET_FUNCTION> +
+  <THEME_FUNCTION>
+```
+
+Breaking that down:
+
+* First, tell R you are using `ggplot()`  
+* Then, tell it the object name under which your data table is stored (`data = <DATA>`)  
+* Next, add a layer for the type of geometric object with `<GEOM_FUNCTION>`. For example, geom_point() generates a scatterplot, geom_line() generates a line graph, geom_bar() generates a bar graph, etc.  
+* Then, use `mapping = aes(<MAPPINGS>)` to specify which variables you want to plot in this layer and which aesthetics they should map to.
+* (Optional) Use `stat = <STAT>` to perform statistical transformation with your variables.
+* (Optional) Use `position = <POSITION>` to perform any position adjustment with your geometric object.
+* (Optional) Use `<COORDINATE_FUNCTION>` to change the default coordinate system.
+* (Optional) Use `<FACET_FUNCTION>` to make a faceted graph.
+* (Optional) Use `<THEME_FUNCTION>` to change the default style of the graph.
+
+
+
     
 #### Simple scatter plot
 
 Let's first make a simple scatter plot to look at how engine displacement (`displ`), which is an expression of an engine's size, may affect the fuel economy of cars on highway (`hwy`). For this plot, what are the aesthetics, and what are the geometric objects? 
+
+<img src="assets/mpg-scatterplot.png" width="80%" />
+
+We can make this plot by entering the relevant data, geom_function and mappings in the general ggplot template.
+
+```
+
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+  
+```
+
+In this case, it would be
 
 
 ```r
@@ -382,7 +436,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x=displ, y=hwy)) 
 ```
 
-![](lesson6-files/unnamed-chunk-6-1.png)<!-- -->
+![](lesson6-files/unnamed-chunk-7-1.png)<!-- -->
 
 #### Make the size of points corresponds to the number of cylinders (`cyl`), and the color of points corresponds to the type of car (`class`)
 
@@ -397,7 +451,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl)) 
 ```
 
-![](lesson6-files/unnamed-chunk-7-1.png)<!-- -->
+![](lesson6-files/unnamed-chunk-8-1.png)<!-- -->
 
 Looks like given the same engine size, 2seaters tend to have better fuel economy than other car types. This makes sense. 
 
@@ -412,7 +466,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl), shape=1) 
 ```
 
-![](lesson6-files/unnamed-chunk-8-1.png)<!-- -->
+![](lesson6-files/unnamed-chunk-9-1.png)<!-- -->
 
 #### Overlay two different geometric objects
 
@@ -430,7 +484,7 @@ ggplot(data = mpg) +
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-![](lesson6-files/unnamed-chunk-9-1.png)<!-- -->
+![](lesson6-files/unnamed-chunk-10-1.png)<!-- -->
 
 Did you notice that for both geometric objects, `x` maps to `displ` and `y` maps `hwy`, so these auguments are repeated? In such cases, we can minimize the amount of repeat by defining how these aesthetics map to variables for all subsequent layers within `ggplot()`, as the following.
 
@@ -446,7 +500,7 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-![](lesson6-files/unnamed-chunk-10-1.png)<!-- -->
+![](lesson6-files/unnamed-chunk-11-1.png)<!-- -->
 
 #### Display different `year` in different facets
 
@@ -465,7 +519,7 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-![](lesson6-files/unnamed-chunk-11-1.png)<!-- -->
+![](lesson6-files/unnamed-chunk-12-1.png)<!-- -->
 
 #### Adjust figure size using chunk options
 
@@ -484,7 +538,7 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-![](lesson6-files/unnamed-chunk-12-1.png)<!-- -->
+![](lesson6-files/unnamed-chunk-13-1.png)<!-- -->
 
 #### Change the theme of a graph
 
@@ -504,7 +558,7 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-![](lesson6-files/unnamed-chunk-13-1.png)<!-- -->
+![](lesson6-files/unnamed-chunk-14-1.png)<!-- -->
 
 <br>  
 
@@ -527,7 +581,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_boxplot(mapping = aes(x=class, y=hwy))
     ```
     
-    ![](lesson6-files/unnamed-chunk-14-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-15-1.png)<!-- -->
 
 * `geom_bar()`
 
@@ -538,7 +592,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_bar(aes(x=class))
     ```
     
-    ![](lesson6-files/unnamed-chunk-15-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-16-1.png)<!-- -->
   
 * `geom_histogram()`
 
@@ -553,7 +607,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
     ```
     
-    ![](lesson6-files/unnamed-chunk-16-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-17-1.png)<!-- -->
     
 * `geom_density()`
 
@@ -564,7 +618,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_density(aes(x=hwy))
     ```
     
-    ![](lesson6-files/unnamed-chunk-17-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-18-1.png)<!-- -->
 
 * `geom_smooth()`
     
@@ -578,7 +632,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_smooth(method="lm", se=F)
     ```
     
-    ![](lesson6-files/unnamed-chunk-18-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-19-1.png)<!-- -->
     
 * `geom_text()`
 
@@ -589,7 +643,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_text(aes(label=cyl))
     ```
     
-    ![](lesson6-files/unnamed-chunk-19-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-20-1.png)<!-- -->
 
 * `geom_label()`
     
@@ -603,7 +657,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_label(data=filter(mpg, hwy>40), mapping = aes(label=model, y=hwy, x=displ+0.8))
     ```
     
-    ![](lesson6-files/unnamed-chunk-20-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-21-1.png)<!-- -->
 
 * `geom_line()`
 
@@ -618,7 +672,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       facet_wrap(~manufacturer)
     ```
     
-    ![](lesson6-files/unnamed-chunk-21-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-22-1.png)<!-- -->
     
 #### Aesthetics
 
@@ -641,7 +695,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_density(aes(color=drv, x=hwy))
     ```
     
-    ![](lesson6-files/unnamed-chunk-22-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-23-1.png)<!-- -->
     
     ```r
     ## demo (fill by drv)
@@ -649,7 +703,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_density(aes(fill=drv, x=hwy))
     ```
     
-    ![](lesson6-files/unnamed-chunk-22-2.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-23-2.png)<!-- -->
 
 * `alpha`
     
@@ -662,7 +716,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_density(aes(fill=drv, x=hwy), alpha=0.5)
     ```
     
-    ![](lesson6-files/unnamed-chunk-23-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-24-1.png)<!-- -->
     
 * `shape`, `line_type`
 
@@ -678,7 +732,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
     ```
     
-    ![](lesson6-files/unnamed-chunk-24-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-25-1.png)<!-- -->
 
 #### Facet
 
@@ -694,9 +748,14 @@ With that being said, there are some geometries, aesthetics, and facet functions
       facet_grid(drv~cyl)
     ```
     
-    ![](lesson6-files/unnamed-chunk-25-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-26-1.png)<!-- -->
 
 <br>  
+
+
+Export 
+https://rstudio-conf-2020.github.io/r-for-excel/ggplot2.html#exporting-a-ggplot-graph-with-ggsave
+
 
 ## Exercise
 
