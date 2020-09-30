@@ -18,6 +18,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 * [Chapter 3.1-3.6 in Grolemund and Wickham's R for Data Science](https://r4ds.had.co.nz/data-visualisation.html)  
 
+<br>
+
 **Additional resources**:  
 
 * [RStudio's ggplot2 cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)  
@@ -74,6 +76,38 @@ These "same few components" that all `ggplot2` graphs share include the followin
 
 Of these, **data**, **aethetics**, and **geometries** are the components that must be specified when creating a graph.
 
+You can think of the grammar of graphics as a systematic approach for describing the components of a graph. It has seven components (the ones in bold are required to be specifed explicitly in `ggplot2`):
+
+<br>
+
+**Required:**
+
+<br>
+
+- __Data__
+  - Exactly as it sounds: the data that you're feeding into a plot.
+- __Aesthetic mappings__
+  - This is a specification of how you will connect variables (columns) from your data to a visual dimension. These visual dimensions are called "aesthetics", and can be (for example) horizontal positioning, vertical positioning, size, colour, shape, etc.
+- __Geometric objects__
+  - This is a specification of what object will actually be drawn on the plot. This could be a point, a line, a bar, etc. 
+
+<br>
+
+**Optional:**
+
+- Scales
+  - This is a specification of how a variable is mapped to its aesthetic. Will it be mapped linearly? On a log scale? Something else?
+- Statistical transformations
+  - This is a specification of whether and how the data are combined/transformed before being plotted. For example, in a bar chart, data are transformed into their frequencies; in a box-plot, data are transformed to a five-number summary.
+- Coordinate system
+  - This is a specification of how the position aesthetics (x and y) are depicted on the plot. For example, rectangular/cartesian, or polar coordinates.
+- Facet
+  - This is a specification of data variables that partition the data into smaller "sub plots", or panels. 
+
+These components are like parameters of statistical graphics, defining the "space" of statistical graphics. In theory, there is a one-to-one mapping between a plot and its grammar components, making this a useful way to specify graphics.
+
+<br>
+
 We will use the `ggplot2` package, but the function we use to initialize a graph will be `ggplot`, which works best for data in tidy format (i.e., a column for every variable, and a row for every observation). We will learn more about the tidy format and how to convert "untidy" datasets into tidy format later in the class. For the purpose of this class, the datasets that we will use are already in tidy format. 
 
 Graphics with `ggplot2` are built step-by-step, adding new elements as layers with a plus sign (`+`) between layers. Adding layers in this fashion allows for extensive flexibility and customization of plots. Below is a template that can be used to create almost any graph that you can imagine using `ggplot2`.
@@ -106,23 +140,6 @@ Breaking that down:
 
 ## Activity
 
-### Break down the following graphs into basic `ggplot2` components
-
-* Manhattan plot
-
-![](https://www.r-graph-gallery.com/img/graph/101_Manhattan_plot.png)
-
-* Ridgeline plot
-
-![](https://www.r-graph-gallery.com/294-basic-ridgeline-plot_files/figure-html/unnamed-chunk-1-1.png)
-
-* Line plot
-
-![](https://www.r-graph-gallery.com/img/graph/lineplot-spaghetti3.png)
-
-* Bar plot
-
-![](https://github.com/nt246/NTRES6940-data-science/raw/master/misc/pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-9-1.png)
 
 <br>  
 
