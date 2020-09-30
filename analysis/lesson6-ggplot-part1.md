@@ -328,7 +328,7 @@ Before making any kind of graph, we will always need to know our data first. In 
 
 <br>
 
-## Activity
+### Activity
 
 Take a few minutes to look at `mtcars`, another car dataset that comes pre-installed with base R. How is this different from the `mpg` dataset, both in terms of content and structure. 
 
@@ -425,13 +425,12 @@ Let's first make a simple scatter plot to look at how engine displacement (`disp
 
 <img src="assets/mpg-scatterplot.png" width="80%" />
 
+<br>
 We can make this plot by entering the relevant data, geom_function and mappings in the general ggplot template.
 
 ```
-
 ggplot(data = <DATA>) + 
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
-  
 ```
 
 <br>
@@ -452,8 +451,10 @@ ggplot(data = mpg) +
 ### Your turn
 
 1. Run `ggplot(data = mpg)`. What do you see? Why?
+
 2. Make a scatterplot of `hwy` vs `cyl`
-3. If you have time, see what happens if you make a scatterplot of class vs drv? Why is the plot not useful?
+
+3. If you have time, see what happens if you make a scatterplot of `class` vs `drv`? Why is the plot not useful?
 
 <br>
 
@@ -493,6 +494,7 @@ ggplot(data = mpg) +
 ### Your turn (in breakout rooms)
 
 1. Return to your scatterplot of `hwy` vs `cyl`. Color the points by the year of manufacture for each car model. Why does the legend look different from when we mapped `class` to color above?
+
 2. Next make a similar plot in which you color all the points blue
 
 3. If you have time, figure out what has gone wrong with this plot. Why are the points not blue?
@@ -503,6 +505,10 @@ ggplot(data = mpg) +
 ```
 
 ![](lesson6-files/unnamed-chunk-10-1.png)<!-- -->
+
+<br>
+
+**Save your note file and sync your project with your GitHub repo.**
 
 <br>
 
@@ -611,7 +617,7 @@ While every element of a `ggplot2` graph is customizable, there are also built-i
 ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) + 
   geom_point(mapping = aes(color=class, size=cyl), shape=1) +
   geom_smooth() +
-  facet_wrap(~year, nrow=1) +
+  facet_wrap(~ year, nrow=1) +
   theme_bw()
 ```
 
@@ -623,26 +629,32 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 
 <br>  
 
-## Arguments and functions YSK
+## Arguments and functions you should know
 
-Now, you've learned the central ideas behind `ggplot2`. In the next `ggplot2` lecture, we will go over some more advanced ggplot2 functionalities (e.g. statistical transformation, position adjustment, coordinate setting, color scaling, theme), but after that, the best way to learn more about `ggplot2` is often through practice and Google, since the possibilities that you can have with `ggplot2` are quite limitless, and people's plotting needs vary.
+Now, you've learned the central ideas behind `ggplot2`. In the next `ggplot2` lecture, we will go over some more advanced ggplot2 functionalities (e.g. statistical transformation, position adjustment, coordinate setting, color scaling, theme), but after that, the best way to learn more about `ggplot2` is often through practice and Google, since the possibilities that you can have with `ggplot2` are quite limitless, and people's plotting needs vary. 
 
-With that being said, there are some geometries, aesthetics, and facet functions that are most commonly used and these often serve as the building blocks for more advance usage. Let's now go through some of these together in class. 
+With that being said, there are some geometries, aesthetics, and facet functions that are most commonly used and these often serve as the building blocks for more advance usage. Let's now go through some of these together in class. The [RStudio ggplot cheatsheet](https://rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) is a great resource for looking up other functionality.
+
+<br>
 
 #### Geometries
 
 * `geom_point()`
-    
+
+<br>
+
 * `geom_boxplot()`
 
     
     ```r
     ## exercise, then demo (hwy vs. class)
     ggplot(data = mpg) +
-      geom_boxplot(mapping = aes(x=class, y=hwy))
+      geom_boxplot(mapping = aes(x = class, y = hwy))
     ```
     
     ![](lesson6-files/unnamed-chunk-17-1.png)<!-- -->
+
+<br>
 
 * `geom_bar()`
 
@@ -650,18 +662,20 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ```r
     ## exercise, then demo (class)
     ggplot(mpg) +
-      geom_bar(aes(x=class))
+      geom_bar(mapping = aes(x = class))
     ```
     
     ![](lesson6-files/unnamed-chunk-18-1.png)<!-- -->
-  
+
+<br>
+
 * `geom_histogram()`
 
     
     ```r
     ## exercise, then demo (hwy)
     ggplot(mpg) +
-      geom_histogram(aes(x=hwy))
+      geom_histogram(mapping = aes(x = hwy))
     ```
     
     ```
@@ -669,17 +683,21 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ```
     
     ![](lesson6-files/unnamed-chunk-19-1.png)<!-- -->
-    
+ 
+<br>
+
 * `geom_density()`
 
     
     ```r
     ## exercise, then demo (hwy)
     ggplot(mpg) +
-      geom_density(aes(x=hwy))
+      geom_density(mapping = aes(x = hwy))
     ```
     
     ![](lesson6-files/unnamed-chunk-20-1.png)<!-- -->
+ 
+<br>
 
 * `geom_smooth()`
     
@@ -688,23 +706,27 @@ With that being said, there are some geometries, aesthetics, and facet functions
     
     ```r
     ## exercise, then demo (fit linear model to hwy vs. displ without confidence interval)
-    ggplot(mpg, aes(x=displ, y=hwy))+
+    ggplot(mpg, aes(x = displ, y = hwy))+
       geom_point() +
-      geom_smooth(method="lm", se=F)
+      geom_smooth(method = "lm", se = F)
     ```
     
     ![](lesson6-files/unnamed-chunk-21-1.png)<!-- -->
+ 
+<br>
     
 * `geom_text()`
 
     
     ```r
     ## demo (hwy vs. displ, cyl as the label)
-    ggplot(mpg, aes(x=displ, y=hwy))+
-      geom_text(aes(label=cyl))
+    ggplot(mpg, aes(x = displ, y = hwy))+
+      geom_text(mapping = aes(label = cyl))
     ```
     
     ![](lesson6-files/unnamed-chunk-22-1.png)<!-- -->
+ 
+<br>
 
 * `geom_label()`
     
@@ -719,6 +741,8 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ```
     
     ![](lesson6-files/unnamed-chunk-23-1.png)<!-- -->
+ 
+<br>
 
 * `geom_line()`
 
@@ -734,8 +758,10 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ```
     
     ![](lesson6-files/unnamed-chunk-24-1.png)<!-- -->
+ 
+<br>
     
-#### Aesthetics
+### Aesthetics
 
 * `x`, `y`
 
@@ -765,6 +791,8 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ```
     
     ![](lesson6-files/unnamed-chunk-25-2.png)<!-- -->
+ 
+<br>
 
 * `alpha`
     
@@ -778,6 +806,8 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ```
     
     ![](lesson6-files/unnamed-chunk-26-1.png)<!-- -->
+ 
+<br>
     
 * `shape`, `line_type`
 
@@ -794,6 +824,8 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ```
     
     ![](lesson6-files/unnamed-chunk-27-1.png)<!-- -->
+ 
+<br>
 
 #### Facet
 
@@ -813,12 +845,40 @@ With that being said, there are some geometries, aesthetics, and facet functions
 
 <br>  
 
+## Exporting a ggplot graph with `ggsave()`
 
-Export 
-https://rstudio-conf-2020.github.io/r-for-excel/ggplot2.html#exporting-a-ggplot-graph-with-ggsave
+If we want our graph to appear in a knitted html, then we don't need to do anything else. But often we'll need a saved image file, of specific size and resolution, to share or for publication. 
 
+<img src="assets/ggplot2-tutorial-slides.050.png" width="80%" />
+Graphic from [Jenny Bryan's ggplot tutorial](https://github.com/jennybc/ggplot2-tutorial/tree/master/ggplot2-tutorial-slides)
 
-## Exercise
+`ggsave()` will export the *most recently run* ggplot graph by default (`plot = last_plot()`), unless you give it the name of a different saved ggplot object. 
 
-[In-class exercises](https://github.com/nt246/NTRES6940-data-science/blob/master/in_class_exercises/exercise_4.md)
+It has smart defaults and guesses the format from the file extension name (you can use e.g. pdf, tiff, eps, png, mmp, svg). It doesn't force you to do annoying things with dots per inch etc (but you can if you want to).
+
+Some common arguments for `ggsave()`:
+
+- `width = `: set exported image width (default inches)
+- `height = `: set exported image height (default height)
+- `dpi = `: set dpi (dots per inch)
+
+For more details on how to use `ggsave()` see slides 50-56 in [Jenny Bryan's ggplot tutorial](https://github.com/jennybc/ggplot2-tutorial/tree/master/ggplot2-tutorial-slides)
+
+<br>
+
+Now we're done for today
+
+**Save your scripte and sync your project with your GitHub repo.**
+
+- Save
+- Stage
+- Commit
+- Pull (to check for remote changes)
+- Push!
+
+<br>
+
+## Extra exercises
+
+[Extra in-class exercises](https://github.com/nt246/NTRES6940-data-science/blob/master/in_class_exercises/exercise_4.md)
 
