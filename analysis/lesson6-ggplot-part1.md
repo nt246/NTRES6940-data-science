@@ -11,17 +11,18 @@ output:
 <br>
 
 ## Readings  
-**Required**:  
+
+### Required:  
 
 * [Chapter 3.1-3.6 in Grolemund and Wickham's R for Data Science](https://r4ds.had.co.nz/data-visualisation.html)  
 
 <br>
 
-**Additional resources**:  
+### Additional resources:  
 
 * The book [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/) by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen
 
-*[Graphs with ggplot2 - Cookbook for R](http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2)
+* [Graphs with ggplot2 - Cookbook for R](http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2)
 
 * [RStudio's ggplot2 cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)  
 
@@ -328,9 +329,9 @@ Before making any kind of graph, we will always need to know our data first. In 
 
 <br>
 
-### Activity
+### Activity - Exercise 1
 
-Take a few minutes to look at `mtcars`, another car dataset that comes pre-installed with base R. How is this different from the `mpg` dataset, both in terms of content and structure. 
+Take a few minutes to look at `mtcars`, another car dataset that comes pre-installed with base R. How is this different from the `mpg` dataset, both in terms of content and structure? 
 
 <br>
 <br>
@@ -353,6 +354,7 @@ These "same few components" that all `ggplot2` graphs share include the followin
 
 Of these, **data**, **aesthetics**, and **geometries** are the components that must be specified when creating a graph.
 
+<br>
 
 From [STAT545](https://stat545guidebook.netlify.app/intro-to-plotting-with-ggplot2-part-i.html#the-grammar-of-graphics-15-min):
 
@@ -448,7 +450,7 @@ ggplot(data = mpg) +
 
 <br>
 
-### Your turn
+### Your turn - Exercise 2
 
 1. Run `ggplot(data = mpg)`. What do you see? Why?
 
@@ -490,8 +492,9 @@ ggplot(data = mpg) +
 
 ![](lesson6-files/unnamed-chunk-9-1.png)<!-- -->
 <br>
+<br>
 
-### Your turn (in breakout rooms)
+### Your turn (in breakout rooms) - Exercise 3
 
 1. Return to your scatterplot of `hwy` vs `cyl`. Color the points by the year of manufacture for each car model. Why does the legend look different from when we mapped `class` to color above?
 
@@ -571,7 +574,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 
 <br>
 
-#### Your turn
+#### Your turn - Exercise 4
 
 Break this plot into subplots for each class
 
@@ -849,7 +852,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
 
 If we want our graph to appear in a knitted html, then we don't need to do anything else. But often we'll need a saved image file, of specific size and resolution, to share or for publication. 
 
-<img src="assets/ggplot2-tutorial-slides.050.png" width="80%" />
+![](assets/ggplot2-tutorial-slides.050.png)<!-- -->
 Graphic from [Jenny Bryan's ggplot tutorial](https://github.com/jennybc/ggplot2-tutorial/tree/master/ggplot2-tutorial-slides)
 
 `ggsave()` will export the *most recently run* ggplot graph by default (`plot = last_plot()`), unless you give it the name of a different saved ggplot object. 
@@ -867,6 +870,8 @@ For more details on how to use `ggsave()` see slides 50-56 in [Jenny Bryan's ggp
 <br>
 
 Now we're done for today
+
+<br>
 
 **Save your scripte and sync your project with your GitHub repo.**
 
