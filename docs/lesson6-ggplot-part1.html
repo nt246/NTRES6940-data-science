@@ -410,20 +410,22 @@ div.tocify {
 <p><br></p>
 <div id="readings" class="section level2">
 <h2>Readings</h2>
-<p><strong>Required</strong>:</p>
+<div id="required" class="section level3">
+<h3>Required:</h3>
 <ul>
 <li><a href="https://r4ds.had.co.nz/data-visualisation.html">Chapter 3.1-3.6 in Grolemund and Wickham’s R for Data Science</a></li>
 </ul>
 <p><br></p>
-<p><strong>Additional resources</strong>:</p>
+</div>
+<div id="additional-resources" class="section level3">
+<h3>Additional resources:</h3>
 <ul>
-<li>The book <a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis</a> by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen</li>
-</ul>
-<p>*<a href="http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2">Graphs with ggplot2 - Cookbook for R</a></p>
-<ul>
-<li><a href="https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf">RStudio’s ggplot2 cheat sheet</a></li>
+<li><p>The book <a href="https://ggplot2-book.org/">ggplot2: Elegant Graphics for Data Analysis</a> by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen</p></li>
+<li><p><a href="http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2">Graphs with ggplot2 - Cookbook for R</a></p></li>
+<li><p><a href="https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf">RStudio’s ggplot2 cheat sheet</a></p></li>
 </ul>
 <p><br></p>
+</div>
 </div>
 <div id="announcements" class="section level2">
 <h2>Announcements</h2>
@@ -646,9 +648,9 @@ str(mpg)</code></pre>
 </ul>
 <p><br></p>
 </div>
-<div id="activity" class="section level3">
-<h3>Activity</h3>
-<p>Take a few minutes to look at <code>mtcars</code>, another car dataset that comes pre-installed with base R. How is this different from the <code>mpg</code> dataset, both in terms of content and structure.</p>
+<div id="activity---exercise-1" class="section level3">
+<h3>Activity - Exercise 1</h3>
+<p>Take a few minutes to look at <code>mtcars</code>, another car dataset that comes pre-installed with base R. How is this different from the <code>mpg</code> dataset, both in terms of content and structure?</p>
 <p><br> <br></p>
 </div>
 </div>
@@ -664,6 +666,7 @@ str(mpg)</code></pre>
 <p>These “same few components” that all <code>ggplot2</code> graphs share include the followings:</p>
 <p><img src="https://cxlabsblog.files.wordpress.com/2017/10/2017-10-24-14_36_29-visualization-layers-of-ggplot-google-docs.png" /></p>
 <p>Of these, <strong>data</strong>, <strong>aesthetics</strong>, and <strong>geometries</strong> are the components that must be specified when creating a graph.</p>
+<p><br></p>
 <p>From <a href="https://stat545guidebook.netlify.app/intro-to-plotting-with-ggplot2-part-i.html#the-grammar-of-graphics-15-min">STAT545</a>:</p>
 <p>You can think of the grammar of graphics as a systematic approach for describing the components of a graph. It has seven components (the ones in bold are required to be specifed explicitly in <code>ggplot2</code>):</p>
 <p><br></p>
@@ -747,8 +750,8 @@ ggplot(data = mpg) +
 <p><img src="lesson6-files/unnamed-chunk-7-1.png" /><!-- --></p>
 <p><br></p>
 </div>
-<div id="your-turn" class="section level3">
-<h3>Your turn</h3>
+<div id="your-turn---exercise-2" class="section level3">
+<h3>Your turn - Exercise 2</h3>
 <ol style="list-style-type: decimal">
 <li><p>Run <code>ggplot(data = mpg)</code>. What do you see? Why?</p></li>
 <li><p>Make a scatterplot of <code>hwy</code> vs <code>cyl</code></p></li>
@@ -773,10 +776,10 @@ ggplot(data = mpg) +
 <pre class="r"><code>## demo (change point shape to 1)
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, color = class, size = cyl), shape = 1) </code></pre>
-<p><img src="lesson6-files/unnamed-chunk-9-1.png" /><!-- --> <br></p>
+<p><img src="lesson6-files/unnamed-chunk-9-1.png" /><!-- --> <br> <br></p>
 </div>
-<div id="your-turn-in-breakout-rooms" class="section level3">
-<h3>Your turn (in breakout rooms)</h3>
+<div id="your-turn-in-breakout-rooms---exercise-3" class="section level3">
+<h3>Your turn (in breakout rooms) - Exercise 3</h3>
 <ol style="list-style-type: decimal">
 <li><p>Return to your scatterplot of <code>hwy</code> vs <code>cyl</code>. Color the points by the year of manufacture for each car model. Why does the legend look different from when we mapped <code>class</code> to color above?</p></li>
 <li><p>Next make a similar plot in which you color all the points blue</p></li>
@@ -819,8 +822,8 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="lesson6-files/unnamed-chunk-13-1.png" /><!-- --></p>
 <p><br></p>
-<div id="your-turn-1" class="section level4">
-<h4>Your turn</h4>
+<div id="your-turn---exercise-4" class="section level4">
+<h4>Your turn - Exercise 4</h4>
 <p>Break this plot into subplots for each class</p>
 <pre class="r"><code>ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy))</code></pre>
@@ -995,7 +998,7 @@ ggplot(mpg, aes(x=displ, y=hwy)) +
 <div id="exporting-a-ggplot-graph-with-ggsave" class="section level2">
 <h2>Exporting a ggplot graph with <code>ggsave()</code></h2>
 <p>If we want our graph to appear in a knitted html, then we don’t need to do anything else. But often we’ll need a saved image file, of specific size and resolution, to share or for publication.</p>
-<p><img src="assets/ggplot2-tutorial-slides.050.png" width="80%" /> Graphic from <a href="https://github.com/jennybc/ggplot2-tutorial/tree/master/ggplot2-tutorial-slides">Jenny Bryan’s ggplot tutorial</a></p>
+<p><img src="assets/ggplot2-tutorial-slides.050.png" /><!-- --> Graphic from <a href="https://github.com/jennybc/ggplot2-tutorial/tree/master/ggplot2-tutorial-slides">Jenny Bryan’s ggplot tutorial</a></p>
 <p><code>ggsave()</code> will export the <em>most recently run</em> ggplot graph by default (<code>plot = last_plot()</code>), unless you give it the name of a different saved ggplot object.</p>
 <p>It has smart defaults and guesses the format from the file extension name (you can use e.g. pdf, tiff, eps, png, mmp, svg). It doesn’t force you to do annoying things with dots per inch etc (but you can if you want to).</p>
 <p>Some common arguments for <code>ggsave()</code>:</p>
@@ -1007,6 +1010,7 @@ ggplot(mpg, aes(x=displ, y=hwy)) +
 <p>For more details on how to use <code>ggsave()</code> see slides 50-56 in <a href="https://github.com/jennybc/ggplot2-tutorial/tree/master/ggplot2-tutorial-slides">Jenny Bryan’s ggplot tutorial</a></p>
 <p><br></p>
 <p>Now we’re done for today</p>
+<p><br></p>
 <p><strong>Save your scripte and sync your project with your GitHub repo.</strong></p>
 <ul>
 <li>Save</li>
