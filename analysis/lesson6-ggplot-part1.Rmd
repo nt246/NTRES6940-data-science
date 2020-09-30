@@ -22,11 +22,29 @@ knitr::opts_chunk$set(echo = TRUE, fig.path="lesson6-files/")
 
 **Additional resources**:  
 
+* The book [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/) by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen
+
+*[Graphs with ggplot2 - Cookbook for R](http://www.cookbook-r.com/Graphs/#graphs-with-ggplot2)
+
 * [RStudio's ggplot2 cheat sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)  
 
-<br>  
+<br> 
 
-## Learning objectives
+## Announcements
+
+* Assignment 2 is due on Monday. You will need a partner to complete part of the assignment. Reach out if you need a partner
+
+<br>
+
+## First, a quick wrap-up of our GitHub section
+
+GitHub has powerful infrastructure for communicating with your collaborators (and yourself!) directly in your repo. It can be very helpful to have discussions about data or analysis tasks/choices right there with the rest of your project files instead of burried away in long email chains or in unrecorded verbal converasation. We'll do a quick demo of a few of the ways you can communicate on GitHub. If you're interested, take a look at [this chapter](https://openscapes.github.io/series/github-issues.html) by Julia Lowndes on using GitHub issues, or the [GitHub Guide](https://guides.github.com/features/issues/).
+
+Now on to today's topic...
+
+<br>
+
+## Learning objectives for today's class
 
 By the end of this class you will be able to:
 
@@ -36,21 +54,38 @@ By the end of this class you will be able to:
 * Combine compatible graph types  
 * Split up data into faceted graphs  
 * Change the theme of graphs  
-* Get more comfortable with sharing your work through GitHub
 
 **Acknowledgements**: Some content from today's lecture is adapted from the excellent [R for Excel users](https://rstudio-conf-2020.github.io/r-for-excel/) course by Julia Stewart Lowndes and Allison Horst and the [R for Data Science](https://r4ds.had.co.nz/data-visualisation.html) book by Garrett Grolemund and Hadley Wickham.
 
 <br>  
 
-## Taking notes
+## Taking notes - remember to save your work in a script or an RMarkdown file 
 
-### Create an RMarkdown file for note taking in this lecture
+Have a look at [Chapter 8 in R4DS](https://r4ds.had.co.nz/workflow-projects.html) and let's all go ahead and change our RStudio settings to never save our workspace upon exit, as shown there.
 
-Before we start, please open the R Project that you created in our last lecture that is associated with your personal GitHub repository. Then create a new RMarkdown file, select `github_document` output format, and save it to your lecture note folder. You will use this RMarkdown file to take notes and work on exercises, and to share your work with the class. 
+<br>
 
+### Create an R script or an RMarkdown file for working along with examples and doing exercises in this lecture
+
+As we start working in RStudio, we want to continue practicing how to sync our work to GitHub. So before we start, please open the R Project that is associated with your class repository (the name should be `ntres-6940-YOUR_USERNAME` (replace YOUR_USERNAME with your GitHub user ID). Then create a new subdirectory names `course-notes`, open an R-script or an RMarkdown file and save it in this subdirectory as `lecture6-ggplot1.R` [or whatever you want to call it].  
+ 
 <br>  
 
+## Getting started with data visualization
+
+Always plot your data!
+
+Two main goals for statistical graphics:
+
+* To facilitate comparisons
+* To identify trends
+
+There are several ways to make plots in R. We will exclusively use the `ggplot2` package here. If you want to know more about why we're using `ggplot2` instead of base plot, check out the slides from [Jenny Bryan's ggplot tutorial](https://github.com/jennybc/ggplot2-tutorial/tree/master/ggplot2-tutorial-slides)
+
+<br>
+
 ## Load packages
+Now we are ready to begin. `ggplot2` is a graphics package within the `tidyverse`. You should already have this installed, but we need to load the `tidyverse` set of packages before you can use them.
 
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -58,15 +93,84 @@ library(tidyverse)
 
 <br>  
 
+## Preparing to create our first `ggplot2` graph
+
+We will visualize some fuel economy data for 38 popular models of car using the dataset `mpg` which is included in the `ggplot2` package. 
+
+<br>
+
+#### Inspect the data frame
+
+Before making any kind of graph, we will always need to know our data first. In R, data tables are most often stored as an object of the class `data.frame`. There are a few different ways to inspect these data tables. 
+
+* Directly type the name of the data frame
+    
+    This method works well if you run it from RMardown. If ran on R Console or if knitted on RMardkown, it can still do a good job with small data frames, or with data frames that are of the class `tibble`. (We will learn more about `tibble` later in class. For now, just think of it as an upgraded type of data frame.) 
+    
+    But, if you do it with a larger, non-`tibble` data frame, it will attempt print the entire data frame on your console or your knitted output, making the result very difficult to read. 
+    
+    ```{r}
+    ## demo (compare and contrast regular data frame and tibble)
+    mpg
+    cars
+    ```
+
+* `View()`
+
+    `View()` opens up a spreadsheet-style data viewer. The resulting spreadsheet can be sorted by clicking the column names. It is good for exploring the dataset, but you should not run `View()` when knitting a RMarkdown file.
+    
+    Why do you think that is? Try typing `View(mpg)` in a code chunk in RMarkdown, knit it, and see what happens. 
+    
+    ```{r}
+    ## exercise, then demo (knit with View() in code chunk)
+    ## View(mpg)
+    ```
+  
+* `head()` and `tail()`
+    
+    `head()` and `tail()` can be used to check the first and last few rows of a data frame. 
+    
+    ```{r}
+    ## demo
+    head(mpg)
+    tail(mpg)
+    ```
+
+* `?`
+    
+    If the data frame included in an R package, typing `?data frame_name` will lead you to a help file with more information on the data frame.
+    
+* `str()`, `is()`, `dim()`, `colnames()`, `summary()`
+
+    These functions return important information on the data frame and are particularly helpful when inspecting larger data frames. Give them a try and see what they do. 
+    
+    ```{r}
+    ## exercise, then demo
+    str(mpg)
+    is(mpg)
+    dim(mpg)
+    colnames(mpg)
+    summary(mpg)
+    ```
+
+<br>
+
+## Activity
+
+Take a few minutes to look at `mtcars`, another car dataset that comes pre-installed with base R. How is this different from the `mpg` dataset, both in terms of content and structure. 
+
+<br>
+<br>
+
 ## Grammar of graphics in `ggplot2`
 
-In this class, we will write reproducible code to build graphs piece-by-piece. In Excel, graphs are made by manually selecting options, which may not be the best option for keeping track of our work. Also, if we haven't built a graph with reproducible code, we might not be able to easily recreate a graph or use that code again to make the same style graph with different data.
+In this class, we will write reproducible code to build graphs piece-by-piece. This contrasts with point-and-click applications like Excel where graphs are made by manually selecting options, which makes it difficult to keep track of our work. Also, if we haven't built a graph with reproducible code, we will have to repeat the entire plotting process again for every new dataset and if we make complicated graphics we might not be able to easily recreate all details of our graph.
 
 Using `ggplot2`, the graphics package within the `tidyverse`, we will write reproducible code to manually and thoughtfully build our graphs.
 
 > “ggplot2 implements the grammar of graphics, a coherent system for describing and building graphs. With ggplot2, you can do more faster by learning one system and applying it in many places.” - R4DS
 
-So yeah…that `gg` is from “grammar of graphics.”
+So yeah... that `gg` is from “grammar of graphics.”
 
 ![](https://rstudio-conf-2020.github.io/r-for-excel/img/rstudio-cheatsheet-ggplot.png)
 
@@ -136,75 +240,27 @@ Breaking that down:
 * (Optional) Use `<FACET_FUNCTION>` to make a faceted graph.
 * (Optional) Use `<THEME_FUNCTION>` to change the default style of the graph.
 
-<br>  
-
-## Activity
 
 
-<br>  
-
-## Create our first `ggplot2` graph
-
-We will visualize some fuel economy data for 38 popular models of car using the dataset `mpg` which is included in the `ggplot2` package. 
-
-#### Inspect the data frame
-
-Before making any kind of graph, we will always need to know our data first. In R, data tables are most often stored as an object of the class `data.frame`. There are a few different ways to inspect these data tables. 
-
-* Directly type the name of the data frame
-    
-    This method works well if you run it from RMardown. If ran on R Console or if knitted on RMardkown, it can still do a good job with small data frames, or with data frames that are of the class `tibble`. (We will learn more about `tibble` later in class. For now, just think of it as an upgraded type of data frame.) 
-    
-    But, if you do it with a larger, non-`tibble` data frame, it will attempt print the entire data frame on your console or your knitted output, making the result very difficult to read. 
-    
-    ```{r}
-    ## demo (compare and contrast regular data frame and tibble)
-    mpg
-    cars
-    ```
-
-* `View()`
-
-    `View()` opens up a spreadsheet-style data viewer. The resulting spreadsheet can be sorted by clicking the column names. It is good for exploring the dataset, but you should not run `View()` when knitting a RMarkdown file.
-    
-    Why do you think that is? Try typing `View(mpg)` in a code chunk in RMarkdown, knit it, and see what happens. 
-    
-    ```{r}
-    ## exercise, then demo (knit with View() in code chunk)
-    ## View(mpg)
-    ```
-  
-* `head()` and `tail()`
-    
-    `head()` and `tail()` can be used to check the first and last few rows of a data frame. 
-    
-    ```{r}
-    ## demo
-    head(mpg)
-    tail(mpg)
-    ```
-
-* `?`
-    
-    If the data frame included in an R package, typing `?data frame_name` will lead you to a help file with more information on the data frame.
-    
-* `str()`, `is()`, `dim()`, `colnames()`, `summary()`
-
-    These functions return important information on the data frame and are particularly helpful when inspecting larger data frames. Give them a try and see what they do. 
-    
-    ```{r}
-    ## exercise, then demo
-    str(mpg)
-    is(mpg)
-    dim(mpg)
-    colnames(mpg)
-    summary(mpg)
-    ```
-    
     
 #### Simple scatter plot
 
 Let's first make a simple scatter plot to look at how engine displacement (`displ`), which is an expression of an engine's size, may affect the fuel economy of cars on highway (`hwy`). For this plot, what are the aesthetics, and what are the geometric objects? 
+
+```{r, echo=FALSE, out.width="80%"}
+knitr::include_graphics("assets/mpg-scatterplot.png")  
+```
+
+We can make this plot by entering the relevant data, geom_function and mappings in the general ggplot template.
+
+```
+
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+  
+```
+
+In this case, it would be
 
 ```{r}
 ## demo
@@ -436,6 +492,11 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ```
 
 <br>  
+
+
+Export 
+https://rstudio-conf-2020.github.io/r-for-excel/ggplot2.html#exporting-a-ggplot-graph-with-ggsave
+
 
 ## Exercise
 
