@@ -414,6 +414,7 @@ div.tocify {
 <ul>
 <li><a href="https://r4ds.had.co.nz/data-visualisation.html">Chapter 3.1-3.6 in Grolemund and Wickham’s R for Data Science</a></li>
 </ul>
+<p><br></p>
 <p><strong>Additional resources</strong>:</p>
 <ul>
 <li><a href="https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf">RStudio’s ggplot2 cheat sheet</a></li>
@@ -466,6 +467,46 @@ div.tocify {
 <p>These “same few components” that all <code>ggplot2</code> graphs share include the followings:</p>
 <p><img src="https://cxlabsblog.files.wordpress.com/2017/10/2017-10-24-14_36_29-visualization-layers-of-ggplot-google-docs.png" /></p>
 <p>Of these, <strong>data</strong>, <strong>aethetics</strong>, and <strong>geometries</strong> are the components that must be specified when creating a graph.</p>
+<p>You can think of the grammar of graphics as a systematic approach for describing the components of a graph. It has seven components (the ones in bold are required to be specifed explicitly in <code>ggplot2</code>):</p>
+<p><br></p>
+<p><strong>Required:</strong></p>
+<p><br></p>
+<ul>
+<li><strong>Data</strong>
+<ul>
+<li>Exactly as it sounds: the data that you’re feeding into a plot.</li>
+</ul></li>
+<li><strong>Aesthetic mappings</strong>
+<ul>
+<li>This is a specification of how you will connect variables (columns) from your data to a visual dimension. These visual dimensions are called “aesthetics”, and can be (for example) horizontal positioning, vertical positioning, size, colour, shape, etc.</li>
+</ul></li>
+<li><strong>Geometric objects</strong>
+<ul>
+<li>This is a specification of what object will actually be drawn on the plot. This could be a point, a line, a bar, etc.</li>
+</ul></li>
+</ul>
+<p><br></p>
+<p><strong>Optional:</strong></p>
+<ul>
+<li>Scales
+<ul>
+<li>This is a specification of how a variable is mapped to its aesthetic. Will it be mapped linearly? On a log scale? Something else?</li>
+</ul></li>
+<li>Statistical transformations
+<ul>
+<li>This is a specification of whether and how the data are combined/transformed before being plotted. For example, in a bar chart, data are transformed into their frequencies; in a box-plot, data are transformed to a five-number summary.</li>
+</ul></li>
+<li>Coordinate system
+<ul>
+<li>This is a specification of how the position aesthetics (x and y) are depicted on the plot. For example, rectangular/cartesian, or polar coordinates.</li>
+</ul></li>
+<li>Facet
+<ul>
+<li>This is a specification of data variables that partition the data into smaller “sub plots”, or panels.</li>
+</ul></li>
+</ul>
+<p>These components are like parameters of statistical graphics, defining the “space” of statistical graphics. In theory, there is a one-to-one mapping between a plot and its grammar components, making this a useful way to specify graphics.</p>
+<p><br></p>
 <p>We will use the <code>ggplot2</code> package, but the function we use to initialize a graph will be <code>ggplot</code>, which works best for data in tidy format (i.e., a column for every variable, and a row for every observation). We will learn more about the tidy format and how to convert “untidy” datasets into tidy format later in the class. For the purpose of this class, the datasets that we will use are already in tidy format.</p>
 <p>Graphics with <code>ggplot2</code> are built step-by-step, adding new elements as layers with a plus sign (<code>+</code>) between layers. Adding layers in this fashion allows for extensive flexibility and customization of plots. Below is a template that can be used to create almost any graph that you can imagine using <code>ggplot2</code>.</p>
 <pre><code>ggplot(data = &lt;DATA&gt;) + 
@@ -496,26 +537,7 @@ div.tocify {
 </div>
 <div id="activity" class="section level2">
 <h2>Activity</h2>
-<div id="break-down-the-following-graphs-into-basic-ggplot2-components" class="section level3">
-<h3>Break down the following graphs into basic <code>ggplot2</code> components</h3>
-<ul>
-<li>Manhattan plot</li>
-</ul>
-<p><img src="https://www.r-graph-gallery.com/img/graph/101_Manhattan_plot.png" /></p>
-<ul>
-<li>Ridgeline plot</li>
-</ul>
-<p><img src="https://www.r-graph-gallery.com/294-basic-ridgeline-plot_files/figure-html/unnamed-chunk-1-1.png" /></p>
-<ul>
-<li>Line plot</li>
-</ul>
-<p><img src="https://www.r-graph-gallery.com/img/graph/lineplot-spaghetti3.png" /></p>
-<ul>
-<li>Bar plot</li>
-</ul>
-<p><img src="https://github.com/nt246/NTRES6940-data-science/raw/master/misc/pre_course_survey_results_files/figure-markdown_github/unnamed-chunk-9-1.png" /></p>
 <p><br></p>
-</div>
 </div>
 <div id="create-our-first-ggplot2-graph" class="section level2">
 <h2>Create our first <code>ggplot2</code> graph</h2>
@@ -629,18 +651,18 @@ head(mpg)</code></pre>
 <p>These functions return important information on the data frame and are particularly helpful when inspecting larger data frames. Give them a try and see what they do.</p>
 <pre class="r"><code>## exercise, then demo
 str(mpg)</code></pre>
-<pre><code>## tibble [234 × 11] (S3: tbl_df/tbl/data.frame)
-##  $ manufacturer: chr [1:234] &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...
-##  $ model       : chr [1:234] &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; ...
-##  $ displ       : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...
-##  $ year        : int [1:234] 1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...
-##  $ cyl         : int [1:234] 4 4 4 4 6 6 6 4 4 4 ...
-##  $ trans       : chr [1:234] &quot;auto(l5)&quot; &quot;manual(m5)&quot; &quot;manual(m6)&quot; &quot;auto(av)&quot; ...
-##  $ drv         : chr [1:234] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...
-##  $ cty         : int [1:234] 18 21 20 21 16 18 18 18 16 20 ...
-##  $ hwy         : int [1:234] 29 29 31 30 26 26 27 26 25 28 ...
-##  $ fl          : chr [1:234] &quot;p&quot; &quot;p&quot; &quot;p&quot; &quot;p&quot; ...
-##  $ class       : chr [1:234] &quot;compact&quot; &quot;compact&quot; &quot;compact&quot; &quot;compact&quot; ...</code></pre>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    234 obs. of  11 variables:
+##  $ manufacturer: chr  &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...
+##  $ model       : chr  &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; ...
+##  $ displ       : num  1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...
+##  $ year        : int  1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...
+##  $ cyl         : int  4 4 4 4 6 6 6 4 4 4 ...
+##  $ trans       : chr  &quot;auto(l5)&quot; &quot;manual(m5)&quot; &quot;manual(m6)&quot; &quot;auto(av)&quot; ...
+##  $ drv         : chr  &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...
+##  $ cty         : int  18 21 20 21 16 18 18 18 16 20 ...
+##  $ hwy         : int  29 29 31 30 26 26 27 26 25 28 ...
+##  $ fl          : chr  &quot;p&quot; &quot;p&quot; &quot;p&quot; &quot;p&quot; ...
+##  $ class       : chr  &quot;compact&quot; &quot;compact&quot; &quot;compact&quot; &quot;compact&quot; ...</code></pre>
 <pre class="r"><code>is(mpg)</code></pre>
 <pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot; &quot;list&quot;       &quot;oldClass&quot;  
 ## [6] &quot;vector&quot;</code></pre>
@@ -680,7 +702,7 @@ str(mpg)</code></pre>
 <pre class="r"><code>## demo
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x=displ, y=hwy)) </code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-6-1.png" /><!-- --></p>
+<p><img src="../docs/lesson6-files/unnamed-chunk-6-1.png" /><!-- --></p>
 </div>
 <div id="make-the-size-of-points-corresponds-to-the-number-of-cylinders-cyl-and-the-color-of-points-corresponds-to-the-type-of-car-class" class="section level4">
 <h4>Make the size of points corresponds to the number of cylinders (<code>cyl</code>), and the color of points corresponds to the type of car (<code>class</code>)</h4>
@@ -689,7 +711,7 @@ ggplot(data = mpg) +
 <pre class="r"><code>## demo
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl)) </code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-7-1.png" /><!-- --></p>
+<p><img src="../docs/lesson6-files/unnamed-chunk-7-1.png" /><!-- --></p>
 <p>Looks like given the same engine size, 2seaters tend to have better fuel economy than other car types. This makes sense.</p>
 </div>
 <div id="change-the-shape-of-all-points" class="section level4">
@@ -698,7 +720,7 @@ ggplot(data = mpg) +
 <pre class="r"><code>## demo (change point shape to 1)
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl), shape=1) </code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-8-1.png" /><!-- --></p>
+<p><img src="../docs/lesson6-files/unnamed-chunk-8-1.png" /><!-- --></p>
 </div>
 <div id="overlay-two-different-geometric-objects" class="section level4">
 <h4>Overlay two different geometric objects</h4>
@@ -708,14 +730,14 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl), shape=1) +
   geom_smooth(mapping = aes(x=displ, y=hwy))</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-9-1.png" /><!-- --></p>
+<p><img src="../docs/lesson6-files/unnamed-chunk-9-1.png" /><!-- --></p>
 <p>Did you notice that for both geometric objects, <code>x</code> maps to <code>displ</code> and <code>y</code> maps <code>hwy</code>, so these auguments are repeated? In such cases, we can minimize the amount of repeat by defining how these aesthetics map to variables for all subsequent layers within <code>ggplot()</code>, as the following.</p>
 <pre class="r"><code>## demo
 ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) + 
   geom_point(mapping = aes(color=class, size=cyl), shape=1) +
   geom_smooth()</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-10-1.png" /><!-- --></p>
+<p><img src="../docs/lesson6-files/unnamed-chunk-10-1.png" /><!-- --></p>
 </div>
 <div id="display-different-year-in-different-facets" class="section level4">
 <h4>Display different <code>year</code> in different facets</h4>
@@ -726,7 +748,7 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
   geom_smooth() +
   facet_wrap(~year, nrow=1)</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-11-1.png" /><!-- --></p>
+<p><img src="../docs/lesson6-files/unnamed-chunk-11-1.png" /><!-- --></p>
 </div>
 <div id="adjust-figure-size-using-chunk-options" class="section level4">
 <h4>Adjust figure size using chunk options</h4>
@@ -737,7 +759,7 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
   geom_smooth() +
   facet_wrap(~year, nrow=1)</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-12-1.png" /><!-- --></p>
+<p><img src="../docs/lesson6-files/unnamed-chunk-12-1.png" /><!-- --></p>
 </div>
 <div id="change-the-theme-of-a-graph" class="section level4">
 <h4>Change the theme of a graph</h4>
@@ -749,7 +771,7 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
   facet_wrap(~year, nrow=1) +
   theme_bw()</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-13-1.png" /><!-- --></p>
+<p><img src="../docs/lesson6-files/unnamed-chunk-13-1.png" /><!-- --></p>
 <p><br></p>
 </div>
 </div>
@@ -765,43 +787,42 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 <pre class="r"><code>## exercise, then demo (hwy vs. class)
 ggplot(data = mpg) +
   geom_boxplot(mapping = aes(x=class, y=hwy))</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-14-1.png" /><!-- --></p></li>
+<p><img src="../docs/lesson6-files/unnamed-chunk-14-1.png" /><!-- --></p></li>
 <li><p><code>geom_bar()</code></p>
 <pre class="r"><code>## exercise, then demo (class)
 ggplot(mpg) +
   geom_bar(aes(x=class))</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-15-1.png" /><!-- --></p></li>
+<p><img src="../docs/lesson6-files/unnamed-chunk-15-1.png" /><!-- --></p></li>
 <li><p><code>geom_histogram()</code></p>
 <pre class="r"><code>## exercise, then demo (hwy)
 ggplot(mpg) +
   geom_histogram(aes(x=hwy))</code></pre>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-16-1.png" /><!-- --></p></li>
+<p><img src="../docs/lesson6-files/unnamed-chunk-16-1.png" /><!-- --></p></li>
 <li><p><code>geom_density()</code></p>
 <pre class="r"><code>## exercise, then demo (hwy)
 ggplot(mpg) +
   geom_density(aes(x=hwy))</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-17-1.png" /><!-- --></p></li>
+<p><img src="../docs/lesson6-files/unnamed-chunk-17-1.png" /><!-- --></p></li>
 <li><p><code>geom_smooth()</code></p>
-<p>Different <code>geom_*()</code> functions have different arguments that can be very helpful. You can learn more about them by reading their help pages. For example, <code>method="lm"</code> and <code>se=FALSE</code> are two arguments that are often used in the <code>geom_smooth()</code> function.</p>
+<p>Different <code>geom_*()</code> functions have different arguments that can be very helpful. You can learn more about them by reading their help pages. For example, <code>method=&quot;lm&quot;</code> and <code>se=FALSE</code> are two arguments that are often used in the <code>geom_smooth()</code> function.</p>
 <pre class="r"><code>## exercise, then demo (fit linear model to hwy vs. displ without confidence interval)
 ggplot(mpg, aes(x=displ, y=hwy))+
   geom_point() +
   geom_smooth(method=&quot;lm&quot;, se=F)</code></pre>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-18-1.png" /><!-- --></p></li>
+<p><img src="../docs/lesson6-files/unnamed-chunk-18-1.png" /><!-- --></p></li>
 <li><p><code>geom_text()</code></p>
 <pre class="r"><code>## demo (hwy vs. displ, cyl as the label)
 ggplot(mpg, aes(x=displ, y=hwy))+
   geom_text(aes(label=cyl))</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-19-1.png" /><!-- --></p></li>
+<p><img src="../docs/lesson6-files/unnamed-chunk-19-1.png" /><!-- --></p></li>
 <li><p><code>geom_label()</code></p>
 <p>Each geometric object can take a different data frame if specified. Here is an example of that.</p>
 <pre class="r"><code>## demo (hwy vs. displ, model as the label but only label points with hwy &gt; 40)
 ggplot(mpg)+
   geom_point(aes(x=displ, y=hwy)) +
   geom_label(data=filter(mpg, hwy&gt;40), mapping = aes(label=model, y=hwy, x=displ+0.8))</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-20-1.png" /><!-- --></p></li>
+<p><img src="../docs/lesson6-files/unnamed-chunk-20-1.png" /><!-- --></p></li>
 <li><p><code>geom_line()</code></p>
 <pre class="r"><code>## demo (change in mean hwy for each car model over time, grouped by model, colored by class, faceted by manufacturer)
 group_by(mpg, manufacturer, year, class, model) %&gt;%
@@ -810,7 +831,7 @@ group_by(mpg, manufacturer, year, class, model) %&gt;%
   geom_point() +
   geom_line() +
   facet_wrap(~manufacturer)</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-21-1.png" /><!-- --></p></li>
+<p><img src="../docs/lesson6-files/unnamed-chunk-21-1.png" /><!-- --></p></li>
 </ul>
 </div>
 <div id="aesthetics" class="section level4">
@@ -825,24 +846,24 @@ group_by(mpg, manufacturer, year, class, model) %&gt;%
 <pre class="r"><code>## demo (plot hwy distribution with geom_density, color by drv)
 ggplot(mpg) +
   geom_density(aes(color=drv, x=hwy))</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-22-1.png" /><!-- --></p>
+<p><img src="../docs/lesson6-files/unnamed-chunk-22-1.png" /><!-- --></p>
 <pre class="r"><code>## demo (fill by drv)
 ggplot(mpg) +
   geom_density(aes(fill=drv, x=hwy))</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-22-2.png" /><!-- --></p></li>
+<p><img src="../docs/lesson6-files/unnamed-chunk-22-2.png" /><!-- --></p></li>
 <li><p><code>alpha</code></p>
 <p><code>alpha</code> controls tranparency</p>
 <pre class="r"><code>## demo (plot hwy distribution with geom_density, fill by drv, set alpha to 0.5)
 ggplot(mpg) +
   geom_density(aes(fill=drv, x=hwy), alpha=0.5)</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-23-1.png" /><!-- --></p></li>
+<p><img src="../docs/lesson6-files/unnamed-chunk-23-1.png" /><!-- --></p></li>
 <li><p><code>shape</code>, <code>line_type</code></p>
 <pre class="r"><code>## demo (hwy vs. displ, geom_point and geom_line, map drv to color, shape, linetype)
 ggplot(mpg, aes(x=displ, y=hwy, color=drv, shape=drv)) +
   geom_point()+
   geom_smooth(aes(linetype=drv))</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-24-1.png" /><!-- --></p></li>
+<p><img src="../docs/lesson6-files/unnamed-chunk-24-1.png" /><!-- --></p></li>
 </ul>
 </div>
 <div id="facet" class="section level4">
@@ -854,13 +875,14 @@ ggplot(mpg, aes(x=displ, y=hwy, color=drv, shape=drv)) +
 ggplot(mpg, aes(x=displ, y=hwy)) +
   geom_point() +
   facet_grid(drv~cyl)</code></pre>
-<p><img src="lesson6-ggplot-part1_files/figure-html/unnamed-chunk-25-1.png" /><!-- --></p></li>
+<p><img src="../docs/lesson6-files/unnamed-chunk-25-1.png" /><!-- --></p></li>
 </ul>
 <p><br></p>
 </div>
 </div>
 <div id="exercise" class="section level2">
 <h2>Exercise</h2>
+<p><a href="https://github.com/nt246/NTRES6940-data-science/blob/master/in_class_exercises/exercise_4.md">In-class exercises</a></p>
 </div>
 
 
@@ -913,7 +935,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
