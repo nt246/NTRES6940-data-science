@@ -87,7 +87,11 @@ Now we are ready to begin. `ggplot2` is a graphics package within the `tidyverse
 
 ```r
 library(tidyverse)
+
+# If you get an error message, run `install.packages("tidyverse")`
+# If you get an error message talking about the `backports` package, run this first `install.packages("backports")`
 ```
+
 
 <br>  
 
@@ -97,7 +101,7 @@ We will visualize some fuel economy data for 38 popular models of car using the 
 
 <br>
 
-#### Inspect the data frame
+### Inspect the data frame
 
 Before making any kind of graph, we will always need to know our data first. In R, data tables are most often stored as an object of the class `data.frame`. There are a few different ways to inspect these data tables. 
 
@@ -347,7 +351,10 @@ These "same few components" that all `ggplot2` graphs share include the followin
 
 ![](https://cxlabsblog.files.wordpress.com/2017/10/2017-10-24-14_36_29-visualization-layers-of-ggplot-google-docs.png)
 
-Of these, **data**, **aethetics**, and **geometries** are the components that must be specified when creating a graph.
+Of these, **data**, **aesthetics**, and **geometries** are the components that must be specified when creating a graph.
+
+
+From [STAT545](https://stat545guidebook.netlify.app/intro-to-plotting-with-ggplot2-part-i.html#the-grammar-of-graphics-15-min):
 
 You can think of the grammar of graphics as a systematic approach for describing the components of a graph. It has seven components (the ones in bold are required to be specifed explicitly in `ggplot2`):
 
@@ -410,9 +417,9 @@ Breaking that down:
 * (Optional) Use `<THEME_FUNCTION>` to change the default style of the graph.
 
 
-
+<br>
     
-#### Simple scatter plot
+### A simple scatter plot
 
 Let's first make a simple scatter plot to look at how engine displacement (`displ`), which is an expression of an engine's size, may affect the fuel economy of cars on highway (`hwy`). For this plot, what are the aesthetics, and what are the geometric objects? 
 
@@ -427,20 +434,32 @@ ggplot(data = <DATA>) +
   
 ```
 
-In this case, it would be
+<br>
+
+In our case, it would be
 
 
 ```r
 ## demo
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x=displ, y=hwy)) 
+  geom_point(mapping = aes(x = displ, y = hwy)) 
 ```
 
 ![](lesson6-files/unnamed-chunk-7-1.png)<!-- -->
 
-#### Make the size of points corresponds to the number of cylinders (`cyl`), and the color of points corresponds to the type of car (`class`)
+<br>
 
-The scatter plot shows that there is a negative correlation between engine size and fuel economy. However, there are a few points that show up as outliers of this general trend. Why might this be?
+### Your turn
+
+1. Run `ggplot(data = mpg)`. What do you see? Why?
+2. Make a scatterplot of `hwy` vs `cyl`
+3. If you have time, see what happens if you make a scatterplot of class vs drv? Why is the plot not useful?
+
+<br>
+
+### Make the size of points corresponds to the number of cylinders (`cyl`), and the color of points corresponds to the type of car (`class`)
+
+The scatter plot shows that there is a negative correlation between engine size and fuel economy. However, there are a few points that show up as outliers from this general trend. Why might this be?
 
 To explore this further, we will map `cyl` to `size`, and `class` to `color`.
 
@@ -448,14 +467,16 @@ To explore this further, we will map `cyl` to `size`, and `class` to `color`.
 ```r
 ## demo
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl)) 
+  geom_point(mapping = aes(x = displ, y = hwy, color = class, size = cyl)) 
 ```
 
 ![](lesson6-files/unnamed-chunk-8-1.png)<!-- -->
 
-Looks like given the same engine size, 2seaters tend to have better fuel economy than other car types. This makes sense. 
+It looks like given the same engine size, 2seaters tend to have better fuel economy than other car types. This makes sense. 
 
-#### Change the shape of all points
+<br>
+
+### Change the shape of all points
 
 There is too much overlap among the larger points in the previous graph and we want to use a different point shape (`shape`) to show these points more clearly. When all points in the graph get the same aesthetic, we are no longer mapping the aesthetic to a variable. Therefore, we should make sure to specify this outside of the `mapping` argument.
 
@@ -463,12 +484,29 @@ There is too much overlap among the larger points in the previous graph and we w
 ```r
 ## demo (change point shape to 1)
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl), shape=1) 
+  geom_point(mapping = aes(x = displ, y = hwy, color = class, size = cyl), shape = 1) 
 ```
 
 ![](lesson6-files/unnamed-chunk-9-1.png)<!-- -->
+<br>
 
-#### Overlay two different geometric objects
+### Your turn (in breakout rooms)
+
+1. Return to your scatterplot of `hwy` vs `cyl`. Color the points by the year of manufacture for each car model. Why does the legend look different from when we mapped `class` to color above?
+2. Next make a similar plot in which you color all the points blue
+
+3. If you have time, figure out what has gone wrong with this plot. Why are the points not blue?
+
+```r
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
+```
+
+![](lesson6-files/unnamed-chunk-10-1.png)<!-- -->
+
+<br>
+
+### Overlay two different geometric objects
 
 Here, we will add a trend line to the scatter plot above. We can do this by adding another geometric object (`geom_smooth()`) on top of the previous graph. Give it a try yourself first. 
 
@@ -476,24 +514,8 @@ Here, we will add a trend line to the scatter plot above. We can do this by addi
 ```r
 ## exercise, then demo
 ggplot(data = mpg) + 
-  geom_point(mapping = aes(x=displ, y=hwy, color=class, size=cyl), shape=1) +
-  geom_smooth(mapping = aes(x=displ, y=hwy))
-```
-
-```
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-```
-
-![](lesson6-files/unnamed-chunk-10-1.png)<!-- -->
-
-Did you notice that for both geometric objects, `x` maps to `displ` and `y` maps `hwy`, so these auguments are repeated? In such cases, we can minimize the amount of repeat by defining how these aesthetics map to variables for all subsequent layers within `ggplot()`, as the following.
-
-
-```r
-## demo
-ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) + 
-  geom_point(mapping = aes(color=class, size=cyl), shape=1) +
-  geom_smooth()
+  geom_point(mapping = aes(x = displ, y = hwy, color = class, size = cyl), shape=1) +
+  geom_smooth(mapping = aes(x = displ, y = hwy))
 ```
 
 ```
@@ -502,17 +524,14 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 
 ![](lesson6-files/unnamed-chunk-11-1.png)<!-- -->
 
-#### Display different `year` in different facets
-
-The `mpg` dataset contains cars made in 1999 and 2008. To check whether the relationship between `displ` and `hwy` remains the same across time, we can add a facet function to the previous plot and plot the two years side by side. 
+Did you notice that for both geometric objects, `x` maps to `displ` and `y` maps `hwy`, so these auguments are repeated? In such cases, we can minimize the amount of repeat by defining how these aesthetics map to variables for all subsequent layers within `ggplot()`, as the following.
 
 
 ```r
 ## demo
-ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) + 
-  geom_point(mapping = aes(color=class, size=cyl), shape=1) +
-  geom_smooth() +
-  facet_wrap(~year, nrow=1)
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(mapping = aes(color =class, size = cyl), shape = 1) +
+  geom_smooth()
 ```
 
 ```
@@ -521,17 +540,21 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 
 ![](lesson6-files/unnamed-chunk-12-1.png)<!-- -->
 
-#### Adjust figure size using chunk options
+<br>
+ 
+### Display different `year` in different facets
 
-Note that each facet in the figure above appears to be quite narrow. To make the figure wider, use RMarkdown chunk options `fig.height` and `fig.width`.
+One way to add additional variables is with aesthetics. Another way, particularly useful for categorical variables, is to split your plot into facets, subplots that each display one subset of the data. 
+
+The `mpg` dataset contains cars made in 1999 and 2008. To check whether the relationship between `displ` and `hwy` remains the same across time, we can add a facet function to the previous plot and plot the two years side by side. 
 
 
 ```r
 ## demo
-ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) + 
-  geom_point(mapping = aes(color=class, size=cyl), shape=1) +
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(mapping = aes(color = class, size = cyl), shape = 1) +
   geom_smooth() +
-  facet_wrap(~year, nrow=1)
+  facet_wrap(~ year, nrow=1)
 ```
 
 ```
@@ -540,7 +563,45 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 
 ![](lesson6-files/unnamed-chunk-13-1.png)<!-- -->
 
-#### Change the theme of a graph
+<br>
+
+#### Your turn
+
+Break this plot into subplots for each class
+
+
+```r
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+![](lesson6-files/unnamed-chunk-14-1.png)<!-- -->
+
+
+<br>
+
+### Adjust figure size using chunk options
+
+Note that each facet in the figure above appears to be quite narrow. To make the figure wider, use RMarkdown chunk options `fig.height` and `fig.width`.
+
+
+```r
+## demo
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(mapping = aes(color = class, size = cyl), shape = 1) +
+  geom_smooth() +
+  facet_wrap(~ year, nrow=1)
+```
+
+```
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+```
+
+![](lesson6-files/unnamed-chunk-15-1.png)<!-- -->
+
+<br>
+
+### Change the theme of a graph
 
 While every element of a `ggplot2` graph is customizable, there are also built-in themes (`theme_*()`) that you can use to make some major headway before making smaller tweaks manually. Let's try one of them here.
 
@@ -558,13 +619,13 @@ ggplot(data = mpg, mapping = aes(x=displ, y=hwy)) +
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-![](lesson6-files/unnamed-chunk-14-1.png)<!-- -->
+![](lesson6-files/unnamed-chunk-16-1.png)<!-- -->
 
 <br>  
 
 ## Arguments and functions YSK
 
-Now, you've learned the central ideas behind `ggplot2`. In the next `ggplot2` lecture, we will go over some more advanced ggplot2 functionalities (e.g. statistical transformation, position adjustment, coordinate setting, color scaling, theme), but after that, the best way to learn more about `ggplot2` is often through practice and Google, since the possibilities that you can have with `ggplot2` are quite limitless, and what you want to achieve with `ggplot2` often vary among individuals. 
+Now, you've learned the central ideas behind `ggplot2`. In the next `ggplot2` lecture, we will go over some more advanced ggplot2 functionalities (e.g. statistical transformation, position adjustment, coordinate setting, color scaling, theme), but after that, the best way to learn more about `ggplot2` is often through practice and Google, since the possibilities that you can have with `ggplot2` are quite limitless, and people's plotting needs vary.
 
 With that being said, there are some geometries, aesthetics, and facet functions that are most commonly used and these often serve as the building blocks for more advance usage. Let's now go through some of these together in class. 
 
@@ -581,7 +642,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_boxplot(mapping = aes(x=class, y=hwy))
     ```
     
-    ![](lesson6-files/unnamed-chunk-15-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-17-1.png)<!-- -->
 
 * `geom_bar()`
 
@@ -592,7 +653,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_bar(aes(x=class))
     ```
     
-    ![](lesson6-files/unnamed-chunk-16-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-18-1.png)<!-- -->
   
 * `geom_histogram()`
 
@@ -607,7 +668,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
     ```
     
-    ![](lesson6-files/unnamed-chunk-17-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-19-1.png)<!-- -->
     
 * `geom_density()`
 
@@ -618,7 +679,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_density(aes(x=hwy))
     ```
     
-    ![](lesson6-files/unnamed-chunk-18-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-20-1.png)<!-- -->
 
 * `geom_smooth()`
     
@@ -632,7 +693,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_smooth(method="lm", se=F)
     ```
     
-    ![](lesson6-files/unnamed-chunk-19-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-21-1.png)<!-- -->
     
 * `geom_text()`
 
@@ -643,7 +704,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_text(aes(label=cyl))
     ```
     
-    ![](lesson6-files/unnamed-chunk-20-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-22-1.png)<!-- -->
 
 * `geom_label()`
     
@@ -657,7 +718,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_label(data=filter(mpg, hwy>40), mapping = aes(label=model, y=hwy, x=displ+0.8))
     ```
     
-    ![](lesson6-files/unnamed-chunk-21-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-23-1.png)<!-- -->
 
 * `geom_line()`
 
@@ -672,7 +733,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       facet_wrap(~manufacturer)
     ```
     
-    ![](lesson6-files/unnamed-chunk-22-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-24-1.png)<!-- -->
     
 #### Aesthetics
 
@@ -695,7 +756,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_density(aes(color=drv, x=hwy))
     ```
     
-    ![](lesson6-files/unnamed-chunk-23-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-25-1.png)<!-- -->
     
     ```r
     ## demo (fill by drv)
@@ -703,7 +764,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_density(aes(fill=drv, x=hwy))
     ```
     
-    ![](lesson6-files/unnamed-chunk-23-2.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-25-2.png)<!-- -->
 
 * `alpha`
     
@@ -716,7 +777,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       geom_density(aes(fill=drv, x=hwy), alpha=0.5)
     ```
     
-    ![](lesson6-files/unnamed-chunk-24-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-26-1.png)<!-- -->
     
 * `shape`, `line_type`
 
@@ -732,7 +793,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
     ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
     ```
     
-    ![](lesson6-files/unnamed-chunk-25-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-27-1.png)<!-- -->
 
 #### Facet
 
@@ -748,7 +809,7 @@ With that being said, there are some geometries, aesthetics, and facet functions
       facet_grid(drv~cyl)
     ```
     
-    ![](lesson6-files/unnamed-chunk-26-1.png)<!-- -->
+    ![](lesson6-files/unnamed-chunk-28-1.png)<!-- -->
 
 <br>  
 
