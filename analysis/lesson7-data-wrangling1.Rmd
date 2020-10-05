@@ -55,7 +55,6 @@ By the end of today's class, you should be able to:
 <br>
 
 **Acknowledgements**: Today's lecture is adapted (with permission) from the excellent [Ocean Health Index Data Science Training](http://ohi-science.org/data-science-training/dplyr.html) and Jenny Bryan's lectures from STAT545 at UBC: [Introduction to dplyr](http://stat545.com/block009_dplyr-intro.html).
-.
 
 <br>
 
@@ -66,6 +65,7 @@ What are some common things you like to do with your data? Maybe remove rows or 
 We are going to introduce you to data wrangling in R first with the tidyverse. The tidyverse is a suite of packages that match a philosophy of data science developed by Hadley Wickham and the RStudio team. I find it to be a more straight-forward way to learn R. We will also show you by comparison what code will look like in "Base R", which means, in R without any additional packages (like the "tidyverse" package)  installed. I like David Robinson's blog post on the topic of [teaching the tidyverse first](http://varianceexplained.org/r/teach-hard-way).
 
 For some things, base-R is more straight forward, and we'll show you that too. Whenever we use a function that is from the tidyverse, we will prefix it so you'll know for sure. 
+
 <br>
 
 ### Setup
@@ -117,13 +117,13 @@ Let's first check when the `coronavirus_dataset.csv` file on the [coronavirus pa
 If we click on the `coronavirus_dataset.csv` file, we'll see that it's too large to display on GitHub in data-view mode. We can read this data into R directly from GitHub, without downloading it. But we can't read this data in view-mode. We have to click on the **View raw** link in the view window. This displays it as the raw csv file, without formatting. 
 
 Copy the url for raw data: 
-https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv
+https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv
 
 Now, let's go back to RStudio. In our R Markdown, let's read this csv file and name the variable "coronavirus". We will use the `read_csv()` function from the `readr` package (part of the tidyverse, so it's already installed!). 
 
 ```{r, eval=FALSE}
 # read in corona .csv
-coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv', col_types = cols(Province.State = col_character()))
+coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv', col_types = cols(province = col_character()))
 ```
 
 For today, don't worry about why we need to specify the `col_types` argument - we will cover the details of data import functions in a few weeks.
@@ -160,7 +160,7 @@ summary(coronavirus)
 
 # If we don't already have skimr installed, we will need to install it
 # install.packages('skimr')
-library(skimr) 
+library(skimr)  # install.packages("skimr")
 skim(coronavirus)
 ```
 
