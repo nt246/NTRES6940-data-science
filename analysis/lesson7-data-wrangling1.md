@@ -28,8 +28,20 @@ Chapter 5.1-5.5 in [R for Data Science](https://r4ds.had.co.nz/transform.html) b
 
 <br>
 
-## Class announcements
+## Class announcements  
 
+* Assignment 1 has been graded - everyone received credit, good work! A few things to note:
+  + Select **github_document** as your output format for assignments submitted through your class repo  
+  + Getting used to formatting - remember to refer to the awesome [Rmarkdown cheatsheet](https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)  
+  + Assignments (except #2) should be kept in the `problem_sets` directory of your class repo, please do not delete these files to allow us time to review them  
+  + One student deleted Assn.1 from their repo before we could grade it, but version control saved the day! Delete with caution, but no need to fret if you need to recover deleted files  
+* Assignment 2 (your collaborative website) is **due today by 10pm**  
+* [Assignment 3](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_3.md) is now available and will be due by next Monday
+* Cleaning up your accounts, proceed with caution  
+  + Feel free to delete any test files or repos you made over the last few weeks
+  + **DO NOT** delete your assignments, your class repo or your website repo
+  + If you cloned your repo to your computer, you will have to delete your local copy in addition to deleting the repo on Github  
+  
 <br>
 
 ## Learning objectives for today's class
@@ -52,7 +64,6 @@ By the end of today's class, you should be able to:
 <br>
 
 **Acknowledgements**: Today's lecture is adapted (with permission) from the excellent [Ocean Health Index Data Science Training](http://ohi-science.org/data-science-training/dplyr.html) and Jenny Bryan's lectures from STAT545 at UBC: [Introduction to dplyr](http://stat545.com/block009_dplyr-intro.html).
-.
 
 <br>
 
@@ -63,6 +74,7 @@ What are some common things you like to do with your data? Maybe remove rows or 
 We are going to introduce you to data wrangling in R first with the tidyverse. The tidyverse is a suite of packages that match a philosophy of data science developed by Hadley Wickham and the RStudio team. I find it to be a more straight-forward way to learn R. We will also show you by comparison what code will look like in "Base R", which means, in R without any additional packages (like the "tidyverse" package)  installed. I like David Robinson's blog post on the topic of [teaching the tidyverse first](http://varianceexplained.org/r/teach-hard-way).
 
 For some things, base-R is more straight forward, and we'll show you that too. Whenever we use a function that is from the tidyverse, we will prefix it so you'll know for sure. 
+
 <br>
 
 ### Setup
@@ -113,14 +125,14 @@ Let's first check when the `coronavirus_dataset.csv` file on the [coronavirus pa
 If we click on the `coronavirus_dataset.csv` file, we'll see that it's too large to display on GitHub in data-view mode. We can read this data into R directly from GitHub, without downloading it. But we can't read this data in view-mode. We have to click on the **View raw** link in the view window. This displays it as the raw csv file, without formatting. 
 
 Copy the url for raw data: 
-https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv
+https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv
 
 Now, let's go back to RStudio. In our R Markdown, let's read this csv file and name the variable "coronavirus". We will use the `read_csv()` function from the `readr` package (part of the tidyverse, so it's already installed!). 
 
 
 ```r
 # read in corona .csv
-coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv', col_types = cols(Province.State = col_character()))
+coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv', col_types = cols(province = col_character()))
 ```
 
 For today, don't worry about why we need to specify the `col_types` argument - we will cover the details of data import functions in a few weeks.
@@ -161,7 +173,7 @@ summary(coronavirus)
 
 # If we don't already have skimr installed, we will need to install it
 # install.packages('skimr')
-library(skimr) 
+library(skimr)  # install.packages("skimr")
 skim(coronavirus)
 ```
 

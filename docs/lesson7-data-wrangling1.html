@@ -427,6 +427,28 @@ div.tocify {
 </div>
 <div id="class-announcements" class="section level2">
 <h2>Class announcements</h2>
+<ul>
+<li>Assignment 1 has been graded - everyone received credit, good work! A few things to note:
+<ul>
+<li>Select <strong>github_document</strong> as your output format for assignments submitted through your class repo<br />
+</li>
+<li>Getting used to formatting - remember to refer to the awesome <a href="https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">Rmarkdown cheatsheet</a><br />
+</li>
+<li>Assignments (except #2) should be kept in the <code>problem_sets</code> directory of your class repo, please do not delete these files to allow us time to review them<br />
+</li>
+<li>One student deleted Assn.1 from their repo before we could grade it, but version control saved the day! Delete with caution, but no need to fret if you need to recover deleted files<br />
+</li>
+</ul></li>
+<li>Assignment 2 (your collaborative website) is <strong>due today by 10pm</strong><br />
+</li>
+<li><a href="https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_3.md">Assignment 3</a> is now available and will be due by next Monday</li>
+<li>Cleaning up your accounts, proceed with caution
+<ul>
+<li>Feel free to delete any test files or repos you made over the last few weeks</li>
+<li><strong>DO NOT</strong> delete your assignments, your class repo or your website repo</li>
+<li>If you cloned your repo to your computer, you will have to delete your local copy in addition to deleting the repo on Github</li>
+</ul></li>
+</ul>
 <p><br></p>
 </div>
 <div id="learning-objectives-for-todays-class" class="section level2">
@@ -447,14 +469,15 @@ div.tocify {
 <li>Make sure your RStudio working files are sync’ed to GitHub</li>
 </ul>
 <p><br></p>
-<p><strong>Acknowledgements</strong>: Today’s lecture is adapted (with permission) from the excellent <a href="http://ohi-science.org/data-science-training/dplyr.html">Ocean Health Index Data Science Training</a> and Jenny Bryan’s lectures from STAT545 at UBC: <a href="http://stat545.com/block009_dplyr-intro.html">Introduction to dplyr</a>. .</p>
+<p><strong>Acknowledgements</strong>: Today’s lecture is adapted (with permission) from the excellent <a href="http://ohi-science.org/data-science-training/dplyr.html">Ocean Health Index Data Science Training</a> and Jenny Bryan’s lectures from STAT545 at UBC: <a href="http://stat545.com/block009_dplyr-intro.html">Introduction to dplyr</a>.</p>
 <p><br></p>
 </div>
 <div id="what-is-data-wrangling" class="section level2">
 <h2>What is data wrangling?</h2>
 <p>What are some common things you like to do with your data? Maybe remove rows or columns, do calculations and maybe add new columns? This is called <strong>data wrangling</strong> (“the process of cleaning, structuring and enriching raw data into a desired format for better analysis in less time” by <a href="https://www.trifacta.com/data-wrangling/">one definition</a>. It’s not data management or data manipulation: you <strong>keep the raw data raw</strong> and do these things programatically in R with the tidyverse.</p>
 <p>We are going to introduce you to data wrangling in R first with the tidyverse. The tidyverse is a suite of packages that match a philosophy of data science developed by Hadley Wickham and the RStudio team. I find it to be a more straight-forward way to learn R. We will also show you by comparison what code will look like in “Base R”, which means, in R without any additional packages (like the “tidyverse” package) installed. I like David Robinson’s blog post on the topic of <a href="http://varianceexplained.org/r/teach-hard-way">teaching the tidyverse first</a>.</p>
-<p>For some things, base-R is more straight forward, and we’ll show you that too. Whenever we use a function that is from the tidyverse, we will prefix it so you’ll know for sure. <br></p>
+<p>For some things, base-R is more straight forward, and we’ll show you that too. Whenever we use a function that is from the tidyverse, we will prefix it so you’ll know for sure.</p>
+<p><br></p>
 <div id="setup" class="section level3">
 <h3>Setup</h3>
 <p>Throughout today’s class, we’ll explore functions, take notes, and do our exercises in a new RMarkdown file, and to practice our GitHub integration and version control, we will make sure our new R Markdown working document gets sync’ed to our GitHub account.</p>
@@ -490,10 +513,10 @@ div.tocify {
 <p>The compiled package is available to install like any other package from CRAN with <code>install.packages</code>. However, it keeps getting updated, so to make sure that we’re always working with the most current version, we will import the dataset directly from GitHub.</p>
 <p>Let’s first check when the <code>coronavirus_dataset.csv</code> file on the <a href="https://github.com/RamiKrispin/coronavirus-csv">coronavirus package GitHub page</a> was last updated.</p>
 <p>If we click on the <code>coronavirus_dataset.csv</code> file, we’ll see that it’s too large to display on GitHub in data-view mode. We can read this data into R directly from GitHub, without downloading it. But we can’t read this data in view-mode. We have to click on the <strong>View raw</strong> link in the view window. This displays it as the raw csv file, without formatting.</p>
-<p>Copy the url for raw data: <a href="https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv" class="uri">https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv</a></p>
+<p>Copy the url for raw data: <a href="https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv" class="uri">https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv</a></p>
 <p>Now, let’s go back to RStudio. In our R Markdown, let’s read this csv file and name the variable “coronavirus”. We will use the <code>read_csv()</code> function from the <code>readr</code> package (part of the tidyverse, so it’s already installed!).</p>
 <pre class="r"><code># read in corona .csv
-coronavirus &lt;- read_csv(&#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv&#39;, col_types = cols(Province.State = col_character()))</code></pre>
+coronavirus &lt;- read_csv(&#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;, col_types = cols(province = col_character()))</code></pre>
 <p>For today, don’t worry about why we need to specify the <code>col_types</code> argument - we will cover the details of data import functions in a few weeks.</p>
 <p>Once we have the data loaded, let’s start getting familiar with its content and format.</p>
 <p>Let’s inspect:</p>
@@ -515,7 +538,7 @@ nrow(coronavirus)   # ?nrow number of rows</code></pre>
 
 # If we don&#39;t already have skimr installed, we will need to install it
 # install.packages(&#39;skimr&#39;)
-library(skimr) 
+library(skimr)  # install.packages(&quot;skimr&quot;)
 skim(coronavirus)</code></pre>
 <p><br></p>
 <div id="look-at-the-variables-inside-a-data.frame" class="section level3">
