@@ -109,11 +109,11 @@ Class# | Date | Topic | Assignments
 1 | Mon 9/14 | [Intro to the course and R/RStudio](https://nt246.github.io/NTRES6940-data-science/lesson1-rstudio.html) | 
 2 | Wed 9/16 | [Markdown and GitHub](https://nt246.github.io/NTRES6940-data-science/lesson2-rmarkdown-github.html) | 
 3 | Mon 9/21 | [The Git workflow (version control)](https://nt246.github.io/NTRES6940-data-science/lesson3-version-control.html) | 
-4 | Wed 9/23 | Collaborating with GitHub Part 1 | Assignment 1 due
-5 | Mon 9/28 | Collaborating with GitHub Part 2 | 
-6 | Wed 9/30 | Plotting with ggplot part 1 |
-7 | Mon 10/5 | Data wrangling part 1 (dplyr::filter, mutate, select, arrange) | Assignment 2 due
-8 | Wed 10/7 | Data wrangling part 2 (dplyr::summarize, group_by) |
+4 | Wed 9/23 | [Collaborating with GitHub Part 1](https://nt246.github.io/NTRES6940-data-science/lesson4-collaboration.html) | [Assignment 1 due](https://nt246.github.io/NTRES6940-data-science/assignments.html#assignment_1)
+5 | Mon 9/28 | [Collaborating with GitHub Part 2](https://nt246.github.io/NTRES6940-data-science/lesson5-collaboration-part2.html) | 
+6 | Wed 9/30 | [Plotting with ggplot part 1](https://nt246.github.io/NTRES6940-data-science/lesson6-ggplot-part1.html) |
+7 | Mon 10/5 | [Data wrangling part 1 (dplyr::filter, mutate, select, arrange)](https://nt246.github.io/NTRES6940-data-science/lesson7-data-wrangling1.html) | Assignment 2 due
+8 | Wed 10/7 | [Data wrangling part 2 (dplyr::summarize, group_by)]((https://nt246.github.io/NTRES6940-data-science/lesson8-data-wrangling2.html)) |
 9 | Mon 10/12 | Plotting with ggplot part 2 + good coding practices |  Assignment 3 due 
 10 | Wed 10/14 | Tidy data (what is tidy data and how to handle untidy data) and file input/output |
 11 | Mon 10/19 | Good coding practices, debugging strategies, and getting help | Assignment 4 due
