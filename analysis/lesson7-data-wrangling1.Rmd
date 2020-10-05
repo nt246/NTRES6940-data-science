@@ -304,7 +304,7 @@ sum(filter(coronavirus, country == "US", type == "death")$cases)
 <br>
 Question 1b:
 
-```{r}
+```{r, eval=FALSE}
 #Example:
 
 filter(coronavirus, country %in% c("Denmark", "Italy", "Spain"), type == "death", date == "2020-10-04")
@@ -349,7 +349,7 @@ Create a new dataframe including only the country, lat, and long variables, list
 
 In this case, we have very few variables that we can easily select one by one, but for datasets with lots of variables with standardized names, some of the built-in helper functions may be helpful, e.g.:
 
-```{r}
+```{r, eval=FALSE}
 select(coronavirus, country:long)
 select(coronavirus, contains('o'))
 select(coronavirus, ends_with('e'))
