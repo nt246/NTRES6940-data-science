@@ -285,13 +285,14 @@ filter(coronavirus, country == "US" & type == "death")
 ```
 
 <br>
-
+<br>
 ## Your turn - Exercise 1
 
-> 1a: What is the total number of deaths in the US reported in this dataset up to now?   
+> **1a:** What is the total number of deaths in the US reported in this dataset up to now?   
 > Hint: You can do this in 2 steps by assigning a variable and then using the `sum()` function.
 >
-> 1b: Subset the data to only show the death counts in three European countries yesterday.
+>
+> **1b:** Subset the data to only show the death counts in three European countries yesterday.
 
 > Then, sync to Github.com (pull, stage, commit, push).
 
@@ -301,7 +302,7 @@ filter(coronavirus, country == "US" & type == "death")
 
 This is one way to do it based on what we have learned so far:
 
-Question 1a:
+**Question 1a:**
 
 ```r
 x <- filter(coronavirus, country == "US", type == "death")  
@@ -312,8 +313,7 @@ sum(x$cases)
 sum(filter(coronavirus, country == "US", type == "death")$cases)
 ```
 <br>
-Question 1b:
-
+**Question 1b:**
 
 ```r
 #Example:
@@ -352,6 +352,7 @@ select(coronavirus, -lat, -long) # you can use - to deselect columns
 ```
 
 <br>
+<br>
 
 ### Your turn - Exercise 2
 
@@ -374,6 +375,7 @@ select(coronavirus, casetype = type, everything())
 rename(coronavirus, casetype = type)
 ```
 
+<br>
 <br>
 
 ## Use `select()` and `filter()` together
