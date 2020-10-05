@@ -286,7 +286,7 @@ filter(coronavirus, country == "US" & type == "death")
 
 <br>
 
-## Your turn - Exercise 1
+## Your turn - Exercise 1  
 
 > 1a: What is the total number of deaths in the US reported in this dataset up to now?   
 > Hint: You can do this in 2 steps by assigning a variable and then using the `sum()` function.
@@ -297,7 +297,7 @@ filter(coronavirus, country == "US" & type == "death")
 
 <br>
 
-### Answer (no peeking!)
+#### Answer (no peeking!)
 
 This is one way to do it based on what we have learned so far:
 

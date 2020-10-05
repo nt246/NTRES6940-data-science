@@ -487,7 +487,7 @@ div.tocify {
 <h3>Load <code>tidyverse</code> (which has <code>dplyr</code> inside)</h3>
 <p>In your R Markdown file, let’s make sure we’ve got our libraries loaded. Write the following:</p>
 <pre class="r"><code>library(tidyverse)     ## install.packages(&quot;tidyverse&quot;)</code></pre>
-<p>This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn’t exist, you can install the package easily by running the code within the comment (highlight <code>install.packages(&quot;tidyverse&quot;)</code> and run it).</p>
+<p>This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn’t exist, you can install the package easily by running the code within the comment (highlight <code>install.packages("tidyverse")</code> and run it).</p>
 <p><br></p>
 </div>
 </div>
@@ -782,7 +782,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
