@@ -589,14 +589,11 @@ summary(coronavirus$cases) # same information, formatted slightly differently</c
 <pre class="r"><code># We can use either of these notations:
 filter(coronavirus, country == &quot;US&quot;, type == &quot;death&quot;)
 filter(coronavirus, country == &quot;US&quot; &amp; type == &quot;death&quot;)</code></pre>
-<p><br></p>
-</div>
-<div id="your-turn---exercise-1" class="section level2">
-<h2>Your turn - Exercise 1</h2>
+<p><br> <br> ## Your turn - Exercise 1</p>
 <blockquote>
-<p>1a: What is the total number of deaths in the US reported in this dataset up to now?<br />
+<p><strong>1a:</strong> What is the total number of deaths in the US reported in this dataset up to now?<br />
 Hint: You can do this in 2 steps by assigning a variable and then using the <code>sum()</code> function.</p>
-<p>1b: Subset the data to only show the death counts in three European countries yesterday.</p>
+<p><strong>1b:</strong> Subset the data to only show the death counts in three European countries yesterday.</p>
 </blockquote>
 <blockquote>
 <p>Then, sync to Github.com (pull, stage, commit, push).</p>
@@ -605,14 +602,14 @@ Hint: You can do this in 2 steps by assigning a variable and then using the <cod
 <div id="answer-no-peeking" class="section level3">
 <h3>Answer (no peeking!)</h3>
 <p>This is one way to do it based on what we have learned so far:</p>
-<p>Question 1a:</p>
+<p><strong>Question 1a:</strong></p>
 <pre class="r"><code>x &lt;- filter(coronavirus, country == &quot;US&quot;, type == &quot;death&quot;)  
 sum(x$cases)
 
 # Also, remember that the output from filter() is a dataframe, so you can use the $ operator on the called function directly:
 
 sum(filter(coronavirus, country == &quot;US&quot;, type == &quot;death&quot;)$cases)</code></pre>
-<p><br> Question 1b:</p>
+<p><br> <strong>Question 1b:</strong></p>
 <pre class="r"><code>#Example:
 
 filter(coronavirus, country %in% c(&quot;Denmark&quot;, &quot;Italy&quot;, &quot;Spain&quot;), type == &quot;death&quot;, date == &quot;2020-10-04&quot;)</code></pre>
@@ -630,7 +627,7 @@ filter(coronavirus, country %in% c(&quot;Denmark&quot;, &quot;Italy&quot;, &quot
 <p>Note how the order of the columns also have been rearranged to match the order they are listed in the <code>select()</code> function.</p>
 <p>We can also use <code>-</code> to deselect columns</p>
 <pre class="r"><code>select(coronavirus, -lat, -long) # you can use - to deselect columns</code></pre>
-<p><br></p>
+<p><br> <br></p>
 <div id="your-turn---exercise-2" class="section level3">
 <h3>Your turn - Exercise 2</h3>
 <p>Create a new dataframe including only the country, lat, and long variables, listed in this order. Now make one listed in order lat, long, country.</p>
@@ -645,7 +642,7 @@ select(coronavirus, ends_with(&#39;e&#39;))
 select(coronavirus, casetype = type)
 select(coronavirus, casetype = type, everything())
 rename(coronavirus, casetype = type)</code></pre>
-<p><br></p>
+<p><br> <br></p>
 </div>
 </div>
 <div id="use-select-and-filter-together" class="section level2">

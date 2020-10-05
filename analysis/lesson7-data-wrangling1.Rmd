@@ -276,6 +276,7 @@ filter(coronavirus, country == "US" & type == "death")
 
 <br>
 <br>
+
 ## Your turn - Exercise 1
 
 > **1a:** What is the total number of deaths in the US reported in this dataset up to now?   
@@ -288,7 +289,7 @@ filter(coronavirus, country == "US" & type == "death")
 
 <br>
 
-### Answer (no peeking!)
+#### Answer (no peeking!)
 
 This is one way to do it based on what we have learned so far:
 
