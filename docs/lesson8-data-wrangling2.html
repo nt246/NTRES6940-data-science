@@ -466,12 +466,12 @@ div.tocify {
 <p>Today we’ll also practice combining text and code in R Markdown files, so we’ll do our in-class exercises in an R Markdown file. Do you remember how to create a new RMarkdown file? Go File -&gt; New File -&gt; R Markdown. Then change the output to GitHub document either as you’re setting up the file or by manually editing the YAML header to say <code>output: github_document</code>. Now, delete the boilerplate text after the first setup code chunk and copy today’s exercise questions into your document from <a href="https://github.com/nt246/NTRES6940-data-science/blob/master/in_class_exercises/Oct7_exercises_wrangle2.md">here</a>. As we work through the exercises, you will want to add a code chunk under each question to complete your answer.</p>
 <p>Finally, load the Coronavirus dataset back in directly from the GitHub URL and see whether it has been updated - what is the latest date included?</p>
 <pre class="r"><code>library(tidyverse)     ## install.packages(&quot;tidyverse&quot;)</code></pre>
-<pre><code>## ── Attaching packages ───────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────── tidyverse 1.3.0 ──</code></pre>
 <pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
 ## ✓ tibble  3.0.3     ✓ dplyr   1.0.2
 ## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
 ## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
-<pre><code>## ── Conflicts ──────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(skimr)        ## install.packages(&quot;skimr&quot;)</code></pre>
@@ -485,7 +485,20 @@ coronavirus &lt;- read_csv(&#39;https://raw.githubusercontent.com/RamiKrispin/co
 <h2>Warm up - Exercise 1: Piping together <code>select()</code> and <code>filter()</code> commands</h2>
 <p>Subset the coronavirus dataset to only include the daily counts of confirmed cases in countries located above 60 degree latitude. What are those countries?</p>
 <p>If you have time, pipe it into ggplot() to visualize the trends over time in these countries.</p>
-<p><br> <br></p>
+<p><br></p>
+<div id="answer" class="section level4">
+<h4>Answer</h4>
+<details>
+<p><summary>click to expand</summary></p>
+<pre class="r"><code># One way to do this:
+
+coronavirus %&gt;% 
+  filter(lat &gt; 60, type == &quot;confirmed&quot;) %&gt;% 
+  select(country) %&gt;% 
+  table()</code></pre>
+</details>
+<p><br> <br> <br></p>
+</div>
 </div>
 <div id="mutate-adds-new-variables" class="section level2">
 <h2><code>mutate()</code> adds new variables</h2>
@@ -526,16 +539,16 @@ coronavirus_ttd %&gt;%
 <p>When you’re done, sync your RMarkdown file to Github.com (pull, stage, commit, push).</p>
 </blockquote>
 <p><br></p>
-</div>
-<div id="answer" class="section level3">
-<h3>Answer</h3>
+<div id="answer-1" class="section level4">
+<h4>Answer</h4>
 <details>
-<p><summary>click to expand!</summary></p>
+<p><summary>click to expand</summary></p>
 <pre class="r"><code>coronavirus_ttd %&gt;%
   mutate(undet = (confirmed - death - recovered) / confirmed) %&gt;% 
   filter(confirmed &gt; 1000000)</code></pre>
 </details>
 <p><br> <br></p>
+</div>
 </div>
 </div>
 <div id="arrange-orders-rows" class="section level2">
@@ -552,11 +565,14 @@ coronavirus_ttd %&gt;%
 <blockquote>
 <p>How many countries have suffered more than 100,000 deaths so far and which five countries have recorded the highest death counts?</p>
 </blockquote>
-<div id="answer-1" class="section level4">
+<div id="answer-2" class="section level4">
 <h4>Answer</h4>
+<details>
+<p><summary>click to expand</summary></p>
 <pre class="r"><code>coronavirus_ttd %&gt;%
   filter(death &gt; 100000) %&gt;% 
   arrange(-death)</code></pre>
+</details>
 <p><br> <br></p>
 </div>
 </div>
@@ -570,8 +586,10 @@ coronavirus_ttd %&gt;%
 </ol>
 </blockquote>
 <p><br> <br></p>
-<div id="answer-no-peeking" class="section level4">
-<h4>Answer (no peeking!)</h4>
+<div id="answer-3" class="section level4">
+<h4>Answer</h4>
+<details>
+<p><summary>click to expand</summary></p>
 <pre class="r"><code># Identifying the record with the highest death count
 coronavirus %&gt;% 
   filter(type == &quot;death&quot;) %&gt;% 
@@ -586,6 +604,8 @@ coronavirus %&gt;%
 coronavirus %&gt;% 
   filter(country == &quot;Canada&quot;, cases &gt; 0) %&gt;% 
   arrange(date)</code></pre>
+</details>
+<p><br></p>
 <p><strong>Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit, push)</strong></p>
 <p><br> <br></p>
 </div>
@@ -628,9 +648,10 @@ coronavirus %&gt;%
 <p><br></p>
 <p>Pipe your global daily death counts into ggplot to visualize the trend over time.</p>
 <p><br> <br></p>
-</div>
-<div id="answer-2" class="section level2">
-<h2>Answer</h2>
+<div id="answer-4" class="section level4">
+<h4>Answer</h4>
+<details>
+<p><summary>click to expand</summary></p>
 <pre class="r"><code>coronavirus %&gt;% 
   filter(type == &quot;death&quot;) %&gt;% 
   group_by(date) %&gt;% 
@@ -654,12 +675,18 @@ coronavirus %&gt;%
   arrange(-total_deaths) %&gt;% 
   ggplot() +
     geom_line(aes(x = date, y = total_deaths))</code></pre>
-<p><br></p>
+</details>
+<p><br> <br></p>
+</div>
 </div>
 <div id="if-you-have-more-time-here-is-an-optional-question" class="section level2">
 <h2>If you have more time, here is an optional question</h2>
 <p>The <code>month()</code> function from the package <code>lubridate</code> extracts the month from a date. How many countries already have more than 1000 deaths in October?</p>
 <p><br> <br></p>
+<div id="answer-5" class="section level4">
+<h4>Answer</h4>
+<details>
+<p><summary>click to expand</summary></p>
 <pre class="r"><code>library(lubridate) #install.packages(&#39;lubridate&#39;)
 
 coronavirus %&gt;% 
@@ -668,21 +695,32 @@ coronavirus %&gt;%
   group_by(country) %&gt;% 
   summarize(total_death = sum(cases)) %&gt;% 
   filter(total_death &gt; 1000)</code></pre>
+</details>
 <p><br> <br></p>
+</div>
 </div>
 <div id="extra-in-class-questions" class="section level2">
 <h2>Extra in-class questions</h2>
-<ol style="list-style-type: decimal">
-<li>Which country had the highest number of deaths on Monday (October 4 2020)? <br> <br></li>
-</ol>
+<p><br></p>
+<div id="which-country-had-the-highest-number-of-deaths-on-monday-october-4-2020" class="section level4">
+<h4>Which country had the highest number of deaths on Monday (October 4 2020)?</h4>
+<p><br></p>
+<strong>Answer</strong>
+<details>
+<p><summary>click to expand</summary></p>
 <pre class="r"><code>coronavirus %&gt;% 
   select(-lat, -long) %&gt;% 
   filter(date == &quot;2020-10-04&quot;, type == &quot;death&quot;) %&gt;% 
   arrange(-cases)</code></pre>
+</details>
 <p><br> <br></p>
-<ol start="2" style="list-style-type: decimal">
-<li>Which country had the highest count of confirmed cases in January? [Hint: to address this question the function month() from the package lubridate might be helpful]. What about in March? <br></li>
-</ol>
+</div>
+<div id="which-country-had-the-highest-count-of-confirmed-cases-in-january-hint-to-address-this-question-the-function-month-from-the-package-lubridate-might-be-helpful.-what-about-in-march" class="section level4">
+<h4>Which country had the highest count of confirmed cases in January? [Hint: to address this question the function month() from the package lubridate might be helpful]. What about in March?</h4>
+<p><br></p>
+<strong>Answer</strong>
+<details>
+<p><summary>click to expand</summary></p>
 <pre class="r"><code>library(lubridate) #install.packages(&#39;lubridate&#39;)
 
 coronavirus %&gt;% 
@@ -691,21 +729,31 @@ coronavirus %&gt;%
   group_by(country) %&gt;% 
   summarize(total_death = sum(cases)) %&gt;% 
   arrange(-total_death)</code></pre>
+</details>
 <p><br> If you’re used to working in base R, answer the same question with base R tools. Which coding approach do you like better or what are pros and cons of the two types of syntax?</p>
 <p><br> <br></p>
-<ol start="3" style="list-style-type: decimal">
-<li>Which countries have data for multiple states or provinces?</li>
-</ol>
+</div>
+<div id="which-countries-have-data-for-multiple-states-or-provinces" class="section level4">
+<h4>Which countries have data for multiple states or provinces?</h4>
+<p><br></p>
+<strong>Answer</strong>
+<details>
+<p><summary>click to expand</summary></p>
 <pre class="r"><code>coronavirus %&gt;% 
   group_by(country, date) %&gt;% 
   summarize(n = n()) %&gt;% 
   group_by(country) %&gt;% 
   summarize(maxcount = max(n)) %&gt;% 
   filter(maxcount &gt; 3)</code></pre>
+</details>
 <p><br> <br></p>
-<ol start="4" style="list-style-type: decimal">
-<li>Do all countries have reports of the number of confirmed cases for the same number of days?</li>
-</ol>
+</div>
+<div id="do-all-countries-have-reports-of-the-number-of-confirmed-cases-for-the-same-number-of-days" class="section level4">
+<h4>Do all countries have reports of the number of confirmed cases for the same number of days?</h4>
+<p><br></p>
+<strong>Answer</strong>
+<details>
+<p><summary>click to expand</summary></p>
 <pre class="r"><code>coronavirus %&gt;% 
   filter(type == &quot;recovered&quot;) %&gt;% 
   group_by(country, province) %&gt;% 
@@ -713,6 +761,8 @@ coronavirus %&gt;%
   arrange(n) %&gt;% 
   ggplot() +
     geom_histogram(aes(n))</code></pre>
+</details>
+</div>
 </div>
 
 

@@ -73,7 +73,7 @@ library(tidyverse)     ## install.packages("tidyverse")
 ```
 
 ```
-## ── Attaching packages ───────────────────────────────────── tidyverse 1.3.0 ──
+## ── Attaching packages ─────────────────────────────── tidyverse 1.3.0 ──
 ```
 
 ```
@@ -84,7 +84,7 @@ library(tidyverse)     ## install.packages("tidyverse")
 ```
 
 ```
-## ── Conflicts ──────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ```
@@ -114,6 +114,25 @@ Subset the coronavirus dataset to only include the daily counts of confirmed cas
 
 If you have time, pipe it into ggplot() to visualize the trends over time in these countries.
 
+<br>
+
+#### Answer
+
+<details>
+  <summary>click to expand</summary>
+
+
+```r
+# One way to do this:
+
+coronavirus %>% 
+  filter(lat > 60, type == "confirmed") %>% 
+  select(country) %>% 
+  table()
+```
+</details>
+
+<br>
 <br>
 <br>
 
@@ -174,9 +193,9 @@ Note, however, that these estimated death rates may be misleading and should be 
 
 <br>
 
-### Answer
+#### Answer
 <details>
-  <summary>click to expand!</summary>
+  <summary>click to expand</summary>
 
 
 ```r
@@ -211,6 +230,8 @@ I advise that your analyses NEVER rely on rows or variables being in a specific 
 > How many countries have suffered more than 100,000 deaths so far and which five countries have recorded the highest death counts?
 
 #### Answer
+<details>
+  <summary>click to expand</summary>
 
 
 ```r
@@ -218,6 +239,7 @@ coronavirus_ttd %>%
   filter(death > 100000) %>% 
   arrange(-death)
 ```
+</details>
 
 <br>
 <br>
@@ -232,7 +254,10 @@ coronavirus_ttd %>%
 <br>
 <br>
 
-#### Answer (no peeking!)
+#### Answer
+<details>
+  <summary>click to expand</summary>
+
 
 ```r
 # Identifying the record with the highest death count
@@ -250,6 +275,9 @@ coronavirus %>%
   filter(country == "Canada", cases > 0) %>% 
   arrange(date)
 ```
+</details>
+
+<br>
 
 **Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit, push)**
 
@@ -324,7 +352,10 @@ Pipe your global daily death counts into ggplot to visualize the trend over time
 <br>
 <br>
 
-## Answer
+#### Answer
+<details>
+  <summary>click to expand</summary>
+
 
 ```r
 coronavirus %>% 
@@ -351,7 +382,9 @@ coronavirus %>%
   ggplot() +
     geom_line(aes(x = date, y = total_deaths))
 ```
+</details>
 
+<br>
 <br>
 
 ## If you have more time, here is an optional question
@@ -360,6 +393,10 @@ The `month()` function from the package `lubridate` extracts the month from a da
 
 <br>
 <br>
+
+#### Answer
+<details>
+  <summary>click to expand</summary>
 
 
 ```r
@@ -372,14 +409,22 @@ coronavirus %>%
   summarize(total_death = sum(cases)) %>% 
   filter(total_death > 1000)
 ```
+</details>
 
 <br>
 <br>
 
 ## Extra in-class questions
-1. Which country had the highest number of deaths on Monday (October 4 2020)?
+
 <br>
+
+#### Which country had the highest number of deaths on Monday (October 4 2020)?
 <br>
+
+**Answer**
+<details>
+  <summary>click to expand</summary>
+
 
 ```r
 coronavirus %>% 
@@ -387,11 +432,17 @@ coronavirus %>%
   filter(date == "2020-10-04", type == "death") %>% 
   arrange(-cases)
 ```
+</details>
 <br>
 <br>
 
-2. Which country had the highest count of confirmed cases in January? [Hint: to address this question the function month() from the package lubridate might be helpful]. What about in March?
+#### Which country had the highest count of confirmed cases in January? [Hint: to address this question the function month() from the package lubridate might be helpful]. What about in March?
 <br>
+
+**Answer**
+<details>
+  <summary>click to expand</summary>
+
 
 ```r
 library(lubridate) #install.packages('lubridate')
@@ -403,13 +454,21 @@ coronavirus %>%
   summarize(total_death = sum(cases)) %>% 
   arrange(-total_death)
 ```
+</details>
 <br>
 If you're used to working in base R, answer the same question with base R tools. Which coding approach do you like better or what are pros and cons of the two types of syntax? 
 
 <br>
 <br>
 
-3. Which countries have data for multiple states or provinces?
+#### Which countries have data for multiple states or provinces?
+
+<br>
+
+**Answer**
+<details>
+  <summary>click to expand</summary>
+
 
 ```r
 coronavirus %>% 
@@ -419,10 +478,18 @@ coronavirus %>%
   summarize(maxcount = max(n)) %>% 
   filter(maxcount > 3)
 ```
+</details>
 <br>
 <br>
 
-4. Do all countries have reports of the number of confirmed cases for the same number of days?
+#### Do all countries have reports of the number of confirmed cases for the same number of days?
+
+<br>
+
+**Answer**
+<details>
+  <summary>click to expand</summary>
+
 
 ```r
 coronavirus %>% 
@@ -433,6 +500,8 @@ coronavirus %>%
   ggplot() +
     geom_histogram(aes(n))
 ```
+</details>
+
 
 
 
