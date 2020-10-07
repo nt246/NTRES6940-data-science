@@ -153,9 +153,11 @@ Note, however, that these estimated death rates may be misleading and should be 
 >
 > When you're done, sync your RMarkdown file to Github.com (pull, stage, commit, push).
 
-#### Answer - No peeking!
+<br>
+
+#### Answer
 <details>
-  <summary>Click to expand!</summary>
+  <summary>click to expand!</summary>
 
 ```{r, eval=FALSE}
 
@@ -164,11 +166,11 @@ coronavirus_ttd %>%
   filter(confirmed > 1000000)
   
 ```
-<details>
- 
-<br>
-<br>
+</details>
 
+<br> 
+<br>  
+  
 ## `arrange()` orders rows
 
 For examining the output of our previous calculations, we may want to re-arrange the countries in ascending order for the proportion of confirmed cases for which the outcome remains unknown. The `dplyr` function for sorting rows is `arrange()`. 

@@ -30,7 +30,7 @@ output:
 
 ## Class announcements
 
-* Updated schedule: No class next Wednesday Oct 14 (in accordance with Cornell's academic calendar). The order of the following sessions have been shifted slightly
+* Updated [schedule](https://nt246.github.io/NTRES6940-data-science/syllabus.html#tentative_schedule): No class next Wednesday Oct 14 (in accordance with Cornell's academic calendar). The order of the following sessions have been shifted slightly
 * Homework 3 due on Monday
 
 <br>
@@ -60,8 +60,12 @@ Today, we'll expand our data wrangling toolbox. By the end of today's class, you
 
 <br>
 
-## Reloading the Coronavirus dataset
-Let's jump back in where we left on Monday. Let's first clear out our workspace so we start with a fresh session by clicking "Session" -> "Restart R". Then let's open the R-script we were using to take notes, pull from GitHub to make sure we have the most recent version. Then load the Coronavirus dataset back in directly from the GitHub URL and see whether it has been updated - what is the latest date included?
+## Getting set up a reloading the Coronavirus dataset
+Let's jump back in where we left on Monday. Let's first clear out our workspace so we start with a fresh session by clicking "Session" -> "Restart R". Then let's open the R-script we were using to take notes, pull from GitHub to make sure we have the most recent version. You can use this script to type along as we're working through demos today (if you want, it's also fine to just watch). 
+
+Today we'll also practice combining text and code in R Markdown files, so we'll do our in-class exercises in an R Markdown file. Do you remember how to create a new RMarkdown file? Go File -> New File -> R Markdown. Then change the output to GitHub document either as you're setting up the file or by manually editing the YAML header to say `output: github_document`. Now, delete the boilerplate text after the first setup code chunk and copy today's exercise questions into your document from [here](https://github.com/nt246/NTRES6940-data-science/blob/master/in_class_exercises/Oct7_exercises_wrangle2.md). As we work through the exercises, you will want to add a code chunk under each question to complete your answer.
+
+Finally, load the Coronavirus dataset back in directly from the GitHub URL and see whether it has been updated - what is the latest date included?
 
 
 ```r
@@ -69,28 +73,24 @@ library(tidyverse)     ## install.packages("tidyverse")
 ```
 
 ```
-## ── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+## ── Attaching packages ───────────────────────────────────── tidyverse 1.3.0 ──
 ```
 
 ```
-## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
-## ✓ tibble  2.1.3     ✓ dplyr   0.8.3
-## ✓ tidyr   1.0.0     ✓ stringr 1.4.0
-## ✓ readr   1.3.1     ✓ forcats 0.4.0
+## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
+## ✓ tibble  3.0.3     ✓ dplyr   1.0.2
+## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.0
 ```
 
 ```
-## ── Conflicts ─────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ──────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ```
 
 ```r
 library(skimr)        ## install.packages("skimr")
-```
-
-```
-## Warning: package 'skimr' was built under R version 3.6.2
 ```
 
 
@@ -172,18 +172,23 @@ Note, however, that these estimated death rates may be misleading and should be 
 >
 > When you're done, sync your RMarkdown file to Github.com (pull, stage, commit, push).
 
-#### Answer - No peeking!
+<br>
+
+### Answer
+<details>
+  <summary>click to expand!</summary>
+
 
 ```r
 coronavirus_ttd %>%
   mutate(undet = (confirmed - death - recovered) / confirmed) %>% 
   filter(confirmed > 1000000)
 ```
+</details>
 
-
-<br>
-<br>
-
+<br> 
+<br>  
+  
 ## `arrange()` orders rows
 
 For examining the output of our previous calculations, we may want to re-arrange the countries in ascending order for the proportion of confirmed cases for which the outcome remains unknown. The `dplyr` function for sorting rows is `arrange()`. 
@@ -214,10 +219,13 @@ coronavirus_ttd %>%
   arrange(-death)
 ```
 
+<br>
+<br>
+
 ### Your turn again - Exercise 4
 
 >
-> 1. Go back to our original dataset `coronavirus` and identify where and when the highest death count in a single day was observed. Hint: you can either use or `base::max` or `dplyr::arrange()`...
+> 1. Go back to our original dataset `coronavirus` and identify where and when the highest death count in a single day was observed. Hint: you can either use or `base::max` or `dplyr::arrange()`.  
 > 1. The first case was confirmed in the US on [January 20 2020](https://www.nejm.org/doi/full/10.1056/NEJMoa2001191), two days before the earliest day included in this dataset. When was the first confirmed case recorded in Canada?
 > 
 
