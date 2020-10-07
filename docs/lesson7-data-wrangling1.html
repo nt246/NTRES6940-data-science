@@ -385,6 +385,9 @@ div.tocify {
     <li>
       <a href="lesson8-data-wrangling2.html">Lesson 8: Data wrangling, part 2</a>
     </li>
+    <li>
+      <a href="lesson9-ggplot-part2.html">Lesson 9: Plotting with ggplot, part 2</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -466,6 +469,7 @@ div.tocify {
 <li>Pick observations by their values <code>filter()</code></li>
 <li>Pick variables by their names <code>select()</code></li>
 </ul></li>
+<li>Use piping (<code>%&gt;%</code>) to implement function chains</li>
 <li>Make sure your RStudio working files are sync’ed to GitHub</li>
 </ul>
 <p><br></p>
@@ -487,7 +491,7 @@ div.tocify {
 <h3>Load <code>tidyverse</code> (which has <code>dplyr</code> inside)</h3>
 <p>In your R Markdown file, let’s make sure we’ve got our libraries loaded. Write the following:</p>
 <pre class="r"><code>library(tidyverse)     ## install.packages(&quot;tidyverse&quot;)</code></pre>
-<p>This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn’t exist, you can install the package easily by running the code within the comment (highlight <code>install.packages("tidyverse")</code> and run it).</p>
+<p>This is becoming standard practice for how to load a library in a file, and if you get an error that the library doesn’t exist, you can install the package easily by running the code within the comment (highlight <code>install.packages(&quot;tidyverse&quot;)</code> and run it).</p>
 <p><br></p>
 </div>
 </div>
@@ -589,7 +593,10 @@ summary(coronavirus$cases) # same information, formatted slightly differently</c
 <pre class="r"><code># We can use either of these notations:
 filter(coronavirus, country == &quot;US&quot;, type == &quot;death&quot;)
 filter(coronavirus, country == &quot;US&quot; &amp; type == &quot;death&quot;)</code></pre>
-<p><br> <br> ## Your turn - Exercise 1</p>
+<p><br> <br></p>
+</div>
+<div id="your-turn---exercise-1" class="section level2">
+<h2>Your turn - Exercise 1</h2>
 <blockquote>
 <p><strong>1a:</strong> What is the total number of deaths in the US reported in this dataset up to now?<br />
 Hint: You can do this in 2 steps by assigning a variable and then using the <code>sum()</code> function.</p>
@@ -599,8 +606,8 @@ Hint: You can do this in 2 steps by assigning a variable and then using the <cod
 <p>Then, sync to Github.com (pull, stage, commit, push).</p>
 </blockquote>
 <p><br></p>
-<div id="answer-no-peeking" class="section level3">
-<h3>Answer (no peeking!)</h3>
+<div id="answer-no-peeking" class="section level4">
+<h4>Answer (no peeking!)</h4>
 <p>This is one way to do it based on what we have learned so far:</p>
 <p><strong>Question 1a:</strong></p>
 <pre class="r"><code>x &lt;- filter(coronavirus, country == &quot;US&quot;, type == &quot;death&quot;)  
@@ -779,7 +786,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

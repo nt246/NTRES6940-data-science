@@ -385,6 +385,9 @@ div.tocify {
     <li>
       <a href="lesson8-data-wrangling2.html">Lesson 8: Data wrangling, part 2</a>
     </li>
+    <li>
+      <a href="lesson9-ggplot-part2.html">Lesson 9: Plotting with ggplot, part 2</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -429,6 +432,10 @@ div.tocify {
 </div>
 <div id="class-announcements" class="section level2">
 <h2>Class announcements</h2>
+<ul>
+<li>Updated schedule: No class next Wednesday Oct 14 (in accordance with Cornell’s academic calendar). The order of the following sessions have been shifted slightly</li>
+<li>Homework 3 due on Monday</li>
+</ul>
 <p><br></p>
 </div>
 <div id="learning-objectives" class="section level2">
@@ -437,11 +444,10 @@ div.tocify {
 <ul>
 <li><code>filter()</code> for subsetting data with row logic</li>
 <li><code>select()</code> for subsetting data variable- or column-wise</li>
+<li>Use piping (<code>%&gt;%</code>) to implement function chains</li>
 </ul>
-<p>We also reinforced our practice with sync’ing our files from RStudio to GitHub</p>
 <p>Today, we’ll expand our data wrangling toolbox. By the end of today’s class, you should be able to:</p>
 <ul>
-<li>Use piping (<code>%&gt;%</code>) to implement function chains</li>
 <li>Subset, rearrange, and summarize data with key <code>dplyr</code> functions:
 <ul>
 <li>Create new variables with functions of existing variables with <code>mutate()</code></li>
@@ -452,113 +458,33 @@ div.tocify {
 </ul>
 <p><strong>Acknowledgements</strong>: Today’s lecture is adapted (with permission) from the excellent <a href="http://ohi-science.org/data-science-training/dplyr.html">Ocean Health Index Data Science Training</a> with additional input from Jenny Bryan’s lectures from STAT545 at UBC: <a href="http://stat545.com/block009_dplyr-intro.html">Introduction to dplyr</a> and Grolemund and Wickham’s <a href="https://r4ds.had.co.nz/transform.html">R for Data Science</a>.</p>
 <p><br></p>
-<div id="lets-first-clean-up-our-rmarkdown-file-from-last-class-and-add-some-styling" class="section level3">
-<h3>Let’s first clean up our RMarkdown file from last class and add some styling</h3>
-<ul>
-<li>Separate into separate code chunks and add a little commentary above each. You can also name your code chunks, if you’d like.</li>
-<li>Add a few headers.</li>
-<li>How about a picture?</li>
-</ul>
-<p>If you forgot how, take a peek at the <a href="https://github.com/rstudio/cheatsheets/blob/master/rmarkdown-2.0.pdf">RMarkdown Cheatsheet</a></p>
 <p><br></p>
-</div>
-<div id="running-rmarkdown-code-chunks" class="section level3">
-<h3>Running RMarkdown code chunks</h3>
-<p>So far we have written code in our RMarkdown file that is executed when we knit the file. We have also written code directly in the Console that is executed when we press enter/return. Additionally, we can write code in an RMarkdown code chunk and execute it by sending it into the Console (i.e. we can execute code without knitting the document).</p>
-<p>How do we do it? There are several ways.</p>
-<p><strong>First approach: send R code to the Console.</strong> This approach involves selecting (highlighting) the R code only, not any of the backticks/fences from the code chunk. (If you see <code>Error: attempt to use zero-length variable name</code> it is because you have accidentally highlighted the backticks along with the R code. Try again (and don’t forget that you can add spaces within the code chunk or make your RStudio session bigger (View &gt; Zoom In)).</p>
-<p>Do this by selecting code and then:</p>
-<ol style="list-style-type: decimal">
-<li>copy-pasting into the Console and press enter/return.</li>
-<li>clicking ‘Run’ from RStudio IDE. This is available from:
-<ol style="list-style-type: lower-alpha">
-<li>the bar above the file (green arrow)</li>
-<li>the menu bar: Code &gt; Run Selected Line(s)</li>
-<li>keyboard shortcut: command-return</li>
-</ol></li>
-</ol>
-<p><strong>Second approach: run full code chunk.</strong> Since we are already grouping relevant code together in chunks, it’s reasonable that we might want to run it all together at once.</p>
-<p>Do this by placing your curser within a code chunk and then:</p>
-<ol style="list-style-type: decimal">
-<li>clicking the little black down arrow next to the Run green arrow and selecting Run Current Chunk. Notice there are also options to run all chunks, run all chunks above or below…</li>
-</ol>
-<p><br></p>
-</div>
 </div>
 <div id="reloading-the-coronavirus-dataset" class="section level2">
 <h2>Reloading the Coronavirus dataset</h2>
-<p>Let’s jump back in where we left on Monday. Let’s first clear out our workspace so we start with a fresh session by clicking “Session” -&gt; “Restart R”. Then let’s load the Coronavirus dataset back in directly from the GitHub URL and see whether it has been updated - what is the latest date included?</p>
+<p>Let’s jump back in where we left on Monday. Let’s first clear out our workspace so we start with a fresh session by clicking “Session” -&gt; “Restart R”. Then let’s open the R-script we were using to take notes, pull from GitHub to make sure we have the most recent version. Then load the Coronavirus dataset back in directly from the GitHub URL and see whether it has been updated - what is the latest date included?</p>
+<pre class="r"><code>library(tidyverse)     ## install.packages(&quot;tidyverse&quot;)</code></pre>
+<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
+## ✓ tibble  2.1.3     ✓ dplyr   0.8.3
+## ✓ tidyr   1.0.0     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.4.0</code></pre>
+<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(skimr)        ## install.packages(&quot;skimr&quot;)</code></pre>
+<pre><code>## Warning: package &#39;skimr&#39; was built under R version 3.6.2</code></pre>
 <pre class="r"><code># read in corona .csv (don&#39;t worry for now about what the col_types parameter means, we&#39;ll discuss that next week)
-coronavirus &lt;- read_csv(&#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv&#39;, col_types = cols(Province.State = col_character()))</code></pre>
+coronavirus &lt;- read_csv(&#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;, col_types = cols(province = col_character()))</code></pre>
 <p>Let’s remind ourselves of the data structure and content</p>
 <pre class="r"><code>skim(coronavirus)</code></pre>
 <p><br></p>
 </div>
-<div id="use-select-and-filter-together" class="section level2">
-<h2>Use <code>select()</code> and <code>filter()</code> together</h2>
-<p>On Monday, we explored the functions <code>select()</code> and <code>filter()</code> separately. Now let’s combine them and filter to retain only records for the US and remove the Lat, Long and Province.State columns (because this dataset doesn’t currently have data broken down by US state). We’ll save this subsetted data as a variable. Actually, as two temporary variables, which means that for the second one we need to operate on <code>coronavirus_us</code>, not <code>coronavirus</code>.</p>
-<pre class="r"><code>coronavirus_us  &lt;- filter(coronavirus, Country.Region == &quot;US&quot;)
-coronavirus_us2 &lt;- select(coronavirus_us, -Lat, -Long, -Province.State) </code></pre>
-<p>We also could have called them both <code>coronavirus_us</code> and overwritten the first assignment. Either way, naming them and keeping track of them gets super cumbersome, which means more time to understand what’s going on and opportunities for confusion or error.</p>
-<p>Good thing there is an awesome alternative.</p>
-<p><br></p>
-</div>
-<div id="meet-the-new-pipe-operator" class="section level2">
-<h2>Meet the new pipe <code>%&gt;%</code> operator</h2>
-<p>Before we go any further, we should explore the new pipe operator that <code>dplyr</code> imports from the <a href="https://github.com/smbache/magrittr"><code>magrittr</code></a> package by Stefan Bache. If you have have not used this before, <strong>this is going to change your life</strong> (at least your coding life…). You no longer need to enact multi-operation commands by nesting them inside each other. And we won’t need to make temporary variables like we did in the US example above. This new syntax leads to code that is much easier to write and to read: it actually tells the story of your analysis.</p>
-<p>Here’s what it looks like: <code>%&gt;%</code>. The RStudio keyboard shortcut: Ctrl + Shift + M (Windows), Cmd + Shift + M (Mac).</p>
-<p>Let’s demo then I’ll explain:</p>
-<pre class="r"><code>coronavirus %&gt;% head()</code></pre>
-<p>This is equivalent to <code>head(coronavirus)</code>. This pipe operator takes the thing on the left-hand-side and <strong>pipes</strong> it into the function call on the right-hand-side. It literally drops it in as the first argument.</p>
-<p>Never fear, you can still specify other arguments to this function! To see the first 3 rows of coronavirus, we could say <code>head(coronavirus, 3)</code> or this:</p>
-<pre class="r"><code>coronavirus %&gt;% head(3)</code></pre>
-<p><strong>I’ve advised you to think “gets” whenever you see the assignment operator, <code>&lt;-</code>. Similarly, you should think “and then” whenever you see the pipe operator, <code>%&gt;%</code>.</strong></p>
-<p>One of the most awesome things about this is that you START with the data before you say what you’re doing to DO to it. So above: “take the coronavirus data, and then give me the first three entries”.</p>
-<p>This means that instead of this:</p>
-<pre class="r"><code>## instead of this...
-coronavirus_us  &lt;- filter(coronavirus, Country.Region == &quot;US&quot;)
-coronavirus_us2 &lt;- select(coronavirus_us, -Lat, -Long, -Province.State) 
-## ...we can do this
-coronavirus_us  &lt;- coronavirus %&gt;% filter(Country.Region == &quot;US&quot;)
-coronavirus_us2 &lt;- coronavirus_us %&gt;% select(-Lat, -Long, -Province.State) </code></pre>
-<p>So you can see that we’ll start with coronavirus in the first example line, and then coronavirus_us in the second. This makes it a bit easier to see what data we are starting with and what we are doing to it.</p>
-<p>…But, we still have those temporary variables so we’re not truly that better off. But get ready to be majorly impressed:</p>
-<p><br></p>
-<div id="revel-in-the-convenience" class="section level3">
-<h3>Revel in the convenience</h3>
-<p>We can use the pipe to chain those two operations together:</p>
-<pre class="r"><code>coronavirus_us  &lt;- coronavirus %&gt;% 
-  filter(Country.Region == &quot;US&quot;) %&gt;%
-  select(-Lat, -Long, -Province.State) </code></pre>
-<p>What’s happening here? In the second line, we were able to delete <code>coronavirus_us2 &lt;- coronavirus_us</code>, and put the pipe operator above. This is possible since we wanted to operate on the <code>coronavirus_us</code> data. And we weren’t truly excited about having a second variable named <code>coronavirus_us2</code> anyway, so we can get rid of it. This is huge, because most of your data wrangling will have many more than 2 steps, and we don’t want a <code>coronavirus_us17</code>!</p>
-<p>By using multiple lines I can actually read this like a story and there aren’t temporary variables that get super confusing. In my head:</p>
-<blockquote>
-<p>“start with the <code>coronavirus</code> data, and then<br />
-filter for the US, and then<br />
-drop the variables Lat, Long, and Province.State.” Being able to read a story out of code like this is really game-changing. We’ll continue using this syntax as we learn the other dplyr verbs.</p>
-</blockquote>
-<p>Compare with some base R code to accomplish the same things. Base R requires subsetting with the [rows, columns] notation. This notation is something you’ll see a lot in base R. The brackets [ ] allow you to extract parts of an object. Within the brackets, the comma separates rows from columns.</p>
-<p>If we don’t write anything after the comma, that means “all columns”. And if we don’t write anything before the comma, that means “all rows”.</p>
-<p>Also, the $ operator is how you access specific columns of your dataframe.</p>
-<pre class="r"><code>#There are many ways we could subset columns, here&#39;s one way:
-coronavirus[coronavirus$Country.Region == &quot;US&quot;, colnames(coronavirus) %in% c(&quot;Lat&quot;, &quot;Long&quot;, &quot;Province.State&quot;)==FALSE] ## repeat `coronavirus`, [i, j] indexing is distracting.</code></pre>
-<div id="never-index-by-blind-numbers" class="section level5">
-<h5>Never index by blind numbers!</h5>
-<pre class="r"><code>#There are many ways we could subset columns, here&#39;s another (bad choice)
-head(coronavirus)
-coronavirus[coronavirus$Country.Region == &quot;US&quot;, c(2, 5:7)] </code></pre>
-<p>Why is this a terrible idea?</p>
-<ul>
-<li>It is not self-documenting. What are the columns were retaining here?</li>
-<li>It is fragile. This line of code will produce different results if someone changes the organization of the dataset, e.g. adds new variables. This is especially risky if we index rows by numbers as a sorting action earlier in the script would then give unexpected results.</li>
-</ul>
-<p>This call explains itself and is fairly robust.</p>
-<pre class="r"><code>coronavirus_us  &lt;- coronavirus %&gt;% 
-  filter(Country.Region == &quot;US&quot;) %&gt;%
-  select(-Lat, -Long, -Province.State) </code></pre>
-<p><br></p>
-</div>
-</div>
+<div id="warm-up---exercise-1-piping-together-select-and-filter-commands" class="section level2">
+<h2>Warm up - Exercise 1: Piping together <code>select()</code> and <code>filter()</code> commands</h2>
+<p>Subset the coronavirus dataset to only include the daily counts of confirmed cases in countries located above 60 degree latitude. What are those countries?</p>
+<p>If you have time, pipe it into ggplot() to visualize the trends over time in these countries.</p>
+<p><br> <br></p>
 </div>
 <div id="mutate-adds-new-variables" class="section level2">
 <h2><code>mutate()</code> adds new variables</h2>
@@ -566,18 +492,19 @@ coronavirus[coronavirus$Country.Region == &quot;US&quot;, c(2, 5:7)] </code></pr
 <p>Besides selecting sets of existing columns, it’s often useful to add new columns that are functions of existing columns. That’s the job of <code>mutate()</code>.</p>
 <p>Visually, we are doing this (thanks RStudio for your <a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">cheatsheet</a>):</p>
 <p><img src="assets/rstudio-cheatsheet-mutate.png" /></p>
-<p>The current variables in the coronavirus dataset don’t lend themselves well to cross-computation, so to illustrate the power of the <code>mutate()</code> function, let’s reformat the dataset so that we get the counts of confirmed cases, deaths and recovered for each date and country in separate columns. The tidyverse has a very convenient function for making that kind of transformation. Don’t worry about how it works right now, we’ll get an opportunity to explore it next week.</p>
-<p>For now, just copy the following code to summarize the total number of cases recorded by country and type (in the time period covered by this dataset: 2020-01-22 to <code>r max(coronavirus$date)</code>):</p>
+<p>The current variables in the coronavirus dataset don’t lend themselves well to cross-computation, so to illustrate the power of the <code>mutate()</code> function, let’s reformat the dataset so that we get the counts of confirmed cases, deaths and recovered for each date and country in separate columns. The tidyverse has a very convenient function for making that kind of transformation. Don’t worry about how it works right now, we’ll get an opportunity to explore it in a few weeks.</p>
+<p>For now, just copy the following code to summarize the total number of cases recorded by country and type (in the time period covered by this dataset: 2020-01-22 to 2020-10-06):</p>
 <pre class="r"><code>coronavirus_ttd &lt;- coronavirus %&gt;% 
-  select(country = Country.Region, type, cases) %&gt;%
+  select(country, type, cases) %&gt;%
   group_by(country, type) %&gt;%
-  summarise(total_cases = sum(cases)) %&gt;%
+  summarize(total_cases = sum(cases)) %&gt;%
   pivot_wider(names_from = type,
               values_from = total_cases) %&gt;%
   arrange(-confirmed)
 
 # Let&#39;s have a look at the structure of that new rearranged dataset
 coronavirus_ttd</code></pre>
+<p><br></p>
 <p>Imagine we want to compare the total death count to total the number of confirmed cases in each country. We can divide the case counts of <code>death</code> by <code>confirmed</code> to create a new column named <code>deathrate</code>. We do this with <code>mutate()</code> that is a function that defines and inserts new variables into a tibble. You can refer to existing variables diretly by name (i.e. without the <code>$</code> operator).</p>
 <pre class="r"><code>coronavirus_ttd %&gt;%
   mutate(deathrate = death / confirmed) 
@@ -587,21 +514,22 @@ coronavirus_ttd %&gt;%
   mutate(deathrate = round(death / confirmed, 2)) </code></pre>
 <p>Note, however, that these estimated death rates may be misleading and should be interpreted with due caution as testing strategies have varied a lot between countries (e.g. do asymptomatic people get tested). Also:</p>
 <ul>
-<li>There is no measurement between the time a case was confirmed and recovery or death. This is not an apple to apple comparison, as the outbreak did not start at the same time in all the affected countries.</li>
+<li>The comparison of total counts of confirmed cases and deaths in different countries is not an apple to apple comparison, as the outbreak did not start at the same time in all the affected countries.</li>
 <li>As age plays a critical role in the probability of survival from the virus, we cannot make a comparison between different cases without having more demographic information.</li>
 </ul>
-<div id="your-turn" class="section level3">
-<h3>Your turn</h3>
+<p><br></p>
+<div id="your-turn---exercise-2" class="section level3">
+<h3>Your turn - Exercise 2</h3>
 <blockquote>
-<p>Add a new variable that shows the <em>proportion of confirmed cases</em> for which the outcome is still unknown (i.e. not counted as dead or recovered) for each country and show only countries with more than 20,000 confirmed cases. Which country has the lowest proportion of undetermined outcomes? Why?</p>
+<p>Add a new variable that shows the <em>proportion of confirmed cases</em> for which the outcome is still unknown (i.e. not counted as dead or recovered) for each country and show only countries with more than 1 million confirmed cases. Which country has the lowest proportion of undetermined outcomes? Why might that be?</p>
 <p>When you’re done, sync your RMarkdown file to Github.com (pull, stage, commit, push).</p>
 </blockquote>
-<div id="answer" class="section level4">
-<h4>Answer</h4>
+<div id="answer---no-peeking" class="section level4">
+<h4>Answer - No peeking!</h4>
 <pre class="r"><code>coronavirus_ttd %&gt;%
   mutate(undet = (confirmed - death - recovered) / confirmed) %&gt;% 
-  filter(confirmed &gt; 20000)</code></pre>
-<p><br></p>
+  filter(confirmed &gt; 1000000)</code></pre>
+<p><br> <br></p>
 </div>
 </div>
 </div>
@@ -610,30 +538,31 @@ coronavirus_ttd %&gt;%
 <p>For examining the output of our previous calculations, we may want to re-arrange the countries in ascending order for the proportion of confirmed cases for which the outcome remains unknown. The <code>dplyr</code> function for sorting rows is <code>arrange()</code>.</p>
 <pre class="r"><code>coronavirus_ttd %&gt;%
   mutate(undet = (confirmed - death - recovered)/confirmed) %&gt;% 
-  filter(confirmed &gt; 20000) %&gt;% 
+  filter(confirmed &gt; 1000000) %&gt;% 
   arrange(undet)</code></pre>
 <p>I advise that your analyses NEVER rely on rows or variables being in a specific order. But it’s still true that human beings write the code and the interactive development process can be much nicer if you reorder the rows of your data as you go along. Also, once you are preparing tables for human eyeballs, it is imperative that you step up and take control of row order.</p>
-<div id="your-turn-1" class="section level3">
-<h3>Your turn</h3>
+<p><br> <br></p>
+<div id="your-turn---exercise-3" class="section level3">
+<h3>Your turn - Exercise 3</h3>
 <blockquote>
-<p>How many countries have suffered more than 3,000 deaths so far and which three countries have recorded the highest death counts?</p>
+<p>How many countries have suffered more than 100,000 deaths so far and which five countries have recorded the highest death counts?</p>
 </blockquote>
-<div id="answer-1" class="section level4">
+<div id="answer" class="section level4">
 <h4>Answer</h4>
 <pre class="r"><code>coronavirus_ttd %&gt;%
-  filter(death &gt; 3000) %&gt;% 
+  filter(death &gt; 100000) %&gt;% 
   arrange(-death)</code></pre>
 </div>
 </div>
-<div id="your-turn-again" class="section level3">
-<h3>Your turn again</h3>
+<div id="your-turn-again---exercise-4" class="section level3">
+<h3>Your turn again - Exercise 4</h3>
 <blockquote>
 <ol style="list-style-type: decimal">
 <li>Go back to our original dataset <code>coronavirus</code> and identify where and when the highest death count in a single day was observed. Hint: you can either use or <code>base::max</code> or <code>dplyr::arrange()</code>…</li>
-<li><p>The first case was confirmed in the US on <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2001191">January 20 2020</a>, marking the earliest day included in this dataset. When was the first confirmed case recorded in Denmark?</p></li>
-<li><p>Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit, push)</p></li>
+<li>The first case was confirmed in the US on <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2001191">January 20 2020</a>, two days before the earliest day included in this dataset. When was the first confirmed case recorded in Canada?</li>
 </ol>
 </blockquote>
+<p><br> <br></p>
 <div id="answer-no-peeking" class="section level4">
 <h4>Answer (no peeking!)</h4>
 <pre class="r"><code># Identifying the record with the highest death count
@@ -646,12 +575,12 @@ coronavirus %&gt;%
   filter(type == &quot;death&quot;) %&gt;% 
   filter(cases == max(cases))
 
-# The first recorded case in Denmark
+# The first recorded case in Canada
 coronavirus %&gt;% 
-  filter(Country.Region == &quot;Denmark&quot;, cases &gt; 0) %&gt;% 
+  filter(country == &quot;Canada&quot;, cases &gt; 0) %&gt;% 
   arrange(date)</code></pre>
 <p><strong>Knit your RMarkdown file, and sync it to GitHub (pull, stage, commit, push)</strong></p>
-<p><br></p>
+<p><br> <br></p>
 </div>
 </div>
 </div>
@@ -659,99 +588,124 @@ coronavirus %&gt;%
 <h2>Grouped summaries with <code>summarize()</code> and <code>group_by</code></h2>
 <p>The last key <code>dplyr</code> verb is <code>summarize()</code>. It collapses a data frame to a single row. Visually, we are doing this (thanks RStudio for your <a href="http://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">cheatsheet</a>):</p>
 <p><img src="assets/rstudio-cheatsheet-summarise.png" /></p>
-<p>We can use it to calculate the total number of confirmed cases detected globally since 1-20-2020 (the beginning of this dataset)</p>
+<p>We can use it to calculate the total number of confirmed cases detected globally since 1-22-2020 (the beginning of this dataset)</p>
 <pre class="r"><code>coronavirus %&gt;% 
   filter(type == &quot;confirmed&quot;) %&gt;% 
   summarize(sum = sum(cases))</code></pre>
-<p>This number could also easily have been computed with base-R functions. In general, <code>summarize()</code> is not terribly useful unless we pair it with <code>group_by()</code>. This changes the unit of analysis from the complete dataset to individual groups. Then, when you use the <code>dplyr</code> verbs on a grouped data frame they’ll be automatically applied “by group”. For example, if we applied exactly the same code to a data frame grouped by Country.Region, we get the total number of confirmed cases for each country or region.</p>
+<p><br></p>
+<p>This number could also easily have been computed with base-R functions. In general, <code>summarize()</code> is not terribly useful unless we pair it with <code>group_by()</code>. This changes the unit of analysis from the complete dataset to individual groups. Then, when you use the <code>dplyr</code> verbs on a grouped data frame they’ll be automatically applied “by group”. For example, if we applied exactly the same code to a data frame grouped by country, we get the total number of confirmed cases for each country or region.</p>
 <pre class="r"><code>coronavirus %&gt;% 
   filter(type == &quot;confirmed&quot;) %&gt;%
-  group_by(Country.Region) %&gt;% 
+  group_by(country) %&gt;% 
   summarize(total_cases = sum(cases))</code></pre>
+<p>Now that’s a lot more useful!</p>
+<p><br> <br></p>
 <p>We can also use <code>summarize()</code> to check how many observations (dates) we have for each country</p>
 <pre class="r"><code>coronavirus %&gt;% 
   filter(type == &quot;confirmed&quot;) %&gt;%
-  group_by(Country.Region) %&gt;% 
+  group_by(country) %&gt;% 
   summarize(n = n())</code></pre>
+<p><br></p>
 <p>Why do some countries have much higher counts than others?</p>
+<p><br></p>
 <p>We can also do multi-level grouping. If we wanted to know how many of each type of case there were globally on Monday we could chain these functions together:</p>
 <pre class="r"><code>coronavirus %&gt;% 
   group_by(date, type) %&gt;% 
   summarize(total = sum(cases)) %&gt;%  # sums the count across countries
-  filter(date == &quot;2020-04-06&quot;)</code></pre>
+  filter(date == &quot;2020-10-04&quot;)</code></pre>
+<p><br> <br></p>
 </div>
-<div id="your-turn-2" class="section level2">
-<h2>Your turn</h2>
+<div id="your-turn---exercise-5" class="section level2">
+<h2>Your turn - Exercise 5</h2>
 <p>Which day has had the highest total death count globally so far?</p>
+<p><br></p>
+<p>Pipe your global daily death counts into ggplot to visualize the trend over time.</p>
+<p><br> <br></p>
 </div>
-<div id="answer-2" class="section level2">
+<div id="answer-1" class="section level2">
 <h2>Answer</h2>
 <pre class="r"><code>coronavirus %&gt;% 
   filter(type == &quot;death&quot;) %&gt;% 
   group_by(date) %&gt;% 
-  summarize(total_cases = sum(cases)) %&gt;% 
-  arrange(-total_cases)
+  summarize(total_deaths = sum(cases)) %&gt;% 
+  arrange(-total_deaths)
 
 # Or
 
 coronavirus %&gt;% 
   filter(type == &quot;death&quot;) %&gt;% 
   group_by(date) %&gt;% 
-  summarize(total_cases = sum(cases)) %&gt;% 
-  filter(total_cases == max(total_cases))</code></pre>
+  summarize(total_deaths = sum(cases)) %&gt;% 
+  filter(total_deaths == max(total_deaths))
+
+# With plotting
+
+coronavirus %&gt;% 
+  filter(type == &quot;death&quot;) %&gt;% 
+  group_by(date) %&gt;% 
+  summarize(total_deaths = sum(cases)) %&gt;% 
+  arrange(-total_deaths) %&gt;% 
+  ggplot() +
+    geom_line(aes(x = date, y = total_deaths))</code></pre>
 <p><br></p>
 </div>
 <div id="if-you-have-more-time-here-is-an-optional-question" class="section level2">
 <h2>If you have more time, here is an optional question</h2>
-<p>The <code>month()</code> function from the package <code>lubridate</code> extracts the month from a date. How many countries already have more than 1000 deaths in April?</p>
+<p>The <code>month()</code> function from the package <code>lubridate</code> extracts the month from a date. How many countries already have more than 1000 deaths in October?</p>
+<p><br> <br></p>
 <pre class="r"><code>library(lubridate) #install.packages(&#39;lubridate&#39;)
 
 coronavirus %&gt;% 
   mutate(month = month(date)) %&gt;% 
-  filter(type == &quot;death&quot;, month == 4) %&gt;% 
-  group_by(Country.Region) %&gt;% 
+  filter(type == &quot;death&quot;, month == 10) %&gt;% 
+  group_by(country) %&gt;% 
   summarize(total_death = sum(cases)) %&gt;% 
   filter(total_death &gt; 1000)</code></pre>
-<p><br></p>
+<p><br> <br></p>
 </div>
-<div id="in-class-questions" class="section level2">
-<h2>In-class questions</h2>
+<div id="extra-in-class-questions" class="section level2">
+<h2>Extra in-class questions</h2>
 <ol style="list-style-type: decimal">
-<li>Which country had the highest number of deaths on Monday (April 6 20202)?</li>
+<li>Which country had the highest number of deaths on Monday (October 4 2020)? <br> <br></li>
 </ol>
 <pre class="r"><code>coronavirus %&gt;% 
-  select(-Lat, -Long) %&gt;% 
-  filter(date == &quot;2020-04-06&quot;, type == &quot;death&quot;) %&gt;% 
+  select(-lat, -long) %&gt;% 
+  filter(date == &quot;2020-10-04&quot;, type == &quot;death&quot;) %&gt;% 
   arrange(-cases)</code></pre>
+<p><br> <br></p>
 <ol start="2" style="list-style-type: decimal">
-<li>Which country had the highest count of confirmed cases in January? [Hint: to address this question the function month() from the package lubridate might be helpful]. What about in March?</li>
+<li>Which country had the highest count of confirmed cases in January? [Hint: to address this question the function month() from the package lubridate might be helpful]. What about in March? <br></li>
 </ol>
 <pre class="r"><code>library(lubridate) #install.packages(&#39;lubridate&#39;)
 
 coronavirus %&gt;% 
   mutate(month = month(date)) %&gt;% 
   filter(type == &quot;confirmed&quot;, month == 1) %&gt;% 
-  group_by(Country.Region) %&gt;% 
+  group_by(country) %&gt;% 
   summarize(total_death = sum(cases)) %&gt;% 
   arrange(-total_death)</code></pre>
+<p><br> If you’re used to working in base R, answer the same question with base R tools. Which coding approach do you like better or what are pros and cons of the two types of syntax?</p>
+<p><br> <br></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Which countries have data for multiple states or provinces?</li>
 </ol>
 <pre class="r"><code>coronavirus %&gt;% 
-  group_by(Country.Region, date) %&gt;% 
+  group_by(country, date) %&gt;% 
   summarize(n = n()) %&gt;% 
-  group_by(Country.Region) %&gt;% 
+  group_by(country) %&gt;% 
   summarize(maxcount = max(n)) %&gt;% 
   filter(maxcount &gt; 3)</code></pre>
+<p><br> <br></p>
 <ol start="4" style="list-style-type: decimal">
 <li>Do all countries have reports of the number of confirmed cases for the same number of days?</li>
 </ol>
 <pre class="r"><code>coronavirus %&gt;% 
   filter(type == &quot;recovered&quot;) %&gt;% 
-  group_by(Country.Region, Province.State) %&gt;% 
+  group_by(country, province) %&gt;% 
   summarize(n = n()) %&gt;% 
   arrange(n) %&gt;% 
-  head</code></pre>
+  ggplot() +
+    geom_histogram(aes(n))</code></pre>
 </div>
 
 
