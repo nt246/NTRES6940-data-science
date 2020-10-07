@@ -12,6 +12,8 @@ knitr::opts_knit$set(base.dir = "/Users/mariaakopyan/Github/NTRES6940-data-scien
 knitr::opts_chunk$set(echo = TRUE, fig.path="lesson9-files/")
 ```
 
+<br>
+<br>
 
 ## Readings
 
