@@ -114,7 +114,7 @@ Class# | Date | Topic | Assignments
 6 | Wed 9/30 | [Plotting with ggplot part 1](https://nt246.github.io/NTRES6940-data-science/lesson6-ggplot-part1.html) |
 7 | Mon 10/5 | [Data wrangling part 1 (dplyr::filter, mutate, select, arrange)](https://nt246.github.io/NTRES6940-data-science/lesson7-data-wrangling1.html) | [Assignment 2 due](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_2.md)  
 8 | Wed 10/7 | [Data wrangling part 2 (dplyr::summarize, group_by)](https://nt246.github.io/NTRES6940-data-science/lesson8-data-wrangling2.html) |
-9 | Mon 10/12 | [Plotting with ggplot part 2 + good coding practices](https://nt246.github.io/NTRES6940-data-science/lesson9-ggplot-part2.html) |  [Assignment 3 due](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_2.md)  
+9 | Mon 10/12 | [Plotting with ggplot part 2 + good coding practices](https://nt246.github.io/NTRES6940-data-science/lesson9-ggplot-part2.html) |  [Assignment 3 due](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_3.md)  
 &nbsp;&nbsp; | Wed 10/14 | **NO CLASS** |
 10 | Mon 10/19 | Tidy data (what is tidy data and how to handle untidy data) and file input/output | Assignment 4 due
 11 | Wed 10/21 | Relational data (join functions) |
