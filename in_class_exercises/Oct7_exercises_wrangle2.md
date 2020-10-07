@@ -2,6 +2,17 @@
 
 <br>
 
+First load the libraries and data we will need
+```{r, eval = TRUE, include = TRUE}
+library(tidyverse)     ## install.packages("tidyverse")
+library(skimr)        ## install.packages("skimr")
+
+coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv', col_types = cols(province = col_character()))
+```
+
+<br>
+<br>
+
 ### Exercise 1
 Subset the coronavirus dataset to only include the daily counts of **confirmed** cases in countries located above 60 degree latitude. What are those countries?
 
