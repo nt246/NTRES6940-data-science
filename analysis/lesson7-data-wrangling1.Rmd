@@ -62,6 +62,7 @@ By the end of today's class, you should be able to:
 * Subset and rearrange data with key `dplyr` functions
   + Pick observations by their values `filter()`
   + Pick variables by their names `select()`
+* Use piping (`%>%`) to implement function chains
 * Make sure your RStudio working files are sync'ed to GitHub
 
 <br>
