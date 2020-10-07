@@ -11,7 +11,6 @@ coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavir
 ```
 
 <br>
-<br>
 
 ### Exercise 1
 Subset the coronavirus dataset to only include the daily counts of **confirmed** cases in countries located above 60 degree latitude. What are those countries?
