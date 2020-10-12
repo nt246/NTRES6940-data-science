@@ -9,14 +9,17 @@ output:
 
 
 
+<br>
 
 ## Readings  
 
+<br>
 
 **Required**:  
 
 * [Ch. 12 *Tidy Data*, in R for Data Science](https://r4ds.had.co.nz/tidy-data.html) by Grolemund & Wickham
 
+<br>
 
 **Additional resources**:  
 

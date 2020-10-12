@@ -645,7 +645,7 @@ filter(coronavirus, country %in% top10_countries) %>%
   ggplot() +
   geom_line(aes(x=date, y=cases/1000, color=type)) +
   ylab("cumulative count (in thousand)") +
-  facet_wrap(~Country.Region, scales = "free_y")
+  facet_wrap(~country, scales = "free_y")
 ```
 
 <br>
