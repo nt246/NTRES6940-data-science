@@ -91,7 +91,9 @@ These components are like parameters of statistical graphics, defining the “sp
 ## Getting started
 We'll return to exploring the Coronavirus dataset. I'll try to focus on typical beginner's errors along the way so we can get used to trouble-shooting together.
 
-Before we start, please open the R Project associated with your class GitHub repository. Then create a new R-script or RMarkdown file, select github_document output format, and save it to your lecture note folder. You will use this RMarkdown file to take notes and work on exercises, and maybe share your work with the class.
+Before we start, please open the R Project associated with your class GitHub repository. Then create a new RMarkdown file, select github_document output format, and save it to your lecture note folder. Copy today's [template for in-class exercises](https://github.com/nt246/NTRES6940-data-science/blob/master/in_class_exercises/lesson9_in-class-worksheet.Rmd) into your RMarkdown document and save it. You can follow along in this worksheet as we go through the lecture.
+
+<br>
 
 First, let's load our packages and read in our Coronavirus dataset
 ```{r}
