@@ -1,5 +1,5 @@
 ---
-title: "Lesson 9: Relational data and factors"
+title: "Lesson 9: Relational data"
 output: github_document
 ---
 
@@ -11,34 +11,25 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Readings
 
+<br>
+
 #### Required:
 [Chapter 13 in 'R for Data Science'](https://r4ds.had.co.nz/relational-data.html) by Hadley Wickham & Garrett Grolemund
-
-Jenny Bryan's [STAT545 Chapter 10: Be the boss of your factors](https://stat545.com/multiple-tibbles.html)
 
 <br>
 
 #### Other resources:
 Jenny Bryan's [STAT545 Chapter 14 When one tibble is not enough](https://stat545.com/multiple-tibbles.html)
 
-[Chapter 15 in 'R for Data Science'](https://r4ds.had.co.nz/factors.html) by Hadley Wickham & Garrett Grolemund
-
 <br>
 
 ## Learning objectives
-Today, we'll cover two different (somewhat unrelated) topics. By the end of today's class, you should be able to:
-
-For relational data:
+By the end of today's class, you should be able to:
 
 * Combine information from multiple tables into one
 * Describe the difference between the four `join` and two `filter` functions in `dplyr`
-* Select and apply the appropriate join function in common use scenarios 
-
-For factors:
-
-* Re-order the levels of a factor
-* Re-name and combine the levels of a factor
-
+* Select and apply the appropriate join function in common use scenarios
+* Make deliberate choices about your coding style
 
 <br>
 
@@ -125,22 +116,5 @@ library(nycflights13) #install.packages("nycflights13")
 
 <br>
 <br>
-
-
-## Part 2: Factors in R
-
-In R, factors are used to work with categorical variables, variables that have a fixed and known set of possible values. They are also useful when you want to display character vectors in a non-alphabetical order. The values a factor can take on are called the levels. When working with factors, the two most common operations are changing the order of the levels, and changing the values (names) of the levels. 
-
-To work with factors, we’ll use the `forcats` package, which is part of the core `tidyverse`. It provides tools for dealing with **cat**egorical variables (and it’s an anagram of factors!) using a wide range of helpers for working with factors.
-
-We'll work through [Chapters 15.3-15.6 of R for Data Science](https://r4ds.had.co.nz/factors.html#general-social-survey) to explore some of the functionality.
-
-<br>
-
-### Optional exercises (from R for Data Science)
-
-1.  How have the proportions of people identifying as Democrat, Republican, and
-    Independent changed over time?
-1.  How could you collapse `rincome` into a small set of categories?
 
 
