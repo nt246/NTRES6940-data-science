@@ -1,5 +1,8 @@
-Assignment 4: Data transformation with dplyr
+Assignment 4: Data transformation with dplyr and visualization with
+ggplot
 ================
+
+<br>
 
 ## Instructions: Please read through this before you begin
 
@@ -13,17 +16,18 @@ Assignment 4: Data transformation with dplyr
         characters, inserted code chunks, headings, text colors, blank
         lines, etc.
     
-      - **Transform the data as instructed**. Show the **first 6 lines**
-        of the transformed data in a table through RMarkdown **using the
-        kable() function**, as shown in this markdown file.
+      - **Transform the data as instructed**. Try to use `tidyverse`
+        functions even if you are more comfortable with base-R
+        solutions. Show the **first 6 lines** of the transformed data in
+        a table through RMarkdown **using the kable() function**, as
+        shown in this markdown file.
     
       - **Reproduce the plots exactly as shown in this html file**. In
         two cases where the plot is not shown (Excercises 3.7 and 3.9),
         generate plots that you think can best answer the question.
     
-      - Have all your code embeded within the R markdown file, and show
-        both of your **code** and **plots** in the knitted markdown
-        file.
+      - Have all your code embedded within the R markdown file, and show
+        **BOTH your code and plots** in the knitted markdown file.
     
       - When a verbal response is needed, answer by editing the part in
         the R markdown template where it says <span style="color:blue">
@@ -35,13 +39,13 @@ Assignment 4: Data transformation with dplyr
         only turn them off when you finish the exercise).
 
   - Please name your R markdown file `assignment_4.Rmd` and the knitted
-    markdown file `assignment_4.md`. Please upload both files using your
+    markdown file `assignment_4.md`. Please push both files to your
     class GitHub repository.
 
-  - First, load all the required packages with the following code.
-    Install them if they are not installed yet.
+<br>
 
-<!-- end list -->
+First, load all the required packages with the following code. Install
+them if they are not installed yet.
 
 ``` r
 library(tidyverse)
@@ -53,9 +57,14 @@ library(gapminder)
 
 ## Exercise 1. Theophylline experiment
 
-This exercise uses the `Theoph` data frame, which has 132 rows and 5
-columns of data from an experiment on the pharmacokinetics of
-theophylline.
+This exercise uses the `Theoph` data frame (comes with your R
+installation), which has 132 rows and 5 columns of data from an
+experiment on the pharmacokinetics of the anti-asthmatic drug
+theophylline. Twelve subjects were given oral doses of theophylline then
+serum concentrations were measured at 11 time points over the next 25
+hours. You can learn more about this dataset by running `?Theoph`
+
+Have a look at the data structure
 
 ``` r
 kable(head(Theoph))
@@ -137,7 +146,11 @@ kable(head(Theoph))
 
 <br>
 
-#### 1.6 Group the `Theoph` dataset by `Subject` and find the mean `conc` and sum of `Dose` received by each test subject. Show the 6 lines with the smallest sum of `Dose` as below. **Do not define new variables for this exercise and only use pipes. **
+#### 1.6 Find the mean `conc` and sum of the `Dose` received by each test subject.
+
+Show data for the 6 subjects with the smallest sum of `Dose` as below.
+**Do not define new intermediate objects for this exercise; use pipes to
+chain together functions. **
 
 | Subject | mean(conc) | sum(Dose) |
 | :------ | ---------: | --------: |
