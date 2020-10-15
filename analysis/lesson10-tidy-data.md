@@ -19,6 +19,8 @@ output:
 
 * [Ch. 12 *Tidy Data*, in R for Data Science](https://r4ds.had.co.nz/tidy-data.html) by Grolemund & Wickham
 
+* [This cool Twitter thread](https://twitter.com/juliesquid/status/1315710359404113920?s=21) by Julia Lowndes. If you can't access the thread or want more detail, the same material is expanded upon on Julie's [Openscapes website](https://www.openscapes.org/blog/2020/10/12/tidy-data/). [Openscapes](https://www.openscapes.org/) is an awesome organization that champions open practices in environmental science - check it out!
+
 <br>
 
 **Additional resources**:  
@@ -33,7 +35,10 @@ output:
 
 ## Announcements
 
+* Guest lecture on Wednesday by Erika Mudrak from the Cornell Statistical Consultation Unit. She will talk about debugging strategies (she has to debug a lot of people's code!) and about getting help with R. Don't miss it!
+* Thanks for the mid-term feedback!
 
+<br>
 <br>
 
 ## Learning objectives
@@ -251,11 +256,18 @@ str(lotr_untidy)
 ```
 
 ```
-## Classes 'spec_tbl_df', 'tbl_df', 'tbl' and 'data.frame':	9 obs. of  4 variables:
-##  $ Film  : chr  "The Fellowship Of The Ring" "The Fellowship Of The Ring" "The Fellowship Of The Ring" "The Two Towers" ...
-##  $ Race  : chr  "Elf" "Hobbit" "Man" "Elf" ...
-##  $ Female: num  1229 14 0 331 0 ...
-##  $ Male  : num  971 3644 1995 513 2463 ...
+## tibble [9 × 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ Film  : chr [1:9] "The Fellowship Of The Ring" "The Fellowship Of The Ring" "The Fellowship Of The Ring" "The Two Towers" ...
+##  $ Race  : chr [1:9] "Elf" "Hobbit" "Man" "Elf" ...
+##  $ Female: num [1:9] 1229 14 0 331 0 ...
+##  $ Male  : num [1:9] 971 3644 1995 513 2463 ...
+##  - attr(*, "spec")=
+##   .. cols(
+##   ..   Film = col_character(),
+##   ..   Race = col_character(),
+##   ..   Female = col_double(),
+##   ..   Male = col_double()
+##   .. )
 ```
 
 ```r
@@ -453,6 +465,10 @@ coronavirus %>%
   geom_col(aes(x=date, y = cases, fill = type))
 ```
 
+```
+## `summarise()` regrouping output by 'date' (override with `.groups` argument)
+```
+
 ![](lesson10-files/unnamed-chunk-9-1.png)<!-- -->
 
 Let's see how we would do that if the data had been in a wider format.
@@ -493,7 +509,13 @@ coronavirus_ttd <- coronavirus %>%
   group_by(Country.Region, type) %>%
   summarize(total_cases = sum(cases)) %>%
   pivot_wider(names_from = type, values_from = total_cases)
+```
 
+```
+## `summarise()` regrouping output by 'Country.Region' (override with `.groups` argument)
+```
+
+```r
 # Now we can plot this easily
 ggplot(coronavirus_ttd) +
   geom_label(mapping = aes(x = confirmed, y = death, label = Country.Region))

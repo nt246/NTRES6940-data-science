@@ -8,7 +8,6 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_knit$set(base.dir = "/Users/mariaakopyan/Github/NTRES6940-data-science/docs")
 knitr::opts_chunk$set(echo = TRUE, fig.path="lesson10-files/")
 ```
 
@@ -21,6 +20,8 @@ knitr::opts_chunk$set(echo = TRUE, fig.path="lesson10-files/")
 **Required**:  
 
 * [Ch. 12 *Tidy Data*, in R for Data Science](https://r4ds.had.co.nz/tidy-data.html) by Grolemund & Wickham
+
+* [This cool Twitter thread](https://twitter.com/juliesquid/status/1315710359404113920?s=21) by Julia Lowndes. If you can't access the thread or want more detail, the same material is expanded upon on Julie's [Openscapes website](https://www.openscapes.org/blog/2020/10/12/tidy-data/). [Openscapes](https://www.openscapes.org/) is an awesome organization that champions open practices in environmental science - check it out!
 
 <br>
 
@@ -36,7 +37,10 @@ knitr::opts_chunk$set(echo = TRUE, fig.path="lesson10-files/")
 
 ## Announcements
 
+* Guest lecture on Wednesday by Erika Mudrak from the Cornell Statistical Consultation Unit. She will talk about debugging strategies (she has to debug a lot of people's code!) and about getting help with R. Don't miss it!
+* Thanks for the mid-term feedback!
 
+<br>
 <br>
 
 ## Learning objectives
