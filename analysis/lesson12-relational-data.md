@@ -1,13 +1,11 @@
 ---
-title: "Lesson 11: Relational data"
+title: "Lesson 12: Relational data"
 output: 
   html_document:
     keep_md: yes 
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 <br>
 
@@ -38,16 +36,15 @@ By the end of today's class, you should be able to:
 ## Setup
 
 Load the tidyverse
-```{r, eval = FALSE}
-library(tidyverse)
 
+```r
+library(tidyverse)
 ```
 
 We will also be practicing joins on data on flights departing NYC in 2013. These are compiled in a package that we will install and load
-```{r, eval = FALSE}
 
+```r
 library(nycflights13)  # install.packages("nycflights13")
-
 ```
 
 <br>
@@ -86,14 +83,12 @@ The most commonly used join is the left join: you use this whenever you look up 
     data frame so you can show the spatial distribution of delays. Here's an
     easy way to draw a map of the United States:
 
-```{r, include = FALSE}
-library(tidyverse)
-library(nycflights13) #install.packages("nycflights13")
-```
 
-    ```{r, eval = FALSE}
+
+    
+    ```r
     library(maps) #install.packages("maps")
-
+    
     airports %>%
       semi_join(flights, c("faa" = "dest")) %>%
       ggplot(aes(lon, lat)) +
