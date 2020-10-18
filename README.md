@@ -118,7 +118,7 @@ Class# | Date | Topic | Assignments
 &nbsp;&nbsp; | Wed 10/14 | **NO CLASS** |
 10 | Mon 10/19 | [Tidy data (what is tidy data and how to handle untidy data) and file input/output](https://nt246.github.io/NTRES6940-data-science/lesson10-tidy-data.html) | [Assignment 4 due](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_4.md)
 11 | Wed 10/21 | [Good coding practices, debugging strategies, and getting help (Guest lecture by Erika Mudrak)](https://nt246.github.io/NTRES6940-data-science/lesson11-debugging-getting-help.html)|
-12 | Mon 10/26 | [Relational data (join functions)](https://nt246.github.io/NTRES6940-data-science/lesson12-relational-data.html) | Assignment 5 due
+12 | Mon 10/26 | [Relational data (join functions)](https://nt246.github.io/NTRES6940-data-science/lesson12-relational-data.html) | [Assignment 5 due](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_5.md)
 13 | Wed 10/28 | Factors, basic string manipulation, dates and times |
 14 | Mon 11/2 | Iteration (for loops) and conditional execution | Assignment 6 due
 15 | Wed 11/4 | Functions part 1 | 
