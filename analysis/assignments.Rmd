@@ -37,7 +37,8 @@ Each week, we will assign a problem set that applies the concepts covered in cla
 
 ***
 
-### Assignment 5  
+### Assignment 5   
+#### [Data import and tidy data](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_5.md)
 >Due Mon 10/26 by 10pm EDT  
 
 ***

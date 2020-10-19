@@ -106,7 +106,7 @@ max(coronavirus$date)
 ```
 
 ```
-## [1] "2020-10-11"
+## [1] "2020-10-16"
 ```
 <br>
 <br>
@@ -114,7 +114,7 @@ max(coronavirus$date)
 
 ## Combining `dplyr` and `ggplot`
 
-Let's start with summarizing the total number of cases by type as of the most recent day in the dataset: 2020-10-11. Take a minute to try this for yourself, then you can look at our approach.
+Let's start with summarizing the total number of cases by type as of the most recent day in the dataset: 2020-10-16. Take a minute to try this for yourself, then you can look at our approach.
 
 <br>
 
@@ -134,9 +134,9 @@ kable(total_cases)  # kable() just provides a nice output for the table
 
 type            cases
 ----------  ---------
-confirmed    37408593
-death         1075942
-recovered    25999799
+confirmed    39266928
+death         1103517
+recovered    27019124
 
 </details>
 
@@ -518,20 +518,20 @@ coronavirus %>%
 ```
 
 ```
-## # A tibble: 357 x 7
+## # A tibble: 356 x 7
 ##    date       province country               lat   long type      cases
 ##    <date>     <chr>    <chr>               <dbl>  <dbl> <chr>     <dbl>
 ##  1 2020-07-03 <NA>     Antigua and Barbuda 17.1  -61.8  confirmed    -1
 ##  2 2020-05-19 <NA>     Benin                9.31   2.32 confirmed  -209
-##  3 2020-09-08 <NA>     Colombia             4.57 -74.3  confirmed  -315
-##  4 2020-08-27 <NA>     Cyprus              35.1   33.4  confirmed   -17
-##  5 2020-05-07 <NA>     Ecuador             -1.83 -78.2  confirmed -1583
-##  6 2020-05-08 <NA>     Ecuador             -1.83 -78.2  confirmed -1480
-##  7 2020-05-11 <NA>     Ecuador             -1.83 -78.2  confirmed   -50
-##  8 2020-09-07 <NA>     Ecuador             -1.83 -78.2  confirmed -7953
-##  9 2020-07-15 <NA>     Finland             61.9   25.7  confirmed    -5
-## 10 2020-07-16 <NA>     Finland             61.9   25.7  confirmed    -3
-## # … with 347 more rows
+##  3 2020-08-27 <NA>     Cyprus              35.1   33.4  confirmed   -17
+##  4 2020-05-07 <NA>     Ecuador             -1.83 -78.2  confirmed -1583
+##  5 2020-05-08 <NA>     Ecuador             -1.83 -78.2  confirmed -1480
+##  6 2020-05-11 <NA>     Ecuador             -1.83 -78.2  confirmed   -50
+##  7 2020-09-07 <NA>     Ecuador             -1.83 -78.2  confirmed -7953
+##  8 2020-07-15 <NA>     Finland             61.9   25.7  confirmed    -5
+##  9 2020-07-16 <NA>     Finland             61.9   25.7  confirmed    -3
+## 10 2020-04-18 <NA>     France              46.2    2.21 confirmed   -17
+## # … with 346 more rows
 ```
 
 ```r
@@ -679,7 +679,7 @@ ggplot(data = filter(coronavirus_ttd)) +
 ```
 
 ```
-## Warning: Removed 78 rows containing missing values (geom_label).
+## Warning: Removed 80 rows containing missing values (geom_label).
 ```
 
 ![](lesson9-files/unnamed-chunk-32-1.png)<!-- -->

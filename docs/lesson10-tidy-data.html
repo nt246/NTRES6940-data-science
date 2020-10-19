@@ -392,7 +392,10 @@ div.tocify {
       <a href="lesson10-tidy-data.html">Lesson 10: Tidy data</a>
     </li>
     <li>
-      <a href="lesson11-relational-data.html">Lesson 11: Relational data</a>
+      <a href="lesson11-debugging-getting-help.html">Lesson 11: Good coding practices and debugging</a>
+    </li>
+    <li>
+      <a href="lesson12-relational-data.html">Lesson 12: Relational data</a>
     </li>
   </ul>
 </li>
@@ -595,18 +598,11 @@ library(janitor)  ## install.packages(&quot;janitor&quot;)</code></pre>
 <p>We now have one data frame per film, each with a common set of 4 variables. Step one in tidying this data is to glue them together into one data frame, stacking them up row wise. This is called row binding and we use <code>dplyr::bind_rows()</code>.</p>
 <pre class="r"><code>lotr_untidy &lt;- bind_rows(fship, ttow, rking)
 str(lotr_untidy)</code></pre>
-<pre><code>## tibble [9 × 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-##  $ Film  : chr [1:9] &quot;The Fellowship Of The Ring&quot; &quot;The Fellowship Of The Ring&quot; &quot;The Fellowship Of The Ring&quot; &quot;The Two Towers&quot; ...
-##  $ Race  : chr [1:9] &quot;Elf&quot; &quot;Hobbit&quot; &quot;Man&quot; &quot;Elf&quot; ...
-##  $ Female: num [1:9] 1229 14 0 331 0 ...
-##  $ Male  : num [1:9] 971 3644 1995 513 2463 ...
-##  - attr(*, &quot;spec&quot;)=
-##   .. cols(
-##   ..   Film = col_character(),
-##   ..   Race = col_character(),
-##   ..   Female = col_double(),
-##   ..   Male = col_double()
-##   .. )</code></pre>
+<pre><code>## Classes &#39;spec_tbl_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 9 obs. of  4 variables:
+##  $ Film  : chr  &quot;The Fellowship Of The Ring&quot; &quot;The Fellowship Of The Ring&quot; &quot;The Fellowship Of The Ring&quot; &quot;The Two Towers&quot; ...
+##  $ Race  : chr  &quot;Elf&quot; &quot;Hobbit&quot; &quot;Man&quot; &quot;Elf&quot; ...
+##  $ Female: num  1229 14 0 331 0 ...
+##  $ Male  : num  971 3644 1995 513 2463 ...</code></pre>
 <pre class="r"><code>lotr_untidy</code></pre>
 <pre><code>## # A tibble: 9 x 4
 ##   Film                       Race   Female  Male
@@ -752,9 +748,14 @@ coronavirus</code></pre>
   group_by(date, type) %&gt;%
   summarize(cases = sum(cases)) %&gt;%
   ggplot() +
+<<<<<<< HEAD
   geom_col(aes(x = date, y = cases, fill = type))</code></pre>
 <pre><code>## `summarise()` regrouping output by &#39;date&#39; (override with `.groups` argument)</code></pre>
 <p><img src="lesson10-files/unnamed-chunk-9-1.png" /><!-- --> <br></p>
+=======
+  geom_col(aes(x=date, y = cases, fill = type))</code></pre>
+<p><img src="lesson10-files/unnamed-chunk-9-1.png" /><!-- --></p>
+>>>>>>> 63e1be9e5273e9ce2588eaa989146bafd7718ee6
 <p>Let’s see how we would do that if the data had been in a wider format.</p>
 <p><br></p>
 <div id="your-turn-1" class="section level4">
@@ -778,9 +779,15 @@ coronavirus</code></pre>
 <pre class="r"><code>coronavirus_ttd &lt;- coronavirus %&gt;% 
   group_by(country, type) %&gt;%
   summarize(total_cases = sum(cases)) %&gt;%
+<<<<<<< HEAD
   pivot_wider(names_from = type, values_from = total_cases)</code></pre>
 <pre><code>## `summarise()` regrouping output by &#39;country&#39; (override with `.groups` argument)</code></pre>
 <pre class="r"><code># Now we can plot this easily
+=======
+  pivot_wider(names_from = type, values_from = total_cases)
+
+# Now we can plot this easily
+>>>>>>> 63e1be9e5273e9ce2588eaa989146bafd7718ee6
 ggplot(coronavirus_ttd) +
   geom_label(mapping = aes(x = confirmed, y = death, label = country))</code></pre>
 <p><img src="lesson10-files/unnamed-chunk-12-1.png" /><!-- --></p>
@@ -879,7 +886,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

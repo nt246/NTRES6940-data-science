@@ -30,8 +30,10 @@ navbar:
       href: lesson9-ggplot-part2.html       
     - text: "Lesson 10: Tidy data"
       href: lesson10-tidy-data.html       
-    - text: "Lesson 11: Relational data"
-      href: lesson11-relational-data.html 
+    - text: "Lesson 11: Good coding practices and debugging"
+      href: lesson11-debugging-getting-help.html
+    - text: "Lesson 12: Relational data"
+      href: lesson12-relational-data.html
   - text: Assignments
     href: assignments.html    
 output: 

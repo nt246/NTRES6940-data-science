@@ -257,18 +257,11 @@ str(lotr_untidy)
 ```
 
 ```
-## tibble [9 × 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-##  $ Film  : chr [1:9] "The Fellowship Of The Ring" "The Fellowship Of The Ring" "The Fellowship Of The Ring" "The Two Towers" ...
-##  $ Race  : chr [1:9] "Elf" "Hobbit" "Man" "Elf" ...
-##  $ Female: num [1:9] 1229 14 0 331 0 ...
-##  $ Male  : num [1:9] 971 3644 1995 513 2463 ...
-##  - attr(*, "spec")=
-##   .. cols(
-##   ..   Film = col_character(),
-##   ..   Race = col_character(),
-##   ..   Female = col_double(),
-##   ..   Male = col_double()
-##   .. )
+## Classes 'spec_tbl_df', 'tbl_df', 'tbl' and 'data.frame':	9 obs. of  4 variables:
+##  $ Film  : chr  "The Fellowship Of The Ring" "The Fellowship Of The Ring" "The Fellowship Of The Ring" "The Two Towers" ...
+##  $ Race  : chr  "Elf" "Hobbit" "Man" "Elf" ...
+##  $ Female: num  1229 14 0 331 0 ...
+##  $ Male  : num  971 3644 1995 513 2463 ...
 ```
 
 ```r
@@ -469,10 +462,6 @@ coronavirus %>%
   geom_col(aes(x = date, y = cases, fill = type))
 ```
 
-```
-## `summarise()` regrouping output by 'date' (override with `.groups` argument)
-```
-
 ![](lesson10-files/unnamed-chunk-9-1.png)<!-- -->
 <br>
 
@@ -518,13 +507,15 @@ coronavirus_ttd <- coronavirus %>%
   group_by(country, type) %>%
   summarize(total_cases = sum(cases)) %>%
   pivot_wider(names_from = type, values_from = total_cases)
-```
 
+<<<<<<< HEAD
 ```
 ## `summarise()` regrouping output by 'country' (override with `.groups` argument)
 ```
 
 ```r
+=======
+>>>>>>> 63e1be9e5273e9ce2588eaa989146bafd7718ee6
 # Now we can plot this easily
 ggplot(coronavirus_ttd) +
   geom_label(mapping = aes(x = confirmed, y = death, label = country))
