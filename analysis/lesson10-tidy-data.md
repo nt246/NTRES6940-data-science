@@ -36,7 +36,6 @@ output:
 ## Announcements
 
 * Guest lecture on Wednesday by Erika Mudrak from the Cornell Statistical Consultation Unit. She will talk about debugging strategies (she has to debug a lot of people's code!) and about getting help with R. Don't miss it!
-* Thanks for the mid-term feedback!
 
 <br>
 <br>
@@ -199,6 +198,7 @@ First let's read the intro (`01-intro.md`) [here](https://github.com/jennybc/lot
 
 Then let's work through reshaping the data.
 
+<br>
 
 #### 1. Import untidy Lord of the Rings data
 
@@ -245,6 +245,7 @@ rking <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/da
 ##   Male = col_double()
 ## )
 ```
+<br>
 
 #### 2. Collect untidy Lord of the Rings data into a single data frame
 We now have one data frame per film, each with a common set of 4 variables. Step one in tidying this data is to glue them together into one data frame, stacking them up row wise. This is called row binding and we use `dplyr::bind_rows()`.
@@ -288,6 +289,7 @@ lotr_untidy
 ## 8 The Return Of The King     Hobbit      2  2673
 ## 9 The Return Of The King     Man       268  2459
 ```
+<br>
 
 #### 3. Tidy the untidy Lord of the Rings data
 We are still violating one of the fundamental principles of **tidy data**. “Word count” is a fundamental variable in our dataset and it’s currently spread out over two variables, `Female` and `Male`. Conceptually, we need to gather up the word counts into a single variable and create a new variable, `Gender`, to track whether each count refers to females or males. We use the `pivot_longer()` function from the tidyr package to do this.
@@ -326,6 +328,8 @@ lotr_tidy
 Tidy data... mission accomplished!
 
 To explain our call to pivot_longer() above, let’s read it from right to left: we took the variables Female and Male and gathered their values into a single new variable Words. This forced the creation of a companion variable Gender, which tells whether a specific value of Words came from Female or Male. All other variables, such as Film, remain unchanged and are simply replicated as needed. 
+
+<br>
 
 #### 4. Write the tidy data to a delimited file
 Now we write this multi-film, tidy dataset to file for use in various downstream scripts for further analysis and visualization.
@@ -430,26 +434,26 @@ Let's now return to our Coronavirus dataset. Let's remind ourselves of it's stru
 
 
 ```r
-coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv', col_types = cols(Province.State = col_character()))
+coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv', col_types = cols(province = col_character()))
 
 coronavirus
 ```
 
 ```
-## # A tibble: 89,490 x 7
-##    Province.State Country.Region   Lat  Long date       cases type     
-##    <chr>          <chr>          <dbl> <dbl> <date>     <dbl> <chr>    
-##  1 <NA>           Afghanistan       33    65 2020-01-22     0 confirmed
-##  2 <NA>           Afghanistan       33    65 2020-01-23     0 confirmed
-##  3 <NA>           Afghanistan       33    65 2020-01-24     0 confirmed
-##  4 <NA>           Afghanistan       33    65 2020-01-25     0 confirmed
-##  5 <NA>           Afghanistan       33    65 2020-01-26     0 confirmed
-##  6 <NA>           Afghanistan       33    65 2020-01-27     0 confirmed
-##  7 <NA>           Afghanistan       33    65 2020-01-28     0 confirmed
-##  8 <NA>           Afghanistan       33    65 2020-01-29     0 confirmed
-##  9 <NA>           Afghanistan       33    65 2020-01-30     0 confirmed
-## 10 <NA>           Afghanistan       33    65 2020-01-31     0 confirmed
-## # … with 89,480 more rows
+## # A tibble: 213,548 x 7
+##    date       province country       lat  long type      cases
+##    <date>     <chr>    <chr>       <dbl> <dbl> <chr>     <dbl>
+##  1 2020-01-22 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  2 2020-01-23 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  3 2020-01-24 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  4 2020-01-25 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  5 2020-01-26 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  6 2020-01-27 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  7 2020-01-28 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  8 2020-01-29 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  9 2020-01-30 <NA>     Afghanistan  33.9  67.7 confirmed     0
+## 10 2020-01-31 <NA>     Afghanistan  33.9  67.7 confirmed     0
+## # … with 213,538 more rows
 ```
 
 **QUESTION**: Is this in tidy format?
@@ -460,9 +464,9 @@ Last class, we visualized the global case counts date
 ```r
 coronavirus %>% 
   group_by(date, type) %>%
-  summarize(cases=sum(cases)) %>%
+  summarize(cases = sum(cases)) %>%
   ggplot() +
-  geom_col(aes(x=date, y = cases, fill = type))
+  geom_col(aes(x = date, y = cases, fill = type))
 ```
 
 ```
@@ -470,8 +474,11 @@ coronavirus %>%
 ```
 
 ![](lesson10-files/unnamed-chunk-9-1.png)<!-- -->
+<br>
 
 Let's see how we would do that if the data had been in a wider format.
+
+<br>
 
 #### Your turn
 Convert the coronavirus dataset to a wider format where the confirmed cases, deaths and recovered cases are shown in separate columns.
@@ -485,6 +492,8 @@ corona_wide <- coronavirus %>%
   pivot_wider(names_from = type, values_from = cases)
 ```
 
+<br>
+
 Now how do we reproduce the barchart of total cases per day broken down by type? 
 
 And how would be plot the daily counts of different case types within a country? With the long format this is easy:
@@ -492,7 +501,7 @@ And how would be plot the daily counts of different case types within a country?
 
 ```r
 coronavirus %>% 
-  filter(Country.Region == "US") %>% 
+  filter(country == "US") %>% 
   ggplot() +
   geom_line(aes(x = date, y = cases, color = type))
 ```
@@ -506,19 +515,19 @@ As mentioned above, however, there are plot types where the wide format provides
 
 ```r
 coronavirus_ttd <- coronavirus %>% 
-  group_by(Country.Region, type) %>%
+  group_by(country, type) %>%
   summarize(total_cases = sum(cases)) %>%
   pivot_wider(names_from = type, values_from = total_cases)
 ```
 
 ```
-## `summarise()` regrouping output by 'Country.Region' (override with `.groups` argument)
+## `summarise()` regrouping output by 'country' (override with `.groups` argument)
 ```
 
 ```r
 # Now we can plot this easily
 ggplot(coronavirus_ttd) +
-  geom_label(mapping = aes(x = confirmed, y = death, label = Country.Region))
+  geom_label(mapping = aes(x = confirmed, y = death, label = country))
 ```
 
 ![](lesson10-files/unnamed-chunk-12-1.png)<!-- -->
@@ -539,8 +548,7 @@ colnames(coronavirus)
 ```
 
 ```
-## [1] "Province.State" "Country.Region" "Lat"            "Long"          
-## [5] "date"           "cases"          "type"
+## [1] "date"     "province" "country"  "lat"      "long"     "type"     "cases"
 ```
 
 In other cases, spaces and special characters in column names of data you import can actually cause problems downstream, so we often may want to clean them up.
@@ -575,8 +583,7 @@ names(coronavirus)
 ```
 
 ```
-## [1] "province_state" "country_region" "lat"            "long"          
-## [5] "date"           "cases"          "type"
+## [1] "date"     "province" "country"  "lat"      "long"     "type"     "cases"
 ```
 
 And there are other case options in `clean_names()`, like: 

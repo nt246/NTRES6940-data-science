@@ -442,7 +442,6 @@ div.tocify {
 <h2>Announcements</h2>
 <ul>
 <li>Guest lecture on Wednesday by Erika Mudrak from the Cornell Statistical Consultation Unit. She will talk about debugging strategies (she has to debug a lot of people’s code!) and about getting help with R. Don’t miss it!</li>
-<li>Thanks for the mid-term feedback!</li>
 </ul>
 <p><br> <br></p>
 </div>
@@ -561,6 +560,7 @@ library(janitor)  ## install.packages(&quot;janitor&quot;)</code></pre>
 <p>To explore tidy data in a different context, let’s work through a tutorial developed by Jenny Bryan using data on the Lord of the Rings movies. This nicely illustrates the concepts of lengtening and widening datasets. It uses outdated functions for pivoting the dataframes, however, so we’ll work through updated code here (i.e. only look at the <code>01-intro.md</code> file, not the <code>02-gather.md</code> and <code>03-spread.md</code>).</p>
 <p>First let’s read the intro (<code>01-intro.md</code>) <a href="https://github.com/jennybc/lotr-tidy/blob/master/01-intro.md">here</a></p>
 <p>Then let’s work through reshaping the data.</p>
+<p><br></p>
 <div id="import-untidy-lord-of-the-rings-data" class="section level4">
 <h4>1. Import untidy Lord of the Rings data</h4>
 <p>We bring the data into data frames or tibbles, one per film, and do some inspection.</p>
@@ -588,6 +588,7 @@ library(janitor)  ## install.packages(&quot;janitor&quot;)</code></pre>
 ##   Female = col_double(),
 ##   Male = col_double()
 ## )</code></pre>
+<p><br></p>
 </div>
 <div id="collect-untidy-lord-of-the-rings-data-into-a-single-data-frame" class="section level4">
 <h4>2. Collect untidy Lord of the Rings data into a single data frame</h4>
@@ -619,6 +620,7 @@ str(lotr_untidy)</code></pre>
 ## 7 The Return Of The King     Elf       183   510
 ## 8 The Return Of The King     Hobbit      2  2673
 ## 9 The Return Of The King     Man       268  2459</code></pre>
+<p><br></p>
 </div>
 <div id="tidy-the-untidy-lord-of-the-rings-data" class="section level4">
 <h4>3. Tidy the untidy Lord of the Rings data</h4>
@@ -650,6 +652,7 @@ lotr_tidy</code></pre>
 ## 18 The Return Of The King     Man    Female   268</code></pre>
 <p>Tidy data… mission accomplished!</p>
 <p>To explain our call to pivot_longer() above, let’s read it from right to left: we took the variables Female and Male and gathered their values into a single new variable Words. This forced the creation of a companion variable Gender, which tells whether a specific value of Words came from Female or Male. All other variables, such as Film, remain unchanged and are simply replicated as needed.</p>
+<p><br></p>
 </div>
 <div id="write-the-tidy-data-to-a-delimited-file" class="section level4">
 <h4>4. Write the tidy data to a delimited file</h4>
@@ -726,33 +729,34 @@ lotr_tidy %&gt;%
 <div id="applying-this-to-our-coronavirus-dataset" class="section level2">
 <h2>Applying this to our Coronavirus dataset</h2>
 <p>Let’s now return to our Coronavirus dataset. Let’s remind ourselves of it’s structure</p>
-<pre class="r"><code>coronavirus &lt;- read_csv(&#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus-csv/master/coronavirus_dataset.csv&#39;, col_types = cols(Province.State = col_character()))
+<pre class="r"><code>coronavirus &lt;- read_csv(&#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;, col_types = cols(province = col_character()))
 
 coronavirus</code></pre>
-<pre><code>## # A tibble: 89,490 x 7
-##    Province.State Country.Region   Lat  Long date       cases type     
-##    &lt;chr&gt;          &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt; &lt;chr&gt;    
-##  1 &lt;NA&gt;           Afghanistan       33    65 2020-01-22     0 confirmed
-##  2 &lt;NA&gt;           Afghanistan       33    65 2020-01-23     0 confirmed
-##  3 &lt;NA&gt;           Afghanistan       33    65 2020-01-24     0 confirmed
-##  4 &lt;NA&gt;           Afghanistan       33    65 2020-01-25     0 confirmed
-##  5 &lt;NA&gt;           Afghanistan       33    65 2020-01-26     0 confirmed
-##  6 &lt;NA&gt;           Afghanistan       33    65 2020-01-27     0 confirmed
-##  7 &lt;NA&gt;           Afghanistan       33    65 2020-01-28     0 confirmed
-##  8 &lt;NA&gt;           Afghanistan       33    65 2020-01-29     0 confirmed
-##  9 &lt;NA&gt;           Afghanistan       33    65 2020-01-30     0 confirmed
-## 10 &lt;NA&gt;           Afghanistan       33    65 2020-01-31     0 confirmed
-## # … with 89,480 more rows</code></pre>
+<pre><code>## # A tibble: 213,548 x 7
+##    date       province country       lat  long type      cases
+##    &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
+##  1 2020-01-22 &lt;NA&gt;     Afghanistan  33.9  67.7 confirmed     0
+##  2 2020-01-23 &lt;NA&gt;     Afghanistan  33.9  67.7 confirmed     0
+##  3 2020-01-24 &lt;NA&gt;     Afghanistan  33.9  67.7 confirmed     0
+##  4 2020-01-25 &lt;NA&gt;     Afghanistan  33.9  67.7 confirmed     0
+##  5 2020-01-26 &lt;NA&gt;     Afghanistan  33.9  67.7 confirmed     0
+##  6 2020-01-27 &lt;NA&gt;     Afghanistan  33.9  67.7 confirmed     0
+##  7 2020-01-28 &lt;NA&gt;     Afghanistan  33.9  67.7 confirmed     0
+##  8 2020-01-29 &lt;NA&gt;     Afghanistan  33.9  67.7 confirmed     0
+##  9 2020-01-30 &lt;NA&gt;     Afghanistan  33.9  67.7 confirmed     0
+## 10 2020-01-31 &lt;NA&gt;     Afghanistan  33.9  67.7 confirmed     0
+## # … with 213,538 more rows</code></pre>
 <p><strong>QUESTION</strong>: Is this in tidy format?</p>
 <p>Last class, we visualized the global case counts date</p>
 <pre class="r"><code>coronavirus %&gt;% 
   group_by(date, type) %&gt;%
-  summarize(cases=sum(cases)) %&gt;%
+  summarize(cases = sum(cases)) %&gt;%
   ggplot() +
-  geom_col(aes(x=date, y = cases, fill = type))</code></pre>
+  geom_col(aes(x = date, y = cases, fill = type))</code></pre>
 <pre><code>## `summarise()` regrouping output by &#39;date&#39; (override with `.groups` argument)</code></pre>
-<p><img src="lesson10-files/unnamed-chunk-9-1.png" /><!-- --></p>
+<p><img src="lesson10-files/unnamed-chunk-9-1.png" /><!-- --> <br></p>
 <p>Let’s see how we would do that if the data had been in a wider format.</p>
+<p><br></p>
 <div id="your-turn-1" class="section level4">
 <h4>Your turn</h4>
 <p>Convert the coronavirus dataset to a wider format where the confirmed cases, deaths and recovered cases are shown in separate columns.</p>
@@ -761,23 +765,24 @@ coronavirus</code></pre>
 <h5>Answer</h5>
 <pre class="r"><code>corona_wide &lt;- coronavirus %&gt;% 
   pivot_wider(names_from = type, values_from = cases)</code></pre>
+<p><br></p>
 <p>Now how do we reproduce the barchart of total cases per day broken down by type?</p>
 <p>And how would be plot the daily counts of different case types within a country? With the long format this is easy:</p>
 <pre class="r"><code>coronavirus %&gt;% 
-  filter(Country.Region == &quot;US&quot;) %&gt;% 
+  filter(country == &quot;US&quot;) %&gt;% 
   ggplot() +
   geom_line(aes(x = date, y = cases, color = type))</code></pre>
 <p><img src="lesson10-files/unnamed-chunk-11-1.png" /><!-- --></p>
 <p>How would we do this with the <code>coronavirus_wide</code> format? That would be much more difficult</p>
 <p>As mentioned above, however, there are plot types where the wide format provides the best input. For example, in Slack, I showed the example of plotting the total death count per country against the total count of confirmed cases. It would be cumbersome to pull these out of the long format because in <code>ggplot</code> we are mapping <em>variables</em> to <em>aesthetics</em> and now we want to map different levels of a variable to different aesthetics. So let’s make those different levels separate variables by widening the data.</p>
 <pre class="r"><code>coronavirus_ttd &lt;- coronavirus %&gt;% 
-  group_by(Country.Region, type) %&gt;%
+  group_by(country, type) %&gt;%
   summarize(total_cases = sum(cases)) %&gt;%
   pivot_wider(names_from = type, values_from = total_cases)</code></pre>
-<pre><code>## `summarise()` regrouping output by &#39;Country.Region&#39; (override with `.groups` argument)</code></pre>
+<pre><code>## `summarise()` regrouping output by &#39;country&#39; (override with `.groups` argument)</code></pre>
 <pre class="r"><code># Now we can plot this easily
 ggplot(coronavirus_ttd) +
-  geom_label(mapping = aes(x = confirmed, y = death, label = Country.Region))</code></pre>
+  geom_label(mapping = aes(x = confirmed, y = death, label = country))</code></pre>
 <p><img src="lesson10-files/unnamed-chunk-12-1.png" /><!-- --></p>
 <p>This case highlights how the definition of what a variable and an observation is context-dependent so different formats of the same data can be considered tidy based on how we are thinking about the data and we may need to switch back and forth between long and wide formats to explore different levels of a dataset.</p>
 <p><br></p>
@@ -789,8 +794,7 @@ ggplot(coronavirus_ttd) +
 <p>Using <code>janitor::clean_names()</code></p>
 <p>We’ve noticed in the coronavirus dataset that the variable names have a very inconsistent format. It’s not a problem per se for our ability to work with this dataframe, but it’s a bit annoying to look at.</p>
 <pre class="r"><code>colnames(coronavirus)</code></pre>
-<pre><code>## [1] &quot;Province.State&quot; &quot;Country.Region&quot; &quot;Lat&quot;            &quot;Long&quot;          
-## [5] &quot;date&quot;           &quot;cases&quot;          &quot;type&quot;</code></pre>
+<pre><code>## [1] &quot;date&quot;     &quot;province&quot; &quot;country&quot;  &quot;lat&quot;      &quot;long&quot;     &quot;type&quot;     &quot;cases&quot;</code></pre>
 <p>In other cases, spaces and special characters in column names of data you import can actually cause problems downstream, so we often may want to clean them up.</p>
 <p>The <code>janitor</code> package by Sam Firke is a great collection of functions for some quick data cleaning, like:</p>
 <ul>
@@ -811,8 +815,7 @@ ggplot(coronavirus_ttd) +
 <pre class="r"><code>coronavirus &lt;- coronavirus %&gt;% 
   clean_names()</code></pre>
 <pre class="r"><code>names(coronavirus)</code></pre>
-<pre><code>## [1] &quot;province_state&quot; &quot;country_region&quot; &quot;lat&quot;            &quot;long&quot;          
-## [5] &quot;date&quot;           &quot;cases&quot;          &quot;type&quot;</code></pre>
+<pre><code>## [1] &quot;date&quot;     &quot;province&quot; &quot;country&quot;  &quot;lat&quot;      &quot;long&quot;     &quot;type&quot;     &quot;cases&quot;</code></pre>
 <p>And there are other case options in <code>clean_names()</code>, like:</p>
 <ul>
 <li>“snake” produces snake_case (the default)</li>
