@@ -13,6 +13,11 @@ Assignment 5: Data import (readr) and tidy data (tidyr)
   - For the first two exercises in this assignment, **import** data
     files into R and **parse** them properly as instructed. **Tidy**
     and/or **transform** the data frames when appropriate.
+
+  - Please note that **exercise 1 is optional**. We have not covered
+    data import in lecture, but the relevant material can be found
+    [here](https://r4ds.had.co.nz/data-import.html) if you’d like to
+    give it a shot.
     
       - We have not extensively covered parsing data in lecture, but you
         can find more information about it
@@ -73,7 +78,7 @@ library(knitr)
 
 <br>
 
-## Exercise 1. Tibble and Data Import
+## Exercise 1. Tibble and Data Import (OPTIONAL)
 
 Import data frames listed below into R and
 [parse](https://r4ds.had.co.nz/data-import.html#parsing-a-vector) the
