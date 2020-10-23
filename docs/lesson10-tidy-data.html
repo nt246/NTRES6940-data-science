@@ -397,6 +397,9 @@ div.tocify {
     <li>
       <a href="lesson12-relational-data.html">Lesson 12: Relational data</a>
     </li>
+    <li>
+      <a href="lesson13-data-import-and-types.html">Lesson 13: Data import and types</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -728,7 +731,7 @@ lotr_tidy %&gt;%
 <pre class="r"><code>coronavirus &lt;- read_csv(&#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;, col_types = cols(province = col_character()))
 
 coronavirus</code></pre>
-<pre><code>## # A tibble: 213,548 x 7
+<pre><code>## # A tibble: 216,700 x 7
 ##    date       province country       lat  long type      cases
 ##    &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
 ##  1 2020-01-22 &lt;NA&gt;     Afghanistan  33.9  67.7 confirmed     0
@@ -741,21 +744,15 @@ coronavirus</code></pre>
 ##  8 2020-01-29 &lt;NA&gt;     Afghanistan  33.9  67.7 confirmed     0
 ##  9 2020-01-30 &lt;NA&gt;     Afghanistan  33.9  67.7 confirmed     0
 ## 10 2020-01-31 &lt;NA&gt;     Afghanistan  33.9  67.7 confirmed     0
-## # … with 213,538 more rows</code></pre>
+## # … with 216,690 more rows</code></pre>
 <p><strong>QUESTION</strong>: Is this in tidy format?</p>
 <p>Last class, we visualized the global case counts date</p>
 <pre class="r"><code>coronavirus %&gt;% 
   group_by(date, type) %&gt;%
   summarize(cases = sum(cases)) %&gt;%
   ggplot() +
-<<<<<<< HEAD
   geom_col(aes(x = date, y = cases, fill = type))</code></pre>
-<pre><code>## `summarise()` regrouping output by &#39;date&#39; (override with `.groups` argument)</code></pre>
 <p><img src="lesson10-files/unnamed-chunk-9-1.png" /><!-- --> <br></p>
-=======
-  geom_col(aes(x=date, y = cases, fill = type))</code></pre>
-<p><img src="lesson10-files/unnamed-chunk-9-1.png" /><!-- --></p>
->>>>>>> 63e1be9e5273e9ce2588eaa989146bafd7718ee6
 <p>Let’s see how we would do that if the data had been in a wider format.</p>
 <p><br></p>
 <div id="your-turn-1" class="section level4">
@@ -779,15 +776,9 @@ coronavirus</code></pre>
 <pre class="r"><code>coronavirus_ttd &lt;- coronavirus %&gt;% 
   group_by(country, type) %&gt;%
   summarize(total_cases = sum(cases)) %&gt;%
-<<<<<<< HEAD
-  pivot_wider(names_from = type, values_from = total_cases)</code></pre>
-<pre><code>## `summarise()` regrouping output by &#39;country&#39; (override with `.groups` argument)</code></pre>
-<pre class="r"><code># Now we can plot this easily
-=======
   pivot_wider(names_from = type, values_from = total_cases)
 
 # Now we can plot this easily
->>>>>>> 63e1be9e5273e9ce2588eaa989146bafd7718ee6
 ggplot(coronavirus_ttd) +
   geom_label(mapping = aes(x = confirmed, y = death, label = country))</code></pre>
 <p><img src="lesson10-files/unnamed-chunk-12-1.png" /><!-- --></p>
