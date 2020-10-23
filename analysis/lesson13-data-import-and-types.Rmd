@@ -1,0 +1,49 @@
+---
+title: "Lesson 13: Data import, export, and conversion between data types"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br>
+<br>
+
+## Readings
+
+<br>
+
+#### Required: 
+
+* [Chapter 3: Data types and objects](https://b-rodrigues.github.io/modern_R/data-types-and-objects.html) in Modern R with the tidyverse by Bruno Rodrigues
+
+<br>
+
+* Chapters [10](https://r4ds.had.co.nz/tibbles.html),  [11](https://r4ds.had.co.nz/data-import.html), [14.1 + 14.2](https://r4ds.had.co.nz/strings.html#introduction-8), [15.1 + 15.2](https://r4ds.had.co.nz/factors.html) and [16](https://r4ds.had.co.nz/dates-and-times.html) in R for Data Science by Hadley Wickham & Garrett Grolemund [That sounds like a lot, but all the sections are pretty short and contain important information. Chapters 10 and 11 are the most essential if you don't have time to read them all]
+
+<br>
+
+#### Other resources:
+
+* The rest of Chapters [14-16](https://r4ds.had.co.nz/strings.html) in R for Data Science by Hadley Wickham & Garrett Grolemund
+
+
+<br>
+<br>
+
+## Announcements
+
+* Thanks for the mid-semester feedback
+* Student presentations for our final class on November 11
+* Homework 5 due tonight - Homework 6 will be posted later today
+
+<br>
+<br>
+
+## Recap on tidy data
+
+[Slides by Julia Lowndes](https://docs.google.com/presentation/d/1N7hKepabvl9OrHjvGJWPjUsfzVdB5xzV5AsFndgSwms/edit#slide=id.p)
+
+
+
