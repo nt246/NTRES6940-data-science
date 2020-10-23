@@ -34,6 +34,8 @@ navbar:
       href: lesson11-debugging-getting-help.html
     - text: "Lesson 12: Relational data"
       href: lesson12-relational-data.html
+    - text: "Lesson 13: Data import and types"
+      href: lesson13-data-import-and-types.html
   - text: Assignments
     href: assignments.html    
 output: 
