@@ -433,7 +433,7 @@ coronavirus
 ```
 
 ```
-## # A tibble: 213,548 x 7
+## # A tibble: 216,700 x 7
 ##    date       province country       lat  long type      cases
 ##    <date>     <chr>    <chr>       <dbl> <dbl> <chr>     <dbl>
 ##  1 2020-01-22 <NA>     Afghanistan  33.9  67.7 confirmed     0
@@ -446,7 +446,7 @@ coronavirus
 ##  8 2020-01-29 <NA>     Afghanistan  33.9  67.7 confirmed     0
 ##  9 2020-01-30 <NA>     Afghanistan  33.9  67.7 confirmed     0
 ## 10 2020-01-31 <NA>     Afghanistan  33.9  67.7 confirmed     0
-## # … with 213,538 more rows
+## # … with 216,690 more rows
 ```
 
 **QUESTION**: Is this in tidy format?
@@ -508,14 +508,6 @@ coronavirus_ttd <- coronavirus %>%
   summarize(total_cases = sum(cases)) %>%
   pivot_wider(names_from = type, values_from = total_cases)
 
-<<<<<<< HEAD
-```
-## `summarise()` regrouping output by 'country' (override with `.groups` argument)
-```
-
-```r
-=======
->>>>>>> 63e1be9e5273e9ce2588eaa989146bafd7718ee6
 # Now we can plot this easily
 ggplot(coronavirus_ttd) +
   geom_label(mapping = aes(x = confirmed, y = death, label = country))

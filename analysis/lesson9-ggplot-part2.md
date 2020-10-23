@@ -106,7 +106,7 @@ max(coronavirus$date)
 ```
 
 ```
-## [1] "2020-10-16"
+## [1] "2020-10-22"
 ```
 <br>
 <br>
@@ -114,7 +114,7 @@ max(coronavirus$date)
 
 ## Combining `dplyr` and `ggplot`
 
-Let's start with summarizing the total number of cases by type as of the most recent day in the dataset: 2020-10-16. Take a minute to try this for yourself, then you can look at our approach.
+Let's start with summarizing the total number of cases by type as of the most recent day in the dataset: 2020-10-22. Take a minute to try this for yourself, then you can look at our approach.
 
 <br>
 
@@ -134,9 +134,9 @@ kable(total_cases)  # kable() just provides a nice output for the table
 
 type            cases
 ----------  ---------
-confirmed    39266928
-death         1103517
-recovered    27019124
+confirmed    41695675
+death         1137193
+recovered    28345817
 
 </details>
 
@@ -518,7 +518,7 @@ coronavirus %>%
 ```
 
 ```
-## # A tibble: 356 x 7
+## # A tibble: 363 x 7
 ##    date       province country               lat   long type      cases
 ##    <date>     <chr>    <chr>               <dbl>  <dbl> <chr>     <dbl>
 ##  1 2020-07-03 <NA>     Antigua and Barbuda 17.1  -61.8  confirmed    -1
@@ -531,7 +531,7 @@ coronavirus %>%
 ##  8 2020-07-15 <NA>     Finland             61.9   25.7  confirmed    -5
 ##  9 2020-07-16 <NA>     Finland             61.9   25.7  confirmed    -3
 ## 10 2020-04-18 <NA>     France              46.2    2.21 confirmed   -17
-## # … with 346 more rows
+## # … with 353 more rows
 ```
 
 ```r
@@ -665,7 +665,7 @@ ggplot(data = filter(coronavirus_ttd, confirmed > 500000)) +
 ```
 
 ```
-## Warning: Removed 9 rows containing missing values (geom_label).
+## Warning: Removed 6 rows containing missing values (geom_label).
 ```
 
 ![](lesson9-files/unnamed-chunk-31-1.png)<!-- -->
@@ -679,7 +679,7 @@ ggplot(data = filter(coronavirus_ttd)) +
 ```
 
 ```
-## Warning: Removed 80 rows containing missing values (geom_label).
+## Warning: Removed 82 rows containing missing values (geom_label).
 ```
 
 ![](lesson9-files/unnamed-chunk-32-1.png)<!-- -->
