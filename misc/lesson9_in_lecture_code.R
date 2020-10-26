@@ -30,6 +30,10 @@ t <- cbind(fship, ttow)
 
 # Introducing the flights data --------------------------------------------
 
+airports %>% 
+  count(faa) %>% 
+  filter(n > 1)
+
 planes %>% 
   count(tailnum) %>% 
   filter(n > 1)
@@ -51,37 +55,71 @@ flights2 <- flights %>%
   select(year:day, hour, origin, dest, tailnum, carrier)
 flights2
 
+
+
+# Join functions ----------------------------------------------------------
+
 airlines
 
 flights2 %>% 
   left_join(airlines, by = "carrier")
+
 ?left_join
 
+# Exercise: Add information about each plane to flights
+planes
+
+
+# Slides: Understanding joins (including duplicate keys)
+
+# Defining the key columns
+
+# Natural join
 weather
 
 flights2 %>% 
   left_join(weather)
 
-planes
-Add information about each plane to the data
-
-
-flights2
+# By character vector
+flights2 %>% 
+  left_join(planes, by = "tailnum")
 
 flights2 %>% 
   left_join(planes, by = "tailnum", suffix = c("_flight", "_manufacture"))
 
 
+# A named character vector: by = c("a" = "b")
+
 flights2 %>% 
-  left_join(planes)
+  left_join(airports, c("dest" = "faa"))
+
+
+# Exercise: Add the location of the origin and destination (i.e. the lat and lon) to flights. You may want to use the suffix parameter to disambiguate variable names in your output
 
 airports
-flights2
 
+airports_loc <- 
+  airports %>% 
+  select(faa, name, lat, lon)
+
+airports_loc <- 
+  airports %>% 
+  select(-alt, -tz, -dst, -tzone)
+
+  
 flights2 %>% 
-  left_join(airports, c("origin" = "faa"))
+  left_join(airports_loc, c("dest" = "faa")) %>% 
+  left_join(airports_loc, c("origin" = "faa"), suffix = c("_dest", "_origin"))
 
 
+# Optional exercise: Is there a relationship between the age of a plane and its delays? [You will have to work with the full flights data to access delay data]
+https://jrnold.github.io/r4ds-exercise-solutions/relational-data.html#exercise-13.4.3
+
+
+
+# Filtering joins ---------------------------------------------------------------
+
+Slides
 
 top_dest <- 
   flights %>% 
@@ -91,11 +129,23 @@ top_dest <-
 flights2 %>% 
   semi_join(top_dest)
 
+# Alternative
+flights %>% 
+  filter(dest %in% top_dest$dest)
+
+
+# Antijoin: diagnosing join mismatches. 
+# Do all flights have a match in planes?
+
 flights2 %>% 
   anti_join(planes, by = "tailnum") %>% 
   count(tailnum, sort = TRUE)
 
 
+
+
+## OPTIONAL EXERCISE about delay by destination
+https://jrnold.github.io/r4ds-exercise-solutions/relational-data.html#exercise-13.4.1
 
 
 

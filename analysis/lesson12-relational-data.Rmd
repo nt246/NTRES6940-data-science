@@ -116,7 +116,9 @@ lotr_untidy <- base::rbind(fship, ttow, rking)
 
 ```
 
-Review Jenny Bryan's overview of [**Binding**](https://stat545.com/multiple-tibbles.html#typology-of-data-combination-tasks)
+<br>
+
+Then we'll review Jenny Bryan's overview of [binding](https://stat545.com/multiple-tibbles.html#typology-of-data-combination-tasks)
 
 <br>
 
@@ -132,15 +134,18 @@ flights2
 
 ```
 
-Review Wickham and Grolemund's overview of [join functions](https://r4ds.had.co.nz/relational-data.html#filtering-joins)
+<br>
+
+Then we'll review Wickham and Grolemund's overview of [join functions](https://r4ds.had.co.nz/relational-data.html#filtering-joins)
 
 <br>
 
-### Key point
+#### Key point
 
 The most commonly used join is the left join: you use this whenever you look up additional data from another table, because it preserves the original observations even when there isn’t a match. The left join should be your default join: use it unless you have a strong reason to prefer one of the others.
 
 
+<br>
 <br>
 
 ### Optional exercises (from the R for Data Science chapter)
@@ -175,12 +180,12 @@ library(nycflights13) #install.packages("nycflights13")
 
 <br>
 
-1.  Add the location of the origin _and_ destination (i.e. the `lat` and `lon`)
+2.  Add the location of the origin _and_ destination (i.e. the `lat` and `lon`)
     to `flights`.
 
 <br>
 
-1.  Is there a relationship between the age of a plane and its delays?
+3.  Is there a relationship between the age of a plane and its delays?
 
 
 

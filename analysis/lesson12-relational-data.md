@@ -58,15 +58,19 @@ Load the tidyverse
 library(tidyverse)
 ```
 
-We will also be practicing joins on data on flights departing NYC in 2013. These are compiled in a package that we will install and load
+<br>
+
+Today, we will be practicing joins on data on flights departing NYC in 2013. These data are compiled in a package that we will install and load
 
 ```r
+install.packages("nycflights13")
 library(nycflights13)  # install.packages("nycflights13")
 ```
 
 <br>
+<br>
 
-## Part 1: Relational data
+## Relational data
 From [R for Data Science](https://r4ds.had.co.nz/relational-data.html#nycflights13-relational):
 
 It’s rare that a data analysis involves only a single table of data. Typically you have many tables of data, and you must combine them to answer the questions that you’re interested in. Collectively, multiple tables of data are called relational data because it is the relations, not just the individual datasets, that are important.
@@ -84,17 +88,64 @@ There are four main types of operations that can be done with two tables:
 We will only cover the first three today. Let's click on the links to work through the corresponding section in Jenny Bryan's STAT 545 notes or Grolemund and Wickham's R for Data Science.
 
 
+<br>
 
 
-### Key point
+### Row and columns binding
+
+We'll play around with the [Jenny Bryan's Lord of the Rings Data](https://github.com/jennybc/lotr-tidy/blob/master/01-intro.md) that we also used in our Tidy Data lecture.
+
+Let's load it in
+
+
+```r
+fship <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Fellowship_Of_The_Ring.csv")
+
+ttow <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Two_Towers.csv")
+
+rking <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Return_Of_The_King.csv")
+
+
+# And try binding these separate dataframes together
+
+lotr_untidy <- dplyr::bind_rows(fship, ttow, rking)
+lotr_untidy <- base::rbind(fship, ttow, rking)
+```
+
+<br>
+
+Then we'll review Jenny Bryan's overview of [binding](https://stat545.com/multiple-tibbles.html#typology-of-data-combination-tasks)
+
+<br>
+
+### Join functions
+
+To practice the `join` functions, we'll subset the `flights` dataframe as follows
+
+
+```r
+flights2 <- flights %>% 
+  select(year:day, hour, origin, dest, tailnum, carrier)
+flights2
+```
+
+<br>
+
+Then we'll review Wickham and Grolemund's overview of [join functions](https://r4ds.had.co.nz/relational-data.html#filtering-joins)
+
+<br>
+
+#### Key point
 
 The most commonly used join is the left join: you use this whenever you look up additional data from another table, because it preserves the original observations even when there isn’t a match. The left join should be your default join: use it unless you have a strong reason to prefer one of the others.
 
 
 <br>
+<br>
 
 ### Optional exercises (from the R for Data Science chapter)
 
+<br>
 
 1.  Compute the average delay by destination, then join on the `airports`
     data frame so you can show the spatial distribution of delays. Here's an
@@ -120,15 +171,17 @@ The most commonly used join is the left join: you use this whenever you look up 
     You might want to use the `size` or `colour` of the points to display
     the average delay for each airport.
 
-1.  Add the location of the origin _and_ destination (i.e. the `lat` and `lon`)
+<br>
+
+2.  Add the location of the origin _and_ destination (i.e. the `lat` and `lon`)
     to `flights`.
 
-1.  Is there a relationship between the age of a plane and its delays?
-
-
-
-
 <br>
-<br>
+
+3.  Is there a relationship between the age of a plane and its delays?
+
+
+
+
 
 

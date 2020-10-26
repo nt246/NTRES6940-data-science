@@ -387,12 +387,14 @@ $(document).ready(function () {
 <h2>Setup</h2>
 <p>Load the tidyverse</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<p>We will also be practicing joins on data on flights departing NYC in 2013. These are compiled in a package that we will install and load</p>
-<pre class="r"><code>library(nycflights13)  # install.packages(&quot;nycflights13&quot;)</code></pre>
 <p><br></p>
+<p>Today, we will be practicing joins on data on flights departing NYC in 2013. These data are compiled in a package that we will install and load</p>
+<pre class="r"><code>install.packages(&quot;nycflights13&quot;)
+library(nycflights13)  # install.packages(&quot;nycflights13&quot;)</code></pre>
+<p><br> <br></p>
 </div>
-<div id="part-1-relational-data" class="section level2">
-<h2>Part 1: Relational data</h2>
+<div id="relational-data" class="section level2">
+<h2>Relational data</h2>
 <p>From <a href="https://r4ds.had.co.nz/relational-data.html#nycflights13-relational">R for Data Science</a>:</p>
 <p>It’s rare that a data analysis involves only a single table of data. Typically you have many tables of data, and you must combine them to answer the questions that you’re interested in. Collectively, multiple tables of data are called relational data because it is the relations, not just the individual datasets, that are important.</p>
 <p>There are four main types of operations that can be done with two tables:</p>
@@ -403,13 +405,44 @@ $(document).ready(function () {
 <li><p><strong>Set operations</strong>, which treat observations as if they were set elements.</p></li>
 </ul>
 <p>We will only cover the first three today. Let’s click on the links to work through the corresponding section in Jenny Bryan’s STAT 545 notes or Grolemund and Wickham’s R for Data Science.</p>
-<div id="key-point" class="section level3">
-<h3>Key point</h3>
-<p>The most commonly used join is the left join: you use this whenever you look up additional data from another table, because it preserves the original observations even when there isn’t a match. The left join should be your default join: use it unless you have a strong reason to prefer one of the others.</p>
 <p><br></p>
+<div id="row-and-columns-binding" class="section level3">
+<h3>Row and columns binding</h3>
+<p>We’ll play around with the <a href="https://github.com/jennybc/lotr-tidy/blob/master/01-intro.md">Jenny Bryan’s Lord of the Rings Data</a> that we also used in our Tidy Data lecture.</p>
+<p>Let’s load it in</p>
+<pre class="r"><code>fship &lt;- read_csv(&quot;https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Fellowship_Of_The_Ring.csv&quot;)
+
+ttow &lt;- read_csv(&quot;https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Two_Towers.csv&quot;)
+
+rking &lt;- read_csv(&quot;https://raw.githubusercontent.com/jennybc/lotr-tidy/master/data/The_Return_Of_The_King.csv&quot;)
+
+
+# And try binding these separate dataframes together
+
+lotr_untidy &lt;- dplyr::bind_rows(fship, ttow, rking)
+lotr_untidy &lt;- base::rbind(fship, ttow, rking)</code></pre>
+<p><br></p>
+<p>Then we’ll review Jenny Bryan’s overview of <a href="https://stat545.com/multiple-tibbles.html#typology-of-data-combination-tasks">binding</a></p>
+<p><br></p>
+</div>
+<div id="join-functions" class="section level3">
+<h3>Join functions</h3>
+<p>To practice the <code>join</code> functions, we’ll subset the <code>flights</code> dataframe as follows</p>
+<pre class="r"><code>flights2 &lt;- flights %&gt;% 
+  select(year:day, hour, origin, dest, tailnum, carrier)
+flights2</code></pre>
+<p><br></p>
+<p>Then we’ll review Wickham and Grolemund’s overview of <a href="https://r4ds.had.co.nz/relational-data.html#filtering-joins">join functions</a></p>
+<p><br></p>
+<div id="key-point" class="section level4">
+<h4>Key point</h4>
+<p>The most commonly used join is the left join: you use this whenever you look up additional data from another table, because it preserves the original observations even when there isn’t a match. The left join should be your default join: use it unless you have a strong reason to prefer one of the others.</p>
+<p><br> <br></p>
+</div>
 </div>
 <div id="optional-exercises-from-the-r-for-data-science-chapter" class="section level3">
 <h3>Optional exercises (from the R for Data Science chapter)</h3>
+<p><br></p>
 <ol style="list-style-type: decimal">
 <li><p>Compute the average delay by destination, then join on the <code>airports</code> data frame so you can show the spatial distribution of delays. Here’s an easy way to draw a map of the United States:</p>
 <pre class="r"><code>library(maps) #install.packages(&quot;maps&quot;)
@@ -422,10 +455,15 @@ airports %&gt;%
     coord_quickmap()</code></pre>
 <p>(Don’t worry if you don’t understand what <code>semi_join()</code> does — you’ll learn about it next.)</p>
 <p>You might want to use the <code>size</code> or <code>colour</code> of the points to display the average delay for each airport.</p></li>
-<li><p>Add the location of the origin <em>and</em> destination (i.e. the <code>lat</code> and <code>lon</code>) to <code>flights</code>.</p></li>
-<li><p>Is there a relationship between the age of a plane and its delays?</p></li>
 </ol>
-<p><br> <br></p>
+<p><br></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Add the location of the origin <em>and</em> destination (i.e. the <code>lat</code> and <code>lon</code>) to <code>flights</code>.</li>
+</ol>
+<p><br></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Is there a relationship between the age of a plane and its delays?</li>
+</ol>
 </div>
 </div>
 
