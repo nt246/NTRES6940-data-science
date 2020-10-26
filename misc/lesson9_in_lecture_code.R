@@ -14,7 +14,16 @@ rking <- read_csv("https://raw.githubusercontent.com/jennybc/lotr-tidy/master/da
 
 lotr_untidy <- bind_rows(fship, ttow, rking)
 
+base::rbind(fship, ttow, rking)
 
+ttow_nofemales <- ttow %>% 
+  select(Female, Film, Race, Male)
+
+bind_rows(fship, ttow_nofemales, rking)
+
+
+t <- bind_cols(fship, ttow)
+t <- cbind(fship, ttow)
 
 
 
@@ -40,27 +49,31 @@ dim(flights)
 
 flights2 <- flights %>% 
   select(year:day, hour, origin, dest, tailnum, carrier)
-
 flights2
 
 airlines
 
 flights2 %>% 
   left_join(airlines, by = "carrier")
-
+?left_join
 
 weather
 
 flights2 %>% 
   left_join(weather)
 
-
 planes
+Add information about each plane to the data
+
+
 flights2
 
 flights2 %>% 
-  left_join(planes, by = "tailnum")
+  left_join(planes, by = "tailnum", suffix = c("_flight", "_manufacture"))
 
+
+flights2 %>% 
+  left_join(planes)
 
 airports
 flights2
