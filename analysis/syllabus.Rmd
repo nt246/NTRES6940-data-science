@@ -115,7 +115,7 @@ Class# | Date | Topic | Assignments
 11 | Wed 10/21 | [Good coding practices, debugging strategies, and getting help (Guest lecture by Erika Mudrak)](https://nt246.github.io/NTRES6940-data-science/lesson11-debugging-getting-help.html)|
 12 | Mon 10/26 | [Relational data (join functions)](https://nt246.github.io/NTRES6940-data-science/lesson12-relational-data.html) | [Assignment 5 due](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_5.md)
 13 | Wed 10/28 | [Data import, export, and types](https://nt246.github.io/NTRES6940-data-science/lesson13-data-import-and-types.html) |
-14 | Mon 11/2 | Iteration (for loops) and conditional execution | Assignment 6 due
+14 | Mon 11/2 | Iteration (for loops) and conditional execution | [Assignment 6 due](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_6.md)
 15 | Wed 11/4 | Functions part 1 | 
 16 | Mon 11/9 | Functions part 2 | Assignment 7 due
 17 | Wed 11/11 | Student presentations, wrapping up and looking ahead | 
