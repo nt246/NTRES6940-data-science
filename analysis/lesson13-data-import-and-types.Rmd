@@ -49,7 +49,7 @@ library(tidyverse)
 ```
 
 <br>
-
+<br>
 
 ## Relational data
 We'll review how to [define the key columns](https://r4ds.had.co.nz/relational-data.html#join-by) for mutating joins and then we'll discuss [filtering joins](https://r4ds.had.co.nz/relational-data.html#filtering-joins) with the `semi_join()` and `anti_join()` functions.
@@ -97,7 +97,7 @@ library(nycflights13) #install.packages("nycflights13")
 3.  **R4DS exercise 13.4.3:** Is there a relationship between the age of a plane and its delays?
 
 <br>
-
+<br>
 
 ## Recap on tidy data
 
@@ -232,6 +232,28 @@ challenge2 <- read_csv(readr_example("challenge.csv"), guess_max = 1001)
 
 <br>
 
+You might have noticed that readr needed a little help with variable type parsing when we've been reading in our coronavirus dataset
+
+```{r}
+coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv')
+```
+
+<br>
+What is the problem here? 
+
+It will only load properly if we specify that the province column does not contain logicals but is character vector:
+
+```{r}
+coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv', col_types = cols(province = col_character()))
+```
+
+
+<br>
+<br>
+
+
+
+
 ### Converting between data types
 
 #### Parsing numbers
@@ -279,13 +301,34 @@ parse_number("123'456'789", locale = locale(grouping_mark = "'"))
 ```
 
 <br>
+<br>
 
 #### Dates
 
+Dates can be tricky! If you work with date data, I suggest you review chapters [11.3.4](https://r4ds.had.co.nz/data-import.html#readr-datetimes) and [16](https://r4ds.had.co.nz/dates-and-times.html) in R4DS.
+
+<br>
+<br>
+
+#### Converting between data types with `parse_x()` functions
+
+Let's have a look at how to clean up this dataset
+
+```{r}
+mess = read_tsv("../datasets/messy_data.tsv", locale = locale(decimal_mark = ","))
+
+# What happens if we run this without the locale argument?
+```
+
+```{r}
+mess = read_tsv("../datasets/messy_data.tsv", locale = locale(decimal_mark = ","))
+
+# What happens if we run this without the locale argument?
+```
 
 
-#### type_convert()
 
+<br>
 
 #### Data export
 write_csv()
