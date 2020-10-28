@@ -689,6 +689,18 @@ parse_number(&quot;123&#39;456&#39;789&quot;, locale = locale(grouping_mark = &q
 <img src="https://github.com/jennybc/ggplot2-tutorial/blob/master/ggplot2-tutorial-slides/ggplot2-tutorial-slides.050.png?raw=true" alt="" />
 <p class="caption">Slide from Jenny Bryan’s ggplot tutorial <a href="https://github.com/jennybc/ggplot2-tutorial" class="uri">https://github.com/jennybc/ggplot2-tutorial</a></p>
 </div>
+<p><br></p>
+<p>Use <code>ggsave()</code></p>
+<pre class="r"><code>coronavirus %&gt;%  
+  filter(type == &quot;confirmed&quot;) %&gt;% 
+  group_by(date) %&gt;% 
+  summarize(total_cases = sum(cases)) %&gt;% 
+  ggplot(mapping = aes(x = date, y = total_cases)) +
+  geom_line()</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<p><img src="lesson13-data-import-and-types_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<pre class="r"><code>ggsave(filename = &quot;../img/daily_casecounts_plot.png&quot;)</code></pre>
+<pre><code>## Saving 7 x 5 in image</code></pre>
 </div>
 </div>
 </div>
