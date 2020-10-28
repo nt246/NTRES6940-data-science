@@ -312,7 +312,7 @@ Dates can be tricky! If you work with date data, I suggest you review chapters [
 
 #### Converting between data types with `parse_x()` functions
 
-Let's have a look at how to clean up this dataset
+We can use the `parse_x()` functions in combination with `mutate()` to clean up values in a variable. Let's have a look at how to clean up this dataset:
 
 ```{r}
 mess = read_tsv("../datasets/messy_data.tsv", locale = locale(decimal_mark = ","))
@@ -320,16 +320,58 @@ mess = read_tsv("../datasets/messy_data.tsv", locale = locale(decimal_mark = ","
 # What happens if we run this without the locale argument?
 ```
 
+<br>
+
 ```{r}
-mess = read_tsv("../datasets/messy_data.tsv", locale = locale(decimal_mark = ","))
+mess = read_tsv("https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/messy_data.tsv", locale = locale(decimal_mark = ","))
 
 # What happens if we run this without the locale argument?
 ```
 
+Let's clean up the `price` column
+
+```{r}
+mess %>% 
+  mutate(price = parse_number(price))
+```
+
+
+<br>
+<br>
+
+#### Data export
+readr also comes with two useful functions for writing data back to disk: `write_csv()` and `write_tsv()`. Both functions increase the chances of the output file being read back in correctly and also let's you save dataframes with less typing than you often would need to e.g. avoid rownames or quotes with the base-R function `write.table()`
+
+Let's look at an example. Say we wanted to save a summary we had generated a few week ago of the coronavirus data:
+
+```{r}
+coronavirus %>%  
+  filter(type == "confirmed") %>% 
+  group_by(date) %>% 
+  summarize(total_cases = sum(cases)) %>% 
+  write_csv(path = "../datasets/daily_casecount.csv")
+```
+
+<br>
+
+We also briefly talked about how to save plots a few classes ago. To recap here:
+
+![Slide from Jenny Bryan's ggplot tutorial https://github.com/jennybc/ggplot2-tutorial](https://github.com/jennybc/ggplot2-tutorial/blob/master/ggplot2-tutorial-slides/ggplot2-tutorial-slides.050.png?raw=true)
 
 
 <br>
 
-#### Data export
-write_csv()
-rds output save
+Use `ggsave()`
+
+```{r}
+coronavirus %>%  
+  filter(type == "confirmed") %>% 
+  group_by(date) %>% 
+  summarize(total_cases = sum(cases)) %>% 
+  ggplot(mapping = aes(x = date, y = total_cases)) +
+  geom_line()
+  
+ggsave(filename = "../img/daily_casecounts_plot.png")
+
+```
+

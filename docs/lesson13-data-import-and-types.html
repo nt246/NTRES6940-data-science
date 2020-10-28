@@ -388,7 +388,7 @@ $(document).ready(function () {
 <pre><code>## ── Conflicts ────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
-<p><br></p>
+<p><br> <br></p>
 </div>
 <div id="relational-data" class="section level2">
 <h2>Relational data</h2>
@@ -419,7 +419,7 @@ airports %&gt;%
 <ol start="3" style="list-style-type: decimal">
 <li><strong>R4DS exercise 13.4.3:</strong> Is there a relationship between the age of a plane and its delays?</li>
 </ol>
-<p><br></p>
+<p><br> <br></p>
 </div>
 </div>
 <div id="recap-on-tidy-data" class="section level2">
@@ -574,6 +574,31 @@ tail(challenge)</code></pre>
 ##   y = col_date(format = &quot;&quot;)
 ## )</code></pre>
 <p><br></p>
+<p>You might have noticed that readr needed a little help with variable type parsing when we’ve been reading in our coronavirus dataset</p>
+<pre class="r"><code>coronavirus &lt;- read_csv(&#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   date = col_date(format = &quot;&quot;),
+##   province = col_logical(),
+##   country = col_character(),
+##   lat = col_double(),
+##   long = col_double(),
+##   type = col_character(),
+##   cases = col_double()
+## )</code></pre>
+<pre><code>## Warning: 64120 parsing failures.
+##   row      col           expected  actual                                                                                   file
+## 52081 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## 52082 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## 52083 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## 52084 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## 52085 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## ..... ........ .................. ....... ......................................................................................
+## See problems(...) for more details.</code></pre>
+<p><br> What is the problem here?</p>
+<p>It will only load properly if we specify that the province column does not contain logicals but is character vector:</p>
+<pre class="r"><code>coronavirus &lt;- read_csv(&#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;, col_types = cols(province = col_character()))</code></pre>
+<p><br> <br></p>
 </div>
 <div id="converting-between-data-types" class="section level3">
 <h3>Converting between data types</h3>
@@ -610,17 +635,60 @@ parse_number(&quot;123.456.789&quot;, locale = locale(grouping_mark = &quot;.&qu
 <pre class="r"><code># Used in Switzerland
 parse_number(&quot;123&#39;456&#39;789&quot;, locale = locale(grouping_mark = &quot;&#39;&quot;))</code></pre>
 <pre><code>## [1] 123456789</code></pre>
-<p><br></p>
+<p><br> <br></p>
 </div>
 <div id="dates" class="section level4">
 <h4>Dates</h4>
+<p>Dates can be tricky! If you work with date data, I suggest you review chapters <a href="https://r4ds.had.co.nz/data-import.html#readr-datetimes">11.3.4</a> and <a href="https://r4ds.had.co.nz/dates-and-times.html">16</a> in R4DS.</p>
+<p><br> <br></p>
 </div>
-<div id="type_convert" class="section level4">
-<h4>type_convert()</h4>
+<div id="converting-between-data-types-with-parse_x-functions" class="section level4">
+<h4>Converting between data types with <code>parse_x()</code> functions</h4>
+<p>We can use the <code>parse_x()</code> functions in combination with <code>mutate()</code> to clean up values in a variable. Let’s have a look at how to clean up this dataset:</p>
+<pre class="r"><code>mess = read_tsv(&quot;../datasets/messy_data.tsv&quot;, locale = locale(decimal_mark = &quot;,&quot;))</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   item = col_character(),
+##   price = col_character(),
+##   size = col_double()
+## )</code></pre>
+<pre class="r"><code># What happens if we run this without the locale argument?</code></pre>
+<p><br></p>
+<pre class="r"><code>mess = read_tsv(&quot;https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/messy_data.tsv&quot;, locale = locale(decimal_mark = &quot;,&quot;))</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   item = col_character(),
+##   price = col_character(),
+##   size = col_double()
+## )</code></pre>
+<pre class="r"><code># What happens if we run this without the locale argument?</code></pre>
+<p>Let’s clean up the <code>price</code> column</p>
+<pre class="r"><code>mess %&gt;% 
+  mutate(price = parse_number(price))</code></pre>
+<pre><code>## # A tibble: 3 x 3
+##   item  price  size
+##   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 a        45   3.5
+## 2 b         5   2.7
+## 3 c         3   2.9</code></pre>
+<p><br> <br></p>
 </div>
 <div id="data-export" class="section level4">
 <h4>Data export</h4>
-<p>write_csv() rds output save</p>
+<p>readr also comes with two useful functions for writing data back to disk: <code>write_csv()</code> and <code>write_tsv()</code>. Both functions increase the chances of the output file being read back in correctly and also let’s you save dataframes with less typing than you often would need to e.g. avoid rownames or quotes with the base-R function <code>write.table()</code></p>
+<p>Let’s look at an example. Say we wanted to save a summary we had generated a few week ago of the coronavirus data:</p>
+<pre class="r"><code>coronavirus %&gt;%  
+  filter(type == &quot;confirmed&quot;) %&gt;% 
+  group_by(date) %&gt;% 
+  summarize(total_cases = sum(cases)) %&gt;% 
+  write_csv(path = &quot;../datasets/daily_casecount.csv&quot;)</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<p><br></p>
+<p>We also briefly talked about how to save plots a few classes ago. To recap here:</p>
+<div class="figure">
+<img src="https://github.com/jennybc/ggplot2-tutorial/blob/master/ggplot2-tutorial-slides/ggplot2-tutorial-slides.050.png?raw=true" alt="" />
+<p class="caption">Slide from Jenny Bryan’s ggplot tutorial <a href="https://github.com/jennybc/ggplot2-tutorial" class="uri">https://github.com/jennybc/ggplot2-tutorial</a></p>
+</div>
 </div>
 </div>
 </div>
