@@ -400,6 +400,12 @@ div.tocify {
     <li>
       <a href="lesson13-data-import-and-types.html">Lesson 13: Data import and types</a>
     </li>
+    <li>
+      <a href="lesson14-for-loops.html">Lesson 14: Iteration (for loops) and conditional execution</a>
+    </li>
+    <li>
+      <a href="lesson15-functions-part1.html">Lesson 15: Functions, part 1</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -513,12 +519,12 @@ coronavirus &lt;- read_csv(&#39;https://raw.githubusercontent.com/RamiKrispin/co
 
 # Has it been updated? Check the latest date?
 max(coronavirus$date)</code></pre>
-<pre><code>## [1] &quot;2020-10-22&quot;</code></pre>
+<pre><code>## [1] &quot;2020-10-29&quot;</code></pre>
 <p><br> <br></p>
 </div>
 <div id="combining-dplyr-and-ggplot" class="section level2">
 <h2>Combining <code>dplyr</code> and <code>ggplot</code></h2>
-<p>Let’s start with summarizing the total number of cases by type as of the most recent day in the dataset: 2020-10-22. Take a minute to try this for yourself, then you can look at our approach.</p>
+<p>Let’s start with summarizing the total number of cases by type as of the most recent day in the dataset: 2020-10-29. Take a minute to try this for yourself, then you can look at our approach.</p>
 <p><br></p>
 <details>
 <p><summary>click to see our approach</summary></p>
@@ -537,15 +543,15 @@ kable(total_cases)  # kable() just provides a nice output for the table</code></
 <tbody>
 <tr class="odd">
 <td align="left">confirmed</td>
-<td align="right">41695675</td>
+<td align="right">45018354</td>
 </tr>
 <tr class="even">
 <td align="left">death</td>
-<td align="right">1137193</td>
+<td align="right">1181027</td>
 </tr>
 <tr class="odd">
 <td align="left">recovered</td>
-<td align="right">28345817</td>
+<td align="right">30298756</td>
 </tr>
 </tbody>
 </table>
@@ -784,7 +790,7 @@ coronavirus %&gt;%
 <p>Let’s check if we have negative cases.</p>
 <pre class="r"><code>coronavirus %&gt;% 
   filter(cases &lt; 0)</code></pre>
-<pre><code>## # A tibble: 363 x 7
+<pre><code>## # A tibble: 372 x 7
 ##    date       province country               lat   long type      cases
 ##    &lt;date&gt;     &lt;chr&gt;    &lt;chr&gt;               &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
 ##  1 2020-07-03 &lt;NA&gt;     Antigua and Barbuda 17.1  -61.8  confirmed    -1
@@ -797,7 +803,7 @@ coronavirus %&gt;%
 ##  8 2020-07-15 &lt;NA&gt;     Finland             61.9   25.7  confirmed    -5
 ##  9 2020-07-16 &lt;NA&gt;     Finland             61.9   25.7  confirmed    -3
 ## 10 2020-04-18 &lt;NA&gt;     France              46.2    2.21 confirmed   -17
-## # … with 353 more rows</code></pre>
+## # … with 362 more rows</code></pre>
 <pre class="r"><code># Let&#39;s remove those
 coronavirus %&gt;% 
   filter(cases &gt; 0) %&gt;% 
@@ -875,13 +881,13 @@ ggplot(coronavirus_ttd) +
 <pre class="r"><code>ggplot(data = filter(coronavirus_ttd, confirmed &gt; 500000)) +
   geom_label(mapping = aes(x = confirmed, y = death, label = country)) +
   xlim(1000000, max(coronavirus_ttd$confirmed))</code></pre>
-<pre><code>## Warning: Removed 6 rows containing missing values (geom_label).</code></pre>
+<pre><code>## Warning: Removed 7 rows containing missing values (geom_label).</code></pre>
 <p><img src="lesson9-files/unnamed-chunk-31-1.png" /><!-- --></p>
 <p>Or zoom in on that region</p>
 <pre class="r"><code>ggplot(data = filter(coronavirus_ttd)) +
   geom_label(mapping = aes(x = confirmed, y = death, label = country)) +
   xlim(0, 30000)</code></pre>
-<pre><code>## Warning: Removed 82 rows containing missing values (geom_label).</code></pre>
+<pre><code>## Warning: Removed 87 rows containing missing values (geom_label).</code></pre>
 <p><img src="lesson9-files/unnamed-chunk-32-1.png" /><!-- --></p>
 <p><br> <br></p>
 <div id="bonus-spatial-plotting" class="section level3">
