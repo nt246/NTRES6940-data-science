@@ -24,3 +24,4 @@ knitr::opts_chunk$set(echo = TRUE)
 * [Chapters 18-21](https://stat545.com/functions-part1.html) in Jenny Bryan's STAT545 notes
 
 
+

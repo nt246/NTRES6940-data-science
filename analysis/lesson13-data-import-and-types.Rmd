@@ -367,3 +367,4 @@ ggsave(filename = "../img/daily_casecounts_plot.png")
 
 ```
 
+
