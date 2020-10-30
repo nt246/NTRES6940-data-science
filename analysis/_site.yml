@@ -36,6 +36,10 @@ navbar:
       href: lesson12-relational-data.html
     - text: "Lesson 13: Data import and types"
       href: lesson13-data-import-and-types.html
+    - text: "Lesson 14: Iteration (for loops) and conditional execution"
+      href: lesson14-for-loops.html
+    - text: "Lesson 15: Functions, part 1"
+      href: lesson15-functions-part1.html
   - text: Assignments
     href: assignments.html    
 output: 

@@ -6,10 +6,7 @@ output:
     toc: true
 ---
   
-```{r setup, include=FALSE}
-knitr::opts_knit$set(base.dir = "/Users/mariaakopyan/Github/NTRES6940-data-science/docs")
-knitr::opts_chunk$set(echo = TRUE, fig.path="lesson15-files/")
-```
+
 
 <br>
 
