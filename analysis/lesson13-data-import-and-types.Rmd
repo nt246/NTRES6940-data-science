@@ -315,14 +315,6 @@ Dates can be tricky! If you work with date data, I suggest you review chapters [
 We can use the `parse_x()` functions in combination with `mutate()` to clean up values in a variable. Let's have a look at how to clean up this dataset:
 
 ```{r}
-mess = read_tsv("../datasets/messy_data.tsv", locale = locale(decimal_mark = ","))
-
-# What happens if we run this without the locale argument?
-```
-
-<br>
-
-```{r}
 mess = read_tsv("https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/messy_data.tsv", locale = locale(decimal_mark = ","))
 
 # What happens if we run this without the locale argument?

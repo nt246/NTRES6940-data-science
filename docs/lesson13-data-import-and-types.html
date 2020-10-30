@@ -586,13 +586,13 @@ tail(challenge)</code></pre>
 ##   type = col_character(),
 ##   cases = col_double()
 ## )</code></pre>
-<pre><code>## Warning: 64120 parsing failures.
+<pre><code>## Warning: 64349 parsing failures.
 ##   row      col           expected  actual                                                                                   file
-## 52081 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
-## 52082 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
-## 52083 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
-## 52084 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
-## 52085 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## 52548 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## 52549 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## 52550 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## 52551 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## 52552 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
 ## ..... ........ .................. ....... ......................................................................................
 ## See problems(...) for more details.</code></pre>
 <p><br> What is the problem here?</p>
@@ -645,15 +645,6 @@ parse_number(&quot;123&#39;456&#39;789&quot;, locale = locale(grouping_mark = &q
 <div id="converting-between-data-types-with-parse_x-functions" class="section level4">
 <h4>Converting between data types with <code>parse_x()</code> functions</h4>
 <p>We can use the <code>parse_x()</code> functions in combination with <code>mutate()</code> to clean up values in a variable. Let’s have a look at how to clean up this dataset:</p>
-<pre class="r"><code>mess = read_tsv(&quot;../datasets/messy_data.tsv&quot;, locale = locale(decimal_mark = &quot;,&quot;))</code></pre>
-<pre><code>## Parsed with column specification:
-## cols(
-##   item = col_character(),
-##   price = col_character(),
-##   size = col_double()
-## )</code></pre>
-<pre class="r"><code># What happens if we run this without the locale argument?</code></pre>
-<p><br></p>
 <pre class="r"><code>mess = read_tsv(&quot;https://raw.githubusercontent.com/nt246/NTRES6940-data-science/master/datasets/messy_data.tsv&quot;, locale = locale(decimal_mark = &quot;,&quot;))</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -698,7 +689,7 @@ parse_number(&quot;123&#39;456&#39;789&quot;, locale = locale(grouping_mark = &q
   ggplot(mapping = aes(x = date, y = total_cases)) +
   geom_line()</code></pre>
 <pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<p><img src="lesson13-data-import-and-types_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="lesson13-data-import-and-types_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <pre class="r"><code>ggsave(filename = &quot;../img/daily_casecounts_plot.png&quot;)</code></pre>
 <pre><code>## Saving 7 x 5 in image</code></pre>
 </div>
