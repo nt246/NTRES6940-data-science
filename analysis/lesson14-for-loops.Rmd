@@ -65,24 +65,20 @@ Today, we will illustrate the use of `for` loops with an example. We will also u
 
 <br>
 
-## Create an R script
+## Clone repo to get today's exercise sheet
+First, to refresh our memory on RStudio-GitHub integration, let's start by cloning a repo with today's exercise sheet. The repo is located here: https://github.com/nt246/for-loop-exercise
 
-Today we're going to work in an R script. Go to File > New File > R Script (or click the green plus in the top left corner). 
+Clone it to your local machine. Try first to see if you remember how. If you need a reminder of how we do this, revisit [lesson 3](https://nt246.github.io/NTRES6940-data-science/lesson3-version-control.html#clone_your_repository_using_rstudio).
 
-Remember, like in R Markdown, hitting return in an R script does not execute this command. To execute it, we need to get what we typed in the script down into the console. Here is how we can do that:  
+Once you have an RStudio project linked to the `for-loop-exercises` repo, find the file `for-loop-exercises-name.Rmd`. Copy it to your your RStudio project for your own class repo, and change the file name by replacing `name` with your name.
 
-1. copy-paste this line into the console.
+Add a picture as instructed.
 
-2. select the line (or simply put the cursor there), and click 'Run'. This is available from 
+Push your changes to GitHub. If you need a reminder of how we do this, revisit [lesson 3](https://nt246.github.io/NTRES6940-data-science/lesson3-version-control.html#sync_from_rstudio_(local)_to_github_(remote))
 
-    a. the bar above the script (green arrow)
-    b. the menu bar: Code > Run Selected Line(s)
-    c. keyboard shortcut: command-return (Mac) / ctrl-return (Windows)
-    
-3. source the script, which means running the whole thing. This is also great for to see if there are any typos in your code that you've missed. You can do this by:
-    a. clicking Source (blue arrow in the bar above the script).
-    b. typing `source('gapminder-analysis.R')` in the console (or from another R file!). 
+Check your class repo on GitHub (https://github.com/therkildsen-class/ntres-6940-USERNAME [replace USERNAME with your GitHub user name]) to make sure your file shows up.
 
+<br>
 <br>
 
 ## Analysis plan
