@@ -445,7 +445,7 @@ div.tocify {
 <div id="announcements" class="section level2">
 <h2>Announcements</h2>
 <ul>
-<li>Homework 6 due tonight</li>
+<li>Homework 6 due tonight. The final homework will be posted later today and will be due next Monday (Nov 9). We realize that the election makes this week very unusual, so let us know if you need special accommodations.</li>
 </ul>
 <p><br></p>
 </div>
@@ -542,6 +542,7 @@ my_plot &lt;- ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) +
   geom_point() +
   ## add title and save
   labs(title = paste(&quot;Afghanistan&quot;, &quot;GDP per capita&quot;, sep = &quot; &quot;))</code></pre>
+<p><br></p>
 <p>And as a last step, let’s save this figure.</p>
 <pre class="r"><code>## filter the country to plot
 gap_to_plot &lt;- gapminder %&gt;%
@@ -553,8 +554,10 @@ my_plot &lt;- ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) +
   ## add title and save
   labs(title = paste(&quot;Afghanistan&quot;, &quot;GDP per capita&quot;, sep = &quot; &quot;))
 ggsave(filename = &quot;Afghanistan_gdpPercap.png&quot;, plot = my_plot)</code></pre>
+<p><br></p>
 <p>OK. So we can check our repo in the file pane (bottom right of RStudio) and see the generated figure:</p>
-<p><img src="assets/Afghanistan_gdpPercap.png" /> <br> <br></p>
+<p><img src="assets/Afghanistan_gdpPercap.png" width="50%" /></p>
+<p><br> <br></p>
 <div id="thinking-ahead-cleaning-up-our-code" class="section level3">
 <h3>Thinking ahead: cleaning up our code</h3>
 <p>Now, in our code above, we’ve had to write out “Afghanistan” several times. This makes it not only typo-prone as we type it each time, but if we wanted to plot another country, we’d have to write that in 3 places too. It is not setting us up for an easy time in our future, and thinking ahead in programming is something to keep in mind.</p>
@@ -577,6 +580,7 @@ my_plot &lt;- ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) +
   labs(title = paste(cntry, &quot;GDP per capita&quot;, sep = &quot; &quot;))
 ## note: there are many ways to create filenames with paste() or file.path(); we are doing this way for a reason.
 ggsave(filename = paste(cntry, &quot;_gdpPercap.png&quot;, sep = &quot;&quot;), plot = my_plot)</code></pre>
+<p><br></p>
 <p>Let’s run this. Great! it saved our figure (I can tell this because the timestamp in the Files pane has updated!)</p>
 <p><br></p>
 </div>
@@ -591,7 +595,7 @@ ggsave(filename = paste(cntry, &quot;_gdpPercap.png&quot;, sep = &quot;&quot;), 
 }</code></pre>
 <p>Note the <code>( )</code> and the <code>{ }</code>. We talk about iterating through each item in the <code>for</code> loop, which makes each item an iterator.</p>
 <p>So looking back at our Afghanistan code: all of this is pretty much the “do a thing” part. And we can see that there are only a few places that are specific to Afghanistan. If we could make those places not specific to Afghanistan, we would be set.</p>
-<p><img src="assets/for_loop_logic.png" /></p>
+<p><img src="assets/for_loop_logic.png" /> <br></p>
 <p>Let’s paste from what we had before, and modify it. I’m also going to use RStudio’s indentation help to indent the lines within the <code>for</code> loop by highlighting the code in this chunk and going to Code &gt; Reindent Lines (shortcut: command I)</p>
 <pre class="r"><code>## create country variable
 cntry &lt;- &quot;Afghanistan&quot;
@@ -632,6 +636,7 @@ for (cntry in country_list) {
   
   ggsave(filename = paste(cntry, &quot;_gdpPercap.png&quot;, sep = &quot;&quot;), plot = my_plot)
 }</code></pre>
+<p><br></p>
 <p>At this point, we do have a functioning <code>for</code> loop. For each item in the <code>country_list</code>, the <code>for</code> loop will iterate over the code within the <code>{ }</code>, changing <code>cntry</code> each time as it goes through the list. And we can see it works because we can see them appear in the files pane at the bottom right of RStudio!</p>
 <p>Great! And it doesn’t matter if we just use these three countries or all the countries–let’s try it.</p>
 <p>But first let’s create a figure directory and make sure it saves there since it’s going to get out of hand quickly. We could do this from the Finder/Windows Explorer, or from the “Files” pane in RStudio by clicking “New Folder” (green plus button). But we are going to do it in R. A folder is called a directory:</p>
@@ -718,6 +723,7 @@ for (cntry in country_list) { # (cntry = country_list[1])
 <h2>Conditional statements with <code>if</code> and <code>else</code></h2>
 <p>Often when we’re coding we want to control the flow of our actions. This can be done by setting actions to occur only if a condition or a set of conditions are met.</p>
 <p>In R and other languages, these are called “if statements”.</p>
+<p><br></p>
 <div id="if-statement-basic-structure" class="section level3">
 <h3>if statement basic structure</h3>
 <pre class="r"><code># if
@@ -730,18 +736,11 @@ if (condition is true) {
 } else {  # that is, if the condition is false,
   do something different
 }</code></pre>
+<p><br></p>
 <p>Let’s bring this concept into our <code>for</code> loop for Europe that we’ve just created. What if we want to add the label “Estimated” to countries for which the figures were estimated rather than based on official reported statistics? Here’s what we’d do.</p>
 <p>First, import csv file with information on whether data was estimated or reported, and join to gapminder dataset:</p>
-<pre class="r"><code>est &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv&#39;)</code></pre>
-<pre><code>## Parsed with column specification:
-## cols(
-##   country = col_character(),
-##   estimated = col_character()
-## )</code></pre>
-<pre class="r"><code>gapminder_est &lt;- left_join(gapminder, est)</code></pre>
-<pre><code>## Joining, by = &quot;country&quot;</code></pre>
-<pre><code>## Warning: Column `country` joining factor and character vector, coercing into
-## character vector</code></pre>
+<pre class="r"><code>est &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv&#39;)
+gapminder_est &lt;- left_join(gapminder, est)</code></pre>
 <pre class="r"><code>dir.create(&quot;figures&quot;) 
 dir.create(&quot;figures/Europe&quot;) 
 
@@ -892,9 +891,6 @@ if (any(gap_to_plot$estimated == &quot;yes&quot;)) { # any() will return a singl
       labs(subtitle = &quot;Reported data&quot;)
     
   }</code></pre>
-<pre><code>## Warning: Unknown or uninitialised column: &#39;estimated&#39;.
-
-## Warning: Unknown or uninitialised column: &#39;estimated&#39;.</code></pre>
 <p>This construction is necessary if you have more than two conditions to test for.</p>
 <p><br> <br></p>
 <p>We can also add the conditional addition of the plot subtitle with R’s <code>ifelse()</code> function. It works like this</p>

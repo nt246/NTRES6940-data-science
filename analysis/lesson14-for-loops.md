@@ -24,7 +24,7 @@ We will be working through [this tutorial](http://ohi-science.org/data-science-t
 <br>
 
 ## Announcements
-* Homework 6 due tonight
+* Homework 6 due tonight. The final homework will be posted later today and will be due next Monday (Nov 9). We realize that the election makes this week very unusual, so let us know if you need special accommodations.
 
 <br>
 
@@ -163,6 +163,8 @@ my_plot <- ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) +
   labs(title = paste("Afghanistan", "GDP per capita", sep = " "))
 ```
 
+<br>
+
 And as a last step, let's save this figure. 
 
 
@@ -179,10 +181,12 @@ my_plot <- ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) +
 ggsave(filename = "Afghanistan_gdpPercap.png", plot = my_plot)
 ```
 
+<br>
 
 OK. So we can check our repo in the file pane (bottom right of RStudio) and see the generated figure:
 
-![](assets/Afghanistan_gdpPercap.png)
+<img src="assets/Afghanistan_gdpPercap.png" width="50%" />
+
 <br>
 <br>
 
@@ -220,6 +224,8 @@ my_plot <- ggplot(data = gap_to_plot, aes(x = year, y = gdpPercap)) +
 ggsave(filename = paste(cntry, "_gdpPercap.png", sep = ""), plot = my_plot)
 ```
 
+<br>
+
 Let's run this. Great! it saved our figure (I can tell this because the timestamp in the Files pane has updated!)
 
 <br>
@@ -244,6 +250,7 @@ Note the `( )` and the `{ }`. We talk about iterating through each item in the `
 So looking back at our Afghanistan code: all of this is pretty much the "do a thing" part. And we can see that there are only a few places that are specific to Afghanistan. If we could make those places not specific to Afghanistan, we would be set. 
 
 ![](assets/for_loop_logic.png)
+<br>
 
 Let's paste from what we had before, and modify it. I'm also going to use RStudio's indentation help to indent the lines within the `for` loop by highlighting the code in this chunk and going to Code > Reindent Lines (shortcut: command I)
 
@@ -293,6 +300,8 @@ for (cntry in country_list) {
   ggsave(filename = paste(cntry, "_gdpPercap.png", sep = ""), plot = my_plot)
 }
 ```
+
+<br>
 
 At this point, we do have a functioning `for` loop. For each item in the `country_list`, the `for` loop will iterate over the code within the `{ }`, changing `cntry` each time as it goes through the list. And we can see it works because we can see them appear in the files pane at the bottom right of RStudio!
 
@@ -396,6 +405,8 @@ by setting actions to occur only if a condition or a set of conditions are met.
 
 In R and other languages, these are called "if statements". 
 
+<br>
+
 ### if statement basic structure
 
 
@@ -412,6 +423,8 @@ if (condition is true) {
 }
 ```
 
+<br>
+
 Let's bring this concept into our `for` loop for Europe that we've just created. What if we want to add the label "Estimated" to countries for which the figures were estimated rather than based on official reported statistics? Here's what we'd do.
 
 First, import csv file with information on whether data was estimated or reported, and join to gapminder dataset:
@@ -419,27 +432,7 @@ First, import csv file with information on whether data was estimated or reporte
 
 ```r
 est <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv')
-```
-
-```
-## Parsed with column specification:
-## cols(
-##   country = col_character(),
-##   estimated = col_character()
-## )
-```
-
-```r
 gapminder_est <- left_join(gapminder, est)
-```
-
-```
-## Joining, by = "country"
-```
-
-```
-## Warning: Column `country` joining factor and character vector, coercing into
-## character vector
 ```
 
 
@@ -609,12 +602,6 @@ Note that this works because we know there are only two conditions, `Estimated =
       labs(subtitle = "Reported data")
     
   }
-```
-
-```
-## Warning: Unknown or uninitialised column: 'estimated'.
-
-## Warning: Unknown or uninitialised column: 'estimated'.
 ```
 
 This construction is necessary if you have more than two conditions to test for.
