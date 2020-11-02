@@ -733,6 +733,8 @@ if (condition is true) {
 ## )</code></pre>
 <pre class="r"><code>gapminder_est &lt;- left_join(gapminder, est)</code></pre>
 <pre><code>## Joining, by = &quot;country&quot;</code></pre>
+<pre><code>## Warning: Column `country` joining factor and character vector, coercing into
+## character vector</code></pre>
 <pre class="r"><code>dir.create(&quot;figures&quot;) 
 dir.create(&quot;figures/Europe&quot;) 
 ## create a list of countries
@@ -872,9 +874,9 @@ for( cntry in country_list ){ # (cntry = country_list[1])
     print(paste(cntry, &quot;data are reported&quot;))
     
   }</code></pre>
-<pre><code>## Warning: Unknown or uninitialised column: `estimated`.
+<pre><code>## Warning: Unknown or uninitialised column: &#39;estimated&#39;.
 
-## Warning: Unknown or uninitialised column: `estimated`.</code></pre>
+## Warning: Unknown or uninitialised column: &#39;estimated&#39;.</code></pre>
 <p>This construction is necessary if you have more than two conditions to test for.</p>
 <p><br></p>
 <p>We can also add the conditional addition of the plot subtitle with R’s <code>ifelse()</code> function. It works like this</p>
@@ -973,7 +975,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

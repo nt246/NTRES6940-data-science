@@ -433,6 +433,11 @@ gapminder_est <- left_join(gapminder, est)
 ## Joining, by = "country"
 ```
 
+```
+## Warning: Column `country` joining factor and character vector, coercing into
+## character vector
+```
+
 
 ```r
 dir.create("figures") 
@@ -592,9 +597,9 @@ Note that this works because we know there are only two conditions, `Estimated =
 ```
 
 ```
-## Warning: Unknown or uninitialised column: `estimated`.
+## Warning: Unknown or uninitialised column: 'estimated'.
 
-## Warning: Unknown or uninitialised column: `estimated`.
+## Warning: Unknown or uninitialised column: 'estimated'.
 ```
 
 This construction is necessary if you have more than two conditions to test for.
