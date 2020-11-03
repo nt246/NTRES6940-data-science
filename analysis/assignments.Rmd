@@ -49,5 +49,6 @@ Each week, we will assign a problem set that applies the concepts covered in cla
 
 ***
 
-### Assignment 7  
+### Assignment 7   
+#### [Iteration (for loops) and functions](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_7.md)
 >Due Mon 11/9 by 10pm EDT  
