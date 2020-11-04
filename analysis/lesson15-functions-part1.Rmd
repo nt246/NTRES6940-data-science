@@ -50,7 +50,7 @@ By the end of today's class, you should be able to:
 ## Getting back to where we were
 We will continue working with the gapminder dataset, so let's first load that back in, along with the tidyverse.
 
-```{r, eval = TRUE}
+```{r, eval = FALSE}
 
 library(tidyverse)
 library(gapminder) #install.packages("gapminder")
@@ -284,6 +284,8 @@ if (any(gap_to_plot$estimated == "yes")) { # any() will return a single TRUE or 
 } 
 ```
 
+<br> 
+
 Note that this works because we know there are only two conditions, `Estimated == yes` and `Estimated == no`. In the first `if` statement we asked for estimated data, and the `else` condition gives us everything else (which we know is reported). We can be explicit about setting these conditions in the `else` clause by instead using an `else if` statement. Below is how you would construct this in your `for` loop, similar to above:
 
 ```{r, eval = FALSE}
@@ -356,7 +358,7 @@ for (cntry in country_list) { # (cntry = country_list[1])
 <br>
 
 
-## Looping with an index & storing results
+## Looping with an index and storing results
 In the example we've been using to build a for loop together, we've been iterating over a list of countries (in turn assigning each of these to our cntry object). You may often see for loops iterating over a numerical index, often using `i` as the object that in turn gets assigned each number from a sequence. Here is an example:
 
 ```{r, eval = FALSE}
@@ -452,7 +454,7 @@ for (cntry in country_list) { # (cntry = country_list[1])
 
 Now, we can change this into a function in the following way:
 
-![](assets/for_loop_logic.png)
+![](assets/for_loop_to_function.png)
 
 <br>
 
@@ -633,7 +635,7 @@ ggsave(filename = "figures/Europe/Germany_gdpPercap.pdf", plot = my_plot)
 
 <br>
 
-Now, add an argument to our function that specifies the file type you want for the plot and edit the function so that it will output the requested file type. You can also specify a default file type that the function will use if you don't specify a file type when you call it.
+**Your task:** Add an argument to our function that specifies the file type you want for the plot and edit the function so that it will output the requested file type. You can also specify a default file type that the function will use if you don't specify a file type when you call it.
 
 If you have more time, you can also add an additional argument that specifies the plot type (x-y scatter, line plot etc) and adjust the function to accommodate this.
 
