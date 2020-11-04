@@ -96,7 +96,7 @@ We will use a subset of the gapminder data included in the R package `gapminder`
 
 ```r
 library(tidyverse)
-library(gapminder) #install.pagkages("gapminder")
+library(gapminder) #install.packages("gapminder")
 
 gapminder
 ```
@@ -348,7 +348,7 @@ OK we now have 142 figures that we just created. They exist locally on our compu
 
 1. Modify our `for` loop so that it: 
     - loops through countries in Europe only
-    - plots the sum of gdpPercap and population size per year (should approximate the total GDP)
+    - plots the product of gdpPercap and population size per year (should approximate the total GDP)
     - saves them to a new subfolder inside the (recreated) figures folder called "Europe".
 1. Sync to GitHub
 

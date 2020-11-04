@@ -495,7 +495,7 @@ div.tocify {
 <p><br></p>
 <p>We will use a subset of the gapminder data included in the R package <code>gapminder</code>. So first we need to install that package and load it, along with the tidyverse. Then have a look at the data in <code>gapminder</code></p>
 <pre class="r"><code>library(tidyverse)
-library(gapminder) #install.pagkages(&quot;gapminder&quot;)
+library(gapminder) #install.packages(&quot;gapminder&quot;)
 
 gapminder</code></pre>
 <pre><code>## # A tibble: 1,704 x 6
@@ -674,7 +674,7 @@ for (cntry in country_list) {
 <li>Modify our <code>for</code> loop so that it:
 <ul>
 <li>loops through countries in Europe only</li>
-<li>plots the sum of gdpPercap and population size per year (should approximate the total GDP)</li>
+<li>plots the product of gdpPercap and population size per year (should approximate the total GDP)</li>
 <li>saves them to a new subfolder inside the (recreated) figures folder called “Europe”.</li>
 </ul></li>
 <li>Sync to GitHub</li>
