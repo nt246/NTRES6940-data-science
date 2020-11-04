@@ -357,19 +357,52 @@ for (cntry in country_list) { # (cntry = country_list[1])
 
 
 ## Looping with an index & storing results
+In the example we've been using to build a for loop together, we've been iterating over a list of countries (in turn assigning each of these to our cntry object). You may often see for loops iterating over a numerical index, often using `i` as the object that in turn gets assigned each number from a sequence. Here is an example:
 
-paste("Part_", i)
+```{r, eval = FALSE}
 
+for (i in 1:10) {
+  print(paste("Part_", i, sep = ""))
+}
 
-file type what to print
+```
+<br>
 
-dir.create("figures") 
-dir.create("figures/function") 
+As another example, last class, we needed to calculate the product of gdpPercap and population size for each year and each country. We did this efficiently in a single step for all years and countries with a `mutate(), prior to defining our loop or function. 
 
+```{r, eval = FALSE}
 
-Calculate the GDP
+gap_europe <- gapminder_est %>%  # Here we use the gapminder_est that includes information on whether data were estimated
+  filter(continent == "Europe") %>%
+  mutate(gdpTot = gdpPercap * pop)
 
+```
 
+<br>
+
+A (not very computationally efficient) alternative would be to do this calculation for a specific country with a `for` loop and using square bracket indexing to select the i'th element of a vector.
+
+```{r, eval = FALSE}
+
+gapminder$gdpTot = vector(length = nrow(gapminder))
+
+for (i in 1:nrow(gapminder)) {
+  gapminder$gdpTot[i] <- gapminder$gdpPercap[i] * gapminder$pop[i]
+} 
+
+```
+
+<br>
+
+To understand how this loop is working exactly the same way as our previous loop, have a look of the list of elements `1:nrow(gapminder)` that we loop over.
+
+```{r, eval = FALSE}
+
+1:nrow(gapminder)
+
+```
+
+You see that this just gives a vector of integers from 1 to the number of rows in the gapminder data. Each of these numbers in turn get assigned to i as we run through the loop.
 
 
 <br>
