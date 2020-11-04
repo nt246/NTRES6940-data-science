@@ -99,7 +99,7 @@ We will use a subset of the gapminder data included in the R package `gapminder`
 ```{r, message=FALSE, warning=FALSE}
 
 library(tidyverse)
-library(gapminder) #install.pagkages("gapminder")
+library(gapminder) #install.packages("gapminder")
 
 gapminder
 
