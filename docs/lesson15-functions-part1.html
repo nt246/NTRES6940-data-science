@@ -457,7 +457,7 @@ div.tocify {
 </div>
 <div id="todays-learning-objectives" class="section level2">
 <h2>Today’s learning objectives</h2>
-<p>Today, we will will first wrap up our coverage of for loops and then briefly introduce functions in R.</p>
+<p>Today, we will first wrap up our coverage of for loops and then briefly introduce functions in R.</p>
 <p>By the end of today’s class, you should be able to:</p>
 <ul>
 <li>Write a <code>for</code> loop to repeat operations on different input</li>
@@ -913,9 +913,7 @@ ggsave(filename = &quot;figures/Europe/Germany_gdpPercap.pdf&quot;, plot = my_pl
 <div id="answer" class="section level4">
 <h4>Answer</h4>
 <details>
-<summary>
-click to see our approach
-</summary>
+<p><summary>click to see our approach</summary></p>
 <pre class="r"><code>dir.create(&quot;figures&quot;) 
 dir.create(&quot;figures/Europe&quot;) 
 
@@ -1002,7 +1000,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0

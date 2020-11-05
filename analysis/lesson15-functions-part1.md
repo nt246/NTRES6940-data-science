@@ -33,7 +33,7 @@ output:
 <br>
 
 ## Today's learning objectives
-Today, we will will first wrap up our coverage of for loops and then briefly introduce functions in R.
+Today, we will first wrap up our coverage of for loops and then briefly introduce functions in R.
 
 By the end of today's class, you should be able to:
 
