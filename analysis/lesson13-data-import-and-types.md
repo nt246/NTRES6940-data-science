@@ -49,7 +49,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ───────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+## ── Attaching packages ──────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ```
 
 ```
@@ -60,7 +60,7 @@ library(tidyverse)
 ```
 
 ```
-## ── Conflicts ──────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ─────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 ```
@@ -363,13 +363,13 @@ coronavirus <- read_csv('https://raw.githubusercontent.com/RamiKrispin/coronavir
 ```
 
 ```
-## Warning: 64578 parsing failures.
+## Warning: 65723 parsing failures.
 ##   row      col           expected  actual                                                                                   file
-## 52735 province 1/0/T/F/TRUE/FALSE Alberta 'https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv'
-## 52736 province 1/0/T/F/TRUE/FALSE Alberta 'https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv'
-## 52737 province 1/0/T/F/TRUE/FALSE Alberta 'https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv'
-## 52738 province 1/0/T/F/TRUE/FALSE Alberta 'https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv'
-## 52739 province 1/0/T/F/TRUE/FALSE Alberta 'https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv'
+## 53957 province 1/0/T/F/TRUE/FALSE Alberta 'https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv'
+## 53958 province 1/0/T/F/TRUE/FALSE Alberta 'https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv'
+## 53959 province 1/0/T/F/TRUE/FALSE Alberta 'https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv'
+## 53960 province 1/0/T/F/TRUE/FALSE Alberta 'https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv'
+## 53961 province 1/0/T/F/TRUE/FALSE Alberta 'https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv'
 ## ..... ........ .................. ....... ......................................................................................
 ## See problems(...) for more details.
 ```
