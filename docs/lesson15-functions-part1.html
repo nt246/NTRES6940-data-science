@@ -913,7 +913,9 @@ ggsave(filename = &quot;figures/Europe/Germany_gdpPercap.pdf&quot;, plot = my_pl
 <div id="answer" class="section level4">
 <h4>Answer</h4>
 <details>
-<p><summary>click to see our approach</summary></p>
+<summary>
+click to see our approach
+</summary>
 <pre class="r"><code>dir.create(&quot;figures&quot;) 
 dir.create(&quot;figures/Europe&quot;) 
 
@@ -1000,7 +1002,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
