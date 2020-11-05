@@ -406,6 +406,9 @@ div.tocify {
     <li>
       <a href="lesson15-functions-part1.html">Lesson 15: Functions, part 1</a>
     </li>
+    <li>
+      <a href="lesson16-functions-part2-plus-factors.html">Lesson 16: Functions, part 2 and Factors</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -462,12 +465,12 @@ div.tocify {
 <div id="loading-libraries" class="section level2">
 <h2>Loading libraries</h2>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ───────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
 <pre><code>## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
 ## ✓ tibble  2.1.3     ✓ dplyr   0.8.3
 ## ✓ tidyr   1.0.0     ✓ stringr 1.4.0
 ## ✓ readr   1.3.1     ✓ forcats 0.4.0</code></pre>
-<pre><code>## ── Conflicts ──────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <p><br> <br></p>
@@ -534,7 +537,7 @@ airports %&gt;%
 ##   Words = col_double()
 ## )</code></pre>
 <p><br></p>
-<p><code>read_csv()</code> uses the first line of the data for the column names, which is a very common convention. We can play around with tweaking our local copy of the data file to make use of the options for tweaking this behavior. For example, if there are a few lines of metadata at the top of the file, we can use <code>skip = n</code> to skip the first n lines; or use <code>comment = &quot;#&quot;</code> to drop all lines that start with (e.g.) #. When the data do not have column names, we can use <code>col_names = FALSE</code> to tell <code>read_csv()</code> not to treat the first row as headings, and instead label them sequentially from <code>X1</code> to <code>Xn</code>.</p>
+<p><code>read_csv()</code> uses the first line of the data for the column names, which is a very common convention. We can play around with tweaking our local copy of the data file to make use of the options for tweaking this behavior. For example, if there are a few lines of metadata at the top of the file, we can use <code>skip = n</code> to skip the first n lines; or use <code>comment = "#"</code> to drop all lines that start with (e.g.) #. When the data do not have column names, we can use <code>col_names = FALSE</code> to tell <code>read_csv()</code> not to treat the first row as headings, and instead label them sequentially from <code>X1</code> to <code>Xn</code>.</p>
 <p><br></p>
 </div>
 <div id="why-use-the-tidyversereadr-import-functions-instead-of-base-r" class="section level3">
@@ -668,13 +671,13 @@ tail(challenge)</code></pre>
 ##   type = col_character(),
 ##   cases = col_double()
 ## )</code></pre>
-<pre><code>## Warning: 64578 parsing failures.
+<pre><code>## Warning: 65723 parsing failures.
 ##   row      col           expected  actual                                                                                   file
-## 52735 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
-## 52736 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
-## 52737 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
-## 52738 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
-## 52739 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## 53957 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## 53958 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## 53959 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## 53960 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
+## 53961 province 1/0/T/F/TRUE/FALSE Alberta &#39;https://raw.githubusercontent.com/RamiKrispin/coronavirus/master/csv/coronavirus.csv&#39;
 ## ..... ........ .................. ....... ......................................................................................
 ## See problems(...) for more details.</code></pre>
 <p><br> What is the problem here?</p>
@@ -758,7 +761,7 @@ parse_number(&quot;123&#39;456&#39;789&quot;, locale = locale(grouping_mark = &q
 <p><br></p>
 <p>We also briefly talked about how to save plots a few classes ago. To recap here:</p>
 <div class="figure">
-<img src="https://github.com/jennybc/ggplot2-tutorial/blob/master/ggplot2-tutorial-slides/ggplot2-tutorial-slides.050.png?raw=true" alt="Slide from Jenny Bryan’s ggplot tutorial https://github.com/jennybc/ggplot2-tutorial" />
+<img src="https://github.com/jennybc/ggplot2-tutorial/blob/master/ggplot2-tutorial-slides/ggplot2-tutorial-slides.050.png?raw=true" alt="" />
 <p class="caption">Slide from Jenny Bryan’s ggplot tutorial <a href="https://github.com/jennybc/ggplot2-tutorial" class="uri">https://github.com/jennybc/ggplot2-tutorial</a></p>
 </div>
 <p><br></p>
