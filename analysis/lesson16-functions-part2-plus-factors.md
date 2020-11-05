@@ -1,5 +1,5 @@
 ---
-title: "Lesson 15: Functions Part 2 and Factors in R"
+title: "Lesson 16: Functions Part 2 and Factors in R"
 output: 
   html_document:
     keep_md: yes 

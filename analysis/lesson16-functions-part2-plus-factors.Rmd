@@ -1,5 +1,5 @@
 ---
-title: "Lesson 15: Functions Part 2 and Factors in R"
+title: "Lesson 16: Functions Part 2 and Factors in R"
 output: 
   html_document:
     keep_md: yes 
@@ -8,7 +8,7 @@ output:
   
 ```{r setup, include=FALSE}
 knitr::opts_knit$set(base.dir = "/Users/mariaakopyan/Github/NTRES6940-data-science/docs")
-knitr::opts_chunk$set(echo = TRUE, fig.path="lesson15-files/")
+knitr::opts_chunk$set(echo = TRUE, fig.path="lesson16-files/")
 ```
 
 <br>
