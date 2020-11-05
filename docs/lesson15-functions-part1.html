@@ -469,32 +469,10 @@ div.tocify {
 <div id="getting-back-to-where-we-were" class="section level2">
 <h2>Getting back to where we were</h2>
 <p>We will continue working with the gapminder dataset, so let’s first load that back in, along with the tidyverse.</p>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
-## ✓ tibble  3.0.3     ✓ dplyr   1.0.2
-## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-## ✓ readr   1.3.1     ✓ forcats 0.5.0</code></pre>
-<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(gapminder) #install.packages(&quot;gapminder&quot;)
+<pre class="r"><code>library(tidyverse)
+library(gapminder) #install.packages(&quot;gapminder&quot;)
 
 gapminder</code></pre>
-<pre><code>## # A tibble: 1,704 x 6
-##    country     continent  year lifeExp      pop gdpPercap
-##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
-##  1 Afghanistan Asia       1952    28.8  8425333      779.
-##  2 Afghanistan Asia       1957    30.3  9240934      821.
-##  3 Afghanistan Asia       1962    32.0 10267083      853.
-##  4 Afghanistan Asia       1967    34.0 11537966      836.
-##  5 Afghanistan Asia       1972    36.1 13079460      740.
-##  6 Afghanistan Asia       1977    38.4 14880372      786.
-##  7 Afghanistan Asia       1982    39.9 12881816      978.
-##  8 Afghanistan Asia       1987    40.8 13867957      852.
-##  9 Afghanistan Asia       1992    41.7 16317921      649.
-## 10 Afghanistan Asia       1997    41.8 22227415      635.
-## # … with 1,694 more rows</code></pre>
 <p><br> <br></p>
 <p>During our last class, we had developed the following <code>for</code> loop that would save a separate plot total GDP over time for each country in Europe.</p>
 <pre class="r"><code>dir.create(&quot;figures&quot;) 
@@ -548,7 +526,7 @@ if (condition is true) {
 <p><br></p>
 <p>Let’s bring this concept into our <code>for</code> loop for Europe that we’ve just created. What if we want to add the label “Estimated” to countries for which the figures were estimated rather than based on official reported statistics? Here’s what we’d do.</p>
 <p>First, import csv file with information on whether data was estimated or reported, and join to gapminder dataset:</p>
-<pre class="r"><code>est &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv&#39;)
+<pre class="r"><code>est &lt;- read_csv(&quot;https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv&quot;)
 gapminder_est &lt;- left_join(gapminder, est)</code></pre>
 <pre class="r"><code>dir.create(&quot;figures&quot;) 
 dir.create(&quot;figures/Europe&quot;) 
@@ -685,6 +663,7 @@ if (any(gap_to_plot$estimated == &quot;yes&quot;)) { # any() will return a singl
          plot = my_plot)
   
 } </code></pre>
+<p><br></p>
 <p>Note that this works because we know there are only two conditions, <code>Estimated == yes</code> and <code>Estimated == no</code>. In the first <code>if</code> statement we asked for estimated data, and the <code>else</code> condition gives us everything else (which we know is reported). We can be explicit about setting these conditions in the <code>else</code> clause by instead using an <code>else if</code> statement. Below is how you would construct this in your <code>for</code> loop, similar to above:</p>
 <pre class="r"><code>  if (any(gap_to_plot$estimated == &quot;yes&quot;)) { # any() will return a single TRUE or FALSE
     
@@ -737,8 +716,8 @@ for (cntry in country_list) { # (cntry = country_list[1])
 <p><br> <br></p>
 </div>
 </div>
-<div id="looping-with-an-index-storing-results" class="section level2">
-<h2>Looping with an index &amp; storing results</h2>
+<div id="looping-with-an-index-and-storing-results" class="section level2">
+<h2>Looping with an index and storing results</h2>
 <p>In the example we’ve been using to build a for loop together, we’ve been iterating over a list of countries (in turn assigning each of these to our cntry object). You may often see for loops iterating over a numerical index, often using <code>i</code> as the object that in turn gets assigned each number from a sequence. Here is an example:</p>
 <pre class="r"><code>for (i in 1:10) {
   print(paste(&quot;Part_&quot;, i, sep = &quot;&quot;))
@@ -750,7 +729,7 @@ for (cntry in country_list) { # (cntry = country_list[1])
   mutate(gdpTot = gdpPercap * pop)</code></pre>
 <p><br></p>
 <p>A (not very computationally efficient) alternative would be to do this calculation for a specific country with a <code>for</code> loop and using square bracket indexing to select the i’th element of a vector.</p>
-<pre class="r"><code>gapminder$gdpTot = vector(length = nrow(gapminder))
+<pre class="r"><code>gapminder$gdpTot &lt;-  vector(length = nrow(gapminder))
 
 for (i in 1:nrow(gapminder)) {
   gapminder$gdpTot[i] &lt;- gapminder$gdpPercap[i] * gapminder$pop[i]
@@ -796,7 +775,7 @@ for (cntry in country_list) { # (cntry = country_list[1])
 } </code></pre>
 <p><br> <br></p>
 <p>Now, we can change this into a function in the following way:</p>
-<p><img src="assets/for_loop_logic.png" /></p>
+<p><img src="assets/for_loop_to_function.png" /></p>
 <p><br></p>
 <p>Here is our function:</p>
 <pre class="r"><code>dir.create(&quot;figures&quot;) 
@@ -808,7 +787,7 @@ gap_europe &lt;- gapminder %&gt;%
   mutate(gdpTot = gdpPercap * pop)
 
 #define our function
-print_plot &lt;- function(cntry) {
+save_plot &lt;- function(cntry) {
   
   ## filter the country to plot
   gap_to_plot &lt;- gap_europe %&gt;%
@@ -827,8 +806,8 @@ print_plot &lt;- function(cntry) {
 } </code></pre>
 <p><br></p>
 <p>We can not run this function on specific countries</p>
-<pre class="r"><code>print_plot(&quot;Germany&quot;)
-print_plot(&quot;France&quot;)
+<pre class="r"><code>save_plot(&quot;Germany&quot;)
+save_plot(&quot;France&quot;)
 
 # We can even write a for loop to run the function on each country in a list of countries (doing exactly the same as our for loop did before, but now we have pulled the code specifying the operation out of the for loop itself)
 
@@ -836,7 +815,7 @@ country_list &lt;- unique(gap_europe$country) # ?unique() returns the unique val
 
 for (cntry in country_list) {
   
-  print_plot(cntry)
+  save_plot(cntry)
   
 }</code></pre>
 <p><br></p>
@@ -850,7 +829,7 @@ gap_europe &lt;- gapminder %&gt;%
   mutate(gdpTot = gdpPercap * pop)
 
 #define our function
-print_plot &lt;- function(cntry, stat) {   # Here I&#39;m adding an additional argument to the function, which we&#39;ll use to specify what statistic we want plotted
+save_plot &lt;- function(cntry, stat) {   # Here I&#39;m adding an additional argument to the function, which we&#39;ll use to specify what statistic we want plotted
   
   ## filter the country to plot
   gap_to_plot &lt;- gap_europe %&gt;%
@@ -871,15 +850,15 @@ print_plot &lt;- function(cntry, stat) {   # Here I&#39;m adding an additional a
 
 # Let&#39;s try calling the function with different statistics and check the outputs
 
-print_plot(&quot;Germany&quot;, &quot;gdpPercap&quot;)
-print_plot(&quot;Germany&quot;, &quot;pop&quot;)
-print_plot(&quot;Germany&quot;, &quot;lifeExp&quot;)</code></pre>
+save_plot(&quot;Germany&quot;, &quot;gdpPercap&quot;)
+save_plot(&quot;Germany&quot;, &quot;pop&quot;)
+save_plot(&quot;Germany&quot;, &quot;lifeExp&quot;)</code></pre>
 <p><br></p>
 <p>This seems to work well. But what happens if we forget to specify the statistic we want plotted?</p>
-<pre class="r"><code>print_plot(&quot;Germany&quot;)</code></pre>
+<pre class="r"><code>save_plot(&quot;Germany&quot;)</code></pre>
 <p>We get an error message saying “argument”stat" is missing, with no default". We can build in a default the following way</p>
 <pre class="r"><code>#define our function
-print_plot &lt;- function(cntry, stat = &quot;gdpPercap&quot;) {  </code></pre>
+save_plot &lt;- function(cntry, stat = &quot;gdpPercap&quot;) {  </code></pre>
 <p><br></p>
 <p>Now, if we don’t specify the statistic we want plotted, the function will execute with this specified default option. The default gets “overwritten” if we do specify a stat when we call the function.</p>
 <pre class="r"><code>dir.create(&quot;figures&quot;) 
@@ -891,7 +870,7 @@ gap_europe &lt;- gapminder %&gt;%
   mutate(gdpTot = gdpPercap * pop)
 
 #define our function
-print_plot &lt;- function(cntry, stat = &quot;gdpPercap&quot;) {   # Here I&#39;m adding an additional argument to the function, which we&#39;ll use to specify what statistic we want plotted
+save_plot &lt;- function(cntry, stat = &quot;gdpPercap&quot;) {   # Here I&#39;m adding an additional argument to the function, which we&#39;ll use to specify what statistic we want plotted
   
   ## filter the country to plot
   gap_to_plot &lt;- gap_europe %&gt;%
@@ -912,8 +891,8 @@ print_plot &lt;- function(cntry, stat = &quot;gdpPercap&quot;) {   # Here I&#39;
 
 # Let&#39;s try calling the function with and without specifying a statistic to plot and check the outputs
 
-print_plot(&quot;Germany&quot;)
-print_plot(&quot;Germany&quot;, &quot;lifeExp&quot;)</code></pre>
+save_plot(&quot;Germany&quot;)
+save_plot(&quot;Germany&quot;, &quot;lifeExp&quot;)</code></pre>
 <p><br> <br></p>
 </div>
 <div id="your-turn" class="section level3">
@@ -928,7 +907,7 @@ ggsave(filename = &quot;figures/Europe/Germany_gdpPercap.jpg&quot;, plot = my_pl
 # To save a .pdf file
 ggsave(filename = &quot;figures/Europe/Germany_gdpPercap.pdf&quot;, plot = my_plot)</code></pre>
 <p><br></p>
-<p>Now, add an argument to our function that specifies the file type you want for the plot and edit the function so that it will output the requested file type. You can also specify a default file type that the function will use if you don’t specify a file type when you call it.</p>
+<p><strong>Your task:</strong> Add an argument to our function that specifies the file type you want for the plot and edit the function so that it will output the requested file type. You can also specify a default file type that the function will use if you don’t specify a file type when you call it.</p>
 <p>If you have more time, you can also add an additional argument that specifies the plot type (x-y scatter, line plot etc) and adjust the function to accommodate this.</p>
 <p><br></p>
 <div id="answer" class="section level4">
@@ -944,7 +923,7 @@ gap_europe &lt;- gapminder %&gt;%
   mutate(gdpTot = gdpPercap * pop)
 
 #define our function
-print_plot &lt;- function(cntry, stat = &quot;gdpPercap&quot;, filetype = &quot;pdf&quot;) {   # Here I&#39;m adding additional arguments to the function, which we&#39;ll use to specify what statistic we want plotted and what filetype we want
+save_plot &lt;- function(cntry, stat = &quot;gdpPercap&quot;, filetype = &quot;pdf&quot;) {   # Here I&#39;m adding additional arguments to the function, which we&#39;ll use to specify what statistic we want plotted and what filetype we want
   
   ## filter the country to plot
   gap_to_plot &lt;- gap_europe %&gt;%
@@ -964,8 +943,8 @@ print_plot &lt;- function(cntry, stat = &quot;gdpPercap&quot;, filetype = &quot;
 
 
 # Testing our function
-print_plot(&quot;Germany&quot;)
-print_plot(&quot;Germany&quot;, &quot;lifeExp&quot;, &quot;jpg&quot;)</code></pre>
+save_plot(&quot;Germany&quot;)
+save_plot(&quot;Germany&quot;, &quot;lifeExp&quot;, &quot;jpg&quot;)</code></pre>
 </details>
 </div>
 </div>

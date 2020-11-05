@@ -50,46 +50,9 @@ We will continue working with the gapminder dataset, so let's first load that ba
 
 ```r
 library(tidyverse)
-```
-
-```
-## ── Attaching packages ────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
-```
-
-```
-## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
-## ✓ tibble  3.0.3     ✓ dplyr   1.0.2
-## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-## ✓ readr   1.3.1     ✓ forcats 0.5.0
-```
-
-```
-## ── Conflicts ───────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-```
-
-```r
 library(gapminder) #install.packages("gapminder")
 
 gapminder
-```
-
-```
-## # A tibble: 1,704 x 6
-##    country     continent  year lifeExp      pop gdpPercap
-##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
-##  1 Afghanistan Asia       1952    28.8  8425333      779.
-##  2 Afghanistan Asia       1957    30.3  9240934      821.
-##  3 Afghanistan Asia       1962    32.0 10267083      853.
-##  4 Afghanistan Asia       1967    34.0 11537966      836.
-##  5 Afghanistan Asia       1972    36.1 13079460      740.
-##  6 Afghanistan Asia       1977    38.4 14880372      786.
-##  7 Afghanistan Asia       1982    39.9 12881816      978.
-##  8 Afghanistan Asia       1987    40.8 13867957      852.
-##  9 Afghanistan Asia       1992    41.7 16317921      649.
-## 10 Afghanistan Asia       1997    41.8 22227415      635.
-## # … with 1,694 more rows
 ```
 
 <br>
@@ -167,7 +130,7 @@ First, import csv file with information on whether data was estimated or reporte
 
 
 ```r
-est <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv')
+est <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv")
 gapminder_est <- left_join(gapminder, est)
 ```
 
@@ -320,6 +283,8 @@ if (any(gap_to_plot$estimated == "yes")) { # any() will return a single TRUE or 
 } 
 ```
 
+<br> 
+
 Note that this works because we know there are only two conditions, `Estimated == yes` and `Estimated == no`. In the first `if` statement we asked for estimated data, and the `else` condition gives us everything else (which we know is reported). We can be explicit about setting these conditions in the `else` clause by instead using an `else if` statement. Below is how you would construct this in your `for` loop, similar to above:
 
 
@@ -393,7 +358,7 @@ for (cntry in country_list) { # (cntry = country_list[1])
 <br>
 
 
-## Looping with an index & storing results
+## Looping with an index and storing results
 In the example we've been using to build a for loop together, we've been iterating over a list of countries (in turn assigning each of these to our cntry object). You may often see for loops iterating over a numerical index, often using `i` as the object that in turn gets assigned each number from a sequence. Here is an example:
 
 
@@ -419,7 +384,7 @@ A (not very computationally efficient) alternative would be to do this calculati
 
 
 ```r
-gapminder$gdpTot = vector(length = nrow(gapminder))
+gapminder$gdpTot <-  vector(length = nrow(gapminder))
 
 for (i in 1:nrow(gapminder)) {
   gapminder$gdpTot[i] <- gapminder$gdpPercap[i] * gapminder$pop[i]
@@ -485,7 +450,7 @@ for (cntry in country_list) { # (cntry = country_list[1])
 
 Now, we can change this into a function in the following way:
 
-![](assets/for_loop_logic.png)
+![](assets/for_loop_to_function.png)
 
 <br>
 
@@ -502,7 +467,7 @@ gap_europe <- gapminder %>%
   mutate(gdpTot = gdpPercap * pop)
 
 #define our function
-print_plot <- function(cntry) {
+save_plot <- function(cntry) {
   
   ## filter the country to plot
   gap_to_plot <- gap_europe %>%
@@ -527,8 +492,8 @@ We can not run this function on specific countries
 
 
 ```r
-print_plot("Germany")
-print_plot("France")
+save_plot("Germany")
+save_plot("France")
 
 # We can even write a for loop to run the function on each country in a list of countries (doing exactly the same as our for loop did before, but now we have pulled the code specifying the operation out of the for loop itself)
 
@@ -536,7 +501,7 @@ country_list <- unique(gap_europe$country) # ?unique() returns the unique values
 
 for (cntry in country_list) {
   
-  print_plot(cntry)
+  save_plot(cntry)
   
 }
 ```
@@ -556,7 +521,7 @@ gap_europe <- gapminder %>%
   mutate(gdpTot = gdpPercap * pop)
 
 #define our function
-print_plot <- function(cntry, stat) {   # Here I'm adding an additional argument to the function, which we'll use to specify what statistic we want plotted
+save_plot <- function(cntry, stat) {   # Here I'm adding an additional argument to the function, which we'll use to specify what statistic we want plotted
   
   ## filter the country to plot
   gap_to_plot <- gap_europe %>%
@@ -577,9 +542,9 @@ print_plot <- function(cntry, stat) {   # Here I'm adding an additional argument
 
 # Let's try calling the function with different statistics and check the outputs
 
-print_plot("Germany", "gdpPercap")
-print_plot("Germany", "pop")
-print_plot("Germany", "lifeExp")
+save_plot("Germany", "gdpPercap")
+save_plot("Germany", "pop")
+save_plot("Germany", "lifeExp")
 ```
 
 <br>
@@ -587,14 +552,14 @@ print_plot("Germany", "lifeExp")
 This seems to work well. But what happens if we forget to specify the statistic we want plotted?
 
 ```r
-print_plot("Germany")
+save_plot("Germany")
 ```
 
 We get an error message saying "argument "stat" is missing, with no default". We can build in a default the following way
 
 ```r
 #define our function
-print_plot <- function(cntry, stat = "gdpPercap") {  
+save_plot <- function(cntry, stat = "gdpPercap") {  
 ```
 
 <br>
@@ -612,7 +577,7 @@ gap_europe <- gapminder %>%
   mutate(gdpTot = gdpPercap * pop)
 
 #define our function
-print_plot <- function(cntry, stat = "gdpPercap") {   # Here I'm adding an additional argument to the function, which we'll use to specify what statistic we want plotted
+save_plot <- function(cntry, stat = "gdpPercap") {   # Here I'm adding an additional argument to the function, which we'll use to specify what statistic we want plotted
   
   ## filter the country to plot
   gap_to_plot <- gap_europe %>%
@@ -633,8 +598,8 @@ print_plot <- function(cntry, stat = "gdpPercap") {   # Here I'm adding an addit
 
 # Let's try calling the function with and without specifying a statistic to plot and check the outputs
 
-print_plot("Germany")
-print_plot("Germany", "lifeExp")
+save_plot("Germany")
+save_plot("Germany", "lifeExp")
 ```
 
 <br>
@@ -658,7 +623,7 @@ ggsave(filename = "figures/Europe/Germany_gdpPercap.pdf", plot = my_plot)
 
 <br>
 
-Now, add an argument to our function that specifies the file type you want for the plot and edit the function so that it will output the requested file type. You can also specify a default file type that the function will use if you don't specify a file type when you call it.
+**Your task:** Add an argument to our function that specifies the file type you want for the plot and edit the function so that it will output the requested file type. You can also specify a default file type that the function will use if you don't specify a file type when you call it.
 
 If you have more time, you can also add an additional argument that specifies the plot type (x-y scatter, line plot etc) and adjust the function to accommodate this.
 
@@ -680,7 +645,7 @@ gap_europe <- gapminder %>%
   mutate(gdpTot = gdpPercap * pop)
 
 #define our function
-print_plot <- function(cntry, stat = "gdpPercap", filetype = "pdf") {   # Here I'm adding additional arguments to the function, which we'll use to specify what statistic we want plotted and what filetype we want
+save_plot <- function(cntry, stat = "gdpPercap", filetype = "pdf") {   # Here I'm adding additional arguments to the function, which we'll use to specify what statistic we want plotted and what filetype we want
   
   ## filter the country to plot
   gap_to_plot <- gap_europe %>%
@@ -700,8 +665,8 @@ print_plot <- function(cntry, stat = "gdpPercap", filetype = "pdf") {   # Here I
 
 
 # Testing our function
-print_plot("Germany")
-print_plot("Germany", "lifeExp", "jpg")
+save_plot("Germany")
+save_plot("Germany", "lifeExp", "jpg")
 ```
 
 </details>

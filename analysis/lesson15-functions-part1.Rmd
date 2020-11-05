@@ -133,7 +133,7 @@ First, import csv file with information on whether data was estimated or reporte
 
 ```{r, eval = FALSE}
 
-est <- readr::read_csv('https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv')
+est <- read_csv("https://raw.githubusercontent.com/OHI-Science/data-science-training/master/data/countries_estimated.csv")
 gapminder_est <- left_join(gapminder, est)
 
 ```
@@ -386,7 +386,7 @@ A (not very computationally efficient) alternative would be to do this calculati
 
 ```{r, eval = FALSE}
 
-gapminder$gdpTot = vector(length = nrow(gapminder))
+gapminder$gdpTot <-  vector(length = nrow(gapminder))
 
 for (i in 1:nrow(gapminder)) {
   gapminder$gdpTot[i] <- gapminder$gdpPercap[i] * gapminder$pop[i]
@@ -471,7 +471,7 @@ gap_europe <- gapminder %>%
   mutate(gdpTot = gdpPercap * pop)
 
 #define our function
-print_plot <- function(cntry) {
+save_plot <- function(cntry) {
   
   ## filter the country to plot
   gap_to_plot <- gap_europe %>%
@@ -497,8 +497,8 @@ We can not run this function on specific countries
 
 ```{r, eval = FALSE}
 
-print_plot("Germany")
-print_plot("France")
+save_plot("Germany")
+save_plot("France")
 
 # We can even write a for loop to run the function on each country in a list of countries (doing exactly the same as our for loop did before, but now we have pulled the code specifying the operation out of the for loop itself)
 
@@ -506,7 +506,7 @@ country_list <- unique(gap_europe$country) # ?unique() returns the unique values
 
 for (cntry in country_list) {
   
-  print_plot(cntry)
+  save_plot(cntry)
   
 }
 
@@ -528,7 +528,7 @@ gap_europe <- gapminder %>%
   mutate(gdpTot = gdpPercap * pop)
 
 #define our function
-print_plot <- function(cntry, stat) {   # Here I'm adding an additional argument to the function, which we'll use to specify what statistic we want plotted
+save_plot <- function(cntry, stat) {   # Here I'm adding an additional argument to the function, which we'll use to specify what statistic we want plotted
   
   ## filter the country to plot
   gap_to_plot <- gap_europe %>%
@@ -549,9 +549,9 @@ print_plot <- function(cntry, stat) {   # Here I'm adding an additional argument
 
 # Let's try calling the function with different statistics and check the outputs
 
-print_plot("Germany", "gdpPercap")
-print_plot("Germany", "pop")
-print_plot("Germany", "lifeExp")
+save_plot("Germany", "gdpPercap")
+save_plot("Germany", "pop")
+save_plot("Germany", "lifeExp")
 
 ```
 
@@ -560,7 +560,7 @@ print_plot("Germany", "lifeExp")
 This seems to work well. But what happens if we forget to specify the statistic we want plotted?
 ```{r, eval = FALSE}
 
-print_plot("Germany")
+save_plot("Germany")
 
 ```
 
@@ -568,7 +568,7 @@ We get an error message saying "argument "stat" is missing, with no default". We
 ```{r, eval = FALSE}
 
 #define our function
-print_plot <- function(cntry, stat = "gdpPercap") {  
+save_plot <- function(cntry, stat = "gdpPercap") {  
   
 ```
 
@@ -587,7 +587,7 @@ gap_europe <- gapminder %>%
   mutate(gdpTot = gdpPercap * pop)
 
 #define our function
-print_plot <- function(cntry, stat = "gdpPercap") {   # Here I'm adding an additional argument to the function, which we'll use to specify what statistic we want plotted
+save_plot <- function(cntry, stat = "gdpPercap") {   # Here I'm adding an additional argument to the function, which we'll use to specify what statistic we want plotted
   
   ## filter the country to plot
   gap_to_plot <- gap_europe %>%
@@ -608,8 +608,8 @@ print_plot <- function(cntry, stat = "gdpPercap") {   # Here I'm adding an addit
 
 # Let's try calling the function with and without specifying a statistic to plot and check the outputs
 
-print_plot("Germany")
-print_plot("Germany", "lifeExp")
+save_plot("Germany")
+save_plot("Germany", "lifeExp")
 
 ```
 
@@ -657,7 +657,7 @@ gap_europe <- gapminder %>%
   mutate(gdpTot = gdpPercap * pop)
 
 #define our function
-print_plot <- function(cntry, stat = "gdpPercap", filetype = "pdf") {   # Here I'm adding additional arguments to the function, which we'll use to specify what statistic we want plotted and what filetype we want
+save_plot <- function(cntry, stat = "gdpPercap", filetype = "pdf") {   # Here I'm adding additional arguments to the function, which we'll use to specify what statistic we want plotted and what filetype we want
   
   ## filter the country to plot
   gap_to_plot <- gap_europe %>%
@@ -677,8 +677,8 @@ print_plot <- function(cntry, stat = "gdpPercap", filetype = "pdf") {   # Here I
 
 
 # Testing our function
-print_plot("Germany")
-print_plot("Germany", "lifeExp", "jpg")
+save_plot("Germany")
+save_plot("Germany", "lifeExp", "jpg")
 
 ```
 
