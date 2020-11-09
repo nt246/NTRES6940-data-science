@@ -45,9 +45,9 @@ Today, we will first practice writing a few more functions and then we'll discus
 
 By the end of today's class, you should be able to:
 
-* Write a simple function to automate a task
 * Describe key features of factor variables in R
 * Manipulate factor levels to improve plots of categorical data
+* Write a simple function to automate a task (we'll practice if there is time)
 
 <br>
 <br>
@@ -68,19 +68,22 @@ library(gridExtra)  #install.packages("gridExtra")
 <br>
 
 
-## Quick recap on writing functions
+## Better plots with factor level manipulation 
+
+R uses factors to handle categorical variables, variables that have a fixed and known set of possible values. As such, this data type looks like character data type from the outset, but it can contain additional information to manage the levels and the order (or sequence) of the categorical values. Factors are important for modeling also helpful for reordering character vectors to improve display. 
+
+We'll go over [Jenny Bryan's illustration](https://stat545.com/factors-boss.html) of how a few powerful functions from the `forcats` package can significantly improve our handling of factor variables and visualization of data with categorical variables.
+
+<br>
+<br>
+
+## Quick recap on writing functions (if there is time)
 
 Last time, we made a function that would save a plot of how a variable of choice changed over time for a specific country in the `gapminder` dataset. Today we'll quickly go over how we use a similar structure to write a function for computing numeric output. We'll do this with Jenny Bryan's example and calculating interquantile range in the gapminder data [here](https://stat545.com/functions-part1.html). We won't have time to cover all the details she illustrates, so if you're interested in learning more, I highly recommend working through the rest of her examples in her chapters 18-21 on your own.
 
 <br>
 <br>
 
-## Better plots with factor level manipulation 
-
-We'll go over [Jenny Bryan's illustration](https://stat545.com/factors-boss.html) of how a few powerful functions from the `forcats` package can significantly improve our handling of factor variables and visualization of data with categorical variables.
-
-<br>
-<br>
 
 ## THE END
 This is all we had time to cover in this course. In our final class, we're looking forward to hearing all of your ideas for applying the course material in practice, and we'll go over helpful resources for learning more.
