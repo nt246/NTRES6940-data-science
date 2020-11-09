@@ -36,7 +36,9 @@ knitr::opts_chunk$set(echo = TRUE, fig.path="lesson16-files/")
 
 ## Announcements
 * The final homework is due tonight
+
 * Wednesday is our last class - we're looking forward to your presentations. To make sure we hear from everybody, we'll have to stick to a strict 1.5 min presentation per participant. Please get concrete and show us some examples of the types of data you work with or the types of computational/analytical challenges you're confronted with in your work
+
 * If you can't give a live presentation, please upload your video on [Canvas through this link](https://canvas.cornell.edu/courses/21578/assignments/174563) by this Wednesday (Nov 11) at 10pm
 
 <br>
