@@ -58,11 +58,30 @@ We will continue working with the gapminder dataset, so let's first load that ba
 ```{r, eval = FALSE}
 
 library(tidyverse)
-library(gapminder) #install.packages("gapminder")
+library(gapminder)  #install.packages("gapminder")
 
-gapminder
+# For being able to compare plots side by side, I'm also going to use the gridExtra package today
+library(gridExtra)  #install.packages("gridExtra")
 
 ```
 
 <br>
 <br>
+
+
+## Quick recap on writing functions
+
+Last time, we made a function that would save a plot of how a variable of choice changed over time for a specific country in the `gapminder` dataset. Today we'll quickly go over how we use a similar structure to write a function for computing numeric output. We'll do this with Jenny Bryan's example and calculating interquantile range in the gapminder data [here](https://stat545.com/functions-part1.html). We won't have time to cover all the details she illustrates, so if you're interested in learning more, I highly recommend working through the rest of her examples in her chapters 18-21 on your own.
+
+<br>
+<br>
+
+## Better plots with factor level manipulation 
+
+We'll go over [Jenny Bryan's illustration](https://stat545.com/factors-boss.html) of how a few powerful functions from the `forcats` package can significantly improve our handling of factor variables and visualization of data with categorical variables.
+
+<br>
+<br>
+
+## THE END
+This is all we had time to cover in this course. In our final class, we're looking forward to hearing all of your ideas for applying the course material in practice, and we'll go over helpful resources for learning more.

@@ -475,10 +475,25 @@ div.tocify {
 <h2>Getting set up</h2>
 <p>We will continue working with the gapminder dataset, so let’s first load that back in, along with the tidyverse.</p>
 <pre class="r"><code>library(tidyverse)
-library(gapminder) #install.packages(&quot;gapminder&quot;)
+library(gapminder)  #install.packages(&quot;gapminder&quot;)
 
-gapminder</code></pre>
+# For being able to compare plots side by side, I&#39;m also going to use the gridExtra package today
+library(gridExtra)  #install.packages(&quot;gridExtra&quot;)</code></pre>
 <p><br> <br></p>
+</div>
+<div id="quick-recap-on-writing-functions" class="section level2">
+<h2>Quick recap on writing functions</h2>
+<p>Last time, we made a function that would save a plot of how a variable of choice changed over time for a specific country in the <code>gapminder</code> dataset. Today we’ll quickly go over how we use a similar structure to write a function for computing numeric output. We’ll do this with Jenny Bryan’s example and calculating interquantile range in the gapminder data <a href="https://stat545.com/functions-part1.html">here</a>. We won’t have time to cover all the details she illustrates, so if you’re interested in learning more, I highly recommend working through the rest of her examples in her chapters 18-21 on your own.</p>
+<p><br> <br></p>
+</div>
+<div id="better-plots-with-factor-level-manipulation" class="section level2">
+<h2>Better plots with factor level manipulation</h2>
+<p>We’ll go over <a href="https://stat545.com/factors-boss.html">Jenny Bryan’s illustration</a> of how a few powerful functions from the <code>forcats</code> package can significantly improve our handling of factor variables and visualization of data with categorical variables.</p>
+<p><br> <br></p>
+</div>
+<div id="the-end" class="section level2">
+<h2>THE END</h2>
+<p>This is all we had time to cover in this course. In our final class, we’re looking forward to hearing all of your ideas for applying the course material in practice, and we’ll go over helpful resources for learning more.</p>
 </div>
 
 
@@ -531,7 +546,7 @@ $(document).ready(function ()  {
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
       },
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
