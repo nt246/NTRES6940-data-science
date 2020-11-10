@@ -70,12 +70,13 @@ library(gridExtra)  #install.packages("gridExtra")
 
 R uses factors to handle categorical variables, variables that have a fixed and known set of possible values. As such, this data type looks like character data type from the outset, but it can contain additional information to manage the levels and the order (or sequence) of the categorical values. Factors are important for modeling also helpful for reordering character vectors to improve display. 
 
-We'll go over [Jenny Bryan's illustration](https://stat545.com/factors-boss.html) of how a few powerful functions from the `forcats` package can significantly improve our handling of factor variables and visualization of data with categorical variables. The code used in-class can be found [here]()
+We'll go over [Jenny Bryan's illustration](https://stat545.com/factors-boss.html) of how a few powerful functions from the `forcats` package can significantly improve our handling of factor variables and visualization of data with categorical variables. The code used in-class can be found [here](https://github.com/nt246/NTRES6940-data-science/blob/master/misc/factors_in_lecture_code.R)
 
 <br>
 <br>
 
-## Quick recap on writing functions (we did not have time to cover this in lecture, but I encourage you to review the tutorial on your own)
+## Quick recap on writing functions 
+#### We did not have time to cover this in lecture, but I encourage you to review the tutorial on your own
 
 Last time, we made a function that would save a plot of how a variable of choice changed over time for a specific country in the `gapminder` dataset. Today we'll quickly go over how we use a similar structure to write a function for computing numeric output. We'll do this with Jenny Bryan's example and calculating interquantile range in the gapminder data [here](https://stat545.com/functions-part1.html). We won't have time to cover all the details she illustrates, so if you're interested in learning more, I highly recommend working through the rest of her examples in her chapters 18-21 on your own.
 
