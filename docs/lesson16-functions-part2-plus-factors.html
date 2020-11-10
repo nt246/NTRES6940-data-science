@@ -11,7 +11,7 @@
 
 
 
-<title>Lesson 16: Functions Part 2 and Factors in R</title>
+<title>Lesson 16: Factors in R</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -426,7 +426,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Lesson 16: Functions Part 2 and Factors in R</h1>
+<h1 class="title toc-ignore">Lesson 16: Factors in R</h1>
 
 </div>
 
@@ -438,18 +438,16 @@ div.tocify {
 <div id="required" class="section level4">
 <h4>Required:</h4>
 <ul>
-<li><p><a href="https://stat545.com/functions-part1.html">Chapters 18-21: Writing your own functions</a> in Jenny Bryan’s STAT545 notes</p></li>
-<li><p><a href="https://stat545.com/factors-boss.html">Chapter 10: Be the boss of your factors</a> in Jenny Bryan’s STAT545 notes</p></li>
+<li><a href="https://stat545.com/factors-boss.html">Chapter 10: Be the boss of your factors</a> in Jenny Bryan’s STAT545 notes</li>
 </ul>
 <p><br></p>
 </div>
 <div id="other-resources" class="section level4">
 <h4>Other resources:</h4>
 <ul>
-<li><p>Review the assignment for last class: <a href="https://r4ds.had.co.nz/functions.html">Chapter 19</a> in R for Data Science by Hadley Wickham &amp; Garrett Grolemund</p></li>
-<li><p><a href="https://r4ds.had.co.nz/factors.html">Chapter 15</a> in R for Data Science by Hadley Wickham &amp; Garrett Grolemund</p></li>
+<li><a href="https://r4ds.had.co.nz/factors.html">Chapter 15</a> in R for Data Science by Hadley Wickham &amp; Garrett Grolemund</li>
 </ul>
-<p><br></p>
+<p><br> <br></p>
 </div>
 </div>
 <div id="announcements" class="section level2">
@@ -463,12 +461,10 @@ div.tocify {
 </div>
 <div id="todays-learning-objectives" class="section level2">
 <h2>Today’s learning objectives</h2>
-<p>Today, we will first practice writing a few more functions and then we’ll discuss how factors work in R.</p>
 <p>By the end of today’s class, you should be able to:</p>
 <ul>
 <li>Describe key features of factor variables in R</li>
 <li>Manipulate factor levels to improve plots of categorical data</li>
-<li>Write a simple function to automate a task (we’ll practice if there is time)</li>
 </ul>
 <p><br> <br></p>
 </div>
@@ -485,11 +481,11 @@ library(gridExtra)  #install.packages(&quot;gridExtra&quot;)</code></pre>
 <div id="better-plots-with-factor-level-manipulation" class="section level2">
 <h2>Better plots with factor level manipulation</h2>
 <p>R uses factors to handle categorical variables, variables that have a fixed and known set of possible values. As such, this data type looks like character data type from the outset, but it can contain additional information to manage the levels and the order (or sequence) of the categorical values. Factors are important for modeling also helpful for reordering character vectors to improve display.</p>
-<p>We’ll go over <a href="https://stat545.com/factors-boss.html">Jenny Bryan’s illustration</a> of how a few powerful functions from the <code>forcats</code> package can significantly improve our handling of factor variables and visualization of data with categorical variables.</p>
+<p>We’ll go over <a href="https://stat545.com/factors-boss.html">Jenny Bryan’s illustration</a> of how a few powerful functions from the <code>forcats</code> package can significantly improve our handling of factor variables and visualization of data with categorical variables. The code used in-class can be found <a href="">here</a></p>
 <p><br> <br></p>
 </div>
-<div id="quick-recap-on-writing-functions-if-there-is-time" class="section level2">
-<h2>Quick recap on writing functions (if there is time)</h2>
+<div id="quick-recap-on-writing-functions-we-did-not-have-time-to-cover-this-in-lecture-but-i-encourage-you-to-review-the-tutorial-on-your-own" class="section level2">
+<h2>Quick recap on writing functions (we did not have time to cover this in lecture, but I encourage you to review the tutorial on your own)</h2>
 <p>Last time, we made a function that would save a plot of how a variable of choice changed over time for a specific country in the <code>gapminder</code> dataset. Today we’ll quickly go over how we use a similar structure to write a function for computing numeric output. We’ll do this with Jenny Bryan’s example and calculating interquantile range in the gapminder data <a href="https://stat545.com/functions-part1.html">here</a>. We won’t have time to cover all the details she illustrates, so if you’re interested in learning more, I highly recommend working through the rest of her examples in her chapters 18-21 on your own.</p>
 <p><br> <br></p>
 </div>

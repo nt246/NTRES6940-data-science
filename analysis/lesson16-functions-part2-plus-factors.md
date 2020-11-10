@@ -1,5 +1,5 @@
 ---
-title: "Lesson 16: Functions Part 2 and Factors in R"
+title: "Lesson 16: Factors in R"
 output: 
   html_document:
     keep_md: yes 
@@ -16,8 +16,6 @@ output:
 
 #### Required: 
 
-* [Chapters 18-21: Writing your own functions](https://stat545.com/functions-part1.html) in Jenny Bryan's STAT545 notes
-
 * [Chapter 10: Be the boss of your factors](https://stat545.com/factors-boss.html) in Jenny Bryan's STAT545 notes
 
 
@@ -25,10 +23,9 @@ output:
 
 #### Other resources:
 
-* Review the assignment for last class: [Chapter 19](https://r4ds.had.co.nz/functions.html) in R for Data Science by Hadley Wickham & Garrett Grolemund
-
 * [Chapter 15](https://r4ds.had.co.nz/factors.html) in R for Data Science by Hadley Wickham & Garrett Grolemund
 
+<br>
 <br>
 
 ## Announcements
@@ -41,13 +38,10 @@ output:
 <br>
 
 ## Today's learning objectives
-Today, we will first practice writing a few more functions and then we'll discuss how factors work in R.
-
 By the end of today's class, you should be able to:
 
 * Describe key features of factor variables in R
 * Manipulate factor levels to improve plots of categorical data
-* Write a simple function to automate a task (we'll practice if there is time)
 
 <br>
 <br>
@@ -72,12 +66,12 @@ library(gridExtra)  #install.packages("gridExtra")
 
 R uses factors to handle categorical variables, variables that have a fixed and known set of possible values. As such, this data type looks like character data type from the outset, but it can contain additional information to manage the levels and the order (or sequence) of the categorical values. Factors are important for modeling also helpful for reordering character vectors to improve display. 
 
-We'll go over [Jenny Bryan's illustration](https://stat545.com/factors-boss.html) of how a few powerful functions from the `forcats` package can significantly improve our handling of factor variables and visualization of data with categorical variables.
+We'll go over [Jenny Bryan's illustration](https://stat545.com/factors-boss.html) of how a few powerful functions from the `forcats` package can significantly improve our handling of factor variables and visualization of data with categorical variables. The code used in-class can be found [here]()
 
 <br>
 <br>
 
-## Quick recap on writing functions (if there is time)
+## Quick recap on writing functions (we did not have time to cover this in lecture, but I encourage you to review the tutorial on your own)
 
 Last time, we made a function that would save a plot of how a variable of choice changed over time for a specific country in the `gapminder` dataset. Today we'll quickly go over how we use a similar structure to write a function for computing numeric output. We'll do this with Jenny Bryan's example and calculating interquantile range in the gapminder data [here](https://stat545.com/functions-part1.html). We won't have time to cover all the details she illustrates, so if you're interested in learning more, I highly recommend working through the rest of her examples in her chapters 18-21 on your own.
 
