@@ -1,5 +1,5 @@
 ---
-title: "Lesson 15: Functions - Part 1"
+title: "Lesson 15: Functions"
 output: 
   html_document:
     keep_md: yes 
