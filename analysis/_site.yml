@@ -38,10 +38,10 @@ navbar:
       href: lesson13-data-import-and-types.html
     - text: "Lesson 14: Iteration (for loops) and conditional execution"
       href: lesson14-for-loops.html
-    - text: "Lesson 15: Functions, part 1"
-      href: lesson15-functions-part1.html
-    - text: "Lesson 16: Functions, part 2 and Factors"
-      href: lesson16-functions-part2-plus-factors.html
+    - text: "Lesson 15: Functions"
+      href: lesson15-functions.html
+    - text: "Lesson 16: Factors"
+      href: lesson16-factors.html
   - text: Assignments
     href: assignments.html    
 output: 

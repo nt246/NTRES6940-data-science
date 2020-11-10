@@ -433,20 +433,20 @@ coronavirus
 ```
 
 ```
-## # A tibble: 227,878 x 7
-##    date       province country   lat  long type      cases
-##    <date>     <chr>    <chr>   <dbl> <dbl> <chr>     <dbl>
-##  1 2020-01-22 <NA>     <NA>       NA    NA confirmed     0
-##  2 2020-01-23 <NA>     <NA>       NA    NA confirmed     0
-##  3 2020-01-24 <NA>     <NA>       NA    NA confirmed     0
-##  4 2020-01-25 <NA>     <NA>       NA    NA confirmed     0
-##  5 2020-01-26 <NA>     <NA>       NA    NA confirmed     0
-##  6 2020-01-27 <NA>     <NA>       NA    NA confirmed     0
-##  7 2020-01-28 <NA>     <NA>       NA    NA confirmed     0
-##  8 2020-01-29 <NA>     <NA>       NA    NA confirmed     0
-##  9 2020-01-30 <NA>     <NA>       NA    NA confirmed     0
-## 10 2020-01-31 <NA>     <NA>       NA    NA confirmed     0
-## # … with 227,868 more rows
+## # A tibble: 231,763 x 7
+##    date       province country       lat  long type      cases
+##    <date>     <chr>    <chr>       <dbl> <dbl> <chr>     <dbl>
+##  1 2020-01-22 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  2 2020-01-23 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  3 2020-01-24 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  4 2020-01-25 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  5 2020-01-26 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  6 2020-01-27 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  7 2020-01-28 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  8 2020-01-29 <NA>     Afghanistan  33.9  67.7 confirmed     0
+##  9 2020-01-30 <NA>     Afghanistan  33.9  67.7 confirmed     0
+## 10 2020-01-31 <NA>     Afghanistan  33.9  67.7 confirmed     0
+## # … with 231,753 more rows
 ```
 
 **QUESTION**: Is this in tidy format?
@@ -511,10 +511,6 @@ coronavirus_ttd <- coronavirus %>%
 # Now we can plot this easily
 ggplot(coronavirus_ttd) +
   geom_label(mapping = aes(x = confirmed, y = death, label = country))
-```
-
-```
-## Warning: Removed 1 rows containing missing values (geom_label).
 ```
 
 ![](lesson10-files/unnamed-chunk-12-1.png)<!-- -->
