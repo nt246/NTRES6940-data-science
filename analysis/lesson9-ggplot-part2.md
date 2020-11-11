@@ -106,7 +106,7 @@ max(coronavirus$date)
 ```
 
 ```
-## [1] "2020-11-09"
+## [1] "2020-11-10"
 ```
 <br>
 <br>
@@ -114,7 +114,7 @@ max(coronavirus$date)
 
 ## Combining `dplyr` and `ggplot`
 
-Let's start with summarizing the total number of cases by type as of the most recent day in the dataset: 2020-11-09. Take a minute to try this for yourself, then you can look at our approach.
+Let's start with summarizing the total number of cases by type as of the most recent day in the dataset: 2020-11-10. Take a minute to try this for yourself, then you can look at our approach.
 
 <br>
 
@@ -134,9 +134,9 @@ kable(total_cases)  # kable() just provides a nice output for the table
 
 type            cases
 ----------  ---------
-confirmed    50913976
-death         1263094
-recovered    33289404
+confirmed    51456775
+death         1272094
+recovered    33544236
 
 </details>
 
@@ -518,7 +518,7 @@ coronavirus %>%
 ```
 
 ```
-## # A tibble: 379 x 7
+## # A tibble: 380 x 7
 ##    date       province country               lat   long type      cases
 ##    <date>     <chr>    <chr>               <dbl>  <dbl> <chr>     <dbl>
 ##  1 2020-07-03 <NA>     Antigua and Barbuda 17.1  -61.8  confirmed    -1
@@ -531,7 +531,7 @@ coronavirus %>%
 ##  8 2020-07-15 <NA>     Finland             61.9   25.7  confirmed    -5
 ##  9 2020-07-16 <NA>     Finland             61.9   25.7  confirmed    -3
 ## 10 2020-04-18 <NA>     France              46.2    2.21 confirmed   -17
-## # … with 369 more rows
+## # … with 370 more rows
 ```
 
 ```r

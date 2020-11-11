@@ -433,7 +433,7 @@ coronavirus
 ```
 
 ```
-## # A tibble: 231,763 x 7
+## # A tibble: 233,436 x 7
 ##    date       province country       lat  long type      cases
 ##    <date>     <chr>    <chr>       <dbl> <dbl> <chr>     <dbl>
 ##  1 2020-01-22 <NA>     Afghanistan  33.9  67.7 confirmed     0
@@ -446,7 +446,7 @@ coronavirus
 ##  8 2020-01-29 <NA>     Afghanistan  33.9  67.7 confirmed     0
 ##  9 2020-01-30 <NA>     Afghanistan  33.9  67.7 confirmed     0
 ## 10 2020-01-31 <NA>     Afghanistan  33.9  67.7 confirmed     0
-## # … with 231,753 more rows
+## # … with 233,426 more rows
 ```
 
 **QUESTION**: Is this in tidy format?

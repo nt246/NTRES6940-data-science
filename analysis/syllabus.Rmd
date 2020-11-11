@@ -118,4 +118,4 @@ Class# | Date | Topic | Assignments
 14 | Mon 11/2 | [Iteration (for loops) and conditional execution](https://nt246.github.io/NTRES6940-data-science/lesson14-for-loops.html) | [Assignment 6 due](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_6.md)
 15 | Wed 11/4 | [Functions](https://nt246.github.io/NTRES6940-data-science/lesson15-functions.html) | 
 16 | Mon 11/9 | [Factors in R](https://nt246.github.io/NTRES6940-data-science/lesson16-factors.html) | [Assignment 7 due](https://github.com/nt246/NTRES6940-data-science/blob/master/assignments/assignment_7.md)
-17 | Wed 11/11 | Student presentations, wrapping up and looking ahead | 
+17 | Wed 11/11 | [Student presentations, wrapping up and looking ahead](https://nt246.github.io/NTRES6940-data-science/lesson17-wrapup.html) | 

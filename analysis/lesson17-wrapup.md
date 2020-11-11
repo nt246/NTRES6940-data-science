@@ -6,10 +6,7 @@ output:
     toc: true
 ---
   
-```{r setup, include=FALSE}
-knitr::opts_knit$set(base.dir = "/Users/mariaakopyan/Github/NTRES6940-data-science/docs")
-knitr::opts_chunk$set(echo = TRUE, fig.path="lesson17-files/")
-```
+
 
 <br>
 
@@ -57,9 +54,7 @@ Make sure to frequently re-start R as you're working, as elaborated on by Jenny 
 
 Also, if you haven't already, follow the [instructions from r4ds](https://r4ds.had.co.nz/workflow-projects.html#what-is-real) on how ensure that RStudio does not restore your workspace between sessions, so you start with a clean environment every time. Make sure this option is selected under your RStudio preferences:
 
-```{r  out.width = "50%", echo = FALSE}
-knitr::include_graphics("assets/rstudio-workspace.png") 
-```
+<img src="assets/rstudio-workspace.png" width="50%" />
    
 <br>
 <br>
